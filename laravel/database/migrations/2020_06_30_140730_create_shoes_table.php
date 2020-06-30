@@ -18,6 +18,8 @@ class CreateShoesTable extends Migration
             $table->foreignId('user_id')->nullable();
             $table->foreignId('category_id')->nullable();
             $table->foreignId('brand_id')->nullable();
+            // or should it be:
+            //$table->string('brand')->nullable();
             $table->string('title')->nullable();
             $table->text('description')->nullable();
             $table->float('price', 10, 2)->nullable();
