@@ -1,0 +1,98 @@
+[
+    {
+        "title": "navy & white croco slide sandals",
+        "brand": "lacoste",
+        "category": "sandles",
+        "description": "Introducing your new off-duty look, the ultra-fresh Lacoste Croco Slide arrives at schuh. This man-made pool slide boasts a versatile and stylish navy and white colourway while a large strap is home to oversized branding for an on-trend finish.",
+        "price": 25,
+        "color": "Navy and White",
+        "material": "Man-made",
+        "gender": "male",
+        "is_adult": true,
+        "images": ["navy_&_white_croco_slide_sandals_1.jpg", "navy_&_white_croco_slide_sandals_2.jpg", "navy_&_white_croco_slide_sandals_3.jpg"]
+    },
+    {
+        "title": "white gazelle trainers",
+        "brand": "adidas",
+        "category": "trainers",
+        "description": "Dropping on to the style scene, this classic adidas Gazelle arrives with a premium white leather upper for maximum style impact. The T-toe construction and authentic branding creates a retro look that is not to be missed this season.",
+        "price": 70,
+        "color": "White",
+        "material": "leather and Man-made",
+        "gender": "male",
+        "is_adult": true,
+        "images": ["white_gazelle_trainers_1.jpg", "white_gazelle_trainers_2.jpg", "white_gazelle_trainers_3.jpg"]
+    },
+    {
+        "title": "white & red continental 80 trainers",
+        "brand": "adidas",
+        "category": "trainers",
+        "description": "Vintage nostalgia at its best, adidas re-issue their Continental 80 for today's streets. Returning with a fresh appeal, this slick tennis trainer is crafted with a white leather upper while a red and black stripe and detailed perforations complete.",
+        "price": 70,
+        "color": "White and red",
+        "material": "leather and Man-made",
+        "gender": "male",
+        "is_adult": true,
+        "images": ["continental_80_white_and_red_trainers_1.jpg", "continental_80_white_and_red_trainers_2.jpg", "continental_80_white_and_red_trainers_3.jpg"]
+    },
+    {
+        "title": "multi all star hi mystery inc trainers",
+        "brand": "converse",
+        "category": "trainers",
+        "description": "The Converse x Scooby-Doo collection is here and it's packed with iconic silhouettes featuring everyone's favourite cartoon characters. Scooby and the gang come to life on the Chuck Taylor All Star Hi Mystery Inc vs Villains profile.",
+        "price": 60,
+        "color": "multi",
+        "material": "fabric",
+        "gender": "male",
+        "is_adult": false,
+        "image": ["multi_all_star_hi_mystery_inc_trainers_1.jpg", "multi_all_star_hi_mystery_inc_trainers_2.jpg", "multi_all_star_hi_mystery_inc_trainers_3.jpg"]
+    },
+    {
+        "title": "black & white all star ox mystery inc trainers",
+        "brand": "converse",
+        "category": "trainers",
+        "description": "The Converse x Scooby-Doo collection is here. This black All Star Ox Mystery Inc profile features a print of Scooby and the gang ready to solve another mystery - finished with Converse branding to top it all off.",
+        "price": 55,
+        "color": "black and White",
+        "material": "fabric",
+        "gender": "male",
+        "is_adult": true,
+        "images": ["black_&_white_all_star_ox_mystery_inc_1.jpg", "black_&_white_all_star_ox_mystery_inc_2.jpg", "black_&_white_all_star_ox_mystery_inc_3.jpg"]
+    },
+    {
+        "title": "black & white old skool trainers",
+        "brand": "vans",
+        "category": "trainers",
+        "description": "Vans favourite, the Old Skool, adopts a cool monochrome colourway. The black upper is constructed from a combination of canvas and suede with the white side stripe on the midsection. A vulcanised sole finishes.",
+        "price": 60,
+        "color": "black and white",
+        "material": "fabric and suede",
+        "gender": "male",
+        "is_adult": true,
+        "images": ["black_and_white_old_skool_trainers_1.jpg", "black_and_white_old_skool_trainers_2.jpg", "black_and_white_old_skool_trainers_3.jpg"]
+    },
+    {
+        "title": "white & navy stan smith trainers",
+        "brand": "adidas",
+        "category": "trainers",
+        "description": "An adidas icon has made a welcome return after quite the hiatus, and it's looking better than ever. The Stan Smith arrives in white leather, with perforated 3-stripe branding and navy detail at the back. A rubber sole finishes the retro style nicely.",
+        "price": 70,
+        "color": "white and navy",
+        "material": "leather and man-made",
+        "gender": "male",
+        "is_adult": true,
+        "images": ["white_and_navy_stan_smith_trainers_1.jpg", "white_and_navy_stan_smith_trainers_2.jpg", "white_and_navy_stan_smith_trainers_3.jpg"]
+    },
+    {
+        "title": "black & green all star hi mystery machine trainers",
+        "brand": "converse",
+        "category": "trainers",
+        "description": "",
+        "price": 70,
+        "color": "black and green",
+        "material": "fabric",
+        "gender": "male",
+        "is_adult": false,
+        "images": ["black_and_green_all_star_hi_mystery_machine_trainers_1.jpg", "black_and_green_all_star_hi_mystery_machine_trainers_2.jpg", "black_and_green_all_star_hi_mystery_machine_trainers_3.jpg"]
+    }
+]

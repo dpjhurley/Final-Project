@@ -32,7 +32,7 @@ class Shoe extends Model
         return $this->hasMany('App\Image');
     }
 
-    public function cart() //this needs to be checked
+    public function cart()
     {
         return $this->belongsToMany('App\Cart');
     }

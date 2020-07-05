@@ -15,21 +15,17 @@ class CreateShoesTable extends Migration
     {
         Schema::create('shoes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable();
             $table->foreignId('category_id')->nullable();
             $table->foreignId('brand_id')->nullable();
-            // or should it be:
-            //$table->string('brand')->nullable();
             $table->string('title')->nullable();
             $table->text('description')->nullable();
             $table->float('price', 10, 2)->nullable();
             $table->string('color')->nullable();
             $table->string('material')->nullable();
-            $table->boolean('gender')->nullable();
+            $table->string('gender')->nullable();
             $table->boolean('is_adult')->nullable();
-            $table->string('image')->nullable();
             $table->float('size', 10, 2)->nullable();
-            $table->bigInteger('stock')->nullable();
+            $table->integer('stock')->nullable();
             $table->timestamps();
         });
     }
