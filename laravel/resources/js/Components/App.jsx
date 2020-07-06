@@ -2,6 +2,25 @@ import React, { Fragment } from 'react';
 import TopNav from './Topnav.jsx'
  
 export default class App extends React.Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            data: null
+        }
+    }
+
+    componentDidMount = () => {
+        fetch('api/shoes')
+            .then((resp) => resp.json())
+            .then((data) => {
+                console.log(data)
+                // this.setState({
+                //     data: data
+                // })
+            })
+    }
+
     render() {
         return (
             <Fragment>

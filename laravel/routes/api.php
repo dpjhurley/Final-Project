@@ -17,3 +17,16 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/shoes', 'Api\ShoeController@index');
+
+Route::group(['middleware' => ['auth:api']], function ($group) {
+
+    // Shopuld you have to be logged in to add to your cart OR not
+    Route::get('/cart', 'Api\CartController@index');
+    Route::post('/cart/attach', 'Api\CartController@addMission');
+    Route::post('/cart/detach', 'Api\CartController@removeMission');
+
+});
+
+Route::post('/login', 'Api\LoginController@login');
