@@ -27,7 +27,6 @@ class ShoeSeeder extends Seeder
         $data = json_decode(file_get_contents($source_file));
 
         $brands = [];
-        $categories = [];
 
         foreach ($data as $key => $item) {
 
