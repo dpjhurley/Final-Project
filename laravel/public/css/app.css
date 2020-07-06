@@ -1,3 +1,28 @@
+.button {
+  width: 120px;
+  height: 25px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: grey;
+  border: none;
+  border-radius: 25px;
+  box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+.button:hover {
+  background-color: #00DC55;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
 .mainNav {
   display: flex;
   align-items: center;
@@ -71,6 +96,42 @@
 .mainNav__list__item a:hover {
   color: #00DC55;
   transition: 0.5s ease-in;
+}
+
+.search {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sidebar {
+  width: 20%;
+}
+
+.shoe__image {
+  background: url("../../resources/sass/boot-250012_640.jpg") no-repeat center center/cover;
+  height: 180px;
+  width: 180px;
+}
+
+.shoe__container {
+  height: 300px;
+  padding: 20px;
+  border: red solid 2px;
+}
+
+.shoe__title {
+  font-size: medium;
+}
+
+.shoe__price {
+  font-size: small;
+}
+
+.shoeSection {
+  padding-top: 10px;
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .topNav {
@@ -182,7 +243,7 @@
 
 .hiddenMenusearch {
   width: 98%;
-  /* visibility: hidden; */
+  visibility: hidden;
   position: absolute;
   top: 9.3rem;
   left: 1rem;
@@ -194,7 +255,7 @@
   justify-content: center;
   height: 7rem;
   border-radius: 0.5rem;
-  /* opacity: 0; */
+  opacity: 0;
 }
 
 .hiddenMenusearch input {
@@ -240,6 +301,17 @@
 
 body {
   margin: auto;
+}
+
+.buttons {
+  display: flex;
+  margin-left: 50px;
+}
+
+.shoes {
+  width: 100%;
+  display: flex;
+  margin-left: 50px;
 }
 
 /*# sourceMappingURL=app.css.map*/

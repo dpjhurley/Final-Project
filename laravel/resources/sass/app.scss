@@ -1,8 +1,15 @@
-@import "Variables";
+@import "button";
 @import "MainNav";
+@import "search";
+@import "searchList";
+@import "shoe";
+@import "shoeList";
 @import "Topnav";
 @import "HiddenMenu";
 @import "HiddenMenuSearch";
+@import "Variables";
+
+
 
 *{
     margin: 0;
@@ -13,3 +20,16 @@ body{
     
     margin: auto;
 }
+
+.buttons {
+    display: flex;
+    margin-left: 50px;
+
+}
+
+.shoes {
+    width: 100%;
+    display: flex;
+    margin-left: 50px;
+}
+
