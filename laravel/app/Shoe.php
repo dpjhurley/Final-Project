@@ -14,12 +14,12 @@ class Shoe extends Model
 
     public function category()
     {
-        return $this->belongsToOne('App\Category');
+        return $this->belongsTo('App\Category');
     }
 
     public function brand()
     {
-        return $this->belongsToOne('App\Brand');
+        return $this->belongsTo('App\Brand');
     }
 
     public function reviews()

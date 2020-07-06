@@ -29290,7 +29290,12 @@ var App = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
 
     _defineProperty(_assertThisInitialized(_this), "componentDidMount", function () {
-      fetch('api/shoes').then(function (resp) {
+      fetch('api/shoes', {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      }).then(function (resp) {
         return resp.json();
       }).then(function (data) {
         console.log(data); // this.setState({
@@ -29615,8 +29620,8 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\web\_home\mza\Final-project\laravel\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\web\_home\mza\Final-project\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Web\Bootcamp\projects\final-project\laravel\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Web\Bootcamp\projects\final-project\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -5,19 +5,16 @@
   height: 7rem;
   border-bottom: solid 1px #999;
 }
-
 .mainNav a {
   display: flex;
   align-items: center;
   text-decoration: none;
 }
-
 .mainNav a h1 {
   color: #00DC55;
   font-size: 2.4rem;
   margin: auto;
 }
-
 .mainNav__list {
   display: flex;
   align-items: center;
@@ -25,26 +22,21 @@
   justify-content: space-evenly;
   width: 35%;
 }
-
 .mainNav__list__icons {
   padding: 1rem;
 }
-
 .mainNav__list__icons a {
   color: #000;
 }
-
 .mainNav__list__item {
   margin-left: 1rem;
   font-size: 1.6rem;
   margin-left: 3rem;
   padding: 2.8rem 2rem;
 }
-
 .mainNav__list__item:hover {
   border-bottom: 0.5rem solid #00DC55;
 }
-
 .mainNav__list__item a {
   text-decoration: none;
   color: #000;
@@ -69,7 +61,6 @@ body {
   overflow: hidden;
   font-family: "halvetica";
 }
-
 .topNav__help {
   list-style: none;
   background-color: black;
@@ -78,47 +69,37 @@ body {
   position: absolute;
   left: 47%;
 }
-
 .topNav__help a {
   color: #f3f3f3;
   text-decoration: none;
 }
-
 .topNav__help a:hover {
   text-decoration: underline;
 }
-
 .topNav__menu {
   display: flex;
   justify-self: end;
   margin-right: 3rem;
 }
-
 .topNav__menu li {
   margin-left: 0.5rem;
   list-style: none;
 }
-
 .topNav__menu li:hover {
   text-decoration: underline;
 }
-
 .topNav__menu li::before {
-  content: '/';
+  content: "/";
 }
-
 .topNav__menu li.firstTopnav::before {
-  content: '';
+  content: "";
 }
-
 .topNav__menu li.firstTopnav:hover {
   text-decoration: none;
 }
-
 .topNav__menu li a {
   text-decoration: none;
   color: #333;
   font-size: 0.8rem;
 }
-
 /*# sourceMappingURL=app.css.map*/
