@@ -14,10 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('shoe-list');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/test', 'TestController@index');
+// Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/test', 'TestController@index');
