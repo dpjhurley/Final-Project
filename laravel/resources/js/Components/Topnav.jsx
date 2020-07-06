@@ -1,17 +1,18 @@
 import React from 'react';
+import "./app.scss";
  
 export default class TopNav extends React.Component {
     render() {
         return (
             
-  <div class="topNav">
-    <ul class="topNav__help">
+  <div className="topNav">
+    <ul className="topNav__help">
         <li>
-            <a href="tel:555-1234-5678"><i class="fas fa-comment-alt"></i> Live Help</a>
+            <a href="tel:555-1234-5678"><i className="fas fa-comment-alt"></i> Live Help</a>
         </li>
     </ul>
-    <ul class="topNav__menu">
-        <li class="firstTopnav">
+    <ul className="topNav__menu">
+        <li className="firstTopnav">
             <a href="tel:555-1234-5678">555-1234-5678</a>
         </li>
         <li>

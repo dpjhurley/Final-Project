@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import TopNav from './Topnav.jsx'
+import Navbar from './Navbar.jsx'
  
 export default class App extends React.Component {
     constructor(props) {
