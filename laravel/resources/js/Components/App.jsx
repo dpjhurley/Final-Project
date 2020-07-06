@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import TopNav from './Topnav.jsx'
  
 export default class App extends React.Component {
     render() {
         return (
-            
-            <h1>App component</h1>
- 
+            <Fragment>
+                    <TopNav />
+                    <Navbar />
+            </Fragment>
         )
     }
 }
