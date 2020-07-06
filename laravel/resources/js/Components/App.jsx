@@ -1,6 +1,9 @@
 import React, { Fragment } from 'react';
-import TopNav from './Topnav.jsx'
-import Navbar from './Navbar.jsx'
+import TopNav from './Topnav.jsx';
+import Navbar from './Navbar.jsx';
+import HiddenMenu from './HiddenMenu.jsx';
+import HiddenMenuSearch from './HiddenMenuSearch.jsx';
+
  
 export default class App extends React.Component {
     constructor(props) {
@@ -32,6 +35,8 @@ export default class App extends React.Component {
             <Fragment>
                     <TopNav />
                     <Navbar />
+                    <HiddenMenu />
+                    <HiddenMenuSearch />
             </Fragment>
         )
     }
