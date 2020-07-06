@@ -10,14 +10,19 @@ export default class App extends React.Component {
     }
 
     componentDidMount = () => {
-        fetch('api/shoes')
-            .then((resp) => resp.json())
-            .then((data) => {
-                console.log(data)
-                // this.setState({
-                //     data: data
-                // })
-            })
+        fetch('api/shoes', {
+            headers : { 
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+             }
+        })
+        .then((resp) => resp.json())
+        .then((data) => {
+            console.log(data)
+            // this.setState({
+            //     data: data
+            // })
+        })
     }
 
     render() {

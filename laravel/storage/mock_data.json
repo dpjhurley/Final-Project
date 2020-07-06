@@ -45,7 +45,7 @@
         "material": "fabric",
         "gender": "male",
         "is_adult": true,
-        "image": ["multi_all_star_hi_mystery_inc_trainers_1.jpg", "multi_all_star_hi_mystery_inc_trainers_2.jpg", "multi_all_star_hi_mystery_inc_trainers_3.jpg"]
+        "images": ["multi_all_star_hi_mystery_inc_trainers_1.jpg", "multi_all_star_hi_mystery_inc_trainers_2.jpg", "multi_all_star_hi_mystery_inc_trainers_3.jpg"]
     },
     {
         "title": "black & white all star ox mystery inc trainers",

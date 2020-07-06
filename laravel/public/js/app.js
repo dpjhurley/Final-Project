@@ -28652,7 +28652,12 @@ var App = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
 
     _defineProperty(_assertThisInitialized(_this), "componentDidMount", function () {
-      fetch('api/shoes').then(function (resp) {
+      fetch('api/shoes', {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      }).then(function (resp) {
         return resp.json();
       }).then(function (data) {
         console.log(data); // this.setState({
