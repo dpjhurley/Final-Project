@@ -1,3 +1,28 @@
+.button {
+  width: 120px;
+  height: 25px;
+  font-family: "Roboto", sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: grey;
+  border: none;
+  border-radius: 25px;
+  box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+.button:hover {
+  background-color: #00DC55;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
 .mainNav {
   display: flex;
   align-items: center;
@@ -42,10 +67,42 @@
   text-decoration: none;
   color: #000;
 }
-
 .mainNav__list__item a:hover {
   color: #00DC55;
   transition: 0.5s ease-in;
+}
+
+.search {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sidebar {
+  width: 20%;
+}
+
+.shoe__image {
+  background: url("../../resources/sass/boot-250012_640.jpg") no-repeat center center/cover;
+  height: 180px;
+  width: 180px;
+}
+.shoe__container {
+  height: 300px;
+  padding: 20px;
+  border: red solid 2px;
+}
+.shoe__title {
+  font-size: medium;
+}
+.shoe__price {
+  font-size: small;
+}
+
+.shoeSection {
+  padding-top: 10px;
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .topNav {
@@ -85,11 +142,7 @@
   text-decoration: underline;
 }
 .topNav__menu li::before {
-<<<<<<< HEAD
-  content: '/  ';
-=======
-  content: "/";
->>>>>>> fee1385e69c8410604e98acf75f76734e5d6c299
+  content: "/  ";
 }
 .topNav__menu li.firstTopnav::before {
   content: "";
@@ -102,7 +155,6 @@
   color: #333;
   font-size: 0.8rem;
 }
-<<<<<<< HEAD
 
 * {
   margin: 0;
@@ -114,6 +166,14 @@ body {
   margin: auto;
 }
 
-=======
->>>>>>> fee1385e69c8410604e98acf75f76734e5d6c299
+.buttons {
+  display: flex;
+  margin-left: 50px;
+}
+
+.shoes {
+  width: 100%;
+  display: flex;
+  margin-left: 50px;
+}
 /*# sourceMappingURL=app.css.map*/
