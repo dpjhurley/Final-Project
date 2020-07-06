@@ -19,7 +19,7 @@ class CategoriesSeeder extends Seeder
             'trainers',
             'shoes',
             'boots',
-            'sandles',
+            'sandals',
             'slippers'
         ];
 
