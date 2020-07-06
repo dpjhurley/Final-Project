@@ -1,5 +1,5 @@
 import React from 'react';
-import "./MainNav.scss"
+
 
 
 export default class Navbar extends React.Component {

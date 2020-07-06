@@ -34,12 +34,17 @@
            font-size: 1.6rem;
            margin-left: 3rem;
            padding: 2.8rem 2rem;
-           &:hover{
+           &:hover {
+               color: $primary_color;
                border-bottom: 0.5rem solid $primary_color;
            }
            a{
                text-decoration: none;
                color: #000;
+               &:hover{
+                   color: $primary_color;
+                   transition: 0.5s ease-in;
+               }
            }
        }
     }

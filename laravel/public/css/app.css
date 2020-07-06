@@ -42,6 +42,7 @@
 }
 
 .mainNav__list__item:hover {
+  color: #00DC55;
   border-bottom: 0.5rem solid #00DC55;
 }
 
@@ -50,14 +51,9 @@
   color: #000;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  margin: auto;
+.mainNav__list__item a:hover {
+  color: #00DC55;
+  transition: 0.5s ease-in;
 }
 
 .topNav {
@@ -104,7 +100,7 @@ body {
 }
 
 .topNav__menu li::before {
-  content: '/';
+  content: '/  ';
 }
 
 .topNav__menu li.firstTopnav::before {
@@ -119,6 +115,16 @@ body {
   text-decoration: none;
   color: #333;
   font-size: 0.8rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: auto;
 }
 
 /*# sourceMappingURL=app.css.map*/
