@@ -1,0 +1,61 @@
+.footer{
+    &__container{
+    width: 100%;
+    height: 18rem;
+    background-color: #222;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1rem;
+    h2{
+        margin-bottom: 1.5rem;
+    }
+    &__links{
+        display: flex;
+        flex-direction: column;
+        flex: 2;
+        margin-left: 2rem;
+        height: 100%;
+        width: 24%;
+       .fa-8x{
+           color: $primary-color;
+       }
+        form{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            height: 70%;
+            input{
+                width: 10rem;
+                height: 2rem;
+               line-height: 1.5;
+               margin-top: 0.5rem;
+                
+            }
+            .footer-checkboxes{
+                display: flex;
+                flex-direction: column;
+                input{
+                    width: 0.8rem;
+                    height: 0.8rem;
+                }
+                
+            }
+            }
+        
+        a{
+            text-decoration: none;
+            color: #fff;
+            line-height: 1.5;
+        }
+        p{
+            font-size: 0.8rem;
+            width: 12rem;
+            a{
+                text-decoration: underline;
+            }
+        }
+    }
+}}

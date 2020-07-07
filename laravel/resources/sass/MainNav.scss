@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: space-around;
     height: 7rem;
-    border-bottom: solid 1px #999;
+    
    a{ 
        display: flex;
        align-items: center;
@@ -24,22 +24,46 @@
        justify-content: space-evenly;
        width: 35%;
        &__icons{
-       a{
-        color: #000;
-       } 
-       padding: 1rem;
+        
+            a{
+                 color: #000;
+                 i{
+                     margin-left: 0.5rem;
+                     font-size: 1.5rem;
+                 }
+
+            } 
+         padding: 1rem;
+         &hover .hiddenMenusearch{
+             
+         }
        }
        &__item{
            margin-left: 1rem;
            font-size: 1.6rem;
            margin-left: 3rem;
            padding: 2.8rem 2rem;
-           &:hover{
+           &:hover {
+               color: $primary_color;
                border-bottom: 0.5rem solid $primary_color;
            }
+           &:hover > a{
+             color: $primary_color;
+              transition: 0.5s ease-in-out;
+             }
+             &:hover .hiddenMenu{
+            visibility: visible;
+            transition: 0.7s ease-in-out;
+            opacity: 1;
+            color: #666;
+             }
            a{
                text-decoration: none;
                color: #000;
+               &:hover{
+                   color: $primary_color;
+                   transition: 0.5s ease-in;
+               }
            }
        }
     }

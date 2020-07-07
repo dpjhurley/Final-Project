@@ -1,5 +1,18 @@
-@import "Variables";
+@import "button";
 @import "MainNav";
+@import "search";
+@import "searchList";
+@import "shoe";
+@import "shoeList";
+@import "Topnav";
+@import "HiddenMenu";
+@import "HiddenMenuSearch";
+@import "Variables";
+@import "ThirdNav";
+@import "Footer";
+@import "CopyrightFooter";
+
+
 
 *{
     margin: 0;
@@ -10,55 +23,16 @@ body{
     
     margin: auto;
 }
-.topNav{
-    background-color:$secondary_color ;
+
+.buttons {
     display: flex;
-    align-items: center;
-    height: 2rem;
-    justify-content: flex-end;
-    overflow: hidden;
-    font-family: $primary_font;
-    &__help{
-            list-style: none;
-            background-color: black;
-            padding: 0.5rem 1.5rem;
-            justify-self: center;
-            position: absolute;
-            left: 47%;
-           a{
-            color: #f3f3f3;
-            text-decoration: none;
-            &:hover{
-                text-decoration: underline;
-            }
-           }
-    }
-    &__menu{
-        display: flex;  
-        justify-self: end;
-        margin-right: 3rem;
-        li{
-            margin-left: 0.5rem;
-            list-style: none;
-            &:hover{
-                text-decoration: underline;
-            }
-            &::before{
-                content: '/';
-            }
-            &.firstTopnav::before{
-                content: '';
-                
-            }
-            &.firstTopnav{
-            &:hover{
-                text-decoration: none;
-            }}
-            a{
-                text-decoration: none;
-                color: #333;
-                font-size: 0.8rem;
-            }
-        }
-    }
+    margin-left: 50px;
+
 }
+
+.shoes {
+    width: 100%;
+    display: flex;
+    margin-left: 50px;
+}
+

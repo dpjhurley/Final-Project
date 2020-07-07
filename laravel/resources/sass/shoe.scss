@@ -1,0 +1,23 @@
+.shoe {
+    &__image {
+        background: url("../../resources/sass/boot-250012_640.jpg") no-repeat center center/cover;
+        height: 180px;
+        width: 180px;
+    }
+
+    &__container {
+            height: 300px;
+            padding: 20px;
+            border: red solid 2px;
+    }
+
+    &__title {
+        font-size: medium;
+    }
+
+    &__price {
+        font-size: small;
+    }
+}
+
+

@@ -1,5 +1,5 @@
 import React from 'react';
-import "./app.scss";
+
  
 export default class TopNav extends React.Component {
     render() {
