@@ -1,6 +1,8 @@
-import React, { Fragment } from "react";
-import TopNav from "./Topnav.jsx";
-import Navbar from "./Navbar.jsx";
+import React, { Fragment } from 'react';
+import TopNav from './Topnav.jsx';
+import Navbar from './Navbar.jsx';
+import HiddenMenu from './HiddenMenu.jsx';
+import HiddenMenuSearch from './HiddenMenuSearch.jsx';
 import Information from "./Information.jsx";
 import Button from "./Button.jsx";
 import Sort from "./Sort.jsx";
@@ -38,8 +40,10 @@ export default class App extends React.Component {
     render() {
         return (
             <Fragment>
-                <TopNav />
-                <Navbar />
+                    <TopNav />
+                    <Navbar />
+                    <HiddenMenu />
+                    <HiddenMenuSearch />
                 <div className="information">
                     <Information />
                     <div className="buttons">
