@@ -15,8 +15,7 @@ class AddColumnsToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->string('first_name')->nullable()->after('id');
-            $table->string('surname')->nullable()->after('first_name');
+            $table->string('surname')->nullable()->after('name');
             $table->date('date_of_birth')->nullable()->after('surname');
             $table->string('gender')->nullable()->after('date_of_birth');
             $table->text('address')->nullable()->after('gender');
