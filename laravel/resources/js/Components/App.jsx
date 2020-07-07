@@ -8,7 +8,13 @@ import Button from "./Button.jsx";
 import Sort from "./Sort.jsx";
 import SearchList from "./SearchList";
 import ShoeList from "./ShoeList";
+<<<<<<< HEAD
 import Spinner from "./Spinner.jsx";
+=======
+import ThirdNav from './ThirdNav.jsx';
+import Footer from './Footer.jsx'
+import CopyrightFooter from './CopyrightFooter.jsx';
+>>>>>>> mza
 
 export default class App extends React.Component {
     constructor(props) {
@@ -44,6 +50,7 @@ export default class App extends React.Component {
                     <Navbar />
                     <HiddenMenu />
                     <HiddenMenuSearch />
+                    <ThirdNav />
                 <div className="information">
                     <Information />
                     <div className="buttons">
@@ -61,6 +68,8 @@ export default class App extends React.Component {
                         )}
                     </div>
                 </div>
+                <Footer />
+                <CopyrightFooter />
             </Fragment>
         );
     }

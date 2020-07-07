@@ -26,7 +26,7 @@
      *      string  IoC binding name of League\Flysystem\Filesystem
      *      string  IoC binding name of League\Flysystem\Cached\CachedAdapter
      */
-    'crops_dir' => public_path().'/images',
+    'crops_dir' => storage_path().'/images',
 
     /**
      * Maximum number of sizes to allow for a particular source file. This is to
