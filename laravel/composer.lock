@@ -119,10 +119,6 @@
                 }
             ],
             "description": "Image thumbnail creation through specially formatted URLs for Laravel",
-            "support": {
-                "issues": "https://github.com/BKWLD/croppa/issues",
-                "source": "https://github.com/BKWLD/croppa/tree/4.9.2"
-            },
             "time": "2020-06-12T21:54:43+00:00"
         },
         {
@@ -6500,5 +6496,5 @@
         "php": "^7.2.5"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "1.1.0"
 }

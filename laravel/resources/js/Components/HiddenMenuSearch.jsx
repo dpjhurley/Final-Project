@@ -11,7 +11,7 @@ export default class HiddenMenuSearch  extends React.Component{
                 
                  <input  name="search" placeholder="Search for the best shoes" />
             
-            <a href="#"><i class="fas fa-times-circle fa-2x"></i></a>
+            <a href="#"><i className="fas fa-times-circle fa-2x"></i></a>
             </div>
         )
     }
