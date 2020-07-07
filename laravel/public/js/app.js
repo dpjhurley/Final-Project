@@ -28620,6 +28620,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Sort_jsx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Sort.jsx */ "./resources/js/Components/Sort.jsx");
 /* harmony import */ var _SearchList__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./SearchList */ "./resources/js/Components/SearchList.jsx");
 /* harmony import */ var _ShoeList__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./ShoeList */ "./resources/js/Components/ShoeList.jsx");
+/* harmony import */ var _Spinner_jsx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Spinner.jsx */ "./resources/js/Components/Spinner.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -28653,6 +28654,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 var App = /*#__PURE__*/function (_React$Component) {
   _inherits(App, _React$Component);
 
@@ -28674,16 +28676,18 @@ var App = /*#__PURE__*/function (_React$Component) {
       }).then(function (resp) {
         return resp.json();
       }).then(function (data) {
-        console.log(data);
-
         _this.setState({
-          data: data
+          data: data,
+          loading: false
         });
+
+        console.log(data);
       });
     });
 
     _this.state = {
-      data: null
+      data: null,
+      loading: true
     };
     return _this;
   }
@@ -28699,7 +28703,9 @@ var App = /*#__PURE__*/function (_React$Component) {
         className: "topright"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Sort_jsx__WEBPACK_IMPORTED_MODULE_5__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shoes"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SearchList__WEBPACK_IMPORTED_MODULE_6__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ShoeList__WEBPACK_IMPORTED_MODULE_7__["default"], null))));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SearchList__WEBPACK_IMPORTED_MODULE_6__["default"], null), this.state.loading ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Spinner_jsx__WEBPACK_IMPORTED_MODULE_8__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ShoeList__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        shoes: this.state.data
+      }))));
     }
   }]);
 
@@ -29148,15 +29154,22 @@ var Shoe = /*#__PURE__*/function (_Component) {
   _createClass(Shoe, [{
     key: "render",
     value: function render() {
+      var _this$props = this.props,
+          image = _this$props.image,
+          price = _this$props.price,
+          title = _this$props.title;
+      console.log(this.props.image);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shoe__container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "shoe__image"
-      }, "Image"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "shoe_image",
+        src: image,
+        alt: "Broken"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shoe__title"
-      }, "Toms"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shoe__price"
-      }, "\xA329.99"));
+      }, price));
     }
   }]);
 
@@ -29219,9 +29232,17 @@ var ShoeList = /*#__PURE__*/function (_Component) {
   _createClass(ShoeList, [{
     key: "render",
     value: function render() {
+      var shoes = this.props.shoes;
+      console.log(shoes);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shoeSection"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Shoe_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Shoe_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Shoe_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Shoe_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Shoe_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Shoe_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Shoe_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Shoe_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+      }, shoes.map(function (shoe) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Shoe_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          image: shoe.image_url,
+          price: shoe.price,
+          title: shoe.title
+        });
+      }));
     }
   }]);
 
@@ -29290,6 +29311,37 @@ var Sort = /*#__PURE__*/function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 
+
+/***/ }),
+
+/***/ "./resources/js/Components/Spinner.jsx":
+/*!*********************************************!*\
+  !*** ./resources/js/Components/Spinner.jsx ***!
+  \*********************************************/
+/*! exports provided: Spinner, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Spinner", function() { return Spinner; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _spinner_gif__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./spinner.gif */ "./resources/js/Components/spinner.gif");
+/* harmony import */ var _spinner_gif__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_spinner_gif__WEBPACK_IMPORTED_MODULE_1__);
+
+
+var Spinner = function Spinner() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: _spinner_gif__WEBPACK_IMPORTED_MODULE_1___default.a,
+    alt: "Loading...",
+    style: {
+      width: "200px",
+      margin: "auto",
+      display: "block"
+    }
+  }));
+};
+/* harmony default export */ __webpack_exports__["default"] = (Spinner);
 
 /***/ }),
 
@@ -29373,6 +29425,17 @@ var TopNav = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 
+
+/***/ }),
+
+/***/ "./resources/js/Components/spinner.gif":
+/*!*********************************************!*\
+  !*** ./resources/js/Components/spinner.gif ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/spinner.gif?8a7630caadfb15dbd13cb469853ab004";
 
 /***/ }),
 

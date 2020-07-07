@@ -6,13 +6,15 @@ import Button from "./Button.jsx";
 import Sort from "./Sort.jsx";
 import SearchList from "./SearchList";
 import ShoeList from "./ShoeList";
+import Spinner from "./Spinner.jsx";
 
 export default class App extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            data: null
+            data: null,
+            loading: true
         };
     }
 
@@ -25,10 +27,11 @@ export default class App extends React.Component {
         })
             .then(resp => resp.json())
             .then(data => {
-                console.log(data);
                 this.setState({
-                    data: data
-                })
+                    data: data,
+                    loading: false
+                });
+                console.log(data)
             });
     };
 
@@ -47,7 +50,11 @@ export default class App extends React.Component {
                     </div>
                     <div className="shoes">
                         <SearchList />
-                        <ShoeList />
+                        {(this.state.loading) ? (
+                            <Spinner />
+                        ) : (
+                            <ShoeList shoes={this.state.data} />
+                        )}
                     </div>
                 </div>
             </Fragment>

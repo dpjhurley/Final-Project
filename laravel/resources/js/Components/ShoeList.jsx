@@ -3,17 +3,22 @@ import Shoe from "./Shoe.jsx";
 
 
 export default class ShoeList extends Component {
+
+
     render() {
+        const {shoes} = this.props
+        console.log(shoes)
+
         return (
             <div className="shoeSection">
-                <Shoe/>
-                <Shoe/>
-                <Shoe/>
-                <Shoe/>
-                <Shoe/>
-                <Shoe/>
-                <Shoe/>
-                <Shoe/>
+                {
+                shoes.map((shoe) => (
+                    <Shoe                      
+                        image={shoe.image_url}
+                        price={shoe.price}
+                        title={shoe.title}/>
+                ))
+                }
             </div>
         )
     }

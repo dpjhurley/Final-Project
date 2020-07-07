@@ -15,7 +15,7 @@
      *      string  IoC binding name of League\Flysystem\Filesystem
      *      string  IoC binding name of League\Flysystem\Cached\CachedAdapter
      */
-    'src_dir' => public_path().'/images',
+    'src_dir' => storage_path().'/images',
 
     /**
      * The directory where cropped images should be saved. The route to the

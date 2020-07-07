@@ -20,7 +20,7 @@ class ShoeController extends Controller
 
         foreach ($shoes as $shoe) {
             if ($shoe->images->count() > 0) {
-                $shoe->image_url = Croppa::url('images/shoes/'.$shoe->images->first()->path, 100, null, ['resize']);
+                $shoe->image_url = Croppa::url('images/'.$shoe->images->first()->path, 100, null, ['resize']);
             }
         }
 
