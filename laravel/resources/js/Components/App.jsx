@@ -1,15 +1,15 @@
 import React, { Fragment } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-// import AccountArea from './auth/AccountArea.jsx'
-import TopNav from './Topnav.jsx';
-import Navbar from './Navbar.jsx';
-import HiddenMenu from './HiddenMenu.jsx';
-import HiddenMenuSearch from './HiddenMenuSearch.jsx';
-import ThirdNav from './ThirdNav.jsx';
-import Footer from './Footer.jsx'
-import CopyrightFooter from './CopyrightFooter.jsx';
-import MainDisplay from './MainDisplay.jsx';
-import SingleShoePage from './SingleShoePage.jsx';
+import AccountArea from './auth/AccountArea.jsx'
+import TopNav from './topComponents/Topnav';
+import Navbar from './topComponents/Navbar';
+import HiddenMenu from './topComponents/HiddenMenu.jsx';
+import HiddenMenuSearch from './topComponents/HiddenMenuSearch.jsx';
+import ThirdNav from './topComponents/ThirdNav.jsx';
+import Footer from './bottomComponents/Footer.jsx'
+import CopyrightFooter from './bottomComponents/CopyrightFooter.jsx';
+import MainDisplay from './mainPage/MainDisplay.jsx';
+import SingleShoePage from './singleShoeComponents/SingleShoePage.jsx';
 
 export default class App extends React.Component {
     constructor(props) {

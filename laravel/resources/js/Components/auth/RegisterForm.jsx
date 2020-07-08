@@ -13,50 +13,59 @@ class RegisterForm extends React.Component {
             gender: '',
             password: '',
             password_confirmation: '',
-            mailing_list: '',
+            mailing_list: false,
             error: []
         }
     }
 
-    handlesChange = (event) => {
-        const [ name, value ] = event
+    handleNameChange = (event) => {
         this.setState({
-            [name]: value,
+            name: event.target.value,
         })
     }
-    handlesChange = (event) => {
-        const [ name, value ] = event
+
+    handleSurnameChange = (event) => {
         this.setState({
-            [name]: value,
+            surname: event.target.value,
         })
     }
-    handlesChange = (event) => {
-        const [ name, value ] = event
+
+    handleEmailChange = (event) => {
         this.setState({
-            [name]: value,
+            email: event.target.value,
         })
     }
-    handlesChange = (event) => {
-        const [ name, value ] = event
+
+    handleDateChange = (event) => {
         this.setState({
-            [name]: value,
+            date_of_birth: event.target.value,
         })
     }
-    handlesChange = (event) => {
-        const [ name, value ] = event
+    
+    handleGenderChange = (event) => {
         this.setState({
-            [name]: value,
+            gender: event.target.value,
         })
     }
+    
     handlePasswordChange = (event) => {
         this.setState({
-            [name]: value,
+            password: event.target.value,
+        })
+    }
+
+    handleRePasswordChange = (event) => {
+        this.setState({
+            password_confirmation: event.target.value,
+        })
+    }
+
+    handleMailingListChange = (event) => {
+        this.setState({
+            mailing_list: !this.state.mailing_list
         })
     }
     
-
-    
-
     handleFormSubmit = (event) => {
         event.preventDefault();
 
@@ -66,7 +75,7 @@ class RegisterForm extends React.Component {
             headers: {
                 'Accept':       'application/json',
                 'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                // 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
             }
         })
         .then(response => response.json())
@@ -92,7 +101,7 @@ class RegisterForm extends React.Component {
                             className="form-control" 
                             type="text" 
                             name="name"
-                            onChange={() => this.handleNameChange(event)} 
+                            onChange={this.handleNameChange} 
                         />
                     </div>
             
@@ -102,7 +111,7 @@ class RegisterForm extends React.Component {
                             className="form-control" 
                             type="text" 
                             name="surname"
-                            onChange={() => this.handleSurnameChange(event)}
+                            onChange={this.handleSurnameChange}
                         />
                     </div>
     
@@ -112,7 +121,7 @@ class RegisterForm extends React.Component {
                             className="form-control" 
                             type="date" 
                             name="date_of_birth"
-                            onChange={() => this.handleDateChange(event)}
+                            onChange={this.handleDateChange}
                         />
                     </div> 
     
@@ -122,16 +131,16 @@ class RegisterForm extends React.Component {
                             className="form-control" 
                             type="email" 
                             name="email"
-                            onChange={() => this.handleEmailChange(event)}
+                            onChange={this.handleEmailChange}
                         />
                     </div>
     
                     <div className="form-group">
                         <p>What Shoes are you interested in?</p>
                         <label >Male</label>
-                        <input type="radio" name="gender" value="male" />
+                        <input type="radio" name="gender" value="male" onClick={this.handleGenderChange} />
                         <label >Female</label>
-                        <input type="radio" name="gender" value="female" />
+                        <input type="radio" name="gender" value="female" onClick={this.handleGenderChange} />
                     </div>
     
                     <div className="form-group">
@@ -140,7 +149,7 @@ class RegisterForm extends React.Component {
                             className="form-control" 
                             type="password" 
                             name="password"
-                            onChange={() => this.handlePasswordChange(event)}
+                            onChange={this.handlePasswordChange}
                         />
                     </div>
             
@@ -150,7 +159,7 @@ class RegisterForm extends React.Component {
                         className="form-control" 
                         type="password" 
                         name="password_confirmation"
-                        onChange={() => this.handlestateChange('password_confirmation', event)}
+                        onChange={this.handleRePasswordChange}
                         />
                     </div> 
                     
@@ -158,7 +167,7 @@ class RegisterForm extends React.Component {
                         <input 
                             type="checkbox"
                             name="mailing_list" 
-                            onChange={() => this.handlestateChange('mailing_list', event)}
+                            onChange={this.handleMailingListChange}
                         />
                         <label >If you would like to receive regular emails featuring new styles, sale updates and great competitions, tick this box.</label>
                     </div>

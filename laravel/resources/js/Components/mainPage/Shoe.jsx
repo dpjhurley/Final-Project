@@ -9,7 +9,7 @@ export default class Shoe extends Component {
           <img className="shoe_image"  src={image} alt="Broken"/>
           <div className="shoe__title">{title}</div>
           <br />
-          <div className="shoe__price">{price}</div>
+          <div className="shoe__price">€{price}.00</div>
         </div>
     );
   }

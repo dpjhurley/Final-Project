@@ -19,7 +19,8 @@ class AddColumnsToUsersTable extends Migration
             $table->date('date_of_birth')->nullable()->after('surname');
             $table->string('gender')->nullable()->after('date_of_birth');
             $table->text('address')->nullable()->after('gender');
-            $table->boolean('is_admin')->nullable();
+            $table->boolean('mailing_list')->nullable()->after('address');
+            $table->boolean('is_admin')->nullable()->after('remember_token');
         });
     }
 
@@ -33,6 +34,7 @@ class AddColumnsToUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             //
             $table->dropColumn('is_admin');
+            $table->dropColumn('mailing_list');
             $table->dropColumn('address');
             $table->dropColumn('gender');
             $table->dropColumn('date_of_birth');

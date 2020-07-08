@@ -1,0 +1,11 @@
+.pagination {
+    display: flex;
+}
+
+.pagination__link {
+    border: 1px solid grey;
+    border-radius: 3px;
+    padding: 1.5em;
+    margin: 0.25em;
+    text-decoration: none;
+}

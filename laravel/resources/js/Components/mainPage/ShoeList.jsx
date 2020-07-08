@@ -16,8 +16,7 @@ export default class ShoeList extends Component {
                         image={shoe.image_url}
                         price={shoe.price}
                         title={shoe.title}
-                        
-                        />
+                    />
                 ))
                 }
             </div>
