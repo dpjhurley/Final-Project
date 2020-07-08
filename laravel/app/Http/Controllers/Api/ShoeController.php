@@ -26,9 +26,4 @@ class ShoeController extends Controller
 
         return $shoes;
     }
-
-    // public function show()
-    // {
-    //     $show = Shoe::findOrFail('shoe_id')
-    // }
 }

@@ -32,3 +32,4 @@ Route::group(['middleware' => ['auth:api']], function ($group) {
 });
 
 Route::post('/login', 'Api\LoginController@login');
+Route::post('/register', 'Api\RegisterController@register');

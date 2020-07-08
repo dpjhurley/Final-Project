@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import AccountArea from './auth/AccountArea.jsx'
 import TopNav from './Topnav.jsx';
 import Navbar from './Navbar.jsx';
 import HiddenMenu from './HiddenMenu.jsx';
@@ -12,7 +13,10 @@ import Spinner from "./Spinner.jsx";
 import ThirdNav from './ThirdNav.jsx';
 import Footer from './Footer.jsx'
 import CopyrightFooter from './CopyrightFooter.jsx';
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9a52ec28ac288aa245de20c371b737fb0330b967
 
 export default class App extends React.Component {
     constructor(props) {
@@ -20,8 +24,30 @@ export default class App extends React.Component {
 
         this.state = {
             data: null,
+            logged_in: null,
+            token: window.localStorage.getItem('_token'),
             loading: true
         };
+    }
+
+    onLoginSuccess = (token) => {
+ 
+        window.localStorage.setItem('_token', token)
+     
+        this.setState({
+            logged_in: true,
+            token: token
+        })
+    }
+
+    onFailedAuthentication = () => {
+
+        window.localStorage.removeItem('_token');
+
+        this.setState({
+            logged_in: false,
+            token: null
+        })
     }
 
     componentDidMount = () => {
@@ -46,9 +72,14 @@ export default class App extends React.Component {
             <Fragment>
                     <TopNav />
                     <Navbar />
+                    {/* <AccountArea 
+                        logged_in={this.state.logged_in}
+                        onLoginSuccess={this.onLoginSuccess}
+                    /> */}
                     <HiddenMenu />
                     <HiddenMenuSearch />
                     <ThirdNav />
+
                 <div className="information">
                     <Information />
                     <div className="buttons">
@@ -69,6 +100,6 @@ export default class App extends React.Component {
                 <Footer />
                 <CopyrightFooter />
             </Fragment>
-        );
+        )
     }
 }
