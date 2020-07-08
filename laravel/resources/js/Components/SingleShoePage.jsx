@@ -1,5 +1,8 @@
 import React from 'react';
-
+import pic1 from "./continental_80_white_and_red_trainers_1-100x_-resize.jpg"
+import pic2 from "./continental_80_white_and_red_trainers_2.jpg"
+import pic3 from "./continental_80_white_and_red_trainers_3.jpg"
+import pic4 from "./logo-360-640.png"
 export default class SingleShoePage extends React.Component{
     render() {
         return (
@@ -8,9 +11,10 @@ export default class SingleShoePage extends React.Component{
                 <div className="shoeDisplay__actual">
                     <div className="shoeDisplay__actual__pic">
                         <div className="shoeDisplay__actual__pic-smallpic">
-                            <img src="" alt="pic"></img>
-                            <img src="" alt="pic"></img>
-                            <img src="" alt="pic"></img>
+                           <a href="#"><img src={pic1} alt="pic"></img></a>
+                           <a href="#"><img src={pic2} alt="pic"></img></a>
+                           <a href="#"><img src={pic3} alt="pic"></img></a>
+                           <a href="#"><img src={pic4} alt="pic"></img></a>
                         </div>
                         <div className="shoeDisplay__actual__pic-largepic"></div>
                     </div>
