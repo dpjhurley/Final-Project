@@ -34427,6 +34427,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SingleShoePage; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _continental_80_white_and_red_trainers_1_100x_resize_jpg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./continental_80_white_and_red_trainers_1-100x_-resize.jpg */ "./resources/js/Components/continental_80_white_and_red_trainers_1-100x_-resize.jpg");
+/* harmony import */ var _continental_80_white_and_red_trainers_1_100x_resize_jpg__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_continental_80_white_and_red_trainers_1_100x_resize_jpg__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _continental_80_white_and_red_trainers_2_jpg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./continental_80_white_and_red_trainers_2.jpg */ "./resources/js/Components/continental_80_white_and_red_trainers_2.jpg");
+/* harmony import */ var _continental_80_white_and_red_trainers_2_jpg__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_continental_80_white_and_red_trainers_2_jpg__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _continental_80_white_and_red_trainers_3_jpg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./continental_80_white_and_red_trainers_3.jpg */ "./resources/js/Components/continental_80_white_and_red_trainers_3.jpg");
+/* harmony import */ var _continental_80_white_and_red_trainers_3_jpg__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_continental_80_white_and_red_trainers_3_jpg__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _logo_360_640_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./logo-360-640.png */ "./resources/js/Components/logo-360-640.png");
+/* harmony import */ var _logo_360_640_png__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_logo_360_640_png__WEBPACK_IMPORTED_MODULE_4__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -34448,6 +34456,10 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
 
 
 
@@ -34473,16 +34485,27 @@ var SingleShoePage = /*#__PURE__*/function (_React$Component) {
         className: "shoeDisplay__actual__pic"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shoeDisplay__actual__pic-smallpic"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "",
+        src: _continental_80_white_and_red_trainers_1_100x_resize_jpg__WEBPACK_IMPORTED_MODULE_1___default.a,
         alt: "pic"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "",
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: _continental_80_white_and_red_trainers_2_jpg__WEBPACK_IMPORTED_MODULE_2___default.a,
         alt: "pic"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "",
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: _continental_80_white_and_red_trainers_3_jpg__WEBPACK_IMPORTED_MODULE_3___default.a,
         alt: "pic"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: _logo_360_640_png__WEBPACK_IMPORTED_MODULE_4___default.a,
+        alt: "pic"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shoeDisplay__actual__pic-largepic"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shoeDisplay__actual__info"
@@ -35163,6 +35186,50 @@ var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/a
 if(content.locals) module.exports = content.locals;
 
 if(false) {}
+
+/***/ }),
+
+/***/ "./resources/js/Components/continental_80_white_and_red_trainers_1-100x_-resize.jpg":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/Components/continental_80_white_and_red_trainers_1-100x_-resize.jpg ***!
+  \******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/continental_80_white_and_red_trainers_1-100x_-resize.jpg?fcf55801ae9e701b6df8696456c70dcc";
+
+/***/ }),
+
+/***/ "./resources/js/Components/continental_80_white_and_red_trainers_2.jpg":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/Components/continental_80_white_and_red_trainers_2.jpg ***!
+  \*****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/continental_80_white_and_red_trainers_2.jpg?3f16eecaed017685f1c268db065c58d0";
+
+/***/ }),
+
+/***/ "./resources/js/Components/continental_80_white_and_red_trainers_3.jpg":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/Components/continental_80_white_and_red_trainers_3.jpg ***!
+  \*****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/continental_80_white_and_red_trainers_3.jpg?b608d2bad188810cb23c4b39b3d6f73c";
+
+/***/ }),
+
+/***/ "./resources/js/Components/logo-360-640.png":
+/*!**************************************************!*\
+  !*** ./resources/js/Components/logo-360-640.png ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/logo-360-640.png?137f247b2352a2617c9eb884476b1d93";
 
 /***/ }),
 
