@@ -1,9 +1,5 @@
 import React, { Fragment } from 'react';
-
-import TopNav from './Topnav.jsx'
-import Navbar from './Navbar.jsx'
-import RegisterForm from './auth/RegisterForm.jsx';
-import LoginForm from './auth/LoginForm.jsx';
+import AccountArea from './auth/AccountArea.jsx'
 import TopNav from './Topnav.jsx';
 import Navbar from './Navbar.jsx';
 import HiddenMenu from './HiddenMenu.jsx';
@@ -72,10 +68,11 @@ export default class App extends React.Component {
             <Fragment>
                     <TopNav />
                     <Navbar />
-                    <RegisterForm />
-                    <LoginForm 
-                        onLoginSuccess={onLoginSuccess}
+                    <AccountArea 
+                        logged_in={this.state.logged_in}
+                        onLoginSuccess={this.onLoginSuccess}
                     />
+                    {/* 
                     <HiddenMenu />
                     <HiddenMenuSearch />
                     <ThirdNav />
@@ -98,7 +95,7 @@ export default class App extends React.Component {
                     </div>
                 </div>
                 <Footer />
-                <CopyrightFooter />
+                <CopyrightFooter /> */}
             </Fragment>
         )
     }

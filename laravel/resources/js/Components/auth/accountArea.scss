@@ -1,0 +1,19 @@
+.account {
+    display: flex;
+    justify-content: center;
+    
+    &__login{
+        width: 40%;
+        text-align: center;
+        padding-right: 4em;
+    }
+    
+    &__register {
+        width: 40%;
+        border-left: 5px solid green;
+        padding-left: 4em;
+    }
+}
+
+
+
