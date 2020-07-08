@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 class RegisterForm extends React.Component {
     constructor(props) {
         super(props)
@@ -17,11 +18,44 @@ class RegisterForm extends React.Component {
         }
     }
 
-    handlestateChange = (name, event) => {
+    handlesChange = (event) => {
+        const [ name, value ] = event
         this.setState({
-            name: event.target.value
+            [name]: value,
         })
     }
+    handlesChange = (event) => {
+        const [ name, value ] = event
+        this.setState({
+            [name]: value,
+        })
+    }
+    handlesChange = (event) => {
+        const [ name, value ] = event
+        this.setState({
+            [name]: value,
+        })
+    }
+    handlesChange = (event) => {
+        const [ name, value ] = event
+        this.setState({
+            [name]: value,
+        })
+    }
+    handlesChange = (event) => {
+        const [ name, value ] = event
+        this.setState({
+            [name]: value,
+        })
+    }
+    handlePasswordChange = (event) => {
+        this.setState({
+            [name]: value,
+        })
+    }
+    
+
+    
 
     handleFormSubmit = (event) => {
         event.preventDefault();
@@ -58,7 +92,7 @@ class RegisterForm extends React.Component {
                             className="form-control" 
                             type="text" 
                             name="name"
-                            onChange={() => this.handlestateChange('name', event)} 
+                            onChange={() => this.handleNameChange(event)} 
                         />
                     </div>
             
@@ -68,7 +102,7 @@ class RegisterForm extends React.Component {
                             className="form-control" 
                             type="text" 
                             name="surname"
-                            onChange={() => this.handlestateChange('surname', event)}
+                            onChange={() => this.handleSurnameChange(event)}
                         />
                     </div>
     
@@ -78,7 +112,7 @@ class RegisterForm extends React.Component {
                             className="form-control" 
                             type="date" 
                             name="date_of_birth"
-                            onChange={() => this.handlestateChange('date_of_birth', event)}
+                            onChange={() => this.handleDateChange(event)}
                         />
                     </div> 
     
@@ -88,7 +122,7 @@ class RegisterForm extends React.Component {
                             className="form-control" 
                             type="email" 
                             name="email"
-                            onChange={() => this.handlestateChange('email', event)}
+                            onChange={() => this.handleEmailChange(event)}
                         />
                     </div>
     
@@ -106,7 +140,7 @@ class RegisterForm extends React.Component {
                             className="form-control" 
                             type="password" 
                             name="password"
-                            onChange={() => this.handlestateChange('password', event)}
+                            onChange={() => this.handlePasswordChange(event)}
                         />
                     </div>
             

@@ -7,7 +7,6 @@ export default class ShoeList extends Component {
 
     render() {
         const {shoes} = this.props
-        console.log(shoes)
 
         return (
             <div className="shoeSection">

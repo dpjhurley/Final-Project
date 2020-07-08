@@ -19,7 +19,7 @@ export default class MainDisplay extends Component {
     componentDidMount = () => {
         fetch("api/shoes", {
             headers: {
-                Accept: "application/json",
+                "Accept": "application/json",
                 "Content-Type": "application/json"
             }
         })
@@ -29,12 +29,10 @@ export default class MainDisplay extends Component {
                     data: data,
                     loading: false
                 });
-                console.log(data)
             });
     };
 
     render() {
-        console.log(this.props.data)
         return (
             <div className="information">
             <Information />
