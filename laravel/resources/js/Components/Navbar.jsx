@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import HiddenMenu from './HiddenMenu.jsx';
 
 export default class Navbar extends React.Component {
@@ -9,45 +10,57 @@ export default class Navbar extends React.Component {
             <nav className="mainNav">
     
             <div className="mainNav__list ">
+
                 <div className="mainNav__list__item">
-                    <a href="#">Women's</a>
+                    <Link to="/womens">Women's</Link>
                     <HiddenMenu />
                 </div>
+
                 <div className="mainNav__list__item">
-                    <a href="#">Men's</a>
+                    <Link to="/mens">Men's</Link>
                     <HiddenMenu />
                 </div>
+
                 <div className="mainNav__list__item">
-                    <a href="#">Kids</a>
+                    <Link to="/kids">Kids</Link>
                     <HiddenMenu />
                 </div>
+
             </div>
+
             <div className="mainNav__list" >
-           <a href=""> <h1><i className="fas fa-globe"></i> Global</h1></a>
-           </div>
+                <Link to="/"> <h1><i className="fas fa-globe"></i> Global</h1></Link>
+            </div>
+
             <div className="mainNav__list">
+
                 <div className="mainNav__list__item" >
-                    <a href="#">Accessories</a>
+                    <Link to="/accessories">Accessories</Link>
                     <HiddenMenu />
                 </div>
+
                 <div className="mainNav__list__item">
-                    <a href="#">Brands</a>
+                    <Link to="brands">Brands</Link>
                     <HiddenMenu />
                 </div>
+
                 <div className="mainNav__list__item">
-                    <a href="#" style={{color: "red"}}>Sale</a>
+                    <Link to="sales" style={{color: "red"}}>Sale</Link>
                     <HiddenMenu />
                 </div>
+
                 <div className="mainNav__list__icons">
                    <a href="">
                            <i className="fas fa-shopping-cart"> </i>
                     </a>
                 </div>
-                 <div className="mainNav__list__icons" >
-                  <a href="">
-                          <i className="fas fa-search"></i>
+
+                <div className="mainNav__list__icons" >
+                    <a href="">
+                        <i className="fas fa-search"></i>
                     </a>   
                 </div>
+
             </div>
         </nav>
         
