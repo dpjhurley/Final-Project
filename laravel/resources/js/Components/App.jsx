@@ -68,11 +68,10 @@ export default class App extends React.Component {
             <Fragment>
                     <TopNav />
                     <Navbar />
-                    <AccountArea 
+                    {/* <AccountArea 
                         logged_in={this.state.logged_in}
                         onLoginSuccess={this.onLoginSuccess}
-                    />
-                    {/* 
+                    /> */}
                     <HiddenMenu />
                     <HiddenMenuSearch />
                     <ThirdNav />
@@ -95,7 +94,7 @@ export default class App extends React.Component {
                     </div>
                 </div>
                 <Footer />
-                <CopyrightFooter /> */}
+                <CopyrightFooter />
             </Fragment>
         )
     }
