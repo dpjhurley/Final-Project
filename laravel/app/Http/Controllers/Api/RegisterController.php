@@ -36,17 +36,16 @@ class RegisterController extends Controller
      * @return \App\User
      */
 
-    protected function create(Request $request, array $data)
+    protected function create(Request $request)
     {
-        $user = new User([
-            'name' => $request->input['name'],
-            'surname' => $date['surname'],
-            'date_of_birth' => $data['date_of_birth'],
-            'gender' => $data['gender'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        $user = new User;
+        $user->name = $request->input('name');
+        $user->surname = $request->input('surname');
+        $user->date_of_birth = $request->input('date_of_birth');
+        $user->gender = $request->input('gender');
+        $user->email = $request->input('email');
+        $user->password = Hash::make($request->input('password'));
 
-        return $user;
+        $user->save();
     }
 }

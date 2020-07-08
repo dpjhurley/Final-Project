@@ -4,7 +4,6 @@ export default class Shoe extends Component {
 
   render() {
     const {image, price, title, id } = this.props
-    console.log(this.props.image)
     return (
         <div  className="shoe__container">
           <img className="shoe_image"  src={image} alt="Broken"/>
