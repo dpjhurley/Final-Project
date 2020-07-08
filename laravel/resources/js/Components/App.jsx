@@ -59,7 +59,6 @@ export default class App extends React.Component {
                     <Switch>
                         <Route path="/main"  component={MainDisplay}/>
                         <Route path="/shoe"  component={SingleShoePage}/>
-                        <SingleShoePage />
                     </Switch>
                 <Footer />
                 <CopyrightFooter />
