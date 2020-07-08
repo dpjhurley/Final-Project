@@ -26,8 +26,9 @@
 .mainNav {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   height: 7rem;
+  width: 100%;
 }
 .mainNav a {
   display: flex;
@@ -59,7 +60,7 @@
 .mainNav__list__item {
   margin-left: 1rem;
   font-size: 1.6rem;
-  margin-left: 3rem;
+  margin-left: -2rem;
   padding: 2.8rem 2rem;
 }
 .mainNav__list__item:hover {
@@ -170,12 +171,13 @@
 }
 
 .hiddenMenu {
-  width: 100%;
+  width: 100rem;
   visibility: hidden;
   position: absolute;
   top: 9.4rem;
-  left: 1rem;
+  left: 10rem;
   display: flex;
+  margin: auto;
   align-items: center;
   justify-content: space-around;
   background-color: #f3f3f3;
@@ -286,13 +288,13 @@
 
 .footer__container {
   width: 100%;
-  height: 18rem;
+  height: 20rem;
   background-color: #222;
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding: 1rem;
+  padding: 1.2rem;
 }
 .footer__container h2 {
   margin-bottom: 1.5rem;
@@ -301,7 +303,7 @@
   display: flex;
   flex-direction: column;
   flex: 2;
-  margin-left: 2rem;
+  margin-left: 5rem;
   height: 100%;
   width: 24%;
 }
@@ -334,6 +336,10 @@
   color: #fff;
   line-height: 1.5;
 }
+.footer__container__links a:hover {
+  text-decoration: underline;
+  color: #f3f3f3;
+}
 .footer__container__links p {
   font-size: 0.8rem;
   width: 12rem;
@@ -354,7 +360,7 @@
 }
 .copyrightFooter__payment img {
   background: url("./boot-250012_640.jpg") no-repeat center;
-  width: 40%;
+  width: 30%;
   height: 8rem;
 }
 .copyrightFooter__links ul {
@@ -383,6 +389,7 @@
 }
 
 body {
+  max-width: 90rem;
   margin: auto;
 }
 

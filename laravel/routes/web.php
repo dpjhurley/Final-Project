@@ -13,11 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('shoe-list');
-});
+// Route::get('/', function () {
+//     return view('shoe-list');
+// });
 
 Auth::routes();
+
+Route::view('/{path?}', 'app')
+     ->where('path', '.*')
+     ->name('react');
 
 // Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/test', 'TestController@index');

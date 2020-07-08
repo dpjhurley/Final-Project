@@ -1,29 +1,23 @@
 import React, { Fragment } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import AccountArea from './auth/AccountArea.jsx'
+// import AccountArea from './auth/AccountArea.jsx'
 import TopNav from './Topnav.jsx';
 import Navbar from './Navbar.jsx';
 import HiddenMenu from './HiddenMenu.jsx';
 import HiddenMenuSearch from './HiddenMenuSearch.jsx';
-import Information from "./Information.jsx";
-import Button from "./Button.jsx";
-import Sort from "./Sort.jsx";
-import SearchList from "./SearchList";
-import ShoeList from "./ShoeList";
-import Spinner from "./Spinner.jsx";
 import ThirdNav from './ThirdNav.jsx';
 import Footer from './Footer.jsx'
 import CopyrightFooter from './CopyrightFooter.jsx';
+import MainDisplay from './MainDisplay.jsx';
+import SingleShoePage from './SingleShoePage.jsx';
 
 export default class App extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            data: null,
             logged_in: null,
             token: window.localStorage.getItem('_token'),
-            loading: true
         };
     }
 
@@ -47,26 +41,12 @@ export default class App extends React.Component {
         })
     }
 
-    componentDidMount = () => {
-        fetch("api/shoes", {
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json"
-            }
-        })
-            .then(resp => resp.json())
-            .then(data => {
-                this.setState({
-                    data: data,
-                    loading: false
-                });
-                console.log(data)
-            });
-    };
+    
 
     render() {
         return (
             <Fragment>
+            <Router>
                     <TopNav />
                     <Navbar />
                     {/* <AccountArea 
@@ -76,26 +56,14 @@ export default class App extends React.Component {
                     <HiddenMenu />
                     <HiddenMenuSearch />
                     <ThirdNav />
-
-                <div className="information">
-                    <Information />
-                    <div className="buttons">
-                        <Button />
-                        <div className="topright">
-                            <Sort />
-                        </div>
-                    </div>
-                    <div className="shoes">
-                        <SearchList />
-                        {(this.state.loading) ? (
-                            <Spinner />
-                        ) : (
-                            <ShoeList shoes={this.state.data} />
-                        )}
-                    </div>
-                </div>
+                    <Switch>
+                        <Route path="/main"  component={MainDisplay}/>
+                        <Route path="/shoe"  component={SingleShoePage}/>
+                        <SingleShoePage />
+                    </Switch>
                 <Footer />
                 <CopyrightFooter />
+             </Router>   
             </Fragment>
         )
     }
