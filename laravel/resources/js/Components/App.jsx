@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
-import AccountArea from './auth/AccountArea.jsx';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+// import AccountArea from './auth/AccountArea.jsx'
 import TopNav from './Topnav.jsx';
 import Navbar from './Navbar.jsx';
 import HiddenMenu from './HiddenMenu.jsx';
@@ -8,7 +9,6 @@ import ThirdNav from './ThirdNav.jsx';
 import Footer from './Footer.jsx'
 import CopyrightFooter from './CopyrightFooter.jsx';
 import MainDisplay from './MainDisplay.jsx';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import SingleShoePage from './SingleShoePage.jsx';
 
 export default class App extends React.Component {
@@ -16,10 +16,8 @@ export default class App extends React.Component {
         super(props);
 
         this.state = {
-            data: null,
             logged_in: null,
             token: window.localStorage.getItem('_token'),
-            loading: true
         };
     }
 
@@ -43,27 +41,12 @@ export default class App extends React.Component {
         })
     }
 
-    componentDidMount = () => {
-        fetch("api/shoes", {
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json"
-            }
-        })
-            .then(resp => resp.json())
-            .then(data => {
-                this.setState({
-                    data: data,
-                    loading: false
-                });
-                console.log(data)
-            });
-    };
+    
 
     render() {
         return (
             <Fragment>
-           {/*  <Router> */}
+            <Router>
                     <TopNav />
                     <Navbar />
                     {/* <AccountArea 
@@ -73,14 +56,14 @@ export default class App extends React.Component {
                     <HiddenMenu />
                     <HiddenMenuSearch />
                     <ThirdNav />
-                    {/* <Route path="/main"  component={MainDisplay}/>
-                    <Route path="/shoe"  component={SingleShoePage}/> */}
-                    <SingleShoePage />
-                    {/* <MainDisplay  data={this.state.data} loading={this.state.loading}/> */}
-                
+                    <Switch>
+                        <Route path="/main"  component={MainDisplay}/>
+                        <Route path="/shoe"  component={SingleShoePage}/>
+                        <SingleShoePage />
+                    </Switch>
                 <Footer />
                 <CopyrightFooter />
-           {/*   </Router>    */}
+             </Router>   
             </Fragment>
         )
     }

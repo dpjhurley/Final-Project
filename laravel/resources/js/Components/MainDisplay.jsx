@@ -7,6 +7,32 @@ import ShoeList from "./ShoeList";
 import Spinner from "./Spinner.jsx";
 
 export default class MainDisplay extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            data: null,
+            loading: true
+        }
+    }
+
+    componentDidMount = () => {
+        fetch("api/shoes", {
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json"
+            }
+        })
+            .then(resp => resp.json())
+            .then(data => {
+                this.setState({
+                    data: data,
+                    loading: false
+                });
+                console.log(data)
+            });
+    };
+
     render() {
         console.log(this.props.data)
         return (
@@ -20,10 +46,10 @@ export default class MainDisplay extends Component {
             </div>
             <div className="shoes">
                 <SearchList />
-                {(this.props.loading) ? (
+                {(this.state.loading) ? (
                     <Spinner />
                 ) : (
-                    <ShoeList shoes={this.props.data} />
+                    <ShoeList shoes={this.state.data} />
                 )}
             </div>
         </div>
