@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import AccountArea from './auth/AccountArea.jsx'
 import TopNav from './Topnav.jsx';
 import Navbar from './Navbar.jsx';
