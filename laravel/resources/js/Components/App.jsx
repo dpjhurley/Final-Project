@@ -57,8 +57,12 @@ export default class App extends React.Component {
                     <HiddenMenuSearch />
                     <ThirdNav />
                     <Switch>
-                        <Route path="/main"  component={MainDisplay}/>
                         <Route path="/shoe"  component={SingleShoePage}/>
+<<<<<<< HEAD
+=======
+                        <Route path="/"  component={MainDisplay}/>
+                        <SingleShoePage />
+>>>>>>> 75da27fa07098fec4727019ad46b042cbaf66b43
                     </Switch>
                 <Footer />
                 <CopyrightFooter />
