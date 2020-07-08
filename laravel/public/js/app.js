@@ -28615,8 +28615,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Topnav_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Topnav.jsx */ "./resources/js/Components/Topnav.jsx");
 /* harmony import */ var _Navbar_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Navbar.jsx */ "./resources/js/Components/Navbar.jsx");
-<<<<<<< HEAD
-=======
 /* harmony import */ var _HiddenMenu_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./HiddenMenu.jsx */ "./resources/js/Components/HiddenMenu.jsx");
 /* harmony import */ var _HiddenMenuSearch_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./HiddenMenuSearch.jsx */ "./resources/js/Components/HiddenMenuSearch.jsx");
 /* harmony import */ var _Information_jsx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Information.jsx */ "./resources/js/Components/Information.jsx");
@@ -28624,11 +28622,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Sort_jsx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Sort.jsx */ "./resources/js/Components/Sort.jsx");
 /* harmony import */ var _SearchList__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./SearchList */ "./resources/js/Components/SearchList.jsx");
 /* harmony import */ var _ShoeList__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./ShoeList */ "./resources/js/Components/ShoeList.jsx");
-/* harmony import */ var _ThirdNav_jsx__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./ThirdNav.jsx */ "./resources/js/Components/ThirdNav.jsx");
-/* harmony import */ var _Footer_jsx__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Footer.jsx */ "./resources/js/Components/Footer.jsx");
-/* harmony import */ var _CopyrightFooter_jsx__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./CopyrightFooter.jsx */ "./resources/js/Components/CopyrightFooter.jsx");
+/* harmony import */ var _Spinner_jsx__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Spinner.jsx */ "./resources/js/Components/Spinner.jsx");
+/* harmony import */ var _ThirdNav_jsx__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./ThirdNav.jsx */ "./resources/js/Components/ThirdNav.jsx");
+/* harmony import */ var _Footer_jsx__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./Footer.jsx */ "./resources/js/Components/Footer.jsx");
+/* harmony import */ var _CopyrightFooter_jsx__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./CopyrightFooter.jsx */ "./resources/js/Components/CopyrightFooter.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
->>>>>>> mza
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -28636,6 +28634,7 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
@@ -28662,8 +28661,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-<<<<<<< HEAD
-=======
+
 
 
 
@@ -28676,7 +28674,6 @@ var App = /*#__PURE__*/function (_React$Component) {
     var _this;
 
     _classCallCheck(this, App);
->>>>>>> mza
 
     _this = _super.call(this, props);
 
@@ -28708,7 +28705,7 @@ var App = /*#__PURE__*/function (_React$Component) {
   _createClass(App, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Topnav_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Navbar_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_HiddenMenu_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_HiddenMenuSearch_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ThirdNav_jsx__WEBPACK_IMPORTED_MODULE_10__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Topnav_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Navbar_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_HiddenMenu_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_HiddenMenuSearch_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ThirdNav_jsx__WEBPACK_IMPORTED_MODULE_11__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "information"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Information_jsx__WEBPACK_IMPORTED_MODULE_5__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "buttons"
@@ -28716,17 +28713,13 @@ var App = /*#__PURE__*/function (_React$Component) {
         className: "topright"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Sort_jsx__WEBPACK_IMPORTED_MODULE_7__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shoes"
-<<<<<<< HEAD
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SearchList__WEBPACK_IMPORTED_MODULE_6__["default"], null), this.state.loading ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Spinner_jsx__WEBPACK_IMPORTED_MODULE_8__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ShoeList__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SearchList__WEBPACK_IMPORTED_MODULE_8__["default"], null), this.state.loading ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Spinner_jsx__WEBPACK_IMPORTED_MODULE_10__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ShoeList__WEBPACK_IMPORTED_MODULE_9__["default"], {
         shoes: this.state.data
-      }))));
-=======
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SearchList__WEBPACK_IMPORTED_MODULE_8__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ShoeList__WEBPACK_IMPORTED_MODULE_9__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Footer_jsx__WEBPACK_IMPORTED_MODULE_11__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_CopyrightFooter_jsx__WEBPACK_IMPORTED_MODULE_12__["default"], null));
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Footer_jsx__WEBPACK_IMPORTED_MODULE_12__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_CopyrightFooter_jsx__WEBPACK_IMPORTED_MODULE_13__["default"], null));
     }
   }]);
 
   return App;
->>>>>>> mza
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 
@@ -29340,11 +29333,13 @@ var Navbar = /*#__PURE__*/function (_React$Component) {
         className: "mainNav__list__item"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#"
-      }, "Kids"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_HiddenMenu_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      }, "Kids"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_HiddenMenu_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "mainNav__list"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: ""
       }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-globe"
-      }), " Global")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), " Global"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "mainNav__list"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "mainNav__list__item"
@@ -29581,7 +29576,8 @@ var Shoe = /*#__PURE__*/function (_Component) {
       var _this$props = this.props,
           image = _this$props.image,
           price = _this$props.price,
-          title = _this$props.title;
+          title = _this$props.title,
+          id = _this$props.id;
       console.log(this.props.image);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shoe__container"
@@ -29662,6 +29658,7 @@ var ShoeList = /*#__PURE__*/function (_Component) {
         className: "shoeSection"
       }, shoes.map(function (shoe) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Shoe_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          key: shoe.id,
           image: shoe.image_url,
           price: shoe.price,
           title: shoe.title
@@ -29738,24 +29735,15 @@ var Sort = /*#__PURE__*/function (_Component) {
 
 /***/ }),
 
-<<<<<<< HEAD
 /***/ "./resources/js/Components/Spinner.jsx":
 /*!*********************************************!*\
   !*** ./resources/js/Components/Spinner.jsx ***!
   \*********************************************/
 /*! exports provided: Spinner, default */
-=======
-/***/ "./resources/js/Components/ThirdNav.jsx":
-/*!**********************************************!*\
-  !*** ./resources/js/Components/ThirdNav.jsx ***!
-  \**********************************************/
-/*! exports provided: default */
->>>>>>> mza
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-<<<<<<< HEAD
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Spinner", function() { return Spinner; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
@@ -29775,7 +29763,18 @@ var Spinner = function Spinner() {
   }));
 };
 /* harmony default export */ __webpack_exports__["default"] = (Spinner);
-=======
+
+/***/ }),
+
+/***/ "./resources/js/Components/ThirdNav.jsx":
+/*!**********************************************!*\
+  !*** ./resources/js/Components/ThirdNav.jsx ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ThirdNav; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
@@ -29835,7 +29834,6 @@ var ThirdNav = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 
->>>>>>> mza
 
 /***/ }),
 
@@ -29922,16 +29920,6 @@ var TopNav = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
-<<<<<<< HEAD
-/***/ "./resources/js/Components/spinner.gif":
-/*!*********************************************!*\
-  !*** ./resources/js/Components/spinner.gif ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/spinner.gif?8a7630caadfb15dbd13cb469853ab004";
-=======
 /***/ "./resources/js/Components/payment-methods.png":
 /*!*****************************************************!*\
   !*** ./resources/js/Components/payment-methods.png ***!
@@ -29940,7 +29928,17 @@ module.exports = "/images/spinner.gif?8a7630caadfb15dbd13cb469853ab004";
 /***/ (function(module, exports) {
 
 module.exports = "/images/payment-methods.png?1e931cf7f7c192821b34d24b0c31f425";
->>>>>>> mza
+
+/***/ }),
+
+/***/ "./resources/js/Components/spinner.gif":
+/*!*********************************************!*\
+  !*** ./resources/js/Components/spinner.gif ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/spinner.gif?8a7630caadfb15dbd13cb469853ab004";
 
 /***/ }),
 

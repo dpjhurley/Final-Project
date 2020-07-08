@@ -13,10 +13,12 @@ export default class ShoeList extends Component {
             <div className="shoeSection">
                 {
                 shoes.map((shoe) => (
-                    <Shoe                      
+                    <Shoe key={shoe.id}                     
                         image={shoe.image_url}
                         price={shoe.price}
-                        title={shoe.title}/>
+                        title={shoe.title}
+                        
+                        />
                 ))
                 }
             </div>

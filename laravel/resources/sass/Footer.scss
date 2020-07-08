@@ -1,13 +1,13 @@
 .footer{
     &__container{
     width: 100%;
-    height: 18rem;
+    height: 20rem;
     background-color: #222;
     color: #fff;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    padding: 1rem;
+    padding: 1.2rem;
     h2{
         margin-bottom: 1.5rem;
     }
@@ -15,7 +15,7 @@
         display: flex;
         flex-direction: column;
         flex: 2;
-        margin-left: 2rem;
+        margin-left: 5rem;
         height: 100%;
         width: 24%;
        .fa-8x{
@@ -49,6 +49,10 @@
             text-decoration: none;
             color: #fff;
             line-height: 1.5;
+            &:hover{
+                text-decoration: underline;
+                color: #f3f3f3;
+            }
         }
         p{
             font-size: 0.8rem;

@@ -3,10 +3,10 @@ import React, { Component } from "react";
 export default class Shoe extends Component {
 
   render() {
-    const {image, price, title } = this.props
+    const {image, price, title, id } = this.props
     console.log(this.props.image)
     return (
-        <div className="shoe__container">
+        <div  className="shoe__container">
           <img className="shoe_image"  src={image} alt="Broken"/>
           <div className="shoe__title">{title}</div>
           <br />

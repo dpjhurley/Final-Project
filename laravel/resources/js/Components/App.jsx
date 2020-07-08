@@ -8,13 +8,11 @@ import Button from "./Button.jsx";
 import Sort from "./Sort.jsx";
 import SearchList from "./SearchList";
 import ShoeList from "./ShoeList";
-<<<<<<< HEAD
 import Spinner from "./Spinner.jsx";
-=======
 import ThirdNav from './ThirdNav.jsx';
 import Footer from './Footer.jsx'
 import CopyrightFooter from './CopyrightFooter.jsx';
->>>>>>> mza
+
 
 export default class App extends React.Component {
     constructor(props) {

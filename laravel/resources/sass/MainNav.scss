@@ -2,8 +2,9 @@
 .mainNav{
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     height: 7rem;
+    width: 100%;
     
    a{ 
        display: flex;
@@ -41,7 +42,7 @@
        &__item{
            margin-left: 1rem;
            font-size: 1.6rem;
-           margin-left: 3rem;
+           margin-left: -2rem;
            padding: 2.8rem 2rem;
            &:hover {
                color: $primary_color;

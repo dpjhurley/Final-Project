@@ -22,7 +22,9 @@ export default class Navbar extends React.Component {
                     <HiddenMenu />
                 </div>
             </div>
+            <div className="mainNav__list" >
            <a href=""> <h1><i className="fas fa-globe"></i> Global</h1></a>
+           </div>
             <div className="mainNav__list">
                 <div className="mainNav__list__item" >
                     <a href="#">Accessories</a>
