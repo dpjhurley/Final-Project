@@ -14,9 +14,12 @@ export default class SingleShoePage extends React.Component{
                            <a href="#"><img src={pic1} alt="pic"></img></a>
                            <a href="#"><img src={pic2} alt="pic"></img></a>
                            <a href="#"><img src={pic3} alt="pic"></img></a>
+                           <a href="#"><img src={pic3} alt="pic"></img></a>
                            <a href="#"><img src={pic4} alt="pic"></img></a>
                         </div>
-                        <div className="shoeDisplay__actual__pic-largepic"></div>
+                        <div className="shoeDisplay__actual__pic-largepic">
+                        <a href="#"><img src={pic2} alt="pic"></img></a>
+                        </div>
                     </div>
                     <div className="shoeDisplay__actual__info">
                         <div className="shoeDisplay__actual__info-top"></div>
