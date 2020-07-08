@@ -19,5 +19,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/{path?}', [
+    'uses' => 'ReactController@show',
+    'as' => 'react',
+    'where' => ['path' => '.*']
+]);
+
+
 // Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/test', 'TestController@index');
