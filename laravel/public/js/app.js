@@ -33368,7 +33368,7 @@ var MainDisplay = /*#__PURE__*/function (_Component) {
     _defineProperty(_assertThisInitialized(_this), "componentDidMount", function () {
       fetch("api/shoes", {
         headers: {
-          Accept: "application/json",
+          "Accept": "application/json",
           "Content-Type": "application/json"
         }
       }).then(function (resp) {
@@ -33378,8 +33378,6 @@ var MainDisplay = /*#__PURE__*/function (_Component) {
           data: data,
           loading: false
         });
-
-        console.log(data);
       });
     });
 
@@ -33393,7 +33391,6 @@ var MainDisplay = /*#__PURE__*/function (_Component) {
   _createClass(MainDisplay, [{
     key: "render",
     value: function render() {
-      console.log(this.props.data);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "information"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Information_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -33645,6 +33642,8 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -33653,10 +33652,54 @@ var SearchList = /*#__PURE__*/function (_Component) {
 
   var _super = _createSuper(SearchList);
 
-  function SearchList() {
+  function SearchList(props) {
+    var _this;
+
     _classCallCheck(this, SearchList);
 
-    return _super.apply(this, arguments);
+    _this = _super.call(this, props);
+
+    _defineProperty(_assertThisInitialized(_this), "componentDidMount", function () {
+      fetch("api/brands", {
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        }
+      }).then(function (resp) {
+        return resp.json();
+      }).then(function (data) {
+        console.log(data);
+
+        _this.setState({
+          brands: data
+        });
+      });
+      fetch("api/categories", {
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        }
+      }).then(function (resp) {
+        return resp.json();
+      }).then(function (data) {
+        console.log(data);
+
+        _this.setState({
+          brands: data
+        });
+      });
+
+      _this.setState({
+        loaded: true
+      });
+    });
+
+    _this.state = {
+      brands: null,
+      categories: null,
+      loaded: false
+    };
+    return _this;
   }
 
   _createClass(SearchList, [{
@@ -33664,7 +33707,9 @@ var SearchList = /*#__PURE__*/function (_Component) {
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sidebar"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Search__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Search__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Search__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Search__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+      }, this.state.loaded ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Search__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        filterBy: this.state.brands
+      }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "loading"));
     }
   }]);
 
@@ -33730,7 +33775,6 @@ var Shoe = /*#__PURE__*/function (_Component) {
           price = _this$props.price,
           title = _this$props.title,
           id = _this$props.id;
-      console.log(this.props.image);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shoe__container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -33805,7 +33849,6 @@ var ShoeList = /*#__PURE__*/function (_Component) {
     key: "render",
     value: function render() {
       var shoes = this.props.shoes;
-      console.log(shoes);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shoeSection"
       }, shoes.map(function (shoe) {
