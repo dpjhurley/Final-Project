@@ -114,9 +114,8 @@
 }
 
 .shoe__container {
-  height: 300px;
+  width: 33%;
   padding: 20px;
-  border: red solid 2px;
 }
 
 .shoe__title {
@@ -660,6 +659,18 @@
   border-radius: 0.2rem;
   font-weight: 700;
   font-size: 1rem;
+}
+
+.pagination {
+  display: flex;
+}
+
+.pagination__link {
+  border: 1px solid grey;
+  border-radius: 3px;
+  padding: 1.5em;
+  margin: 0.25em;
+  text-decoration: none;
 }
 
 * {
