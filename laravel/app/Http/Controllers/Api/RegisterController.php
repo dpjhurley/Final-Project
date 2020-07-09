@@ -4,14 +4,13 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Str;
 use App\User;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 
 
 class RegisterController extends Controller
 {
-    //
     public function __construct()
     {
         $this->middleware('guest');
@@ -29,14 +28,7 @@ class RegisterController extends Controller
     //     ]);
     // }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
-     */
-
-    protected function create(Request $request)
+    protected function register(Request $request)
     {
         $user = new User;
         $user->name = $request->input('name');
@@ -44,8 +36,8 @@ class RegisterController extends Controller
         $user->date_of_birth = $request->input('date_of_birth');
         $user->gender = $request->input('gender');
         $user->email = $request->input('email');
-        $user->password = Hash::make($request->input('password'));
-
+        $user->password = $request->input('password');
+        $user->mailing_list = $request->input('mailing_list');
         $user->save();
     }
 }

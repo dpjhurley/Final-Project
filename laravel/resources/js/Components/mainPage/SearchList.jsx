@@ -8,6 +8,7 @@ export default class SearchList extends Component {
     this.state = {
       brands: null,
       categories: null,
+      colors: null,
       loaded: false
     }
   }
@@ -21,7 +22,6 @@ export default class SearchList extends Component {
     })
     .then(resp => resp.json())
     .then(data => {
-        console.log(data)
         this.setState({
             brands: data
         });
@@ -34,9 +34,20 @@ export default class SearchList extends Component {
     })
     .then(resp => resp.json())
     .then(data => {
-        console.log(data)
         this.setState({
-            brands: data
+            categories: data
+        });
+    });
+    fetch("api/colors", {
+      headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+      }
+    })
+    .then(resp => resp.json())
+    .then(data => {
+        this.setState({
+            colors: data
         });
     });
     this.setState({

@@ -4,7 +4,7 @@ import LoginForm from './LoginForm.jsx';
 import './accountArea.scss';
 
 class AccountArea extends React.Component {
-    state = {  }
+
     render() { 
         return (
             <>

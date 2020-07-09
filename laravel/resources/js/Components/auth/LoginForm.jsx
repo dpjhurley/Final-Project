@@ -55,7 +55,6 @@ class LoginForm extends React.Component {
                         name="email" 
                         placeholder="email" 
                         onChange={this.handleEmailChange}
-                        value={this.state.email}
                     />
                     <br/>
                     <input 
@@ -63,7 +62,6 @@ class LoginForm extends React.Component {
                         name="password" 
                         placeholder="password"
                         onChange={this.handlePasswordChange}
-                        value={this.state.password}
                     />
                     <br/>
                     <input type="submit" value="log in" />

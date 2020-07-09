@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import payment from "./payment-methods.png";
+import payment from "../payment-methods.png";
 
 export default class CopyrightFooter extends Component {
     render() {
