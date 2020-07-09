@@ -14,8 +14,9 @@ class CreateCartItemTable extends Migration
     public function up()
     {
         Schema::create('cart_item', function (Blueprint $table) {
-            $table->foreignId('cart_id')->nullable();
+            $table->foreignId('user_id')->nullable();
             $table->foreignId('shoe_id')->nullable();
+            $table->integer('count')->nullable();
             $table->timestamps();
         });
     }

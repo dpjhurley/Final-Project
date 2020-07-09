@@ -24,14 +24,18 @@ Route::get('/brands', 'Api\BrandController@index');
 Route::get('/colors', 'Api\ColorController@index');
 
 
-Route::group(['middleware' => ['auth:api']], function ($group) {
+// Route::group(['middleware' => ['auth:api']], function ($group) {
 
-    // Shopuld you have to be logged in to add to your cart OR not
-    Route::get('/cart', 'Api\CartController@index');
-    Route::post('/cart/attach', 'Api\CartController@addMission');
-    Route::post('/cart/detach', 'Api\CartController@removeMission');
+//     // Shopuld you have to be logged in to add to your cart OR not
+//     Route::get('/cart', 'Api\CartController@index');
+//     Route::post('/cart/add', 'Api\CartController@add');
+//     Route::post('/cart/remove', 'Api\CartController@remove');
 
-});
+// });
+
+Route::get('/cart', 'Api\CartController@index');
+Route::post('/cart/add', 'Api\CartController@add');
+Route::post('/cart/remove', 'Api\CartController@remove');
 
 Route::post('/login', 'Api\LoginController@login');
 Route::post('/register', 'Api\RegisterController@register');

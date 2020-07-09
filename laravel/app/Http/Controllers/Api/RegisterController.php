@@ -36,8 +36,12 @@ class RegisterController extends Controller
         $user->date_of_birth = $request->input('date_of_birth');
         $user->gender = $request->input('gender');
         $user->email = $request->input('email');
-        $user->password = $request->input('password');
+        $user->password = bcrypt($request->input('password'));
         $user->mailing_list = $request->input('mailing_list');
         $user->save();
+
+        return [
+            'status' => 'success'
+        ];
     }
 }

@@ -1,0 +1,22 @@
+.basket__title {
+    text-align: center;
+
+}
+
+.basket__container {
+    width: 65%;
+}
+
+.cartItem{
+    display: flex;
+    padding: 1em;
+        
+    &__image {
+        max-width: 150px;
+        // height: 100px;
+    }
+
+    &__delete {
+        text-align: right;
+    }
+}
