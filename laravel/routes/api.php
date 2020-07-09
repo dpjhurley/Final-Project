@@ -22,6 +22,8 @@ Route::get('/shoes', 'Api\ShoeController@index');
 Route::get('/shoes/{shoe_id}', 'Api\ShoeController@show');
 Route::get('/brands', 'Api\BrandController@index');
 Route::get('/colors', 'Api\ColorController@index');
+Route::get('/categories', 'Api\CategoryController@index');
+
 
 
 // Route::group(['middleware' => ['auth:api']], function ($group) {
