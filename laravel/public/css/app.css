@@ -206,6 +206,7 @@
   justify-content: space-around;
   background-color: #f3f3f3;
   opacity: 0;
+  z-index: 1000;
 }
 
 .hiddenMenu__list {
@@ -671,6 +672,458 @@
   padding: 1.5em;
   margin: 0.25em;
   text-decoration: none;
+}
+
+.account__login {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  height: 38rem;
+  width: 30rem;
+  margin-top: 2rem;
+}
+
+.account__login h2 {
+  margin-bottom: 2rem;
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.account__login__form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.account__login__form .forgotten-password {
+  background-color: #f3f3f3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1.5rem;
+  height: 13rem;
+  width: 22.5rem;
+  /* display: none; */
+}
+
+.account__login__form .forgotten-password p {
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+}
+
+.account__login__form .forgotten-password .reset-pass-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.5rem;
+  align-items: center;
+}
+
+.account__login__form .forgotten-password .reset-pass-form p {
+  font-size: 1.2rem;
+  display: block;
+  justify-self: flex-start;
+}
+
+.account__login__form .forgotten-password .reset-pass-form .repas {
+  margin-top: 2rem;
+  font-size: 1rem;
+  background-color: #000;
+  color: #fff;
+  height: 2.5rem;
+  width: 10rem;
+  padding: 0 1rem;
+}
+
+.account__login__form .forgotten-password .reset-pass-form .repas:hover {
+  background-color: #1b1a1a;
+  cursor: pointer;
+}
+
+.account__login__form-remember {
+  display: flex;
+  width: 100%;
+  height: 3.5rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.account__login__form-remember div .checkbox-remember {
+  margin: 0;
+  width: 1rem;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.account__login__form-remember div p {
+  margin-left: -4rem;
+}
+
+.account__login__form-remember a {
+  color: #d32020;
+  align-self: flex-end;
+}
+
+.account__login__form label {
+  margin: 1rem 0 0.4rem 0;
+  font-size: 1.5rem;
+}
+
+.account__login__form input {
+  height: 2rem;
+  width: 20rem;
+}
+
+.account__login__form .btn-dark-login {
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  background-color: #000;
+  color: #fff;
+  height: 2.5rem;
+}
+
+.account__login__form .btn-dark-login:hover {
+  background-color: #1b1a1a;
+  cursor: pointer;
+}
+
+.account__login .hidden {
+  display: none;
+}
+
+.acc-register-relay {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  height: 38rem;
+  width: 30rem;
+  margin-top: 2rem;
+}
+
+.acc-register-relay h2 {
+  margin-bottom: 2rem;
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.acc-register-relay p {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  margin-bottom: 1rem;
+}
+
+.acc-register-relay ul {
+  padding: 0.5rem;
+}
+
+.acc-register-relay ul li {
+  margin: 0.7rem 0;
+  font-size: 1.2rem;
+}
+
+.acc-register-relay .btn-dark-login {
+  margin-top: 2rem;
+  font-size: 1.4rem;
+  background-color: #000;
+  color: #fff;
+  height: 2.5rem;
+  padding: 0 7rem;
+}
+
+.acc-register-relay .btn-dark-login:hover {
+  background-color: #1b1a1a;
+  cursor: pointer;
+}
+
+.account__register {
+  width: 50rem;
+  height: 70rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  justify-content: center;
+  margin: auto;
+}
+
+.account__register h2 {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.account__register__form {
+  display: flex;
+  flex-direction: column;
+  width: 20rem;
+}
+
+.account__register__form input {
+  width: 100%;
+  height: 1.5rem;
+  margin: 0.2rem 0;
+}
+
+.account__register *,
+.account__register *:before,
+.account__register *:after {
+  box-sizing: border-box;
+}
+
+.account__register body {
+  padding: 1em;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  color: #b9b9b9;
+  background-color: #e3e3e3;
+}
+
+.account__register h4 {
+  color: #00DC55;
+}
+
+.account__register input,
+.account__register input[type="radio"] + label,
+.account__register input[type="checkbox"] + label:before,
+.account__register select option,
+.account__register select {
+  width: 100%;
+  padding: 1em;
+  line-height: 1.4;
+  background-color: #f9f9f9;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+  transition: all 0.35s ease-in-out;
+}
+
+.account__register input:focus {
+  outline: 0;
+  border-color: #00DC55;
+}
+
+.account__register input:focus + .input-icon i {
+  color: #00DC55;
+}
+
+.account__register input:focus + .input-icon:after {
+  border-right-color: #00DC55;
+}
+
+.account__register input[type="radio"] {
+  display: none;
+}
+
+.account__register input[type="radio"] + label,
+.account__register select,
+.account__register select {
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+  float: left;
+  border-radius: 0;
+}
+
+.account__register input[type="radio"] + label:first-of-type {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.account__register input[type="radio"] + label:last-of-type {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.account__register input[type="radio"] + label i {
+  padding-right: 0.4em;
+}
+
+.account__register input[type="radio"]:checked + label,
+.account__register input:checked + label:before,
+.account__register select:focus,
+.account__register select:active {
+  background-color: #00DC55;
+  color: #ffffff;
+  border-color: #00DC55;
+}
+
+.account__register input[type="checkbox"] {
+  display: none;
+}
+
+.account__register input[type="checkbox"] + label {
+  position: relative;
+  display: block;
+  padding-left: 1.6em;
+}
+
+.account__register input[type="checkbox"] + label:before {
+  position: absolute;
+  top: 0.2em;
+  left: 0;
+  display: block;
+  width: 1em;
+  height: 1em;
+  padding: 0;
+  content: "";
+}
+
+.account__register input[type="checkbox"] + label:after {
+  position: absolute;
+  top: 0.45em;
+  left: 0.2em;
+  font-size: 0.8em;
+  color: #ffffff;
+  opacity: 0;
+  font-family: FontAwesome;
+  content: "\F00C";
+}
+
+.account__register input:checked + label:after {
+  opacity: 1;
+}
+
+.account__register select {
+  height: 3.4em;
+  line-height: 2;
+}
+
+.account__register select:first-of-type {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.account__register select:last-of-type {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.account__register select:focus,
+.account__register select:active {
+  outline: 0;
+}
+
+.account__register select option {
+  background-color: #00DC55;
+  color: #ffffff;
+}
+
+.account__register .input-group {
+  margin-bottom: 1em;
+  zoom: 1;
+}
+
+.account__register .input-group:before,
+.account__register .input-group:after {
+  content: "";
+  display: table;
+}
+
+.account__register .input-group:after {
+  clear: both;
+}
+
+.account__register .input-group-icon {
+  position: relative;
+}
+
+.account__register .input-group-icon input {
+  padding-left: 4.4em;
+}
+
+.account__register .input-group-icon .input-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3.4em;
+  height: 3.4em;
+  line-height: 3.4em;
+  text-align: center;
+  pointer-events: none;
+}
+
+.account__register .input-group-icon .input-icon:after {
+  position: absolute;
+  top: 0.6em;
+  bottom: 0.6em;
+  left: 3.4em;
+  display: block;
+  border-right: 1px solid #e5e5e5;
+  content: "";
+  transition: all 0.35s ease-in-out;
+}
+
+.account__register .input-group-icon .input-icon i {
+  transition: all 0.35s ease-in-out;
+}
+
+.account__register .container {
+  max-width: 38em;
+  padding: 1em 3em 2em 3em;
+  margin: 0em auto;
+  background-color: #ffffff;
+  border-radius: 4.199999999999999px;
+  box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.2);
+}
+
+.account__register .row {
+  zoom: 1;
+}
+
+.account__register .row:before,
+.account__register .row:after {
+  content: "";
+  display: table;
+}
+
+.account__register .row:after {
+  clear: both;
+}
+
+.account__register .col-half {
+  padding-right: 10px;
+  float: left;
+  width: 50%;
+}
+
+.account__register .col-half:last-of-type {
+  padding-right: 0;
+}
+
+.account__register .col-third {
+  padding-right: 10px;
+  float: left;
+  width: 33.333333333333336%;
+}
+
+.account__register .col-third:last-of-type {
+  padding-right: 0;
+}
+
+@media only screen and (max-width: 540px) {
+  .account__register .col-half {
+    width: 100%;
+    padding-right: 0;
+  }
+}
+
+.account__register .register-submit {
+  background-color: #00DC55;
+  text-align: center;
+  margin: auto;
+  display: block;
+  padding: 1.3rem 5.2rem;
+  color: #fff;
+  border: none;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  border-radius: 0.1rem;
+}
+
+.account__register .register-submit:hover {
+  cursor: pointer;
 }
 
 * {

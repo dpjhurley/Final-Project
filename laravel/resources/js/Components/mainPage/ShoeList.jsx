@@ -10,7 +10,7 @@ export default class ShoeList extends Component {
 
         return (
             <div className="shoeSection">
-                {
+              {/*   {
                 shoes.map((shoe) => (
                     <Shoe key={shoe.id}                     
                         image={shoe.image_url}
@@ -18,7 +18,7 @@ export default class ShoeList extends Component {
                         title={shoe.title}
                     />
                 ))
-                }
+                } */}
             </div>
         )
     }

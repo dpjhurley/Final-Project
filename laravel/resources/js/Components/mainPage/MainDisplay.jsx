@@ -80,7 +80,7 @@ export default class MainDisplay extends Component {
                     <Spinner />
                 ) : (
                     <div className="shoes__right">
-                        <ShoeList shoes={data.slice(indexOfFirstShoe, indexOfLastShoe)} />
+                       {/*  <ShoeList /> //shoes={data.slice(indexOfFirstShoe, indexOfLastShoe)} /> */}
                         <Pagination
                             shoesPerPage={shoesPerPage}
                             totalShoes={data.length}

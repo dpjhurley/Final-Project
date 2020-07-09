@@ -1,5 +1,5 @@
-// import React from 'react';
-
+ //import React from 'react';
+ 
 
 // class RegisterForm extends React.Component {
 //     constructor(props) {
@@ -260,9 +260,91 @@ const RegisterForm = () => {
             <h2>Register account</h2>
             
             {success === 'success' ? (
-                <div>Thankyou for registering</div>
+                <div>Thank you for registering</div>
             ) : (
-                <form action="" onSubmit={handleFormSubmit}>
+                <div className="container">
+    <form action="" onSubmit={handleFormSubmit} >
+        <div className="row">
+            <h4>Account</h4>
+            <div className="input-group input-group-icon"><input type="text" placeholder="First Name" onChange={handleNameChange} />
+                <div className="input-icon"><i className="fa fa-user"></i></div>
+            </div>
+            <div className="input-group input-group-icon"><input type="text" onChange={handleSurnameChange} placeholder="Last Name" />
+                <div className="input-icon"><i className="fa fa-user"></i></div>
+            </div>
+            <div className="input-group input-group-icon"><input type="email" onChange={handleEmailChange} placeholder="Email Adress" />
+                <div className="input-icon"><i className="fa fa-envelope"></i></div>
+            </div>
+            <div className="input-group input-group-icon"><input type="password" onChange={handlePasswordChange} placeholder="Password" />
+                <div className="input-icon"><i className="fa fa-key"></i></div>
+            </div>
+            <div className="input-group input-group-icon"><input type="password" onChange={handleRePasswordChange} placeholder="Retype Password" />
+                <div className="input-icon"><i className="fa fa-key"></i></div>
+            </div>
+        </div>
+        <div className="row">
+            <div className="col-half">
+                <h4>Date of Birth</h4>
+                <div className="input-group">
+                    <div className="col-half"><input type="date" placeholder="Date of Birth" onChange={handleDateChange} name="date_of_birth" /></div>
+                </div>
+            </div>
+            <div className="col-half">
+                <h4>Gender</h4>
+                <div className="input-group"><input type="radio" name="gender" value="male" onClick={handleGenderChange} id="gender-male" /><label htmlFor="gender-male" >Male</label><input type="radio" name="gender" onClick={handleGenderChange} value="female" id="gender-female" /><label htmlFor="gender-female">Female</label></div>
+            </div>
+        </div>
+        <div className="row">
+            <h4>Payment Details</h4>
+            <div className="input-group"><input type="radio" name="payment-method" value="card" id="payment-method-card" checked /><label htmlFor="payment-method-card"><span><i className="fa fa-cc-visa"></i>Credit Card</span></label><input type="radio" name="payment-method" value="paypal"
+                    id="payment-method-paypal" /><label htmlFor="payment-method-paypal"> <span><i className="fa fa-cc-paypal"></i>Paypal</span></label></div>
+            <div className="input-group input-group-icon"><input type="text" placeholder="Card Number" />
+                <div className="input-icon"><i className="fa fa-credit-card"></i></div>
+            </div>
+            <div className="col-half">
+                <div className="input-group input-group-icon"><input type="text" placeholder="Card CVC" />
+                    <div className="input-icon"><i className="fa fa-user"></i></div>
+                </div>
+            </div>
+            <div className="col-half">
+                <div className="input-group">
+                <select>
+                <option>01</option>
+                <option>02</option>
+                <option>03</option>
+                <option>04</option>
+                <option>05</option>
+                <option>06</option>
+                <option>07</option>
+                <option>08</option>
+                <option>09</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
+                </select>
+                <select>
+                <option>2020</option>
+                <option>2021</option>
+                <option>2022</option>
+                <option>2023</option>
+                <option>2024</option>
+                <option>2025</option>
+                </select>
+                </div>
+            </div>
+        </div>
+        <div className="row">
+            <h4>Terms and Conditions</h4>
+            <div className="input-group"><input type="checkbox" id="terms" /><label htmlFor="terms">I accept the terms and conditions for signing up to this service, and hereby confirm I have read the privacy policy.</label></div>
+        </div>
+        <div className="row">
+            <h4>Join Our Mailing List</h4>
+            <div className="input-group"><input type="checkbox" id="mailing" onChange={handleMailingListChange} /><label htmlFor="mailing">By Clicking on the checkbox you will be subscribed to our mailing list</label></div>
+        </div>
+        <button className="register-submit">Register your account</button>
+    </form>
+</div>
+                /* <form action="" onSubmit={handleFormSubmit}  className="account__register__form" >
                 
                     <div className="form-group">
                         <label >First name</label><br />
@@ -343,7 +425,7 @@ const RegisterForm = () => {
             
                     <input type="submit" value="Register your account"/>
             
-                </form>
+                </form> */
             )}
             
 
@@ -352,3 +434,8 @@ const RegisterForm = () => {
 }
  
 export default RegisterForm;
+
+
+
+
+

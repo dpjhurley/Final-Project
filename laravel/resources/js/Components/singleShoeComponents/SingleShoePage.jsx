@@ -1,17 +1,9 @@
 import React from 'react';
-<<<<<<< HEAD
-import pic1 from "../continental_80_white_and_red_trainers_1-100x_-resize.jpg"
-import pic2 from "../continental_80_white_and_red_trainers_2.jpg"
-import pic3 from "../continental_80_white_and_red_trainers_3.jpg"
-import pic4 from "../logo-360-640.png"
-import pic5 from "../1900327270m7_zm.jpg"
-=======
 import pic1 from "../continental_80_white_and_red_trainers_1-100x_-resize.jpg";
 import pic2 from "../continental_80_white_and_red_trainers_2.jpg";
 import pic3 from "../continental_80_white_and_red_trainers_3.jpg";
 import pic4 from "../logo-360-640.png";
 import pic5 from "../1900327270m7_zm.jpg";
->>>>>>> 151a48349ead469545aaf7922d0fc54b0f848212
 
 export default class SingleShoePage extends React.Component{
     render() {

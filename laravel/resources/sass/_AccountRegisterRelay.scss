@@ -1,0 +1,40 @@
+.acc-register-relay{
+    display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   justify-content: center;
+   height: 38rem;
+   width: 30rem;
+   margin-top: 2rem;
+   h2{
+    margin-bottom: 2rem;
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+   }
+   p{
+       font-family: Georgia, 'Times New Roman', Times, serif;
+       margin-bottom: 1rem;
+   }
+   ul{
+       padding: 0.5rem;
+       li{
+           margin: 0.7rem 0;
+           font-size: 1.2rem;
+       }
+   }
+   .btn-dark-login{
+    margin-top: 2rem;
+    font-size: 1.4rem;
+    background-color: #000;
+    color: #fff;
+    height: 2.5rem ;
+    padding: 0 7rem;
+    
+   
+    &:hover{
+        background-color: rgb(27, 26, 26);
+        cursor: pointer;
+    }
+   }
+}
