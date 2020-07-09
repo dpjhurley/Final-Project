@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import Search from "./Search";
 
 export default class SearchList extends Component {
@@ -7,9 +7,11 @@ export default class SearchList extends Component {
 
     this.state = {
       brands: null,
+      brandsLoaded: false,
       categories: null,
+      categoriesLoaded: false,
       colors: null,
-      loaded: false
+      colorsLoaded: false
     }
   }
 
@@ -22,10 +24,14 @@ export default class SearchList extends Component {
     })
     .then(resp => resp.json())
     .then(data => {
+      console.log(data)
         this.setState({
-            brands: data
+            brands: data,
+            brandsLoaded: true
         });
     });
+
+    
     fetch("api/categories", {
       headers: {
           "Accept": "application/json",
@@ -35,9 +41,11 @@ export default class SearchList extends Component {
     .then(resp => resp.json())
     .then(data => {
         this.setState({
-            categories: data
+            categories: data,
+            categoriesLoaded: true
         });
     });
+
     fetch("api/colors", {
       headers: {
           "Accept": "application/json",
@@ -47,19 +55,26 @@ export default class SearchList extends Component {
     .then(resp => resp.json())
     .then(data => {
         this.setState({
-            colors: data
+            colors: data,
+            colorsLoaded: true
         });
     });
-    this.setState({
-      loaded: true
-    })
+
+
+
+
   };
 
   render() {
     return (
       <div className="sidebar">
-        {this.state.loaded ? (
-          <Search filterBy={this.state.brands}/>
+        {this.state.categoriesLoaded && this.state.brandsLoaded ? (
+          <Fragment>
+          <Search search={this.state.brands}/>
+          <Search search={this.state.categories}/>
+          </Fragment>
+          
+          
         ) : (
           <div>loading</div>
         )}

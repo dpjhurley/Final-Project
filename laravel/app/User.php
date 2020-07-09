@@ -42,8 +42,8 @@ class User extends Authenticatable
         return $this->hasMany('App\Review');
     }
     
-    public function cart()
+    public function cartItems()
     {
-        return $this->hasOne('App\Cart');
+        return $this->belongsToMany('App\Cart');
     }
 }

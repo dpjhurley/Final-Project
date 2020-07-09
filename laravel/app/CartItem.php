@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Cart extends Model
+class CartItem extends Model
 {
     public function users()
     {
-        return $this->hasOne('App\User');
+        return $this->belongsToMany('App\User');
     }
 
     public function shoes()

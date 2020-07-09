@@ -10,36 +10,18 @@ import Footer from './bottomComponents/Footer.jsx'
 import CopyrightFooter from './bottomComponents/CopyrightFooter.jsx';
 import MainDisplay from './mainPage/MainDisplay.jsx';
 import SingleShoePage from './singleShoeComponents/SingleShoePage.jsx';
+import Basket from './basket/Basket.jsx';
 
 export default class App extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            logged_in: null,
-            token: window.localStorage.getItem('_token'),
+            
         };
     }
 
-    onLoginSuccess = (token) => {
- 
-        window.localStorage.setItem('_token', token)
-     
-        this.setState({
-            logged_in: true,
-            token: token
-        })
-    }
-
-    onFailedAuthentication = () => {
-
-        window.localStorage.removeItem('_token');
-
-        this.setState({
-            logged_in: false,
-            token: null
-        })
-    }
+    
 
     
 
@@ -49,18 +31,16 @@ export default class App extends React.Component {
             <Router>
                     <TopNav />
                     <Navbar />
-                    {/* <AccountArea 
-                        logged_in={this.state.logged_in}
-                        onLoginSuccess={this.onLoginSuccess}
-                    /> */}
+                    <AccountArea />
                     <HiddenMenu />
                     <HiddenMenuSearch />
                     <ThirdNav />
-                    <Switch>
+                    {/* <Basket /> */}
+                    {/* <Switch>
                         <Route path="/shoe"  component={SingleShoePage}/>
                         <Route path="/"  component={MainDisplay}/>
                         <SingleShoePage />
-                    </Switch>
+                    </Switch> */}
                 <Footer />
                 <CopyrightFooter />
              </Router>   

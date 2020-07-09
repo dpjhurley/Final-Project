@@ -4,6 +4,34 @@ import LoginForm from './LoginForm.jsx';
 import './accountArea.scss';
 
 class AccountArea extends React.Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            logged_in: null,
+            token: window.localStorage.getItem('_token'),
+        }
+    }
+
+    onLoginSuccess = (token) => {
+ 
+        window.localStorage.setItem('_token', token)
+     
+        this.setState({
+            logged_in: true,
+            token: token
+        })
+    }
+
+    onFailedAuthentication = () => {
+
+        window.localStorage.removeItem('_token');
+
+        this.setState({
+            logged_in: false,
+            token: null
+        })
+    }
 
     render() { 
         return (
@@ -11,7 +39,10 @@ class AccountArea extends React.Component {
                 {/* will need to change this to when true once this is all set up */}
                 {!this.props.logged_in ? (
                     <div className="account">
-                        <LoginForm />
+                        <LoginForm 
+                            logged_in={this.state.logged_in}
+                            onLoginSuccess={this.onLoginSuccess}
+                        />
                         <RegisterForm />
                     </div>
                 ):(
