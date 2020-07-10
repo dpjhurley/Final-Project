@@ -8,7 +8,9 @@ class LoginForm extends React.Component {
         this.state = {
             email: '',
             password: '',
-            errors: [] //for making the erroes when status isnt success
+            errors: [] ,//for making the erroes when status isnt success
+            forgottenPassHidden: true
+
         }
     }
 
@@ -43,28 +45,60 @@ class LoginForm extends React.Component {
             }
         })
     }
-
+    handleOnClickHiddenPassword = (event) => {
+        this.setState({
+            forgottenPassHidden: !this.state.forgottenPassHidden
+        })
+        const hiddenPassField = document.querySelector('#forgotten-password-id');
+        console.log(hiddenPassField.classList);
+        if(this.state.forgottenPassHidden === true){
+            hiddenPassField.classList += ' hidden'
+        }else{
+            hiddenPassField.classList = 'forgotten-password'
+        }
+       
+    }
     render() { 
         return ( 
             <div className="account__login">
-                <h2>Login</h2>
-                <form action="" onSubmit={this.handleFormSubmit}>
-    
+                <h2>Existing Users</h2>
+                <form className="account__login__form" action="" onSubmit={this.handleFormSubmit}>
+
+                <label>Email</label>
                     <input 
                         type="email" 
                         name="email" 
-                        placeholder="email" 
+                        placeholder="Enter email address" 
                         onChange={this.handleEmailChange}
                     />
-                    <br/>
+                    
+                    <label>Password</label>
                     <input 
                         type="password" 
                         name="password" 
-                        placeholder="password"
+                        placeholder="Enter your password"
                         onChange={this.handlePasswordChange}
                     />
-                    <br/>
-                    <input type="submit" value="log in" />
+                    <div className="account__login__form-remember">
+                         <div>
+                        <input className="checkbox-remember" type="checkbox" value="#"></input>
+                        </div>
+                         <div>
+                         <p>Remember me</p>
+                        </div>
+                        <a href="#" onClick={this.handleOnClickHiddenPassword}>Forgotten password?</a>
+                    </div>
+                    <div className="forgotten-password hidden" id="forgotten-password-id">
+                        <p>To reset your password please enter the email address you use to log into your schuh account below. We'll email you a link to securely reset your password.</p>
+                        <div className="reset-pass-form">
+                        <div >
+                        <p>Email</p>
+                         <input type="email" name="forgotten-password-email"></input>
+                        </div>
+                        <button className="repas" type="submit">Reset Password</button>
+                        </div>
+                    </div>
+                    <input  className="btn-dark-login" type="submit" value="Log In" />
                 </form>
             </div>
          );

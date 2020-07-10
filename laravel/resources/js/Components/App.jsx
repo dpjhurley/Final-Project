@@ -11,6 +11,7 @@ import CopyrightFooter from './bottomComponents/CopyrightFooter.jsx';
 import MainDisplay from './mainPage/MainDisplay.jsx';
 import SingleShoePage from './singleShoeComponents/SingleShoePage.jsx';
 import Basket from './basket/Basket.jsx';
+import RegisterForm from './auth/RegisterForm.jsx';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -35,12 +36,16 @@ export default class App extends React.Component {
                     <HiddenMenu />
                     <HiddenMenuSearch />
                     <ThirdNav />
-                    <Basket />
-                    {/* <Switch>
+                    {/* <Basket /> */}
+                               
+                    <Switch>
+                        <Route path="/basket"  component={Basket}/>
                         <Route path="/shoe"  component={SingleShoePage}/>
+                        <Route path="/account"  component={AccountArea}/>
+                        <Route path="/register-account"  component={RegisterForm}/>
                         <Route path="/"  component={MainDisplay}/>
-                        <SingleShoePage />
-                    </Switch> */}
+                        
+                    </Switch>
                 <Footer />
                 <CopyrightFooter />
              </Router>   

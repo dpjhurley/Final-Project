@@ -2,6 +2,7 @@ import React from 'react';
 import RegisterForm from './RegisterForm.jsx';
 import LoginForm from './LoginForm.jsx';
 import './accountArea.scss';
+import RegisterRelay from './RegisterRelay.jsx';
 
 class AccountArea extends React.Component {
     constructor(props) {
@@ -43,7 +44,8 @@ class AccountArea extends React.Component {
                             logged_in={this.state.logged_in}
                             onLoginSuccess={this.onLoginSuccess}
                         />
-                        <RegisterForm />
+                        
+                        <RegisterRelay />
                     </div>
                 ):(
                     <div>An account area maybe??</div>
