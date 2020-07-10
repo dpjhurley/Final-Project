@@ -1,7 +1,14 @@
-
-
-.account{
+.account {
     display: flex;
-    align-items: center;
     justify-content: center;
+    &__login{
+        width: 40%;
+        text-align: center;
+        padding-right: 4em;
+    }
+    &__register {
+      
+     
+        padding-left: 4em;
+    }
 }

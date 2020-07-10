@@ -64,6 +64,15 @@
   font-size: 1.5rem;
 }
 
+.mainNav__list__icons .search-icon {
+  color: #000;
+}
+
+.mainNav__list__icons .search-icon i {
+  margin-left: 0.5rem;
+  font-size: 1.8rem;
+}
+
 .mainNav__list__item {
   margin-left: 1rem;
   font-size: 1.6rem;
@@ -236,19 +245,21 @@
   justify-content: space-evenly;
 }
 
-.hiddenMenu__list__items p {
+.hiddenMenu__list__items a {
   margin-left: 1rem;
   width: 35%;
-  font-size: 1.2rem;
+}
+
+.hiddenMenu__list__items a p {
+  font-size: 1rem;
 }
 
 .hiddenMenusearch {
   width: 98%;
-  visibility: hidden;
   position: absolute;
   top: 9.3rem;
-  left: 1rem;
-  right: 2rem;
+  left: 0;
+  right: 0;
   margin: auto;
   display: flex;
   background-color: #f3f3f3;
@@ -256,7 +267,7 @@
   justify-content: center;
   height: 7rem;
   border-radius: 0.5rem;
-  opacity: 0;
+  opacity: 1;
 }
 
 .hiddenMenusearch input {
@@ -268,10 +279,7 @@
   margin: 0 1rem;
   font-size: 1.2rem;
   outline: none;
-}
-
-.hiddenMenusearch input:focus {
-  border-bottom: 1px solid black;
+  color: #333;
 }
 
 .hiddenMenusearch input::-moz-placeholder {
@@ -290,8 +298,13 @@
   font-size: 1.2rem;
 }
 
-.hiddenMenusearch a {
-  color: #777;
+.hiddenMenusearch .hiddensearchicons {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+  opacity: 0;
 }
 
 .thirdNav {
@@ -317,12 +330,12 @@
   justify-content: center;
 }
 
-.thirdNav div a {
+.thirdNav div h3 a {
   text-decoration: none;
   color: #777;
 }
 
-.thirdNav div a:hover {
+.thirdNav div h3 a:hover {
   color: #333;
   text-decoration: underline;
 }

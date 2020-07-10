@@ -200,7 +200,12 @@ const RegisterForm = () => {
     const [ mailing_list, setMailing_list ] = useState(false);
     const [ success, setSuccess ] = useState([]);
     const [ error, setError ] = useState([]);
+    const [ terms, setTerms ] = useState(false);
+    const [ checked, setChecked ] = useState(false);
 
+    const handleTermsChange = (event)=>{
+        setTerms(!terms);
+    }
     const handleNameChange = (event) => {
         setName(event.target.value)
     }
@@ -294,7 +299,7 @@ const RegisterForm = () => {
                 <div className="input-group"><input type="radio" name="gender" value="male" onClick={handleGenderChange} id="gender-male" /><label htmlFor="gender-male" >Male</label><input type="radio" name="gender" onClick={handleGenderChange} value="female" id="gender-female" /><label htmlFor="gender-female">Female</label></div>
             </div>
         </div>
-        <div className="row">
+     {/*    <div className="row">
             <h4>Payment Details</h4>
             <div className="input-group"><input type="radio" name="payment-method" value="card" id="payment-method-card" checked /><label htmlFor="payment-method-card"><span><i className="fa fa-cc-visa"></i>Credit Card</span></label><input type="radio" name="payment-method" value="paypal"
                     id="payment-method-paypal" /><label htmlFor="payment-method-paypal"> <span><i className="fa fa-cc-paypal"></i>Paypal</span></label></div>
@@ -332,16 +337,16 @@ const RegisterForm = () => {
                 </select>
                 </div>
             </div>
-        </div>
+        </div> */}
         <div className="row">
             <h4>Terms and Conditions</h4>
-            <div className="input-group"><input type="checkbox" id="terms" /><label htmlFor="terms">I accept the terms and conditions for signing up to this service, and hereby confirm I have read the privacy policy.</label></div>
+            <div className="input-group"><input type="checkbox" id="terms" onChange={handleTermsChange} /><label htmlFor="terms" >I accept the terms and conditions for signing up to this service, and hereby confirm I have read the privacy policy.</label></div>
         </div>
         <div className="row">
             <h4>Join Our Mailing List</h4>
             <div className="input-group"><input type="checkbox" id="mailing" onChange={handleMailingListChange} /><label htmlFor="mailing">By Clicking on the checkbox you will be subscribed to our mailing list</label></div>
         </div>
-        <button className="register-submit">Register your account</button>
+        { terms ? <button className="register-submit">Register your account</button> : <div></div> }
     </form>
 </div>
                 /* <form action="" onSubmit={handleFormSubmit}  className="account__register__form" >

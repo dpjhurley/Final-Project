@@ -1,9 +1,37 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import HiddenMenu from './HiddenMenu.jsx';
+import HiddenMenuMen from './HiddenMenuMen.jsx';
+import HiddenMenuSearch from './HiddenMenuSearch.jsx';
+import HiddenMenuWomen from './hiddenMenuWomen.jsx';
+import HiddenMenuKids from './hiddenMenuKids.jsx';
+import HiddenMenuAccessories from './HiddenMenuAccessories.jsx';
 
 export default class Navbar extends React.Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+           
+            hiddensearch: true
+
+        }
+    }
+    handleOnClickHiddenSearch = (event) => {
+        this.setState({
+            hiddensearch: !this.state.hiddensearch
+        })
+        const hiddenSearchField = document.querySelector('#hiddenSearch');
+        console.log(hiddenSearchField.classList);
+        if(this.state.hiddensearch === true){
+             hiddenSearchField.classList += ' hidden'
+        
+        }else{
+            hiddenSearchField.classList = 'hiddenMenusearch'
+        }
+       
+    }
 
     render() {
         return (
@@ -13,17 +41,17 @@ export default class Navbar extends React.Component {
 
                 <div className="mainNav__list__item">
                     <Link to="/womens">Women's</Link>
-                    <HiddenMenu />
+                   <HiddenMenuWomen />
                 </div>
 
                 <div className="mainNav__list__item">
                     <Link to="/mens">Men's</Link>
-                    <HiddenMenu />
+                    <HiddenMenuMen />
                 </div>
 
                 <div className="mainNav__list__item">
                     <Link to="/kids">Kids</Link>
-                    <HiddenMenu />
+                    <HiddenMenuKids />
                 </div>
 
             </div>
@@ -36,7 +64,7 @@ export default class Navbar extends React.Component {
 
                 <div className="mainNav__list__item" >
                     <Link to="/accessories">Accessories</Link>
-                    <HiddenMenu />
+                    <HiddenMenuAccessories />
                 </div>
 
                 <div className="mainNav__list__item">
@@ -55,10 +83,10 @@ export default class Navbar extends React.Component {
                     </a>
                 </div>
 
-                <div className="mainNav__list__icons" >
-                    <a href="">
+                <div className="mainNav__list__icons search-icon" onClick={this.handleOnClickHiddenSearch} >
+                    
                         <i className="fas fa-search"></i>
-                    </a>   
+                     <HiddenMenuSearch handleOnClickHiddenSearch={this.handleOnClickHiddenSearch} />
                 </div>
 
             </div>

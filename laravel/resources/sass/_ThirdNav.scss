@@ -1,5 +1,4 @@
 
-
 .thirdNav{
     display: flex;
     align-items: center;
@@ -21,7 +20,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        
+        h3{
         a{
             text-decoration: none;
             color: #777;
@@ -30,5 +29,6 @@
                 text-decoration: underline;
             }
         }
+    }
     }
 }
