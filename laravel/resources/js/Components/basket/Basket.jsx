@@ -1,42 +1,104 @@
 import React from 'react';
 import CartItem from './CartItem.jsx';
 import './_basket.scss';
-import pic1 from '../360e.jpg';
+
 
 class Basket extends React.Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            cart: []
+            cart: [],
+            loaded: false,
+            removeUserId: '',
+            removeShoeId: ''
         }
+    }
+
+    handleRemoveFromCart = (event) => {
+        event.preventDefault();
+
+
+        this.setState({
+            loaded: false
+        })
+        fetch('api/remove', {
+            method: 'POST',
+            body: JSON.stringify(
+                {
+                    'user_id': this.state.removeUserId,
+                    'shoe_id': this.state.removeShoeId,
+                }
+            ),
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            }
+        })
+        .then((resp) => resp.json())
+        .then((data) => {
+            this.setState({
+                cart: data,
+                loaded: !this.state.loaded
+            })
+        })   
+    }
+
+    handleRemoveUserId = (e) => {
+        this.setState({
+            removeUserId: e.target.value
+        })
+    }
+
+    handleRemoveShoeId = (e) => {
+        this.setState({
+            removeShoeId: e.target.value
+        })
+    }
+
+    fetchCartItems = () => {
+        fetch(`api/cart/${18}`, {
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            }
+        })
+        .then((resp) => resp.json())
+        .then((data) => {
+            this.setState({
+                cart: data,
+                loaded: !this.state.loaded
+            })
+
+        })
+    }
+
+    componentDidMount = () => {
+        this.fetchCartItems();
+    } 
+
+    componentDidUpdate = () => {
+        this.state.cart;
     }
     
     render() { 
-        const { cart } = this.state;
+        const { cart, loaded } = this.state;
         return (  
             <>
                 <h2 className="basket__title">Basket</h2>
-
-                <div className="basket_container">
-                    {/* {cart.map((cartItem, i) => {
-                        <CartItem 
-                            key={i}
-                            shoe={cartItem.shoe}
-                        />
-                    })} */}
-                    <div className="cartitem">
-                        <img className="cartitem__image" src={pic1} alt=""/>
-                        <div className="cartitem__info">
-                            <div className="brand">addidas</div>
-                            <div className="name">shoes</div>
-                            <div className="price">70</div>
-                            <div className="quanity">Qty - (quantity)</div>
-                            <div className="size">UK (size)</div>
-                        </div>
-                        <div className="cartitem__delete">X</div>
+                {loaded ? (
+                    <div className="basket_container">
+                        {cart.map((s, i) => (
+                            <CartItem 
+                                key={i}
+                                shoe={s}
+                                handleRemoveFromCart={this.handleRemoveFromCart}
+                            />
+                        ))}
                     </div>
-                </div>
+                ) : (
+                    <div>nothing to show</div>
+                )}
                 
             </>
         );

@@ -26,13 +26,13 @@ export default class MainDisplay extends Component {
                 "Content-Type": "application/json"
             }
         })
-            .then(resp => resp.json())
-            .then(data => {
-                this.setState({
-                    data: data,
-                    loading: false
-                });
+        .then(resp => resp.json())
+        .then(data => {
+            this.setState({
+                data: data,
+                loading: false
             });
+        });
     };
 
     paginate = (pageNumber) => {

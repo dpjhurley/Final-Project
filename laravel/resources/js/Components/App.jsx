@@ -31,11 +31,11 @@ export default class App extends React.Component {
             <Router>
                     <TopNav />
                     <Navbar />
-                    <AccountArea />
+                    {/* <AccountArea /> */}
                     <HiddenMenu />
                     <HiddenMenuSearch />
                     <ThirdNav />
-                    {/* <Basket /> */}
+                    <Basket />
                     {/* <Switch>
                         <Route path="/shoe"  component={SingleShoePage}/>
                         <Route path="/"  component={MainDisplay}/>

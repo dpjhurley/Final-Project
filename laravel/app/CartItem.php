@@ -11,8 +11,8 @@ class CartItem extends Model
         return $this->belongsToMany('App\User');
     }
 
-    public function shoes()
+    public function shoe()
     {
-        return $this->belongsToMany('App\Shoe');
+        return $this->belongsTo('App\Shoe');
     }
 }

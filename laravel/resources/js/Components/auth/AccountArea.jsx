@@ -37,7 +37,7 @@ class AccountArea extends React.Component {
         return (
             <>
                 {/* will need to change this to when true once this is all set up */}
-                {!this.props.logged_in ? (
+                {!this.state.logged_in ? (
                     <div className="account">
                         <LoginForm 
                             logged_in={this.state.logged_in}
