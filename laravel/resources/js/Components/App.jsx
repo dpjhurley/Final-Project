@@ -28,28 +28,27 @@ export default class App extends React.Component {
 
     render() {
         return (
-            <Fragment>
             <Router>
-                    <TopNav />
-                    <Navbar />
-                    {/* <AccountArea /> */}
-                    <HiddenMenu />
-                    <HiddenMenuSearch />
-                    <ThirdNav />
-                    {/* <Basket /> */}
-                               
-                    <Switch>
-                        <Route path="/basket"  component={Basket}/>
-                        <Route path="/shoe"  component={SingleShoePage}/>
-                        <Route path="/account"  component={AccountArea}/>
-                        <Route path="/register-account"  component={RegisterForm}/>
-                        <Route path="/"  component={MainDisplay}/>
-                        
-                    </Switch>
+                <TopNav />
+                <Navbar />
+                {/* <AccountArea /> */}
+                <HiddenMenu />
+                <HiddenMenuSearch />
+                <ThirdNav />
+                            
+                <Switch>
+                    <Route path="/basket"  component={Basket}/>
+                    <Route path="/shoe"  component={SingleShoePage}/>
+                    <Route path="/account"  component={AccountArea}/>
+                    <Route path="/cart" component={Basket} />
+                    <Route path="/register-account"  component={RegisterForm}/>
+                    <Route path="/"  component={MainDisplay}/>
+                    
+                    
+                </Switch>
                 <Footer />
                 <CopyrightFooter />
              </Router>   
-            </Fragment>
         )
     }
 }

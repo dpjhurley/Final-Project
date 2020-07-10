@@ -21,6 +21,7 @@ export default class MainDisplay extends Component {
             filterByCategory: []
         }
     }
+
     componentDidMount = () => {
         fetch("api/shoes", {
             headers: {
@@ -38,7 +39,6 @@ export default class MainDisplay extends Component {
     };
 
     handleBrandCheck = (e) => {
-
         if(this.state.filterByBrand.includes(e.target.value)){
             this.setState({
                 filterByBrand: this.state.filterByBrand.filter((brand) => brand !== e.target.value)
@@ -47,11 +47,10 @@ export default class MainDisplay extends Component {
             this.setState({
                 filterByBrand: this.state.filterByBrand.concat(e.target.value)
             })
-        
-        }
+        }    
     }
-    handleCategoryCheck = (e) => {
 
+    handleCategoryCheck = (e) => {
         if(this.state.filterByCategory.includes(e.target.value)){
             this.setState({
                 filterByCategory: this.state.filterByCategory.filter((category) => category !== e.target.value)
@@ -60,11 +59,10 @@ export default class MainDisplay extends Component {
             this.setState({
                 filterByCategory: this.state.filterByCategory.concat(e.target.value)
             })
-        
         }
     }
-    handleColorCheck = (e) => {
 
+    handleColorCheck = (e) => {
         if(this.state.filterByColor.includes(e.target.value)){
             this.setState({
                 filterByColor: this.state.filterByColor.filter((color) => color !== e.target.value)
@@ -105,7 +103,96 @@ export default class MainDisplay extends Component {
         const { data, loading, shoesPerPage } = this.state;
         const indexOfLastShoe = this.state.currentPage * this.state.shoesPerPage;
         const indexOfFirstShoe = indexOfLastShoe - this.state.shoesPerPage;
-        
+        let filteredShoes = [];
+        let secondRoundFilterShoes = [];
+
+
+        //this is too complicated and there must be a much better way to do this!
+        if (this.state.filterByBrand.length > 0) {
+            this.state.data.forEach(shoe => {
+                this.state.filterByBrand.forEach(brand => {
+                    if (shoe.brand_id == brand) {
+                        filteredShoes.push(shoe);
+                    }
+                })
+            });
+            if (this.state.filterByCategory.length > 0) {
+                filteredShoes.forEach(shoe => {
+                    this.state.filterByCategory.forEach(category => {
+                        if (shoe.category_id == category) {
+                            secondRoundFilterShoes.push(shoe);
+                        }
+                    })
+                });
+                filteredShoes = secondRoundFilterShoes;
+                secondRoundFilterShoes = [];
+                if (this.state.filterByColor.length > 0) {
+                    filteredShoes.forEach(shoe => {
+                        this.state.filterByColor.forEach(color => {
+                            let regex = new RegExp (color, 'i')
+                            if (shoe.color.match(regex) != null) {
+                                secondRoundFilterShoes.push(shoe);
+                            }
+                        })
+                    });
+                    filteredShoes = secondRoundFilterShoes;
+                }
+            }
+        } else if (this.state.filterByCategory.length > 0) {
+            this.state.data.forEach(shoe => {
+                this.state.filterByCategory.forEach(category => {
+                    if (shoe.category_id == category) {
+                        filteredShoes.push(shoe);
+                    }
+                })
+            });
+            if (this.state.filterByBrand.length > 0) {
+                filteredShoes.forEach(shoe => {
+                    this.state.filterByBrand.forEach(brand => {
+                        if (shoe.brand_id == brand) {
+                            secondRoundFilterShoes.push(shoe);
+                        }
+                    })
+                });
+                filteredShoes = secondRoundFilterShoes;
+                secondRoundFilterShoes = [];
+                if (this.state.filterByColor.length > 0) {
+                    filteredShoes.forEach(shoe => {
+                        this.state.filterByColor.forEach(color => {
+                            let regex = new RegExp (color, 'i')
+                            if (shoe.color.match(regex) != null) {
+                                secondRoundFilterShoes.push(shoe);
+                            }
+                        })
+                    });
+                    filteredShoes = secondRoundFilterShoes;
+                }
+            }
+        }else if (this.state.filterByColor.length > 0) {
+            this.state.data.forEach(shoe => {
+                this.state.filterByColor.forEach(color => {
+                    let regex = new RegExp (color, 'i')
+                    if (shoe.color.match(regex) != null) {
+                        filteredShoes.push(shoe);
+                    }
+                })
+            });
+        } else {
+            filteredShoes = this.state.data;
+        }
+
+        // if (this.state.filterByColor.length > 0) {
+        //     this.state.data.forEach(shoe => {
+        //         this.state.filterByColor.forEach(color => {
+        //             let regex = new RegExp (color, 'i')
+        //             if (shoe.color.match(regex) != null) {
+        //                 filteredShoes.push(shoe);
+        //             }
+        //         })
+        //     });
+        // } else {
+        //     filteredShoes = this.state.data;
+        // }
 
         return (
             <div className="information">
@@ -128,10 +215,14 @@ export default class MainDisplay extends Component {
                     <Spinner />
                 ) : (
                     <div className="shoes__right">
-                        <ShoeList shoes={data.slice(indexOfFirstShoe, indexOfLastShoe)} />
+                        {filteredShoes ? 
+                            (<ShoeList shoes={filteredShoes.slice(indexOfFirstShoe, indexOfLastShoe)} />
+                        ) : (
+                            <div>No Shoes!</div>
+                        )}
                         <Pagination
                             shoesPerPage={shoesPerPage}
-                            totalShoes={data.length}
+                            totalShoes={filteredShoes.length}
                             paginate={this.paginate}
                             previousPage={this.previousPage}
                             nextPage={this.nextPage}

@@ -12,7 +12,7 @@ export default class Search extends Component {
                             return (
                               <label key={newSearch.id}>
                                 {newSearch.name}
-                                <input type="checkbox" value={newSearch.name} onClick={handleCheck}>
+                                <input type="checkbox" value={newSearch.id} onClick={handleCheck}>
                                 </input>
                                 </label>
                             );

@@ -58,19 +58,13 @@
   margin-left: 0.5rem;
   font-size: 1.5rem;
 }
-<<<<<<< HEAD
-
 .mainNav__list__icons .search-icon {
   color: #000;
 }
-
 .mainNav__list__icons .search-icon i {
   margin-left: 0.5rem;
   font-size: 1.8rem;
 }
-
-=======
->>>>>>> b2c59b78b918f9b9354fb6c2055df27ef787d85d
 .mainNav__list__item {
   margin-left: 1rem;
   font-size: 1.6rem;
@@ -220,16 +214,10 @@
   align-items: center;
   justify-content: space-evenly;
 }
-<<<<<<< HEAD
-
 .hiddenMenu__list__items a {
-=======
-.hiddenMenu__list__items p {
->>>>>>> b2c59b78b918f9b9354fb6c2055df27ef787d85d
   margin-left: 1rem;
   width: 35%;
 }
-
 .hiddenMenu__list__items a p {
   font-size: 1rem;
 }
@@ -258,13 +246,7 @@
   margin: 0 1rem;
   font-size: 1.2rem;
   outline: none;
-<<<<<<< HEAD
   color: #333;
-=======
-}
-.hiddenMenusearch input:focus {
-  border-bottom: 1px solid black;
->>>>>>> b2c59b78b918f9b9354fb6c2055df27ef787d85d
 }
 .hiddenMenusearch input::-moz-placeholder {
   font-size: 1.2rem;
@@ -278,8 +260,6 @@
 .hiddenMenusearch input::placeholder {
   font-size: 1.2rem;
 }
-<<<<<<< HEAD
-
 .hiddenMenusearch .hiddensearchicons {
   cursor: pointer;
 }
@@ -287,10 +267,6 @@
 .hidden {
   display: none;
   opacity: 0;
-=======
-.hiddenMenusearch a {
-  color: #777;
->>>>>>> b2c59b78b918f9b9354fb6c2055df27ef787d85d
 }
 
 .thirdNav {
@@ -313,21 +289,11 @@
   align-items: center;
   justify-content: center;
 }
-<<<<<<< HEAD
-
 .thirdNav div h3 a {
   text-decoration: none;
   color: #777;
 }
-
 .thirdNav div h3 a:hover {
-=======
-.thirdNav div a {
-  text-decoration: none;
-  color: #777;
-}
-.thirdNav div a:hover {
->>>>>>> b2c59b78b918f9b9354fb6c2055df27ef787d85d
   color: #333;
   text-decoration: underline;
 }
