@@ -34,6 +34,6 @@ class Shoe extends Model
 
     public function cartItems()
     {
-        return $this->belongsToMany('App\Cart');
+        return $this->hasMany('App\Cart');
     }
 }

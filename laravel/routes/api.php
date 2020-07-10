@@ -35,9 +35,9 @@ Route::get('/categories', 'Api\CategoryController@index');
 
 // });
 
-Route::get('/cart', 'Api\CartController@index');
+Route::get('/cart/{id}', 'Api\CartController@index');
 Route::post('/cart/add', 'Api\CartController@add');
-Route::post('/cart/remove', 'Api\CartController@remove');
+Route::put('/cart/remove', 'Api\CartController@remove');
 
 Route::post('/login', 'Api\LoginController@login');
 Route::post('/register', 'Api\RegisterController@register');

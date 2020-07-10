@@ -7,16 +7,57 @@
     width: 65%;
 }
 
-.cartItem{
+.cartitem{
     display: flex;
+    justify-content: space-between;
     padding: 1em;
+
+    &__info {
+        display: flex;
         
-    &__image {
+    }
+        
+    .shoeimage {
         max-width: 150px;
         // height: 100px;
     }
 
     &__delete {
-        text-align: right;
+        display:flex;
+        justify-content: flex-end;
+
+        &>input{
+            height: 30%;
+            width: 50px;
+        }
     }
+}
+
+.shoeinfo {
+    padding: 1em;
+
+    &__brand{
+        margin-bottom: 0.5em;
+    }
+
+    &__name{
+        margin-bottom: 0.5em;
+    }
+
+    &__price{
+        margin-bottom: 0.5em;
+    }
+
+    &__buttons {
+        
+        .quantity{
+            margin-bottom: 0.5em;
+        }
+
+        .size{
+        
+        }
+    }
+    
+    
 }

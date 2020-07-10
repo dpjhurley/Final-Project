@@ -15,10 +15,12 @@ export default class MainDisplay extends Component {
             data: null,
             loading: true,
             currentPage: 1,
-            shoesPerPage: 9
+            shoesPerPage: 9,
+            filterByColor: [],
+            filterByBrand: [],
+            filterByCategory: []
         }
     }
-
     componentDidMount = () => {
         fetch("api/shoes", {
             headers: {
@@ -26,14 +28,54 @@ export default class MainDisplay extends Component {
                 "Content-Type": "application/json"
             }
         })
-            .then(resp => resp.json())
-            .then(data => {
-                this.setState({
-                    data: data,
-                    loading: false
-                });
+        .then(resp => resp.json())
+        .then(data => {
+            this.setState({
+                data: data,
+                loading: false
             });
+        });
     };
+
+    handleBrandCheck = (e) => {
+
+        if(this.state.filterByBrand.includes(e.target.value)){
+            this.setState({
+                filterByBrand: this.state.filterByBrand.filter((brand) => brand !== e.target.value)
+            })
+        }else{
+            this.setState({
+                filterByBrand: this.state.filterByBrand.concat(e.target.value)
+            })
+        
+        }
+    }
+    handleCategoryCheck = (e) => {
+
+        if(this.state.filterByCategory.includes(e.target.value)){
+            this.setState({
+                filterByCategory: this.state.filterByCategory.filter((category) => category !== e.target.value)
+            })
+        }else{
+            this.setState({
+                filterByCategory: this.state.filterByCategory.concat(e.target.value)
+            })
+        
+        }
+    }
+    handleColorCheck = (e) => {
+
+        if(this.state.filterByColor.includes(e.target.value)){
+            this.setState({
+                filterByColor: this.state.filterByColor.filter((color) => color !== e.target.value)
+            })
+        }else{
+            this.setState({
+                filterByColor: this.state.filterByColor.concat(e.target.value)
+            })
+        
+        }
+    }
 
     paginate = (pageNumber) => {
         this.setState({
@@ -75,7 +117,13 @@ export default class MainDisplay extends Component {
                 </div>
             </div>
             <div className="shoes">
-                <SearchList />
+                <SearchList 
+                handleBrandCheck={this.handleBrandCheck}
+                handleCategoryCheck={this.handleCategoryCheck}
+                handleColorCheck={this.handleColorCheck}
+                isColorChecked={this.state.isColorChecked}
+
+                />
                 {(loading) ? (
                     <Spinner />
                 ) : (

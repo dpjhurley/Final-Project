@@ -2,16 +2,17 @@ import React, { Component } from "react";
 
 export default class Search extends Component {
     render() {
-        const { search } = this.props;
+        const { search, handleCheck} = this.props;
+
         return (
             <div>
                 <div className="search">
                     <form action="">
-                        {search.map((search, i) => {
+                        {search.map((newSearch) => {
                             return (
-                              <label key={search.id}>
-                                {search.name}
-                                <input type="checkbox">
+                              <label key={newSearch.id}>
+                                {newSearch.name}
+                                <input type="checkbox" value={newSearch.name} onClick={handleCheck}>
                                 </input>
                                 </label>
                             );

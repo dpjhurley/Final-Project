@@ -32,10 +32,12 @@ export default class App extends React.Component {
             <Router>
                     <TopNav />
                     <Navbar />
+                    {/* <AccountArea /> */}
                     <HiddenMenu />
                     <HiddenMenuSearch />
                     <ThirdNav />
-                    
+                    {/* <Basket /> */}
+                               
                     <Switch>
                         <Route path="/basket"  component={Basket}/>
                         <Route path="/shoe"  component={SingleShoePage}/>
