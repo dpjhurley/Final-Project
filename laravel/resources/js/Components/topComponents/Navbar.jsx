@@ -86,9 +86,9 @@ export default class Navbar extends React.Component {
                 <div className="mainNav__list__icons search-icon" onClick={this.handleOnClickHiddenSearch} >
                     
                         <i className="fas fa-search"></i>
-                     <HiddenMenuSearch handleOnClickHiddenSearch={this.handleOnClickHiddenSearch} />
+                   
                 </div>
-
+                <HiddenMenuSearch handleOnClickHiddenSearch={this.handleOnClickHiddenSearch} />
             </div>
         </nav>
         

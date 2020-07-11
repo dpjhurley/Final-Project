@@ -33979,160 +33979,10 @@ var RegisterForm = function RegisterForm() {
     htmlFor: "mailing"
   }, "By Clicking on the checkbox you will be subscribed to our mailing list"))), terms ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "register-submit"
-<<<<<<< HEAD
-  }, "Register your account") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null)))
-  /* <form action="" onSubmit={handleFormSubmit}  className="account__register__form" >
-  
-      <div className="form-group">
-          <label >First name</label><br />
-          <input 
-              className="form-control" 
-              type="text" 
-              name="name"
-              onChange={handleNameChange} 
-          />
-      </div>
-                    <div className="form-group">
-          <label >Surname</label><br />
-          <input 
-              className="form-control" 
-              type="text" 
-              name="surname"
-              onChange={handleSurnameChange}
-          />
-      </div>
-            <div className="form-group">
-          <label >Date of birth</label><br />
-          <input 
-              className="form-control" 
-              type="date" 
-              name="date_of_birth"
-              onChange={handleDateChange}
-          />
-      </div> 
-            <div className="form-group">
-          <label >Email</label><br />
-          <input 
-              className="form-control" 
-              type="email" 
-              name="email"
-              onChange={handleEmailChange}
-          />
-      </div>
-            <div className="form-group">
-          <p>What Shoes are you interested in?</p>
-          <label >Male</label>
-          <input type="radio" name="gender" value="male" onClick={handleGenderChange} />
-          <label >Female</label>
-          <input type="radio" name="gender" value="female" onClick={handleGenderChange} />
-      </div>
-            <div className="form-group">
-          <label >Password</label><br />
-          <input 
-              className="form-control" 
-              type="password" 
-              name="password"
-              onChange={handlePasswordChange}
-          />
-      </div>
-                    <div className="form-group">
-          <label >Confirm password</label><br />
-          <input 
-          className="form-control" 
-          type="password" 
-          name="password_confirmation"
-          onChange={handleRePasswordChange}
-          />
-      </div> 
-      
-      <div className="form-group">
-          <input 
-              type="checkbox"
-              name="mailing_list" 
-              onChange={handleMailingListChange}
-          />
-          <label >If you would like to receive regular emails featuring new styles, sale updates and great competitions, tick this box.</label>
-      </div>
-                    <input type="submit" value="Register your account"/>
-                </form> */
-  );
-=======
-  }, "Register your account"))));
->>>>>>> b2c59b78b918f9b9354fb6c2055df27ef787d85d
+  }, "Register your account") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null))));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (RegisterForm); //  <form action="" onSubmit={handleFormSubmit}  className="account__register__form" >
-//     <div className="form-group">
-//         <label >First name</label><br />
-//         <input 
-//             className="form-control" 
-//             type="text" 
-//             name="name"
-//             onChange={handleNameChange} 
-//         />
-//     </div>
-//     <div className="form-group">
-//         <label >Surname</label><br />
-//         <input 
-//             className="form-control" 
-//             type="text" 
-//             name="surname"
-//             onChange={handleSurnameChange}
-//         />
-//     </div>
-//     <div className="form-group">
-//         <label >Date of birth</label><br />
-//         <input 
-//             className="form-control" 
-//             type="date" 
-//             name="date_of_birth"
-//             onChange={handleDateChange}
-//         />
-//     </div> 
-//     <div className="form-group">
-//         <label >Email</label><br />
-//         <input 
-//             className="form-control" 
-//             type="email" 
-//             name="email"
-//             onChange={handleEmailChange}
-//         />
-//     </div>
-//     <div className="form-group">
-//         <p>What Shoes are you interested in?</p>
-//         <label >Male</label>
-//         <input type="radio" name="gender" value="male" onClick={handleGenderChange} />
-//         <label >Female</label>
-//         <input type="radio" name="gender" value="female" onClick={handleGenderChange} />
-//     </div>
-//     <div className="form-group">
-//         <label >Password</label><br />
-//         <input 
-//             className="form-control" 
-//             type="password" 
-//             name="password"
-//             onChange={handlePasswordChange}
-//         />
-//     </div>
-//     <div className="form-group">
-//         <label >Confirm password</label><br />
-//         <input 
-//         className="form-control" 
-//         type="password" 
-//         name="password_confirmation"
-//         onChange={handleRePasswordChange}
-//         />
-//     </div> 
-//     <div className="form-group">
-//         <input 
-//             type="checkbox"
-//             name="mailing_list" 
-//             onChange={handleMailingListChange}
-//         />
-//         <label >If you would like to receive regular emails featuring new styles, sale updates and great competitions, tick this box.</label>
-//     </div>
-//     <input type="submit" value="Register your account"/>
-// </form>
+/* harmony default export */ __webpack_exports__["default"] = (RegisterForm);
 
 /***/ }),
 
@@ -36489,9 +36339,9 @@ var Navbar = /*#__PURE__*/function (_React$Component) {
         onClick: this.handleOnClickHiddenSearch
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-search"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_HiddenMenuSearch_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_HiddenMenuSearch_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
         handleOnClickHiddenSearch: this.handleOnClickHiddenSearch
-      }))));
+      })));
     }
   }]);
 
@@ -36975,8 +36825,8 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Web\Bootcamp\projects\final-project\laravel\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Web\Bootcamp\projects\final-project\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\web\_home\mza\Final-project\laravel\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\web\_home\mza\Final-project\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
