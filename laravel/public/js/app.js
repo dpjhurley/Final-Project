@@ -33959,12 +33959,58 @@ var RegisterForm = function RegisterForm() {
     htmlFor: "gender-female"
   }, "Female")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Payment Details"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "radio",
+    name: "payment-method",
+    value: "card",
+    id: "payment-method-card",
+    checked: true
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "payment-method-card"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fa fa-cc-visa"
+  }), "Credit Card")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "radio",
+    name: "payment-method",
+    value: "paypal",
+    id: "payment-method-paypal"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "payment-method-paypal"
+  }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fa fa-cc-paypal"
+  }), "Paypal"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group input-group-icon"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    placeholder: "Card Number"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-icon"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fa fa-credit-card"
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-half"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group input-group-icon"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    placeholder: "Card CVC"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-icon"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fa fa-user"
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-half"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "01"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "02"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "03"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "04"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "05"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "06"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "07"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "08"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "09"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "10"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "11"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "12")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "2020"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "2021"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "2022"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "2023"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "2024"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "2025"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Terms and Conditions"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "input-group"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "checkbox",
-    id: "terms",
-    onChange: handleTermsChange
+    id: "terms"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "terms"
   }, "I accept the terms and conditions for signing up to this service, and hereby confirm I have read the privacy policy."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -33977,88 +34023,9 @@ var RegisterForm = function RegisterForm() {
     onChange: handleMailingListChange
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "mailing"
-  }, "By Clicking on the checkbox you will be subscribed to our mailing list"))), terms ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  }, "By Clicking on the checkbox you will be subscribed to our mailing list"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "register-submit"
-<<<<<<< HEAD
-  }, "Register your account") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null)))
-  /* <form action="" onSubmit={handleFormSubmit}  className="account__register__form" >
-  
-      <div className="form-group">
-          <label >First name</label><br />
-          <input 
-              className="form-control" 
-              type="text" 
-              name="name"
-              onChange={handleNameChange} 
-          />
-      </div>
-                    <div className="form-group">
-          <label >Surname</label><br />
-          <input 
-              className="form-control" 
-              type="text" 
-              name="surname"
-              onChange={handleSurnameChange}
-          />
-      </div>
-            <div className="form-group">
-          <label >Date of birth</label><br />
-          <input 
-              className="form-control" 
-              type="date" 
-              name="date_of_birth"
-              onChange={handleDateChange}
-          />
-      </div> 
-            <div className="form-group">
-          <label >Email</label><br />
-          <input 
-              className="form-control" 
-              type="email" 
-              name="email"
-              onChange={handleEmailChange}
-          />
-      </div>
-            <div className="form-group">
-          <p>What Shoes are you interested in?</p>
-          <label >Male</label>
-          <input type="radio" name="gender" value="male" onClick={handleGenderChange} />
-          <label >Female</label>
-          <input type="radio" name="gender" value="female" onClick={handleGenderChange} />
-      </div>
-            <div className="form-group">
-          <label >Password</label><br />
-          <input 
-              className="form-control" 
-              type="password" 
-              name="password"
-              onChange={handlePasswordChange}
-          />
-      </div>
-                    <div className="form-group">
-          <label >Confirm password</label><br />
-          <input 
-          className="form-control" 
-          type="password" 
-          name="password_confirmation"
-          onChange={handleRePasswordChange}
-          />
-      </div> 
-      
-      <div className="form-group">
-          <input 
-              type="checkbox"
-              name="mailing_list" 
-              onChange={handleMailingListChange}
-          />
-          <label >If you would like to receive regular emails featuring new styles, sale updates and great competitions, tick this box.</label>
-      </div>
-                    <input type="submit" value="Register your account"/>
-                </form> */
-  );
-=======
   }, "Register your account"))));
->>>>>>> b2c59b78b918f9b9354fb6c2055df27ef787d85d
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (RegisterForm); //  <form action="" onSubmit={handleFormSubmit}  className="account__register__form" >
@@ -36975,8 +36942,8 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Web\Bootcamp\projects\final-project\laravel\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Web\Bootcamp\projects\final-project\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/brandon/web/codingbootcamp/projects/real-final-project/laravel/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/brandon/web/codingbootcamp/projects/real-final-project/laravel/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

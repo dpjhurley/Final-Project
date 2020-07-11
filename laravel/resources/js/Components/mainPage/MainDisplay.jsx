@@ -128,7 +128,11 @@ export default class MainDisplay extends Component {
                     <Spinner />
                 ) : (
                     <div className="shoes__right">
-                        <ShoeList shoes={data.slice(indexOfFirstShoe, indexOfLastShoe)} />
+                        <ShoeList 
+                        shoes={data.slice(indexOfFirstShoe, indexOfLastShoe)} 
+                        color={this.state.filterByColor}
+                        brand={this.state.filterByBrand}
+                        category={this.state.filterByCategory}/>
                         <Pagination
                             shoesPerPage={shoesPerPage}
                             totalShoes={data.length}
