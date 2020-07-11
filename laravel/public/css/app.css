@@ -142,6 +142,11 @@
   flex-wrap: wrap;
 }
 
+.shoeSection > a {
+  text-decoration: none;
+  color: black;
+}
+
 .topNav {
   background-color: #E7E7E7;
   display: flex;

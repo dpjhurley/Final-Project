@@ -12,10 +12,10 @@ use Croppa;
 
 class CartController extends Controller
 {
-    public function index($id)
+    public function index($user_id)
     {
         $cart = CartItem::query()
-            ->where('user_id', $id)
+            ->where('user_id', $user_id)
             ->with('shoe')
             ->get();
 
@@ -57,12 +57,13 @@ class CartController extends Controller
         }
     }
 
-    public function remove(Request $request) 
+    public function remove($user_id, $shoe_id) 
     {
-        $item = CartItem::where('shoe_id', $request->input('shoe_id'))->where('user_id', $request->input('user_id'))->first();
+        $item = CartItem::where('user_id', $user_id)->where('shoe_id', $shoe_id)->first();
+        // $item->delete();
 
         // if ($request->input('count') > $item->count) {
-        //     $item->delete();
+            // $item->delete();
 
         // } else {
         //     $item->count -= $request->input('count');

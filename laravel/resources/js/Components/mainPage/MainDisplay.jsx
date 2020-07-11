@@ -12,8 +12,6 @@ export default class MainDisplay extends Component {
         super(props)
 
         this.state = {
-            data: null,
-            loading: true,
             currentPage: 1,
             shoesPerPage: 9,
             filterByColor: [],
@@ -21,22 +19,6 @@ export default class MainDisplay extends Component {
             filterByCategory: []
         }
     }
-
-    componentDidMount = () => {
-        fetch("api/shoes", {
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json"
-            }
-        })
-        .then(resp => resp.json())
-        .then(data => {
-            this.setState({
-                data: data,
-                loading: false
-            });
-        });
-    };
 
     handleBrandCheck = (e) => {
         if(this.state.filterByBrand.includes(e.target.value)){
@@ -95,104 +77,50 @@ export default class MainDisplay extends Component {
                 currentPage: this.state.currentPage + 1
             })
         }
-    }
-
-     
+    }     
 
     render() {
-        const { data, loading, shoesPerPage } = this.state;
-        const indexOfLastShoe = this.state.currentPage * this.state.shoesPerPage;
-        const indexOfFirstShoe = indexOfLastShoe - this.state.shoesPerPage;
+        const { currentPage, shoesPerPage, filterByBrand, filterByCategory, filterByColor } = this.state;
+        const { data, loading } = this.props;
+        const indexOfLastShoe = currentPage * shoesPerPage;
+        const indexOfFirstShoe = indexOfLastShoe - shoesPerPage;
         let filteredShoes = [];
-        let secondRoundFilterShoes = [];
 
-
-        //this is too complicated and there must be a much better way to do this!
-        if (this.state.filterByBrand.length > 0) {
-            this.state.data.forEach(shoe => {
-                this.state.filterByBrand.forEach(brand => {
+        //this filters but maybe not in the way we want, could be made better (line 111 - 140)
+        if (filterByBrand.length > 0) {
+            data.forEach(shoe => {
+                filterByBrand.forEach(brand => {
                     if (shoe.brand_id == brand) {
                         filteredShoes.push(shoe);
                     }
                 })
             });
-            if (this.state.filterByCategory.length > 0) {
-                filteredShoes.forEach(shoe => {
-                    this.state.filterByCategory.forEach(category => {
-                        if (shoe.category_id == category) {
-                            secondRoundFilterShoes.push(shoe);
-                        }
-                    })
-                });
-                filteredShoes = secondRoundFilterShoes;
-                secondRoundFilterShoes = [];
-                if (this.state.filterByColor.length > 0) {
-                    filteredShoes.forEach(shoe => {
-                        this.state.filterByColor.forEach(color => {
-                            let regex = new RegExp (color, 'i')
-                            if (shoe.color.match(regex) != null) {
-                                secondRoundFilterShoes.push(shoe);
-                            }
-                        })
-                    });
-                    filteredShoes = secondRoundFilterShoes;
-                }
-            }
-        } else if (this.state.filterByCategory.length > 0) {
-            this.state.data.forEach(shoe => {
-                this.state.filterByCategory.forEach(category => {
+        } 
+
+        if (filterByCategory.length > 0) {
+            data.forEach(shoe => {
+                filterByCategory.forEach(category => {
                     if (shoe.category_id == category) {
                         filteredShoes.push(shoe);
                     }
                 })
             });
-            if (this.state.filterByBrand.length > 0) {
-                filteredShoes.forEach(shoe => {
-                    this.state.filterByBrand.forEach(brand => {
-                        if (shoe.brand_id == brand) {
-                            secondRoundFilterShoes.push(shoe);
-                        }
-                    })
-                });
-                filteredShoes = secondRoundFilterShoes;
-                secondRoundFilterShoes = [];
-                if (this.state.filterByColor.length > 0) {
-                    filteredShoes.forEach(shoe => {
-                        this.state.filterByColor.forEach(color => {
-                            let regex = new RegExp (color, 'i')
-                            if (shoe.color.match(regex) != null) {
-                                secondRoundFilterShoes.push(shoe);
-                            }
-                        })
-                    });
-                    filteredShoes = secondRoundFilterShoes;
-                }
-            }
-        }else if (this.state.filterByColor.length > 0) {
-            this.state.data.forEach(shoe => {
-                this.state.filterByColor.forEach(color => {
+        } 
+
+        if (filterByColor.length > 0) {
+            data.forEach(shoe => {
+                filterByColor.forEach(color => {
                     let regex = new RegExp (color, 'i')
                     if (shoe.color.match(regex) != null) {
                         filteredShoes.push(shoe);
                     }
                 })
             });
-        } else {
-            filteredShoes = this.state.data;
+        } 
+        
+        if (filterByBrand.length == 0 && filterByCategory.length == 0 && filterByColor.length == 0) {
+            filteredShoes = this.props.data;
         }
-
-        // if (this.state.filterByColor.length > 0) {
-        //     this.state.data.forEach(shoe => {
-        //         this.state.filterByColor.forEach(color => {
-        //             let regex = new RegExp (color, 'i')
-        //             if (shoe.color.match(regex) != null) {
-        //                 filteredShoes.push(shoe);
-        //             }
-        //         })
-        //     });
-        // } else {
-        //     filteredShoes = this.state.data;
-        // }
 
         return (
             <div className="information">

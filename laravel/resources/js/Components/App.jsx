@@ -18,18 +18,41 @@ export default class App extends React.Component {
         super(props);
 
         this.state = {
-            id: 'id',
-            title: "Navy",
-            description: "Introducing your new off-duty look, the ultra-fres...",
-            
+            data: [],
+            loading: true
         };
     }
 
-    
-
+    componentDidMount = () => {
+        fetch("api/shoes", {
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            }
+        })
+        .then(resp => resp.json())
+        .then(data => {
+            this.setState({
+                data: data,
+                loading: false
+            });
+        });
+    };
+    handleBrandCheck = (e) => {
+        if(this.state.filterByBrand.includes(e.target.value)){
+            this.setState({
+                filterByBrand: this.state.filterByBrand.filter((brand) => brand !== e.target.value)
+            })
+        }else{
+            this.setState({
+                filterByBrand: this.state.filterByBrand.concat(e.target.value)
+            })
+        }    
+    }
     
 
     render() {
+        const { data, loading } = this.state;
         return (
             <Router>
                 <TopNav />
@@ -41,11 +64,26 @@ export default class App extends React.Component {
                             
                 <Switch>
                     <Route path="/basket"  component={Basket}/>
-                    <Route path="/shoe"  component={SingleShoePage}/>
+                    {data ? (
+                        data.map((shoe) => (
+                            <Route key={shoe.id} path={`/shoe/${shoe.id}`}  render={() => <SingleShoePage shoe={shoe} />}/>
+                        ))
+                    ) : (
+                        null
+                    )}
                     <Route path="/account"  component={AccountArea}/>
                     <Route path="/cart" component={Basket} />
                     <Route path="/register-account"  component={RegisterForm}/>
-                    <Route path="/"  component={MainDisplay}/>
+                    <Route 
+                        path="/" 
+                        render={() => 
+                            <MainDisplay 
+                                data={data}
+                                loading={loading}
+                                handleBrandCheck={this.handleBrandCheck}
+                            />
+                        }
+                    />
                     
                     
                 </Switch>

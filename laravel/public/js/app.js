@@ -33329,6 +33329,8 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -33355,10 +33357,40 @@ var App = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, App);
 
     _this = _super.call(this, props);
+
+    _defineProperty(_assertThisInitialized(_this), "componentDidMount", function () {
+      fetch("api/shoes", {
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        }
+      }).then(function (resp) {
+        return resp.json();
+      }).then(function (data) {
+        _this.setState({
+          data: data,
+          loading: false
+        });
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleBrandCheck", function (e) {
+      if (_this.state.filterByBrand.includes(e.target.value)) {
+        _this.setState({
+          filterByBrand: _this.state.filterByBrand.filter(function (brand) {
+            return brand !== e.target.value;
+          })
+        });
+      } else {
+        _this.setState({
+          filterByBrand: _this.state.filterByBrand.concat(e.target.value)
+        });
+      }
+    });
+
     _this.state = {
-      id: 'id',
-      title: "Navy",
-      description: "Introducing your new off-duty look, the ultra-fres..."
+      data: [],
+      loading: true
     };
     return _this;
   }
@@ -33366,13 +33398,25 @@ var App = /*#__PURE__*/function (_React$Component) {
   _createClass(App, [{
     key: "render",
     value: function render() {
+      var _this2 = this;
+
+      var _this$state = this.state,
+          data = _this$state.data,
+          loading = _this$state.loading;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["BrowserRouter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_topComponents_Topnav__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_topComponents_Navbar__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_topComponents_HiddenMenu_jsx__WEBPACK_IMPORTED_MODULE_5__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_topComponents_HiddenMenuSearch_jsx__WEBPACK_IMPORTED_MODULE_6__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_topComponents_ThirdNav_jsx__WEBPACK_IMPORTED_MODULE_7__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         path: "/basket",
         component: _basket_Basket_jsx__WEBPACK_IMPORTED_MODULE_12__["default"]
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-        path: "/shoe",
-        component: _singleShoeComponents_SingleShoePage_jsx__WEBPACK_IMPORTED_MODULE_11__["default"]
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+      }), data ? data.map(function (shoe) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+          key: shoe.id,
+          path: "/shoe/".concat(shoe.id),
+          render: function render() {
+            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_singleShoeComponents_SingleShoePage_jsx__WEBPACK_IMPORTED_MODULE_11__["default"], {
+              shoe: shoe
+            });
+          }
+        });
+      }) : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         path: "/account",
         component: _auth_AccountArea_jsx__WEBPACK_IMPORTED_MODULE_2__["default"]
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
@@ -33383,7 +33427,13 @@ var App = /*#__PURE__*/function (_React$Component) {
         component: _auth_RegisterForm_jsx__WEBPACK_IMPORTED_MODULE_13__["default"]
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         path: "/",
-        component: _mainPage_MainDisplay_jsx__WEBPACK_IMPORTED_MODULE_10__["default"]
+        render: function render() {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_mainPage_MainDisplay_jsx__WEBPACK_IMPORTED_MODULE_10__["default"], {
+            data: data,
+            loading: loading,
+            handleBrandCheck: _this2.handleBrandCheck
+          });
+        }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_bottomComponents_Footer_jsx__WEBPACK_IMPORTED_MODULE_8__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_bottomComponents_CopyrightFooter_jsx__WEBPACK_IMPORTED_MODULE_9__["default"], null));
     }
   }]);
@@ -34180,46 +34230,7 @@ var Basket = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
 
-    _defineProperty(_assertThisInitialized(_this), "handleRemoveFromCart", function (shoe) {
-      console.log('remove', shoe); // this.setState({
-      //     loaded: false
-      // })
-      // fetch('api/cart/remove', {
-      //     method: 'post',
-      //     body: JSON.stringify(
-      //         {
-      //             'user_id': this.state.removeUserId,
-      //             'shoe_id': this.state.removeShoeId,
-      //         }
-      //     ),
-      //     headers: {
-      //         "Accept": "application/json",
-      //         "Content-Type": "application/json"
-      //     }
-      // })
-      // .then((resp) => resp.json())
-      // .then((data) => {
-      //     console.log(data)
-      //     this.setState({
-      //         // cart: data,
-      //         loaded: !this.state.loaded
-      //     })
-      // })   
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "handleRemoveUserId", function (e) {
-      _this.setState({
-        removeUserId: e.target.value
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "handleRemoveShoeId", function (e) {
-      _this.setState({
-        removeShoeId: e.target.value
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "fetchCartItems", function () {
+    _defineProperty(_assertThisInitialized(_this), "componentDidMount", function () {
       fetch("api/cart/".concat(18), {
         headers: {
           "Accept": "application/json",
@@ -34235,8 +34246,38 @@ var Basket = /*#__PURE__*/function (_React$Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "componentDidMount", function () {
-      _this.fetchCartItems();
+    _defineProperty(_assertThisInitialized(_this), "handleRemoveFromCart", function (shoe) {
+      if (window.confirm('Are you sure you want to remove this from your cart?')) {
+        console.log('remove', shoe); //fetch will actually look like this later `api/cart/${id}/remove` but we will have to configure logging in and out 
+
+        fetch("api/cart/".concat(shoe.user_id, "/").concat(shoe.shoe_id, "/remove"), {
+          method: 'POST',
+          headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+          }
+        }).then(function (resp) {
+          return resp.json();
+        }).then(function (data) {
+          console.log(data);
+
+          _this.setState({// cart: data,
+            // loaded: true
+          });
+        });
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleRemoveUserId", function (e) {
+      _this.setState({
+        removeUserId: e.target.value
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleRemoveShoeId", function (e) {
+      _this.setState({
+        removeShoeId: e.target.value
+      });
     });
 
     _defineProperty(_assertThisInitialized(_this), "componentDidUpdate", function () {
@@ -34245,9 +34286,7 @@ var Basket = /*#__PURE__*/function (_React$Component) {
 
     _this.state = {
       cart: [],
-      loaded: false,
-      removeUserId: '',
-      removeShoeId: ''
+      loaded: false
     };
     return _this;
   }
@@ -34855,22 +34894,6 @@ var MainDisplay = /*#__PURE__*/function (_Component) {
 
     _this = _super.call(this, props);
 
-    _defineProperty(_assertThisInitialized(_this), "componentDidMount", function () {
-      fetch("api/shoes", {
-        headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json"
-        }
-      }).then(function (resp) {
-        return resp.json();
-      }).then(function (data) {
-        _this.setState({
-          data: data,
-          loading: false
-        });
-      });
-    });
-
     _defineProperty(_assertThisInitialized(_this), "handleBrandCheck", function (e) {
       if (_this.state.filterByBrand.includes(e.target.value)) {
         _this.setState({
@@ -34936,8 +34959,6 @@ var MainDisplay = /*#__PURE__*/function (_Component) {
     });
 
     _this.state = {
-      data: null,
-      loading: true,
       currentPage: 1,
       shoesPerPage: 9,
       filterByColor: [],
@@ -34950,86 +34971,42 @@ var MainDisplay = /*#__PURE__*/function (_Component) {
   _createClass(MainDisplay, [{
     key: "render",
     value: function render() {
-      var _this2 = this;
-
       var _this$state = this.state,
-          data = _this$state.data,
-          loading = _this$state.loading,
-          shoesPerPage = _this$state.shoesPerPage;
-      var indexOfLastShoe = this.state.currentPage * this.state.shoesPerPage;
-      var indexOfFirstShoe = indexOfLastShoe - this.state.shoesPerPage;
-      var filteredShoes = [];
-      var secondRoundFilterShoes = []; //this is too complicated and there must be a much better way to do this!
+          currentPage = _this$state.currentPage,
+          shoesPerPage = _this$state.shoesPerPage,
+          filterByBrand = _this$state.filterByBrand,
+          filterByCategory = _this$state.filterByCategory,
+          filterByColor = _this$state.filterByColor;
+      var _this$props = this.props,
+          data = _this$props.data,
+          loading = _this$props.loading;
+      var indexOfLastShoe = currentPage * shoesPerPage;
+      var indexOfFirstShoe = indexOfLastShoe - shoesPerPage;
+      var filteredShoes = []; //this filters but maybe not in the way we want, could be made better (line 111 - 140)
 
-      if (this.state.filterByBrand.length > 0) {
-        this.state.data.forEach(function (shoe) {
-          _this2.state.filterByBrand.forEach(function (brand) {
+      if (filterByBrand.length > 0) {
+        data.forEach(function (shoe) {
+          filterByBrand.forEach(function (brand) {
             if (shoe.brand_id == brand) {
               filteredShoes.push(shoe);
             }
           });
         });
+      }
 
-        if (this.state.filterByCategory.length > 0) {
-          filteredShoes.forEach(function (shoe) {
-            _this2.state.filterByCategory.forEach(function (category) {
-              if (shoe.category_id == category) {
-                secondRoundFilterShoes.push(shoe);
-              }
-            });
-          });
-          filteredShoes = secondRoundFilterShoes;
-          secondRoundFilterShoes = [];
-
-          if (this.state.filterByColor.length > 0) {
-            filteredShoes.forEach(function (shoe) {
-              _this2.state.filterByColor.forEach(function (color) {
-                var regex = new RegExp(color, 'i');
-
-                if (shoe.color.match(regex) != null) {
-                  secondRoundFilterShoes.push(shoe);
-                }
-              });
-            });
-            filteredShoes = secondRoundFilterShoes;
-          }
-        }
-      } else if (this.state.filterByCategory.length > 0) {
-        this.state.data.forEach(function (shoe) {
-          _this2.state.filterByCategory.forEach(function (category) {
+      if (filterByCategory.length > 0) {
+        data.forEach(function (shoe) {
+          filterByCategory.forEach(function (category) {
             if (shoe.category_id == category) {
               filteredShoes.push(shoe);
             }
           });
         });
+      }
 
-        if (this.state.filterByBrand.length > 0) {
-          filteredShoes.forEach(function (shoe) {
-            _this2.state.filterByBrand.forEach(function (brand) {
-              if (shoe.brand_id == brand) {
-                secondRoundFilterShoes.push(shoe);
-              }
-            });
-          });
-          filteredShoes = secondRoundFilterShoes;
-          secondRoundFilterShoes = [];
-
-          if (this.state.filterByColor.length > 0) {
-            filteredShoes.forEach(function (shoe) {
-              _this2.state.filterByColor.forEach(function (color) {
-                var regex = new RegExp(color, 'i');
-
-                if (shoe.color.match(regex) != null) {
-                  secondRoundFilterShoes.push(shoe);
-                }
-              });
-            });
-            filteredShoes = secondRoundFilterShoes;
-          }
-        }
-      } else if (this.state.filterByColor.length > 0) {
-        this.state.data.forEach(function (shoe) {
-          _this2.state.filterByColor.forEach(function (color) {
+      if (filterByColor.length > 0) {
+        data.forEach(function (shoe) {
+          filterByColor.forEach(function (color) {
             var regex = new RegExp(color, 'i');
 
             if (shoe.color.match(regex) != null) {
@@ -35037,21 +35014,11 @@ var MainDisplay = /*#__PURE__*/function (_Component) {
             }
           });
         });
-      } else {
-        filteredShoes = this.state.data;
-      } // if (this.state.filterByColor.length > 0) {
-      //     this.state.data.forEach(shoe => {
-      //         this.state.filterByColor.forEach(color => {
-      //             let regex = new RegExp (color, 'i')
-      //             if (shoe.color.match(regex) != null) {
-      //                 filteredShoes.push(shoe);
-      //             }
-      //         })
-      //     });
-      // } else {
-      //     filteredShoes = this.state.data;
-      // }
+      }
 
+      if (filterByBrand.length == 0 && filterByCategory.length == 0 && filterByColor.length == 0) {
+        filteredShoes = this.props.data;
+      }
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "information"
@@ -35302,8 +35269,6 @@ var SearchList = /*#__PURE__*/function (_Component) {
       }).then(function (resp) {
         return resp.json();
       }).then(function (data) {
-        console.log(data);
-
         _this.setState({
           brands: data,
           brandsLoaded: true
@@ -35391,6 +35356,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Shoe; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _singleShoeComponents_SingleShoePage_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../singleShoeComponents/SingleShoePage.jsx */ "./resources/js/Components/singleShoeComponents/SingleShoePage.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -35415,6 +35382,8 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
+
 var Shoe = /*#__PURE__*/function (_Component) {
   _inherits(Shoe, _Component);
 
@@ -35434,7 +35403,9 @@ var Shoe = /*#__PURE__*/function (_Component) {
           price = _this$props.price,
           title = _this$props.title,
           id = _this$props.id;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/shoe/".concat(id)
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shoe__container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "shoe_image",
@@ -35444,7 +35415,7 @@ var Shoe = /*#__PURE__*/function (_Component) {
         className: "shoe__title"
       }, title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shoe__price"
-      }, "\u20AC", price, ".00"));
+      }, "\u20AC", price, ".00")));
     }
   }]);
 
@@ -35513,6 +35484,7 @@ var ShoeList = /*#__PURE__*/function (_Component) {
       }, shoes.map(function (shoe) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Shoe_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: shoe.id,
+          id: shoe.id,
           image: shoe.image_url,
           price: shoe.price,
           title: shoe.title
@@ -35799,6 +35771,8 @@ var SingleShoePage = /*#__PURE__*/function (_React$Component) {
   _createClass(SingleShoePage, [{
     key: "render",
     value: function render() {
+      var shoe = this.props.shoe;
+      console.log(shoe);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shoeDisplay"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "home ", '>', " Women ", ">", " converse black ", '&', " white all start Trainers"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
