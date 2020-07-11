@@ -34956,7 +34956,7 @@ var MainDisplay = /*#__PURE__*/function (_Component) {
       var indexOfLastShoe = this.state.currentPage * this.state.shoesPerPage;
       var indexOfFirstShoe = indexOfLastShoe - this.state.shoesPerPage;
       var filteredShoes = [];
-      var secondRoundFilterShoes = []; //this is too complicated and there must be a much better way to do this!
+      var secondRoundFilterShoes = []; //this filters but maybe not in the way we want, could be made better (line 111 - 140)
 
       if (this.state.filterByBrand.length > 0) {
         this.state.data.forEach(function (shoe) {
@@ -34966,32 +34966,9 @@ var MainDisplay = /*#__PURE__*/function (_Component) {
             }
           });
         });
+      }
 
-        if (this.state.filterByCategory.length > 0) {
-          filteredShoes.forEach(function (shoe) {
-            _this2.state.filterByCategory.forEach(function (category) {
-              if (shoe.category_id == category) {
-                secondRoundFilterShoes.push(shoe);
-              }
-            });
-          });
-          filteredShoes = secondRoundFilterShoes;
-          secondRoundFilterShoes = [];
-
-          if (this.state.filterByColor.length > 0) {
-            filteredShoes.forEach(function (shoe) {
-              _this2.state.filterByColor.forEach(function (color) {
-                var regex = new RegExp(color, 'i');
-
-                if (shoe.color.match(regex) != null) {
-                  secondRoundFilterShoes.push(shoe);
-                }
-              });
-            });
-            filteredShoes = secondRoundFilterShoes;
-          }
-        }
-      } else if (this.state.filterByCategory.length > 0) {
+      if (this.state.filterByCategory.length > 0) {
         this.state.data.forEach(function (shoe) {
           _this2.state.filterByCategory.forEach(function (category) {
             if (shoe.category_id == category) {
@@ -34999,32 +34976,9 @@ var MainDisplay = /*#__PURE__*/function (_Component) {
             }
           });
         });
+      }
 
-        if (this.state.filterByBrand.length > 0) {
-          filteredShoes.forEach(function (shoe) {
-            _this2.state.filterByBrand.forEach(function (brand) {
-              if (shoe.brand_id == brand) {
-                secondRoundFilterShoes.push(shoe);
-              }
-            });
-          });
-          filteredShoes = secondRoundFilterShoes;
-          secondRoundFilterShoes = [];
-
-          if (this.state.filterByColor.length > 0) {
-            filteredShoes.forEach(function (shoe) {
-              _this2.state.filterByColor.forEach(function (color) {
-                var regex = new RegExp(color, 'i');
-
-                if (shoe.color.match(regex) != null) {
-                  secondRoundFilterShoes.push(shoe);
-                }
-              });
-            });
-            filteredShoes = secondRoundFilterShoes;
-          }
-        }
-      } else if (this.state.filterByColor.length > 0) {
+      if (this.state.filterByColor.length > 0) {
         this.state.data.forEach(function (shoe) {
           _this2.state.filterByColor.forEach(function (color) {
             var regex = new RegExp(color, 'i');
@@ -35034,21 +34988,11 @@ var MainDisplay = /*#__PURE__*/function (_Component) {
             }
           });
         });
-      } else {
-        filteredShoes = this.state.data;
-      } // if (this.state.filterByColor.length > 0) {
-      //     this.state.data.forEach(shoe => {
-      //         this.state.filterByColor.forEach(color => {
-      //             let regex = new RegExp (color, 'i')
-      //             if (shoe.color.match(regex) != null) {
-      //                 filteredShoes.push(shoe);
-      //             }
-      //         })
-      //     });
-      // } else {
-      //     filteredShoes = this.state.data;
-      // }
+      }
 
+      if (this.state.filterByBrand.length == 0 && this.state.filterByCategory.length == 0 && this.state.filterByColor.length == 0) {
+        filteredShoes = this.state.data;
+      }
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "information"

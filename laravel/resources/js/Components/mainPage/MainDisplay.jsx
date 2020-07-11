@@ -107,7 +107,7 @@ export default class MainDisplay extends Component {
         let secondRoundFilterShoes = [];
 
 
-        //this is too complicated and there must be a much better way to do this!
+        //this filters but maybe not in the way we want, could be made better (line 111 - 140)
         if (this.state.filterByBrand.length > 0) {
             this.state.data.forEach(shoe => {
                 this.state.filterByBrand.forEach(brand => {
@@ -116,29 +116,9 @@ export default class MainDisplay extends Component {
                     }
                 })
             });
-            if (this.state.filterByCategory.length > 0) {
-                filteredShoes.forEach(shoe => {
-                    this.state.filterByCategory.forEach(category => {
-                        if (shoe.category_id == category) {
-                            secondRoundFilterShoes.push(shoe);
-                        }
-                    })
-                });
-                filteredShoes = secondRoundFilterShoes;
-                secondRoundFilterShoes = [];
-                if (this.state.filterByColor.length > 0) {
-                    filteredShoes.forEach(shoe => {
-                        this.state.filterByColor.forEach(color => {
-                            let regex = new RegExp (color, 'i')
-                            if (shoe.color.match(regex) != null) {
-                                secondRoundFilterShoes.push(shoe);
-                            }
-                        })
-                    });
-                    filteredShoes = secondRoundFilterShoes;
-                }
-            }
-        } else if (this.state.filterByCategory.length > 0) {
+        } 
+
+        if (this.state.filterByCategory.length > 0) {
             this.state.data.forEach(shoe => {
                 this.state.filterByCategory.forEach(category => {
                     if (shoe.category_id == category) {
@@ -146,29 +126,9 @@ export default class MainDisplay extends Component {
                     }
                 })
             });
-            if (this.state.filterByBrand.length > 0) {
-                filteredShoes.forEach(shoe => {
-                    this.state.filterByBrand.forEach(brand => {
-                        if (shoe.brand_id == brand) {
-                            secondRoundFilterShoes.push(shoe);
-                        }
-                    })
-                });
-                filteredShoes = secondRoundFilterShoes;
-                secondRoundFilterShoes = [];
-                if (this.state.filterByColor.length > 0) {
-                    filteredShoes.forEach(shoe => {
-                        this.state.filterByColor.forEach(color => {
-                            let regex = new RegExp (color, 'i')
-                            if (shoe.color.match(regex) != null) {
-                                secondRoundFilterShoes.push(shoe);
-                            }
-                        })
-                    });
-                    filteredShoes = secondRoundFilterShoes;
-                }
-            }
-        }else if (this.state.filterByColor.length > 0) {
+        } 
+
+        if (this.state.filterByColor.length > 0) {
             this.state.data.forEach(shoe => {
                 this.state.filterByColor.forEach(color => {
                     let regex = new RegExp (color, 'i')
@@ -177,22 +137,11 @@ export default class MainDisplay extends Component {
                     }
                 })
             });
-        } else {
+        } 
+        
+        if (this.state.filterByBrand.length == 0 && this.state.filterByCategory.length == 0 && this.state.filterByColor.length == 0) {
             filteredShoes = this.state.data;
         }
-
-        // if (this.state.filterByColor.length > 0) {
-        //     this.state.data.forEach(shoe => {
-        //         this.state.filterByColor.forEach(color => {
-        //             let regex = new RegExp (color, 'i')
-        //             if (shoe.color.match(regex) != null) {
-        //                 filteredShoes.push(shoe);
-        //             }
-        //         })
-        //     });
-        // } else {
-        //     filteredShoes = this.state.data;
-        // }
 
         return (
             <div className="information">
