@@ -7,6 +7,8 @@ import pic5 from "../1900327270m7_zm.jpg";
 
 export default class SingleShoePage extends React.Component{
     render() {
+        const { shoe } = this.props;
+        console.log(shoe)
         return (
             <div className="shoeDisplay">
                 <h4>home {'>'} Women {">"} converse black {'&'} white all start Trainers</h4>

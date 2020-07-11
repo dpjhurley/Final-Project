@@ -25,7 +25,6 @@ export default class SearchList extends Component {
     })
     .then(resp => resp.json())
     .then(data => {
-      console.log(data)
         this.setState({
             brands: data,
             brandsLoaded: true
