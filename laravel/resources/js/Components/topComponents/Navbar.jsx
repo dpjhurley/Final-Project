@@ -78,9 +78,9 @@ export default class Navbar extends React.Component {
                 </div>
 
                 <div className="mainNav__list__icons">
-                   <a href="">
-                           <i className="fas fa-shopping-cart"> </i>
-                    </a>
+                    <Link to="/cart">
+                        <i className="fas fa-shopping-cart"> </i>
+                    </Link>
                 </div>
 
                 <div className="mainNav__list__icons search-icon" onClick={this.handleOnClickHiddenSearch} >

@@ -18,38 +18,67 @@ export default class App extends React.Component {
         super(props);
 
         this.state = {
-            
+            data: [],
+            loading: true
         };
     }
 
-    
+    componentDidMount = () => {
+        fetch("api/shoes", {
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            }
+        })
+        .then(resp => resp.json())
+        .then(data => {
+            this.setState({
+                data: data,
+                loading: false
+            });
+        });
+    };
 
     
 
     render() {
+        const { data, loading } = this.state;
         return (
-            <Fragment>
             <Router>
-                    <TopNav />
-                    <Navbar />
-                    {/* <AccountArea /> */}
-                    <HiddenMenu />
-                    <HiddenMenuSearch />
-                    <ThirdNav />
-                    {/* <Basket /> */}
-                               
-                    <Switch>
-                        <Route path="/basket"  component={Basket}/>
-                        <Route path="/shoe"  component={SingleShoePage}/>
-                        <Route path="/account"  component={AccountArea}/>
-                        <Route path="/register-account"  component={RegisterForm}/>
-                        <Route path="/"  component={MainDisplay}/>
-                        
-                    </Switch>
+                <TopNav />
+                <Navbar />
+                {/* <AccountArea /> */}
+                <HiddenMenu />
+                <HiddenMenuSearch />
+                <ThirdNav />
+                            
+                <Switch>
+                    <Route path="/basket"  component={Basket}/>
+                    {data ? (
+                        data.map((shoe) => (
+                            <Route key={shoe.id} path={`/shoe/${shoe.id}`}  render={() => <SingleShoePage shoe={shoe} />}/>
+                        ))
+                    ) : (
+                        null
+                    )}
+                    <Route path="/account"  component={AccountArea}/>
+                    <Route path="/cart" component={Basket} />
+                    <Route path="/register-account"  component={RegisterForm}/>
+                    <Route 
+                        path="/" 
+                        render={() => 
+                            <MainDisplay 
+                                data={data}
+                                loading={loading}
+                            />
+                        }
+                    />
+                    
+                    
+                </Switch>
                 <Footer />
                 <CopyrightFooter />
              </Router>   
-            </Fragment>
         )
     }
 }

@@ -10,53 +10,10 @@ class Basket extends React.Component {
         this.state = {
             cart: [],
             loaded: false,
-            removeUserId: '',
-            removeShoeId: ''
         }
     }
 
-    handleRemoveFromCart = (event) => {
-        event.preventDefault();
-
-
-        this.setState({
-            loaded: false
-        })
-        fetch('api/remove', {
-            method: 'POST',
-            body: JSON.stringify(
-                {
-                    'user_id': this.state.removeUserId,
-                    'shoe_id': this.state.removeShoeId,
-                }
-            ),
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json"
-            }
-        })
-        .then((resp) => resp.json())
-        .then((data) => {
-            this.setState({
-                cart: data,
-                loaded: !this.state.loaded
-            })
-        })   
-    }
-
-    handleRemoveUserId = (e) => {
-        this.setState({
-            removeUserId: e.target.value
-        })
-    }
-
-    handleRemoveShoeId = (e) => {
-        this.setState({
-            removeShoeId: e.target.value
-        })
-    }
-
-    fetchCartItems = () => {
+    componentDidMount = () => {
         fetch(`api/cart/${18}`, {
             headers: {
                 "Accept": "application/json",
@@ -73,12 +30,43 @@ class Basket extends React.Component {
         })
     }
 
-    componentDidMount = () => {
-        this.fetchCartItems();
-    } 
+    handleRemoveFromCart = (shoe) => {
+        if (window.confirm('Are you sure you want to remove this from your cart?')) {
+            console.log('remove', shoe); 
+            //fetch will actually look like this later `api/cart/${id}/remove` but we will have to configure logging in and out 
+            fetch(`api/cart/${shoe.user_id}/${shoe.shoe_id}/remove`, {
+                method: 'POST',
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                }
+            })
+            .then((resp) => resp.json())
+            .then((data) => {
+                console.log(data)
+                this.setState({
+                    // cart: data,
+                    // loaded: true
+                })
+            })
+        }
+        
+    }
+
+    handleRemoveUserId = (e) => {
+        this.setState({
+            removeUserId: e.target.value
+        })
+    }
+
+    handleRemoveShoeId = (e) => {
+        this.setState({
+            removeShoeId: e.target.value
+        })
+    }
 
     componentDidUpdate = () => {
-        this.state.cart;
+        this.state.loaded;
     }
     
     render() { 
@@ -92,7 +80,11 @@ class Basket extends React.Component {
                             <CartItem 
                                 key={i}
                                 shoe={s}
-                                handleRemoveFromCart={this.handleRemoveFromCart}
+                                handleRemoveFromCart={(event)=>{
+                                    event.preventDefault();
+
+                                    this.handleRemoveFromCart(s);
+                                }}
                             />
                         ))}
                     </div>

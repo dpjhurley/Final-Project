@@ -25,7 +25,6 @@ export default class SearchList extends Component {
     })
     .then(resp => resp.json())
     .then(data => {
-      console.log(data)
         this.setState({
             brands: data,
             brandsLoaded: true
@@ -72,15 +71,19 @@ export default class SearchList extends Component {
       <div className="sidebar">
         {this.state.categoriesLoaded && this.state.brandsLoaded &&this.state.colorsLoaded ? (
           <Fragment>
-          <SearchColor
-          color={this.state.colors}
-          handleColorCheck={handleColorCheck}
-          isColorChecked={isColorChecked}/>
-          <Search search={this.state.brands}
-          handleCheck={handleBrandCheck}/>
-          <Search 
-          search={this.state.categories}
-          handleCheck={handleCategoryCheck}/>
+            <SearchColor
+              color={this.state.colors}
+              handleColorCheck={handleColorCheck}
+              isColorChecked={isColorChecked}
+            />
+            <Search 
+              search={this.state.brands}
+              handleCheck={handleBrandCheck}
+            />
+              <Search 
+              search={this.state.categories}
+              handleCheck={handleCategoryCheck}
+            />
           </Fragment>
           
           

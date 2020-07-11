@@ -1,5 +1,4 @@
 import React from 'react';
-import pic1 from '../360e.jpg';
 
 class CartItem extends React.Component {
     constructor(props) {
@@ -39,8 +38,6 @@ class CartItem extends React.Component {
                     </div>
                 </div>
                 <form className="cartitem__delete" onSubmit={handleRemoveFromCart}>
-                    <input type="hidden" name="user_id" value={shoe.user_id} onChange={handleRemoveShoeId} />
-                    <input type="hidden" name="shoe_id" value={shoe.shoe_id} onChange={handleRemoveUserId} />
                     <input type="submit" value="X"/>
                 </form>
             </div>
