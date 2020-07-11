@@ -38,17 +38,7 @@ export default class App extends React.Component {
             });
         });
     };
-    handleBrandCheck = (e) => {
-        if(this.state.filterByBrand.includes(e.target.value)){
-            this.setState({
-                filterByBrand: this.state.filterByBrand.filter((brand) => brand !== e.target.value)
-            })
-        }else{
-            this.setState({
-                filterByBrand: this.state.filterByBrand.concat(e.target.value)
-            })
-        }    
-    }
+   
     
 
     render() {
@@ -80,7 +70,7 @@ export default class App extends React.Component {
                             <MainDisplay 
                                 data={data}
                                 loading={loading}
-                                handleBrandCheck={this.handleBrandCheck}
+                               
                             />
                         }
                     />
