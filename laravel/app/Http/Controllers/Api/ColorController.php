@@ -4,14 +4,14 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use DB;
+use App\Shoe;
 
 
 class ColorController extends Controller
 {
     public function index()
     {
-        $colors = DB::table('shoes')->pluck('color')->unique();
+        $colors = Shoe::pluck('color')->unique();
 
         $formattedColors = [];
 
@@ -27,7 +27,7 @@ class ColorController extends Controller
                     
                 }
             } else {
-                in_array($c, $formattedColors) ? false : $formattedColors[] = strtolower($color);
+                in_array($color[0], $formattedColors) ? false : $formattedColors[] = strtolower($color);
             }
         }
 

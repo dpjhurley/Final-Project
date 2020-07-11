@@ -15,33 +15,33 @@ class Basket extends React.Component {
         }
     }
 
-    handleRemoveFromCart = (event) => {
-        event.preventDefault();
+    handleRemoveFromCart = (shoe) => {
+        console.log('remove', shoe);
 
-
-        this.setState({
-            loaded: false
-        })
-        fetch('api/remove', {
-            method: 'POST',
-            body: JSON.stringify(
-                {
-                    'user_id': this.state.removeUserId,
-                    'shoe_id': this.state.removeShoeId,
-                }
-            ),
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json"
-            }
-        })
-        .then((resp) => resp.json())
-        .then((data) => {
-            this.setState({
-                cart: data,
-                loaded: !this.state.loaded
-            })
-        })   
+        // this.setState({
+        //     loaded: false
+        // })
+        // fetch('api/cart/remove', {
+        //     method: 'post',
+        //     body: JSON.stringify(
+        //         {
+        //             'user_id': this.state.removeUserId,
+        //             'shoe_id': this.state.removeShoeId,
+        //         }
+        //     ),
+        //     headers: {
+        //         "Accept": "application/json",
+        //         "Content-Type": "application/json"
+        //     }
+        // })
+        // .then((resp) => resp.json())
+        // .then((data) => {
+        //     console.log(data)
+        //     this.setState({
+        //         // cart: data,
+        //         loaded: !this.state.loaded
+        //     })
+        // })   
     }
 
     handleRemoveUserId = (e) => {
@@ -78,7 +78,7 @@ class Basket extends React.Component {
     } 
 
     componentDidUpdate = () => {
-        this.state.cart;
+        this.state.loaded;
     }
     
     render() { 
@@ -92,7 +92,11 @@ class Basket extends React.Component {
                             <CartItem 
                                 key={i}
                                 shoe={s}
-                                handleRemoveFromCart={this.handleRemoveFromCart}
+                                handleRemoveFromCart={(event)=>{
+                                    event.preventDefault();
+
+                                    this.handleRemoveFromCart(s);
+                                }}
                             />
                         ))}
                     </div>
