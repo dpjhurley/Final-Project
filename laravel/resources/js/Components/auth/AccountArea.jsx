@@ -35,6 +35,7 @@ class AccountArea extends React.Component {
     }
 
     render() { 
+        const {setUser} = this.props;
         return (
             <>
                 {/* will need to change this to when true once this is all set up */}
@@ -43,12 +44,13 @@ class AccountArea extends React.Component {
                         <LoginForm 
                             logged_in={this.state.logged_in}
                             onLoginSuccess={this.onLoginSuccess}
+                                setUser = {setUser}
                         />
                         
                         <RegisterRelay />
                     </div>
                 ):(
-                    <div>An account area maybe??</div>
+                    <div>Welcome back {user.name}</div>
                 )}
                 
             </>

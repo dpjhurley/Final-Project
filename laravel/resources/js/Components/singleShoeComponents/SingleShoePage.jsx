@@ -13,17 +13,18 @@ export default class SingleShoePage extends React.Component{
     }   
     handleAddToBasket=(e)=>{
         e.preventDefault();
-        fetch(`api/cart/${1}/${this.props.shoe.shoe_id}/add`, {
+        if (window.confirm('Do you want to add this to your cart?')){
+        fetch(`/api/cart/${1}/${this.props.shoe.id}/add`, {
             method: 'POST',
             body: JSON.stringify({
                 'user_id': 1,
-                'shoe_id': this.props.shoe.shoe_id
+                'shoe_id': this.props.shoe.id
             }),
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json"
             }
-        })
+        })}
     }
     
     render() {

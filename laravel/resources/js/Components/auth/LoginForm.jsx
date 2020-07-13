@@ -40,8 +40,9 @@ class LoginForm extends React.Component {
         })
         .then(response => response.json())
         .then(data => {
-            if (data.status === 'success') {
+            if (data.status === 'success' ) {
                 this.props.onLoginSuccess(data.data.token)
+                this.setUser()
             }
         })
     }
@@ -66,6 +67,7 @@ class LoginForm extends React.Component {
 
                 <label>Email</label>
                     <input 
+
                         type="email" 
                         name="email" 
                         placeholder="Enter email address" 

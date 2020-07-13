@@ -16,17 +16,12 @@ export default class Navbar extends React.Component {
         this.state = {
            
             hiddensearch: true,
-            gender: ""
+          
 
         }
     }
 
-    // handleGenderState = () => {
-    //     this.setState({
-    //         gender
-    //     })
-
-    // }
+ 
     handleOnClickHiddenSearch = (event) => {
         this.setState({
             hiddensearch: !this.state.hiddensearch

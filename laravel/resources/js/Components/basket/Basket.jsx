@@ -14,7 +14,7 @@ class Basket extends React.Component {
     }
 
     componentDidMount = () => {
-        fetch(`api/cart/${18}`, {
+        fetch(`api/cart/${1}`, {
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json"
@@ -32,8 +32,7 @@ class Basket extends React.Component {
 
     handleRemoveFromCart = (shoe) => {
         if (window.confirm('Are you sure you want to remove this from your cart?')) {
-            console.log('remove', shoe); 
-            //fetch will actually look like this later `api/cart/${id}/remove` but we will have to configure logging in and out 
+            
             fetch(`api/cart/${shoe.user_id}/${shoe.shoe_id}/remove`, {
                 method: 'POST',
                 headers: {
@@ -41,14 +40,7 @@ class Basket extends React.Component {
                     "Content-Type": "application/json"
                 }
             })
-            .then((resp) => resp.json())
-            .then((data) => {
-                console.log(data)
-                this.setState({
-                    // cart: data,
-                    // loaded: true
-                })
-            })
+          
         }
         
     }

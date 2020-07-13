@@ -19,10 +19,15 @@ export default class App extends React.Component {
 
         this.state = {
             data: [],
-            loading: true
+            loading: true,
+            currentUser: ''
         };
     }
-
+    setUser=(user)=>{
+        this.setState({
+            currentUser: user
+        })
+    }
     componentDidMount = () => {
         fetch("api/shoes", {
             headers: {
@@ -61,7 +66,8 @@ export default class App extends React.Component {
                     ) : (
                         null
                     )}
-                    <Route path="/account"  component={AccountArea}/>
+                    <Route path="/account"  render={ ()=>
+                    <AccountArea setUser={this.setUser} />} />
                     <Route path="/cart" component={Basket} />
                     <Route path="/register-account"  component={RegisterForm}/>
                     <Route 

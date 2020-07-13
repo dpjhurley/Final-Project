@@ -33358,6 +33358,12 @@ var App = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
 
+    _defineProperty(_assertThisInitialized(_this), "setUser", function (user) {
+      _this.setState({
+        currentUser: user
+      });
+    });
+
     _defineProperty(_assertThisInitialized(_this), "componentDidMount", function () {
       fetch("api/shoes", {
         headers: {
@@ -33376,7 +33382,8 @@ var App = /*#__PURE__*/function (_React$Component) {
 
     _this.state = {
       data: [],
-      loading: true
+      loading: true,
+      currentUser: ''
     };
     return _this;
   }
@@ -33384,6 +33391,8 @@ var App = /*#__PURE__*/function (_React$Component) {
   _createClass(App, [{
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var _this$state = this.state,
           data = _this$state.data,
           loading = _this$state.loading;
@@ -33402,7 +33411,11 @@ var App = /*#__PURE__*/function (_React$Component) {
         });
       }) : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         path: "/account",
-        component: _auth_AccountArea_jsx__WEBPACK_IMPORTED_MODULE_2__["default"]
+        render: function render() {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_auth_AccountArea_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
+            setUser: _this2.setUser
+          });
+        }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         path: "/cart",
         component: _basket_Basket_jsx__WEBPACK_IMPORTED_MODULE_12__["default"]
@@ -33575,12 +33588,14 @@ var AccountArea = /*#__PURE__*/function (_React$Component) {
   _createClass(AccountArea, [{
     key: "render",
     value: function render() {
+      var setUser = this.props.setUser;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, !this.state.logged_in ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "account"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LoginForm_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
         logged_in: this.state.logged_in,
-        onLoginSuccess: this.onLoginSuccess
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RegisterRelay_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], null)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "An account area maybe??"));
+        onLoginSuccess: this.onLoginSuccess,
+        setUser: setUser
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RegisterRelay_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], null)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Welcome back ", user.name));
     }
   }]);
 
@@ -33667,6 +33682,8 @@ var LoginForm = /*#__PURE__*/function (_React$Component) {
       }).then(function (data) {
         if (data.status === 'success') {
           _this.props.onLoginSuccess(data.data.token);
+
+          _this.setUser();
         }
       });
     });
@@ -34219,7 +34236,7 @@ var Basket = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
 
     _defineProperty(_assertThisInitialized(_this), "componentDidMount", function () {
-      fetch("api/cart/".concat(18), {
+      fetch("api/cart/".concat(1), {
         headers: {
           "Accept": "application/json",
           "Content-Type": "application/json"
@@ -34236,22 +34253,12 @@ var Basket = /*#__PURE__*/function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_this), "handleRemoveFromCart", function (shoe) {
       if (window.confirm('Are you sure you want to remove this from your cart?')) {
-        console.log('remove', shoe); //fetch will actually look like this later `api/cart/${id}/remove` but we will have to configure logging in and out 
-
         fetch("api/cart/".concat(shoe.user_id, "/").concat(shoe.shoe_id, "/remove"), {
           method: 'POST',
           headers: {
             "Accept": "application/json",
             "Content-Type": "application/json"
           }
-        }).then(function (resp) {
-          return resp.json();
-        }).then(function (data) {
-          console.log(data);
-
-          _this.setState({// cart: data,
-            // loaded: true
-          });
         });
       }
     });
@@ -35784,17 +35791,20 @@ var SingleShoePage = /*#__PURE__*/function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_this), "handleAddToBasket", function (e) {
       e.preventDefault();
-      fetch("api/cart/".concat(1, "/", _this.props.shoe.shoe_id, "/add"), {
-        method: 'POST',
-        body: JSON.stringify({
-          'user_id': 1,
-          'shoe_id': _this.props.shoe.shoe_id
-        }),
-        headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json"
-        }
-      });
+
+      if (window.confirm('Do you want to add this to your cart?')) {
+        fetch("/api/cart/".concat(1, "/", _this.props.shoe.id, "/add"), {
+          method: 'POST',
+          body: JSON.stringify({
+            'user_id': 1,
+            'shoe_id': _this.props.shoe.id
+          }),
+          headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+          }
+        });
+      }
     });
 
     return _this;
@@ -36567,16 +36577,10 @@ var Navbar = /*#__PURE__*/function (_React$Component) {
     });
 
     _this.state = {
-      hiddensearch: true,
-      gender: ""
+      hiddensearch: true
     };
     return _this;
-  } // handleGenderState = () => {
-  //     this.setState({
-  //         gender
-  //     })
-  // }
-
+  }
 
   _createClass(Navbar, [{
     key: "render",
