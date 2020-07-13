@@ -3,7 +3,6 @@ import React, { Component, Fragment } from "react";
 export default class Search extends Component {
     render() {
         const { search, handleCheck, title} = this.props;
-        console.log(handleCheck)
 
         return (
             <Fragment>

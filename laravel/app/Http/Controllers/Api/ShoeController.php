@@ -30,12 +30,12 @@ class ShoeController extends Controller
 
     public function show($shoe_id)
     {
-        $shoe = Shoe::where('shoe_id', $shoe_id)
+        $shoe = Shoe::where('id', $shoe_id)
         ->with('images')
         ->with('brand')
         ->with('category')
-        ->with('sizes')
-        ->get();
+        ->with('stocks')
+        ->first();
 
         return $shoe;
 

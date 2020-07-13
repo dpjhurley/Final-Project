@@ -20,13 +20,14 @@ class StockSeeder extends Seeder
 
         $data = json_decode(file_get_contents($source_file));
 
-        $sizeArray = Size::pluck('id', 'size')->toArray();
+        //dont need this line, may need later
+        // $sizeArray = Size::pluck('id', 'size')->toArray();
 
         foreach ($data as $shoeSize) {
             $stock = new Stock;
 
             $stock->shoe_id = $shoeSize->shoe_id;
-            $stock->size_id = $sizeArray[$shoeSize->size];
+            $stock->size = $shoeSize->size;
             $stock->stock = $shoeSize->stock;
 
             $stock->save();

@@ -6,8 +6,8 @@
         "stock": 10
     },
     {
-        "shoe_id": 16,
-        "size": 14.5,
+        "shoe_id": 17,
+        "size": 14,
         "stock": 12
     },
     {
@@ -16,8 +16,8 @@
         "stock": 12
     },
     {
-        "shoe_id": 16,
-        "size": 15.5,
+        "shoe_id": 17,
+        "size": 15,
         "stock": 6
     },
     {
@@ -26,8 +26,8 @@
         "stock": 20
     },
     {
-        "shoe_id": 16,
-        "size": 16.5,
+        "shoe_id": 17,
+        "size": 16,
         "stock": 14
     },
     {
@@ -41,8 +41,8 @@
         "stock": 18
     },
     {
-        "shoe_id": 16,
-        "size": 18.5,
+        "shoe_id": 17,
+        "size": 18,
         "stock": 12
     },
     {
@@ -51,8 +51,8 @@
         "stock": 12
     },
     {
-        "shoe_id": 16,
-        "size": 19.5,
+        "shoe_id": 17,
+        "size": 19,
         "stock": 16
     },
     {
@@ -61,8 +61,8 @@
         "stock": 12
     },
     {
-        "shoe_id": 16,
-        "size": 20.5,
+        "shoe_id": 17,
+        "size": 20,
         "stock": 12
     },
     {
@@ -86,8 +86,8 @@
         "stock": 12
     },
     {
-        "shoe_id": 16,
-        "size": 24.5,
+        "shoe_id": 17,
+        "size": 24,
         "stock": 12
     },
     {
@@ -96,13 +96,13 @@
         "stock": 12
     },
     {
-        "shoe_id": 16,
-        "size": 25.5,
+        "shoe_id": 17,
+        "size": 25,
         "stock": 12
     },
     {
-        "shoe_id": 16,
-        "size": 26.5,
+        "shoe_id": 17,
+        "size": 26,
         "stock": 12
     },
     {
@@ -111,8 +111,8 @@
         "stock": 12
     },
     {
-        "shoe_id": 16,
-        "size": 27.5,
+        "shoe_id": 17,
+        "size": 27,
         "stock": 12
     },
     {
@@ -121,8 +121,8 @@
         "stock": 12
     },
     {
-        "shoe_id": 16,
-        "size": 28.5,
+        "shoe_id": 17,
+        "size": 28,
         "stock": 12
     },
     {
@@ -136,8 +136,8 @@
         "stock": 12
     },
     {
-        "shoe_id": 16,
-        "size": 31.5,
+        "shoe_id": 17,
+        "size": 31,
         "stock": 12
     },
     {
@@ -146,8 +146,8 @@
         "stock": 12
     },
     {
-        "shoe_id": 16,
-        "size": 32.5,
+        "shoe_id": 17,
+        "size": 32,
         "stock": 12
     },
     {
@@ -156,8 +156,8 @@
         "stock": 12
     },
     {
-        "shoe_id": 16,
-        "size": 33.5,
+        "shoe_id": 17,
+        "size": 33,
         "stock": 12
     },
     {
@@ -171,8 +171,8 @@
         "stock": 12
     },
     {
-        "shoe_id": 1,
-        "size": 36.5,
+        "shoe_id": 2,
+        "size": 36,
         "stock": 12
     },
     {
@@ -181,8 +181,8 @@
         "stock": 12
     },
     {
-        "shoe_id": 1,
-        "size": 37.5,
+        "shoe_id": 2,
+        "size": 37,
         "stock": 12
     },
     {
@@ -191,8 +191,8 @@
         "stock": 12
     },
     {
-        "shoe_id": 1,
-        "size": 38.5,
+        "shoe_id": 2,
+        "size": 38,
         "stock": 12
     },
     {
@@ -201,8 +201,8 @@
         "stock": 12
     },
     {
-        "shoe_id": 1,
-        "size": 39.5,
+        "shoe_id": 2,
+        "size": 39,
         "stock": 12
     },
     {
@@ -212,8 +212,8 @@
     },
 
     {
-        "shoe_id": 1,
-        "size": 40.5,
+        "shoe_id": 2,
+        "size": 40,
         "stock": 12
     },
     {
@@ -227,8 +227,8 @@
         "stock": 12
     },
     {
-        "shoe_id": 1,
-        "size": 42.5,
+        "shoe_id": 2,
+        "size": 42,
         "stock": 16
     },
     {
@@ -237,8 +237,8 @@
         "stock": 10
     },
     {
-        "shoe_id": 1,
-        "size": 43.5,
+        "shoe_id": 2,
+        "size": 43,
         "stock": 12
     },
     {
@@ -247,8 +247,8 @@
         "stock": 16
     },
     {
-        "shoe_id": 1,
-        "size": 44.5,
+        "shoe_id": 2,
+        "size": 44,
         "stock": 12
     },
     {
@@ -257,8 +257,8 @@
         "stock": 18
     },
     {
-        "shoe_id": 1,
-        "size": 45.5,
+        "shoe_id": 2,
+        "size": 45,
         "stock": 12
     },
     {
@@ -267,8 +267,8 @@
         "stock": 12
     },
     {
-        "shoe_id": 1,
-        "size": 46.5,
+        "shoe_id": 2,
+        "size": 46,
         "stock": 10
     },
     {
@@ -277,8 +277,8 @@
         "stock": 12
     },
     {
-        "shoe_id": 1,
-        "size": 47.5,
+        "shoe_id": 2,
+        "size": 47,
         "stock": 12
     },
     {
@@ -287,8 +287,53 @@
         "stock": 14
     },
     {
-        "shoe_id": 9,
-        "size": 36.5,
+        "shoe_id": 3,
+        "size": 44,
+        "stock": 11
+    },
+    {
+        "shoe_id": 3,
+        "size": 45,
+        "stock": 12
+    },
+    {
+        "shoe_id": 3,
+        "size": 43,
+        "stock": 11
+    },
+    {
+        "shoe_id": 3,
+        "size": 46,
+        "stock": 18
+    },
+    {
+        "shoe_id": 3,
+        "size": 43,
+        "stock": 11
+    },
+    {
+        "shoe_id": 3,
+        "size": 47,
+        "stock": 12
+    },
+    {
+        "shoe_id": 3,
+        "size": 42,
+        "stock": 11
+    },
+    {
+        "shoe_id": 3,
+        "size": 48,
+        "stock": 12
+    },
+    {
+        "shoe_id": 3,
+        "size": 41,
+        "stock": 11
+    },  
+    {
+        "shoe_id": 10,
+        "size": 36,
         "stock": 12
     },
     {
@@ -297,12 +342,12 @@
         "stock": 12
     },
     {
-        "shoe_id": 9,
-        "size": 37.5,
+        "shoe_id": 10,
+        "size": 37,
         "stock": 12
     },
     {
-        "shoe_id": 9,
+        "shoe_id": 10,
         "size": 38,
         "stock": 12
     },
@@ -312,8 +357,8 @@
         "stock": 17
     },
     {
-        "shoe_id": 9,
-        "size": 39.5,
+        "shoe_id": 10,
+        "size": 39,
         "stock": 13
     },
     {
@@ -322,8 +367,8 @@
         "stock": 12
     },
     {
-        "shoe_id": 9,
-        "size": 40.5,
+        "shoe_id": 10,
+        "size": 40,
         "stock": 12
     },
     {
@@ -332,8 +377,8 @@
         "stock": 12
     },
     {
-        "shoe_id": 9,
-        "size": 41.5,
+        "shoe_id": 10,
+        "size": 41,
         "stock": 17
     },
     {
@@ -342,8 +387,8 @@
         "stock": 12
     },
     {
-        "shoe_id": 9,
-        "size": 42.5,
+        "shoe_id": 10,
+        "size": 42,
         "stock": 11
     },
     {
@@ -352,58 +397,13 @@
         "stock": 12
     },
     {
-        "shoe_id": 9,
-        "size": 43.5,
+        "shoe_id": 10,
+        "size": 43,
         "stock": 11
     },
     {
         "shoe_id": 9,
         "size": 44,
         "stock": 12
-    },
-    {
-        "shoe_id": 9,
-        "size": 44.5,
-        "stock": 11
-    },
-    {
-        "shoe_id": 9,
-        "size": 45,
-        "stock": 12
-    },
-    {
-        "shoe_id": 9,
-        "size": 45.5,
-        "stock": 11
-    },
-    {
-        "shoe_id": 9,
-        "size": 46,
-        "stock": 18
-    },
-    {
-        "shoe_id": 9,
-        "size": 46.5,
-        "stock": 11
-    },
-    {
-        "shoe_id": 9,
-        "size": 47,
-        "stock": 12
-    },
-    {
-        "shoe_id": 9,
-        "size": 47.5,
-        "stock": 11
-    },
-    {
-        "shoe_id": 9,
-        "size": 48,
-        "stock": 12
-    },
-    {
-        "shoe_id": 9,
-        "size": 48.5,
-        "stock": 11
-    }   
+    } 
 ]

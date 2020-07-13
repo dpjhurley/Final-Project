@@ -18,7 +18,7 @@ class CreateCartItemsTable extends Migration
             $table->foreignId('user_id')->nullable();
             $table->foreignId('shoe_id')->nullable();
             $table->integer('count')->nullable();
-            $table->float('size', 2 , 1)->nullable();
+            $table->float('size', 10 , 2)->nullable();
             $table->timestamps();
         });
     }

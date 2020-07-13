@@ -12,13 +12,13 @@ export default class SingleShoePage extends React.Component{
         super(props);
         
         this.state = {
-            shoe: [],
+            shoe: {},
             loading: true
         }
     } 
     
     componentDidMount = () => {
-        fetch(`api/shoes/${this.props.shoe_id}`, {
+        fetch(`/api/shoes/${this.props.shoe_id}`, {
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json"
@@ -26,8 +26,10 @@ export default class SingleShoePage extends React.Component{
         })
         .then(resp => resp.json())
         .then(data => {
+            console.log(data)
             this.setState({
                 shoe: data,
+                size: '',
                 loading: false
             });
         });
@@ -41,7 +43,8 @@ export default class SingleShoePage extends React.Component{
             method: 'POST',
             body: JSON.stringify({
                 'user_id': 1,
-                'shoe_id': this.state.shoe.id
+                'shoe_id': this.state.shoe.id,
+                'size': this.state.size
             }),
             headers: {
                 "Accept": "application/json",
@@ -49,28 +52,36 @@ export default class SingleShoePage extends React.Component{
             }
         })}
     }
+
+    handleSizeSelect = (e) => {
+        this.setState({
+            size: e.target.value
+        })
+    }
     
     render() {
         const { shoe, loading } = this.state;
-        
+        console.log('the shoe id is', shoe)
         const financePrice = (shoe.price/3).toFixed(2);
         return (
             
             <div className="shoeDisplay">
                 {loading ? (
+                    <Spinner />
+                ) : (
                     <>
                         <h4>home {'>'} Women {">"} {shoe.brand.name} {shoe.title} </h4>
                         <div className="shoeDisplay__actual">
                             <div className="shoeDisplay__actual__pic">
                                 <div className="shoeDisplay__actual__pic-smallpic">
-                                <a href="#"><img src={pic1} alt="pic"></img></a>
-                                <a href="#"><img src={pic2} alt="pic"></img></a>
-                                <a href="#"><img src={pic3} alt="pic"></img></a>
-                                <a href="#"><img src={pic5} alt="pic"></img></a>
-                                <a href="#"><img src={pic4} alt="pic"></img></a>
+                                    <a href="#"><img src={`/images/${shoe.images[1].path}`} alt="pic"></img></a>
+                                    <a href="#"><img src={`/images/${shoe.images[2].path}`} alt="pic"></img></a>
+                                    <a href="#"><img src={pic3} alt="pic"></img></a>
+                                    <a href="#"><img src={pic5} alt="pic"></img></a>
+                                    <a href="#"><img src={pic4} alt="pic"></img></a>
                                 </div>
                                 <div className="shoeDisplay__actual__pic-largepic">
-                                <a href="#"><img src={`/images/${shoe.images[0].path}`} alt="pic"></img></a>
+                                    <a href="#"><img src={`/images/${shoe.images[0].path}`} alt="pic"></img></a>
                                 </div>
                             </div>
                             <div className="shoeDisplay__actual__info">
@@ -80,34 +91,30 @@ export default class SingleShoePage extends React.Component{
                                     <h3> <strong>£</strong>{shoe.price}.00</h3>
                                     <a href="#">with free delivery</a>
                                     <div className="shoeDisplay__actual__info-top-star">
-                                    <i className="fas fa-star"></i>
-                                    <i className="fas fa-star"></i>
-                                    <i className="fas fa-star"></i>
-                                    <i className="fas fa-star"></i>
-                                    <i className="fas fa-star"></i>
-                                    <a href="#">(952)</a>
+                                        <i className="fas fa-star"></i>
+                                        <i className="fas fa-star"></i>
+                                        <i className="fas fa-star"></i>
+                                        <i className="fas fa-star"></i>
+                                        <i className="fas fa-star"></i>
+                                        <a href="#">(952)</a>
                                     </div>
-                                <a href="#" className="leavereview"><p>leave a review</p></a> 
+                                    <a href="#" className="leavereview"><p>leave a review</p></a> 
                                 </div>
                                 <div className="shoeDisplay__actual__info-size">
-                                <form className="shoeDisplay__actual__info-size-selection" onSubmit={this.handleAddToBasket}>
-                                <div className="shoeDisplay__actual__info-size-selection-select" >
-                                    <select name="select-size" className="select-css">
-                                        <option value >Please select a size</option>
-                                        <option>36</option>
-                                        <option>37</option>
-                                        <option>38</option>
-                                        <option>39</option>
-                                        <option>40</option>
-                                        <option>41</option>
-                                        <option>42</option>
-                                        <option>43</option>
-                                        <option>Kids Sizes</option>
-                                    </select>
-                                    <a href="#">Size Guide</a>
-                                    </div>
-                                    <p><span className="bold-text">Finance</span>, pay <span className="bold-text">£{financePrice}</span> in <span className="bold-text">3 monthly instalments.</span> No interest or fees. <br/><a href="#">Learn More</a></p>
-                                    <button type="submit" className="add_to_basket_btn">ADD TO BASKET</button>
+                                    <form className="shoeDisplay__actual__info-size-selection" onSubmit={this.handleAddToBasket}>
+                                        <div className="shoeDisplay__actual__info-size-selection-select" >
+                                            <select name="select-size" className="select-css" onChange={this.handleSizeSelect}>
+                                                <option value >Please select a size</option>
+                                                {shoe.stocks.map((s) => (
+                                                    <option key={s.id}>{s.size}</option>
+                                                ))}
+                                            </select>
+                                            <a href="#">Size Guide</a>
+                                        </div>
+                                        <p>
+                                            <span className="bold-text">Finance</span>, pay <span className="bold-text">£{financePrice}</span> in <span className="bold-text">3 monthly instalments.</span> No interest or fees. <br/><a href="#">Learn More</a>
+                                        </p>
+                                        <button type="submit" className="add_to_basket_btn">ADD TO BASKET</button>
                                     </form>
                                 </div>
                                 <div className="shoeDisplay__actual__info-collect">
@@ -121,10 +128,8 @@ export default class SingleShoePage extends React.Component{
                             </div>
                         </div>
                     </>
-                ) : (
-                    <Spinner />
                 )}
-            </div>
+            </div> 
         )
     }
 }

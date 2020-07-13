@@ -35113,7 +35113,6 @@ var Search = /*#__PURE__*/function (_Component) {
           search = _this$props.search,
           handleCheck = _this$props.handleCheck,
           title = _this$props.title;
-      console.log(handleCheck);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "bodySidebarTitle"
       }, title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -35792,7 +35791,7 @@ var SingleShoePage = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
 
     _defineProperty(_assertThisInitialized(_this), "componentDidMount", function () {
-      fetch("api/shoes/".concat(_this.props.shoe_id), {
+      fetch("/api/shoes/".concat(_this.props.shoe_id), {
         headers: {
           "Accept": "application/json",
           "Content-Type": "application/json"
@@ -35800,8 +35799,11 @@ var SingleShoePage = /*#__PURE__*/function (_React$Component) {
       }).then(function (resp) {
         return resp.json();
       }).then(function (data) {
+        console.log(data);
+
         _this.setState({
           shoe: data,
+          size: '',
           loading: false
         });
       });
@@ -35815,7 +35817,8 @@ var SingleShoePage = /*#__PURE__*/function (_React$Component) {
           method: 'POST',
           body: JSON.stringify({
             'user_id': 1,
-            'shoe_id': _this.state.shoe.id
+            'shoe_id': _this.state.shoe.id,
+            'size': _this.state.size
           }),
           headers: {
             "Accept": "application/json",
@@ -35825,8 +35828,14 @@ var SingleShoePage = /*#__PURE__*/function (_React$Component) {
       }
     });
 
+    _defineProperty(_assertThisInitialized(_this), "handleSizeSelect", function (e) {
+      _this.setState({
+        size: e.target.value
+      });
+    });
+
     _this.state = {
-      shoe: [],
+      shoe: {},
       loading: true
     };
     return _this;
@@ -35838,10 +35847,11 @@ var SingleShoePage = /*#__PURE__*/function (_React$Component) {
       var _this$state = this.state,
           shoe = _this$state.shoe,
           loading = _this$state.loading;
+      console.log('the shoe id is', shoe);
       var financePrice = (shoe.price / 3).toFixed(2);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shoeDisplay"
-      }, loading ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "home ", '>', " Women ", ">", " ", shoe.brand.name, " ", shoe.title, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, loading ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_partials_Spinner__WEBPACK_IMPORTED_MODULE_6__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "home ", '>', " Women ", ">", " ", shoe.brand.name, " ", shoe.title, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shoeDisplay__actual"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shoeDisplay__actual__pic"
@@ -35850,12 +35860,12 @@ var SingleShoePage = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: _continental_80_white_and_red_trainers_1_100x_resize_jpg__WEBPACK_IMPORTED_MODULE_1___default.a,
+        src: "/images/".concat(shoe.images[1].path),
         alt: "pic"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: _continental_80_white_and_red_trainers_2_jpg__WEBPACK_IMPORTED_MODULE_2___default.a,
+        src: "/images/".concat(shoe.images[2].path),
         alt: "pic"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#"
@@ -35911,10 +35921,15 @@ var SingleShoePage = /*#__PURE__*/function (_React$Component) {
         className: "shoeDisplay__actual__info-size-selection-select"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         name: "select-size",
-        className: "select-css"
+        className: "select-css",
+        onChange: this.handleSizeSelect
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: true
-      }, "Please select a size"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "36"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "37"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "38"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "39"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "40"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "41"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "42"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "43"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "Kids Sizes")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      }, "Please select a size"), shoe.stocks.map(function (s) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          key: s.id
+        }, s.size);
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#"
       }, "Size Guide")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "bold-text"
@@ -35935,7 +35950,7 @@ var SingleShoePage = /*#__PURE__*/function (_React$Component) {
         className: "collect-btn"
       }, "Click & Collect"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-info-circle"
-      }), " We have strict social distancing in place in our store. Please follow our safety measures when visiting our store."))))))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_partials_Spinner__WEBPACK_IMPORTED_MODULE_6__["default"], null));
+      }), " We have strict social distancing in place in our store. Please follow our safety measures when visiting our store."))))))));
     }
   }]);
 

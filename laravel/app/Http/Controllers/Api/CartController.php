@@ -8,6 +8,7 @@ use App\CartItem;
 use App\Brand;
 use App\Image;
 use App\Category;
+use App\Size;
 use Croppa;
 
 class CartController extends Controller
@@ -36,8 +37,9 @@ class CartController extends Controller
         return $cart;
     }
 
-    public function add($user_id, $shoe_id) 
+    public function add($user_id, $shoe_id, Request $request) 
     {
+        // $sizeArray = Size::pluck('id', 'size')->toArray();
        /*  $item = CartItem::where('shoe_id', $shoe_id)->where('user_id', $user_id)->first();
 
         if ($item != null) {
@@ -51,6 +53,7 @@ class CartController extends Controller
     
             $cartItem->user_id = $user_id;
             $cartItem->shoe_id = $shoe_id;
+            $cartItem->size = $request->input('size');
 /*             $cartItem->count = $request->input('count');
  */
             $cartItem->save();
