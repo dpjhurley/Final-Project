@@ -33374,20 +33374,6 @@ var App = /*#__PURE__*/function (_React$Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "handleBrandCheck", function (e) {
-      if (_this.state.filterByBrand.includes(e.target.value)) {
-        _this.setState({
-          filterByBrand: _this.state.filterByBrand.filter(function (brand) {
-            return brand !== e.target.value;
-          })
-        });
-      } else {
-        _this.setState({
-          filterByBrand: _this.state.filterByBrand.concat(e.target.value)
-        });
-      }
-    });
-
     _this.state = {
       data: [],
       loading: true
@@ -33398,8 +33384,6 @@ var App = /*#__PURE__*/function (_React$Component) {
   _createClass(App, [{
     key: "render",
     value: function render() {
-      var _this2 = this;
-
       var _this$state = this.state,
           data = _this$state.data,
           loading = _this$state.loading;
@@ -33430,8 +33414,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         render: function render() {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_mainPage_MainDisplay_jsx__WEBPACK_IMPORTED_MODULE_10__["default"], {
             data: data,
-            loading: loading,
-            handleBrandCheck: _this2.handleBrandCheck
+            loading: loading
           });
         }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_bottomComponents_Footer_jsx__WEBPACK_IMPORTED_MODULE_8__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_bottomComponents_CopyrightFooter_jsx__WEBPACK_IMPORTED_MODULE_9__["default"], null));
