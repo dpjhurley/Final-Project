@@ -33405,7 +33405,7 @@ var App = /*#__PURE__*/function (_React$Component) {
           path: "/shoe/".concat(shoe.id),
           render: function render() {
             return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_singleShoeComponents_SingleShoePage_jsx__WEBPACK_IMPORTED_MODULE_11__["default"], {
-              shoe: shoe
+              shoe_id: shoe.id
             });
           }
         });
@@ -35746,6 +35746,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _logo_360_640_png__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_logo_360_640_png__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _1900327270m7_zm_jpg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../1900327270m7_zm.jpg */ "./resources/js/Components/1900327270m7_zm.jpg");
 /* harmony import */ var _1900327270m7_zm_jpg__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_1900327270m7_zm_jpg__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _partials_Spinner__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../partials/Spinner */ "./resources/js/Components/partials/Spinner.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -35777,6 +35778,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 var SingleShoePage = /*#__PURE__*/function (_React$Component) {
   _inherits(SingleShoePage, _React$Component);
 
@@ -35789,15 +35791,31 @@ var SingleShoePage = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
 
+    _defineProperty(_assertThisInitialized(_this), "componentDidMount", function () {
+      fetch("api/shoes/".concat(_this.props.shoe_id), {
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        }
+      }).then(function (resp) {
+        return resp.json();
+      }).then(function (data) {
+        _this.setState({
+          shoe: data,
+          loading: false
+        });
+      });
+    });
+
     _defineProperty(_assertThisInitialized(_this), "handleAddToBasket", function (e) {
       e.preventDefault();
 
       if (window.confirm('Do you want to add this to your cart?')) {
-        fetch("/api/cart/".concat(1, "/", _this.props.shoe.id, "/add"), {
+        fetch("/api/cart/".concat(1, "/", _this.state.shoe.id, "/add"), {
           method: 'POST',
           body: JSON.stringify({
             'user_id': 1,
-            'shoe_id': _this.props.shoe.id
+            'shoe_id': _this.state.shoe.id
           }),
           headers: {
             "Accept": "application/json",
@@ -35807,17 +35825,23 @@ var SingleShoePage = /*#__PURE__*/function (_React$Component) {
       }
     });
 
+    _this.state = {
+      shoe: [],
+      loading: true
+    };
     return _this;
   }
 
   _createClass(SingleShoePage, [{
     key: "render",
     value: function render() {
-      var shoe = this.props.shoe;
+      var _this$state = this.state,
+          shoe = _this$state.shoe,
+          loading = _this$state.loading;
       var financePrice = (shoe.price / 3).toFixed(2);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shoeDisplay"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "home ", '>', " Women ", ">", " ", shoe.brand.name, " ", shoe.title, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, loading ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "home ", '>', " Women ", ">", " ", shoe.brand.name, " ", shoe.title, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shoeDisplay__actual"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shoeDisplay__actual__pic"
@@ -35911,7 +35935,7 @@ var SingleShoePage = /*#__PURE__*/function (_React$Component) {
         className: "collect-btn"
       }, "Click & Collect"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-info-circle"
-      }), " We have strict social distancing in place in our store. Please follow our safety measures when visiting our store.")))))));
+      }), " We have strict social distancing in place in our store. Please follow our safety measures when visiting our store."))))))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_partials_Spinner__WEBPACK_IMPORTED_MODULE_6__["default"], null));
     }
   }]);
 

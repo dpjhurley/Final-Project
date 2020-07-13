@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Mail\InvoiceEmail;
+use Illuminate\Support\Facades\Mail;
+use App\User;
+use App\Mail\InvoicePaid;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +29,15 @@ Route::view('/{path?}', 'app')
 
 // Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/test', 'TestController@index');
+
+// Route::get('/send-email', function() {
+//      // return 'hello I will send Email';
+
+//      Mail::to('test@cbp.cz')->send(new InvoiceEmail());
+// });
+
+// Route::get('/send-notification', function() {
+//      $user = User::first();
+
+//      $user->notify(new InvoicePaid());
+// });

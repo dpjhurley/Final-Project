@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateShoeSizeTable extends Migration
+class CreateStockTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateShoeSizeTable extends Migration
      */
     public function up()
     {
-        Schema::create('shoe_size', function (Blueprint $table) {
+        Schema::create('stock', function (Blueprint $table) {
             $table->id();
             $table->foreignId('shoe_id')->nullable();
             $table->foreignId('size_id')->nullable();
@@ -29,6 +29,6 @@ class CreateShoeSizeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shoe_size');
+        Schema::dropIfExists('stock');
     }
 }

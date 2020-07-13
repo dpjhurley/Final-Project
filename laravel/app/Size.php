@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Size extends Model
 {
-    public function shoes()
+    public function stocks()
     {
-        return $this->belongsToMany('App\Shoe');
+        return $this->hasMany('App\Stock');
     }
 }
