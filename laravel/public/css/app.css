@@ -1,5 +1,5 @@
 @charset "UTF-8";
-.button {
+.bodyButton {
   width: 120px;
   height: 25px;
   font-family: "Roboto", sans-serif;
@@ -16,8 +16,7 @@
   cursor: pointer;
   outline: none;
 }
-
-.button:hover {
+.bodyButton:hover {
   background-color: #00DC55;
   box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
   color: #fff;
@@ -94,12 +93,44 @@
   transition: 0.5s ease-in;
 }
 
-.search {
+.bodyInformation {
+  font-size: x-large;
+}
+.bodyInformation p {
+  margin-left: 20px;
+  margin-right: 20px;
   text-align: center;
-  margin-bottom: 20px;
+}
+.bodyInformation__global {
+  color: #00DC55;
+  font-size: xx-large;
+  font-weight: bolder;
+}
+.bodyInformation__underline {
+  -webkit-text-decoration: underline #00DC55;
+          text-decoration: underline #00DC55;
 }
 
-.sidebar {
+.bodySearch {
+  display: flex;
+  justify-content: left;
+  flex-basis: 0px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.bodySearch label {
+  font-size: x-large;
+  display: flex;
+}
+
+.bodySidebarTitle {
+  font-size: xx-large;
+  font-weight: bolder;
+  text-align: center;
+  color: #00DC55;
+}
+
+.bodySidebar {
   width: 20%;
 }
 
@@ -109,21 +140,24 @@
   width: 180px;
 }
 .shoe__container {
-  width: 33%;
+  width: 100%;
   padding: 20px;
 }
 .shoe__title {
   font-size: medium;
+  text-align: center;
 }
 .shoe__price {
   font-size: small;
+  text-align: center;
 }
 
 .shoeSection {
   padding-top: 10px;
-  width: 80%;
   display: flex;
   flex-wrap: wrap;
+  color: black;
+  justify-content: center;
 }
 .shoeSection > a {
   text-decoration: none;

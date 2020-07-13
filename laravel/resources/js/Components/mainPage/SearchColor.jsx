@@ -1,23 +1,27 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 
 export default class SearchColor extends Component {
     render() {
         const { color, handleColorCheck} = this.props;
         return (
-            <div>
-                <div className="search">
+            <Fragment>
+            <div className="bodySidebarTitle">Color</div>
+                <div className="bodySearch">
+                    <br/>
                     <form action="">
                         {color.map((colors, i) => {
                             return (
+                                <div key={i}>
                               <label key={i}>
+                              <input type="checkbox" value={colors} onClick={handleColorCheck}/>
                                 {colors}
-                                <input type="checkbox" value={colors} onClick={handleColorCheck}/>
                                 </label>
+                                </div>
                             );
                         })}
                     </form>
                 </div>
-            </div>
+            </Fragment>
         );
     }
 }
