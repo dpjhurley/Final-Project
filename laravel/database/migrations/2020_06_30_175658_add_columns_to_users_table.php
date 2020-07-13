@@ -39,7 +39,6 @@ class AddColumnsToUsersTable extends Migration
             $table->dropColumn('gender');
             $table->dropColumn('date_of_birth');
             $table->dropColumn('surname');
-            $table->dropColumn('first_name');
         });
     }
 }

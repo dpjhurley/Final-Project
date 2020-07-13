@@ -50,7 +50,7 @@ class AccountArea extends React.Component {
                         <RegisterRelay />
                     </div>
                 ):(
-                    <div>Welcome back {user.name}</div>
+                    <div>Welcome back </div>
                 )}
                 
             </>

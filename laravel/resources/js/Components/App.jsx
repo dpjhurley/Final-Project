@@ -28,6 +28,7 @@ export default class App extends React.Component {
             currentUser: user
         })
     }
+
     componentDidMount = () => {
         fetch("api/shoes", {
             headers: {
@@ -44,8 +45,6 @@ export default class App extends React.Component {
         });
     };
    
-    
-
     render() {
         const { data, loading } = this.state;
         return (
@@ -61,7 +60,7 @@ export default class App extends React.Component {
                     <Route path="/basket"  component={Basket}/>
                     {data ? (
                         data.map((shoe) => (
-                            <Route key={shoe.id} path={`/shoe/${shoe.id}`}  render={() => <SingleShoePage shoe={shoe} />}/>
+                            <Route key={shoe.id} path={`/shoe/${shoe.id}`}  render={() => <SingleShoePage shoe_id={shoe.id} />}/>
                         ))
                     ) : (
                         null

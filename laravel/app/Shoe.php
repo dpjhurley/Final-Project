@@ -36,4 +36,10 @@ class Shoe extends Model
     {
         return $this->hasMany('App\Cart');
     }
+
+    public function stocks()
+    {
+        return $this->hasMany('App\Stock');
+    }
+
 }

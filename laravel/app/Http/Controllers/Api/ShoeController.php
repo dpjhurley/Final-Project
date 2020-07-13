@@ -27,4 +27,17 @@ class ShoeController extends Controller
 
         return $shoes;
     }
+
+    public function show($shoe_id)
+    {
+        $shoe = Shoe::where('id', $shoe_id)
+        ->with('images')
+        ->with('brand')
+        ->with('category')
+        ->with('stocks')
+        ->first();
+
+        return $shoe;
+
+    }
 }
