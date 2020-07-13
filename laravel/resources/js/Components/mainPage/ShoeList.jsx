@@ -7,9 +7,9 @@ export default class ShoeList extends Component {
 
     render() {
         const {shoes} = this.props
-
+       
         return (
-            <div className="shoeSection">
+            <div className="shoeSection mainDisplaycontainer">
                 {
                 shoes.map((shoe) => (
                     <Shoe 
@@ -18,6 +18,7 @@ export default class ShoeList extends Component {
                         image={shoe.image_url}
                         price={shoe.price}
                         title={shoe.title}
+                        brand_id = {shoe.brand.name}
                     />
                 ))
                 }

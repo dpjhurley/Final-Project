@@ -17,8 +17,8 @@ export default class SearchColor extends Component {
         return (
             <Fragment>
             <div className="bodySidebarTitle">Color</div>
-                <div className="bodySearch">
-                    <br/>
+            <div className="bodySearch">
+                   
                     <form action="">
                         {color.map((colors, i) => {
                             return (

@@ -11,7 +11,7 @@ export default class Information extends Component {
                 {(brand.length > 0) ? 
                 ( <div className="bodyInformation__underline">{brand}FIX ME</div>
                 ) : (
-                  "nothing"
+                  ""
                 )
                }  
                

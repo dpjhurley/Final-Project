@@ -3,20 +3,20 @@ import React, { Component, Fragment } from "react";
 export default class Search extends Component {
     render() {
         const { search, handleCheck, title} = this.props;
-        console.log(handleCheck)
+        
 
         return (
             <Fragment>
-            <div className="bodySidebarTitle">{title}</div>
+            <div className="bodySidebarTitle mainDisplaycontainer">{title}</div>
                 <div className="bodySearch">
                     <form action="">
                         {search.map((newSearch, i) => {
                             return (
-                                <div key={i}>
-                              <label key={newSearch.id}>
+                                <div key={i} className="bodySearch__Item">
+                                    
                                     <input type="checkbox" value={newSearch.id} onClick={handleCheck}/>
-                                {newSearch.name}
-                                </label>
+                                    <label key={newSearch.id}> {newSearch.name} </label>
+                               
                                 </div>
                             );
                         })}

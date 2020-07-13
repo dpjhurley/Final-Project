@@ -124,10 +124,10 @@ import React, { useState } from 'react';
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col-half">
+                            <div className="col-half date_width">
                                 <h4>Date of Birth</h4>
                                 <div className="input-group">
-                                    <div className="col-half">
+                                    <div className="col">
                                         <input type="date" placeholder="Date of Birth" onChange={handleDateChange} name="date_of_birth" />
                                     </div>
                                 </div>

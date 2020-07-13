@@ -1,7 +1,7 @@
 @import "Variables";
 
 .bodyInformation {
-    font-size: x-large;
+    font-size: 1rem;
     p {
         margin-left: 20px;
         margin-right: 20px;
@@ -9,8 +9,8 @@
     }
     &__global {
         color: $primary_color;
-        font-size: xx-large;
-        font-weight: bolder;
+        font-size: x-large;
+        font-weight: bold;
     
     }
     &__underline {

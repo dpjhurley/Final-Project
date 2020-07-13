@@ -2,10 +2,7 @@
 @import "_BodyButton.scss";
 @import "_MainNav.scss";
 @import "_BodyInformation.scss";
-@import "_BodySearch.scss";
-@import "_BodySearchList.scss";
 @import "_BodyShoe.scss";
-@import "_BodyShoeList.scss";
 @import "_Topnav.scss";
 @import "_HiddenMenu.scss";
 @import "_HiddenMenuSearch.scss";
@@ -17,6 +14,7 @@
 @import "_AccountLogin.scss";
 @import "_AccountRegisterRelay.scss";
 @import "_AccountRegister.scss";
+@import "_MainDisplay.scss";
 
 
 
@@ -33,15 +31,7 @@ body{
     
 }
 
-.buttons {
-    display: flex;
-    margin-left: 50px;
 
-}
 
-.shoes {
-    width: 100%;
-    display: flex;
-    margin-left: 50px;
-}
+
 

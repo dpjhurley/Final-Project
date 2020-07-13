@@ -241,3 +241,10 @@ select option {
 
 }
 }
+.date_width{
+  width: 30rem;
+  flex: 1;
+}
+.date_width .input-group .col input{
+  height: 4.2em;
+}

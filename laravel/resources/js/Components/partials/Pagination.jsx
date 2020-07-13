@@ -16,13 +16,13 @@ class Pagination extends React.Component {
                     className="pagination__link"
                     onClick={previousPage}
                 >
-                    {'<'}
+                   <i className="fas fa-arrow-circle-left fa-2x"></i>
                 </a>
                 {pageNumbers.map((number, i) => (
                     <a 
                         key={i} 
                         href="!#" 
-                        className="pagination__link"
+                        className="pagination__link number"
                         onClick={() => paginate(number)}
                     >
                         {number}
@@ -33,7 +33,7 @@ class Pagination extends React.Component {
                     className="pagination__link"
                     onClick={nextPage}
                 >
-                    {'>'}
+                    <i className="fas fa-arrow-circle-right fa-2x"></i>
                 </a>
             </nav>
         );

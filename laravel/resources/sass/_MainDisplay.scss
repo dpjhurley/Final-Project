@@ -1,0 +1,53 @@
+
+.shoes{
+    width: 100%;
+    display: flex;
+    &__right{
+        width: 90%;
+
+        .shoeSection{
+            padding-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            color: black;
+            justify-content: center;
+            width: 100%;
+        }
+        
+    }
+    .bodySidebar {
+        width: 10%;
+        .bodySidebarTitle {
+            font-size: xx-large;
+            font-weight: bolder;
+            text-align: center;
+            color: $primary_color;
+            
+        }
+        .bodySearch{
+            display: flex;
+            align-items: center;
+            margin: 1rem;
+
+             form{
+                 .bodySearch__item{
+                    
+                        text-transform: capitalize;
+                    
+                 }
+                div{
+                     input{
+                       margin-top: 0.2rem;
+                       margin-right: 0.7rem;
+                       
+                    }
+                    label{
+                        text-transform: capitalize;
+                    }
+                }
+            
+          }
+        }
+    }
+}
+

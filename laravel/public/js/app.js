@@ -33977,11 +33977,11 @@ var RegisterForm = function RegisterForm() {
   })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-half"
+    className: "col-half date_width"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Date of Birth"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "input-group"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-half"
+    className: "col"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "date",
     placeholder: "Date of Birth",
@@ -34821,7 +34821,7 @@ var Information = /*#__PURE__*/function (_Component) {
         className: "bodyInformation"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "HOME"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), brand.length > 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "bodyInformation__underline"
-      }, brand, "FIX ME") : "nothing", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, brand, "FIX ME") : "", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "bodyInformation__global"
       }, count.length, " Products Found"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "For sneakerheads and trendsetters alike, GlobalShoes has every style of footwear to kit out your wardrobe. Whether you\u2019re after a street-style men\u2019s trainer or practical yet stylish men\u2019s boot, you\u2019ll find your fit right here. Shop from big brands like Nike, Vans, adidas to find your next kick fix. Take your pick and order online at", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "bodyInformation__global"
@@ -35113,23 +35113,23 @@ var Search = /*#__PURE__*/function (_Component) {
           search = _this$props.search,
           handleCheck = _this$props.handleCheck,
           title = _this$props.title;
-      console.log(handleCheck);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "bodySidebarTitle"
+        className: "bodySidebarTitle mainDisplaycontainer"
       }, title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "bodySearch"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         action: ""
       }, search.map(function (newSearch, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          key: i
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-          key: newSearch.id
+          key: i,
+          className: "bodySearch__Item"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           type: "checkbox",
           value: newSearch.id,
           onClick: handleCheck
-        }), newSearch.name));
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+          key: newSearch.id
+        }, " ", newSearch.name, " "));
       }))));
     }
   }]);
@@ -35210,7 +35210,7 @@ var SearchColor = /*#__PURE__*/function (_Component) {
         className: "bodySidebarTitle"
       }, "Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "bodySearch"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         action: ""
       }, color.map(function (colors, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -35351,7 +35351,7 @@ var SearchList = /*#__PURE__*/function (_Component) {
           handleCategoryCheck = _this$props.handleCategoryCheck,
           handleColorCheck = _this$props.handleColorCheck;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "bodySidebar"
+        className: "bodySidebar mainDisplaycontainer"
       }, this.state.categoriesLoaded && this.state.brandsLoaded && this.state.colorsLoaded ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SearchColor__WEBPACK_IMPORTED_MODULE_2__["default"], {
         color: this.state.colors,
         handleColorCheck: handleColorCheck
@@ -35363,7 +35363,20 @@ var SearchList = /*#__PURE__*/function (_Component) {
         search: this.state.categories,
         handleCheck: handleCategoryCheck,
         title: "Category"
-      })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_partials_Spinner__WEBPACK_IMPORTED_MODULE_3__["default"], null));
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "bodySidebarTitle mainDisplaycontainer"
+      }, "Price"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "bodySearch"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        action: ""
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "bodySearch__Item"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "range",
+        min: "0",
+        max: "100",
+        step: "1"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Price Between"))))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_partials_Spinner__WEBPACK_IMPORTED_MODULE_3__["default"], null));
     }
   }]);
 
@@ -35432,20 +35445,33 @@ var Shoe = /*#__PURE__*/function (_Component) {
           image = _this$props.image,
           price = _this$props.price,
           title = _this$props.title,
-          id = _this$props.id;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/shoe/".concat(id)
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          id = _this$props.id,
+          brand_id = _this$props.brand_id;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shoe__container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "shoe__container__top"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/shoe/".concat(id)
+      }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "shoe_image",
         src: image,
         alt: "Broken"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/shoe/".concat(id)
+      }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "quickbuy"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-shopping-bag"
+      }), "  Quickbuy"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "shoe__container__bottom"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "shoe__brand"
+      }, brand_id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shoe__title"
-      }, title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shoe__price"
-      }, "\u20AC", price, ".00")));
+      }, "\u20AC", price, ".00"))));
     }
   }]);
 
@@ -35510,14 +35536,15 @@ var ShoeList = /*#__PURE__*/function (_Component) {
     value: function render() {
       var shoes = this.props.shoes;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "shoeSection"
+        className: "shoeSection mainDisplaycontainer"
       }, shoes.map(function (shoe) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Shoe_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: shoe.id,
           id: shoe.id,
           image: shoe.image_url,
           price: shoe.price,
-          title: shoe.title
+          title: shoe.title,
+          brand_id: shoe.brand.name
         });
       }));
     }
@@ -35658,11 +35685,13 @@ var Pagination = /*#__PURE__*/function (_React$Component) {
         href: "!#",
         className: "pagination__link",
         onClick: previousPage
-      }, '<'), pageNumbers.map(function (number, i) {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-arrow-circle-left fa-2x"
+      })), pageNumbers.map(function (number, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
           key: i,
           href: "!#",
-          className: "pagination__link",
+          className: "pagination__link number",
           onClick: function onClick() {
             return paginate(number);
           }
@@ -35671,7 +35700,9 @@ var Pagination = /*#__PURE__*/function (_React$Component) {
         href: "!#",
         className: "pagination__link",
         onClick: nextPage
-      }, '>'));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-arrow-circle-right fa-2x"
+      })));
     }
   }]);
 

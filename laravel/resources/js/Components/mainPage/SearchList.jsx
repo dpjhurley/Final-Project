@@ -70,7 +70,7 @@ export default class SearchList extends Component {
   render() {
     const {handleBrandCheck, handleCategoryCheck, handleColorCheck} = this.props
     return (
-      <div className="bodySidebar">
+      <div className="bodySidebar mainDisplaycontainer">
         {this.state.categoriesLoaded && this.state.brandsLoaded &&this.state.colorsLoaded ? (
           <Fragment>
             <SearchColor
@@ -87,6 +87,16 @@ export default class SearchList extends Component {
               handleCheck={handleCategoryCheck}
               title="Category"
             />
+            <div className="bodySidebarTitle mainDisplaycontainer">Price</div>
+                <div className="bodySearch">
+                    <form action="">
+                                <div className="bodySearch__Item">
+                                    <input type="range" min="0" max="100" step="1"  />
+                                    <br/>
+                                    <label>Price Between</label>
+                                </div> 
+                    </form>
+                </div>
           </Fragment>
           
           
