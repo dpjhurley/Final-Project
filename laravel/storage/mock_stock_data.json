@@ -1,0 +1,73 @@
+[
+    {
+        "shoe_id": 1,
+        "size_id": ,
+        "stock": 12
+    },
+    {
+        "shoe_id": 9,
+        "size_id": ,
+        "stock": 12
+    },
+    {
+        "shoe_id": 16,
+        "size_id": 14,
+        "stock": 12
+    },
+    {
+        "shoe_id": 16,
+        "size_id": 15,
+        "stock": 12
+    },
+    {
+        "shoe_id": 16,
+        "size_id": 16,
+        "stock": 12
+    },
+    {
+        "shoe_id": 16,
+        "size_id": 17,
+        "stock": 12
+    },
+    {
+        "shoe_id": 16,
+        "size_id": 18,
+        "stock": 12
+    },
+    {
+        "shoe_id": 16,
+        "size_id": 19,
+        "stock": 12
+    },
+    {
+        "shoe_id": 16,
+        "size_id": 20,
+        "stock": 12
+    },
+    {
+        "shoe_id": 16,
+        "size_id": 21,
+        "stock": 12
+    },
+    {
+        "shoe_id": 16,
+        "size_id": 14,
+        "stock": 12
+    },
+    {
+        "shoe_id": 16,
+        "size_id": 14,
+        "stock": 12
+    },
+    {
+        "shoe_id": 16,
+        "size_id": 14,
+        "stock": 12
+    },
+    {
+        "shoe_id": 16,
+        "size_id": 14,
+        "stock": 12
+    },
+
+]

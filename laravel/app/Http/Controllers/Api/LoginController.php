@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Str;
+use App\User;
 
 class LoginController extends Controller
 {
@@ -32,8 +33,11 @@ class LoginController extends Controller
         $this->guard()->user()->forceFill([
             'api_token' => hash('sha256', $token),
         ])->save();
+
+        $user = User::query()->where('email', $request->input('email'))->first();
     
         return [
+            'user' => $user,
             'status' => 'success',
             'message' => 'Login successful',
             'data' => [
@@ -45,6 +49,7 @@ class LoginController extends Controller
     protected function loggedOut(Request $request)
     {
         return [
+            'user' => null,
             'status' => 'fail',
             'message' => 'Successfully logged out',
             'data' => []

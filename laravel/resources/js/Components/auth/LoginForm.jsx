@@ -42,7 +42,7 @@ class LoginForm extends React.Component {
         .then(data => {
             if (data.status === 'success' ) {
                 this.props.onLoginSuccess(data.data.token)
-                this.setUser()
+                this.props.setUser(data.user)
             }
         })
     }

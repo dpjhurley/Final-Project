@@ -33595,7 +33595,7 @@ var AccountArea = /*#__PURE__*/function (_React$Component) {
         logged_in: this.state.logged_in,
         onLoginSuccess: this.onLoginSuccess,
         setUser: setUser
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RegisterRelay_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], null)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Welcome back ", user.name));
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RegisterRelay_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], null)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Welcome back "));
     }
   }]);
 
@@ -33683,7 +33683,7 @@ var LoginForm = /*#__PURE__*/function (_React$Component) {
         if (data.status === 'success') {
           _this.props.onLoginSuccess(data.data.token);
 
-          _this.setUser();
+          _this.props.setUser(data.user);
         }
       });
     });
@@ -37114,8 +37114,8 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\web\_home\mza\Final-project\laravel\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\web\_home\mza\Final-project\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Web\Bootcamp\projects\final-project\laravel\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Web\Bootcamp\projects\final-project\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

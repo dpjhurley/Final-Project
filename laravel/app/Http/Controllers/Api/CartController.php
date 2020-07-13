@@ -54,6 +54,7 @@ class CartController extends Controller
 /*             $cartItem->count = $request->input('count');
  */
             $cartItem->save();
+            return $cartItem;
         /* } */
     }
 
