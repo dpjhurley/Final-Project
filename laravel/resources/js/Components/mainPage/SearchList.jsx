@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import Search from "./Search";
 import SearchColor from "./SearchColor";
 import Spinner from "../partials/Spinner";
+import PriceSlider from './PriceSlider.jsx';
 
 export default class SearchList extends Component {
   constructor(props) {
@@ -87,16 +88,8 @@ export default class SearchList extends Component {
               handleCheck={handleCategoryCheck}
               title="Category"
             />
-            <div className="bodySidebarTitle mainDisplaycontainer">Price</div>
-                <div className="bodySearch">
-                    <form action="">
-                                <div className="bodySearch__Item">
-                                    <input type="range" min="0" max="100" step="1"  />
-                                    <br/>
-                                    <label>Price Between</label>
-                                </div> 
-                    </form>
-                </div>
+            <div className="bodySidebarTitle mainDisplaycontainer">Max Price</div>
+                <PriceSlider/>
           </Fragment>
           
           
