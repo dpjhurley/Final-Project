@@ -15,6 +15,7 @@ class ShoeController extends Controller
         $shoes = Shoe::query()
             ->with('images')
             ->with('brand')
+            ->with('category')
             // ->limit(8)
             ->get();
 

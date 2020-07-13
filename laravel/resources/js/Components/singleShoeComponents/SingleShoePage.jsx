@@ -8,10 +8,11 @@ import pic5 from "../1900327270m7_zm.jpg";
 export default class SingleShoePage extends React.Component{
     render() {
         const { shoe } = this.props;
-        console.log(shoe)
+        
+        const financePrice = (shoe.price/3).toFixed(2);
         return (
             <div className="shoeDisplay">
-                <h4>home {'>'} Women {">"} converse black {'&'} white all start Trainers</h4>
+                <h4>home {'>'} Women {">"} {shoe.brand.name} {shoe.title} </h4>
                 <div className="shoeDisplay__actual">
                     <div className="shoeDisplay__actual__pic">
                         <div className="shoeDisplay__actual__pic-smallpic">
@@ -22,14 +23,14 @@ export default class SingleShoePage extends React.Component{
                            <a href="#"><img src={pic4} alt="pic"></img></a>
                         </div>
                         <div className="shoeDisplay__actual__pic-largepic">
-                        <a href="#"><img src={pic5} alt="pic"></img></a>
+                        <a href="#"><img src={`${shoe.images[0].path}`} alt="pic"></img></a>
                         </div>
                     </div>
                     <div className="shoeDisplay__actual__info">
                         <div className="shoeDisplay__actual__info-top">
-                            <h2>Converse</h2>
-                            <p>black and white all stars trainers</p>
-                            <h3> <strong>£</strong>55.00</h3>
+                            <h2>{shoe.brand.name}</h2>
+                            <p>{shoe.title}</p>
+                            <h3> <strong>£</strong>{shoe.price}.00</h3>
                             <a href="#">with free delivery</a>
                             <div className="shoeDisplay__actual__info-top-star">
                             <i className="fas fa-star"></i>
@@ -58,7 +59,7 @@ export default class SingleShoePage extends React.Component{
                             </select>
                             <a href="#">Size Guide</a>
                             </div>
-                            <p><span className="bold-text">Finance</span>, pay <span className="bold-text">£18.33</span> in <span className="bold-text">3 monthly instalments.</span> No interest or fees. <br/><a href="#">Learn More</a></p>
+                            <p><span className="bold-text">Finance</span>, pay <span className="bold-text">£{financePrice}</span> in <span className="bold-text">3 monthly instalments.</span> No interest or fees. <br/><a href="#">Learn More</a></p>
                             <button className="add_to_basket_btn">ADD TO BASKET</button>
                             </form>
                         </div>

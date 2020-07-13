@@ -60,17 +60,6 @@ class CartController extends Controller
     public function remove($user_id, $shoe_id) 
     {
         $item = CartItem::where('user_id', $user_id)->where('shoe_id', $shoe_id)->first();
-        // $item->delete();
-
-        // if ($request->input('count') > $item->count) {
-            // $item->delete();
-
-        // } else {
-        //     $item->count -= $request->input('count');
-
-        //     $item->save();
-        // }
-
-        return $item;
+        $item->delete();
     }
 }
