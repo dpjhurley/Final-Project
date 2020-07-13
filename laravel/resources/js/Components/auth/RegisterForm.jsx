@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 
-const RegisterForm = () => {
+ const RegisterForm = () => {
     const [ name, setName ] = useState('');
     const [ surname, setSurname ] = useState('');
     const [ email, setEmail ] = useState('');
@@ -136,7 +136,7 @@ const RegisterForm = () => {
                         <div className="row">
                             <h4>Payment Details</h4>
                             <div className="input-group">
-                                <input type="radio" name="payment-method" value="card" id="payment-method-card" checked />
+                                <input type="radio" name="payment-method" value="card" id="payment-method-card"  />
                                 <label htmlFor="payment-method-card">
                                     <span><i className="fa fa-cc-visa"></i>Credit Card</span>
                                 </label>

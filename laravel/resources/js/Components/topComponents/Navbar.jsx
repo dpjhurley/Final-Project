@@ -6,6 +6,7 @@ import HiddenMenuSearch from './HiddenMenuSearch.jsx';
 import HiddenMenuWomen from './hiddenMenuWomen.jsx';
 import HiddenMenuKids from './hiddenMenuKids.jsx';
 import HiddenMenuAccessories from './HiddenMenuAccessories.jsx';
+import HiddenMenuBrands from './HiddenMenuBrands.jsx';
 
 export default class Navbar extends React.Component {
 
@@ -77,7 +78,7 @@ export default class Navbar extends React.Component {
 
                 <div className="mainNav__list__item">
                     <Link to="brands">Brands</Link>
-                    <HiddenMenu />
+                    <HiddenMenuBrands />
                 </div>
 
                 <div className="mainNav__list__item">
@@ -94,9 +95,9 @@ export default class Navbar extends React.Component {
                 <div className="mainNav__list__icons search-icon" onClick={this.handleOnClickHiddenSearch} >
                     
                         <i className="fas fa-search"></i>
-                     <HiddenMenuSearch handleOnClickHiddenSearch={this.handleOnClickHiddenSearch} />
+                   
                 </div>
-
+                <HiddenMenuSearch handleOnClickHiddenSearch={this.handleOnClickHiddenSearch} />
             </div>
         </nav>
         

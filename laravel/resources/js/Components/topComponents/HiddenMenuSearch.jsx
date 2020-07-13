@@ -2,6 +2,7 @@ import React from 'react';
 
 
 export default class HiddenMenuSearch  extends React.Component{
+    
  
 
     render(){

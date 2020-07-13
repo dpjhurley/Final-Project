@@ -38,7 +38,7 @@ export default class App extends React.Component {
             });
         });
     };
-
+   
     
 
     render() {
@@ -70,6 +70,7 @@ export default class App extends React.Component {
                             <MainDisplay 
                                 data={data}
                                 loading={loading}
+                               
                             />
                         }
                     />
