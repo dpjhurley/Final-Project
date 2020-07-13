@@ -55,7 +55,18 @@ import React, { useState } from 'react';
 
         fetch('/api/register', {
             method: 'POST',
-            body: JSON.stringify(this.state),
+            body: JSON.stringify({
+                'name': name,
+                'surname': surname,
+                'email':email,
+                'date_of_birth': date_of_birth,
+                'gender': gender,
+                'password': password,
+                'mailing_list': mailing_list
+
+
+
+        }),
             headers: {
                 'Accept':       'application/json',
                 'Content-Type': 'application/json',
@@ -64,9 +75,7 @@ import React, { useState } from 'react';
         .then(response => response.json())
         .then(data => {
             if (data.status === 'success') {
-                this.setState({
-                    success: data.success
-                })
+                setSuccess(data.status);
             }
         })
     }
@@ -188,13 +197,14 @@ import React, { useState } from 'react';
                         </div>
                         <div className="row">
                             <h4>Terms and Conditions</h4>
-                            <div className="input-group"><input type="checkbox" id="terms" /><label htmlFor="terms">I accept the terms and conditions for signing up to this service, and hereby confirm I have read the privacy policy.</label></div>
+                            <div className="input-group"><input type="checkbox" id="terms"  onClick={handleTermsChange}/><label htmlFor="terms">I accept the terms and conditions for signing up to this service, and hereby confirm I have read the privacy policy.</label></div>
                         </div>
                         <div className="row">
                             <h4>Join Our Mailing List</h4>
                             <div className="input-group"><input type="checkbox" id="mailing" onChange={handleMailingListChange} /><label htmlFor="mailing">By Clicking on the checkbox you will be subscribed to our mailing list</label></div>
                         </div>
-                        <button className="register-submit">Register your account</button>
+                        { terms ? <button className="register-submit">Register your account</button> : <div></div> }
+                       
                     </form>
                 </div>
             )}

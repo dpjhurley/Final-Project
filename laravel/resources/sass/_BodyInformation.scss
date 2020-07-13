@@ -1,0 +1,22 @@
+@import "Variables";
+
+.bodyInformation {
+    font-size: x-large;
+    p {
+        margin-left: 20px;
+        margin-right: 20px;
+        text-align: center;
+    }
+    &__global {
+        color: $primary_color;
+        font-size: xx-large;
+        font-weight: bolder;
+    
+    }
+    &__underline {
+        text-decoration: underline $primary_color;
+    
+    }
+}
+
+

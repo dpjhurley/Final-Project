@@ -36,41 +36,30 @@ class CartController extends Controller
         return $cart;
     }
 
-    public function add(Request $request) 
+    public function add($user_id, $shoe_id) 
     {
-        $item = CartItem::where('shoe_id', $request->input('shoe_id'))->where('user_id', $request->input('user_id'))->first();
+       /*  $item = CartItem::where('shoe_id', $shoe_id)->where('user_id', $user_id)->first();
 
         if ($item != null) {
             //item exists
             $item->count += $request->input('count');
             $item->save();
 
-        } else {
+        }  else {*/
             //item doesnt exist, so we make it
             $cartItem = new CartItem;
     
-            $cartItem->user_id = $request->input('user_id');
-            $cartItem->book_id = $request->input('shoe_id');
-            $cartItem->count = $request->input('count');
-
+            $cartItem->user_id = $user_id;
+            $cartItem->shoe_id = $shoe_id;
+/*             $cartItem->count = $request->input('count');
+ */
             $cartItem->save();
-        }
+        /* } */
     }
 
     public function remove($user_id, $shoe_id) 
     {
         $item = CartItem::where('user_id', $user_id)->where('shoe_id', $shoe_id)->first();
-        // $item->delete();
-
-        // if ($request->input('count') > $item->count) {
-            // $item->delete();
-
-        // } else {
-        //     $item->count -= $request->input('count');
-
-        //     $item->save();
-        // }
-
-        return $item;
+        $item->delete();
     }
 }

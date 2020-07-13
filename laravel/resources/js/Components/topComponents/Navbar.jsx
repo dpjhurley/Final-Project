@@ -15,10 +15,18 @@ export default class Navbar extends React.Component {
 
         this.state = {
            
-            hiddensearch: true
+            hiddensearch: true,
+            gender: ""
 
         }
     }
+
+    // handleGenderState = () => {
+    //     this.setState({
+    //         gender
+    //     })
+
+    // }
     handleOnClickHiddenSearch = (event) => {
         this.setState({
             hiddensearch: !this.state.hiddensearch
@@ -73,10 +81,10 @@ export default class Navbar extends React.Component {
                     <HiddenMenuBrands />
                 </div>
 
-                <div className="mainNav__list__item">
+                {/* <div className="mainNav__list__item">
                     <Link to="sales" style={{color: "red"}}>Sale</Link>
                     <HiddenMenu />
-                </div>
+                </div> */}
 
                 <div className="mainNav__list__icons">
                     <Link to="/cart">

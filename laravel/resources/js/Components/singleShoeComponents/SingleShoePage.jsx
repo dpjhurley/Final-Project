@@ -6,12 +6,33 @@ import pic4 from "../logo-360-640.png";
 import pic5 from "../1900327270m7_zm.jpg";
 
 export default class SingleShoePage extends React.Component{
+
+    constructor(props){
+        super(props);
+        
+    }   
+    handleAddToBasket=(e)=>{
+        e.preventDefault();
+        fetch(`api/cart/${1}/${this.props.shoe.shoe_id}/add`, {
+            method: 'POST',
+            body: JSON.stringify({
+                'user_id': 1,
+                'shoe_id': this.props.shoe.shoe_id
+            }),
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            }
+        })
+    }
+    
     render() {
         const { shoe } = this.props;
-        console.log(shoe)
+        
+        const financePrice = (shoe.price/3).toFixed(2);
         return (
             <div className="shoeDisplay">
-                <h4>home {'>'} Women {">"} converse black {'&'} white all start Trainers</h4>
+                <h4>home {'>'} Women {">"} {shoe.brand.name} {shoe.title} </h4>
                 <div className="shoeDisplay__actual">
                     <div className="shoeDisplay__actual__pic">
                         <div className="shoeDisplay__actual__pic-smallpic">
@@ -22,14 +43,14 @@ export default class SingleShoePage extends React.Component{
                            <a href="#"><img src={pic4} alt="pic"></img></a>
                         </div>
                         <div className="shoeDisplay__actual__pic-largepic">
-                        <a href="#"><img src={pic5} alt="pic"></img></a>
+                        <a href="#"><img src={`/images/${shoe.images[0].path}`} alt="pic"></img></a>
                         </div>
                     </div>
                     <div className="shoeDisplay__actual__info">
                         <div className="shoeDisplay__actual__info-top">
-                            <h2>Converse</h2>
-                            <p>black and white all stars trainers</p>
-                            <h3> <strong>£</strong>55.00</h3>
+                            <h2>{shoe.brand.name}</h2>
+                            <p>{shoe.title}</p>
+                            <h3> <strong>£</strong>{shoe.price}.00</h3>
                             <a href="#">with free delivery</a>
                             <div className="shoeDisplay__actual__info-top-star">
                             <i className="fas fa-star"></i>
@@ -42,7 +63,7 @@ export default class SingleShoePage extends React.Component{
                            <a href="#" className="leavereview"><p>leave a review</p></a> 
                         </div>
                         <div className="shoeDisplay__actual__info-size">
-                           <form className="shoeDisplay__actual__info-size-selection">
+                           <form className="shoeDisplay__actual__info-size-selection" onSubmit={this.handleAddToBasket}>
                            <div className="shoeDisplay__actual__info-size-selection-select" >
                             <select name="select-size" className="select-css">
                                 <option value >Please select a size</option>
@@ -58,8 +79,8 @@ export default class SingleShoePage extends React.Component{
                             </select>
                             <a href="#">Size Guide</a>
                             </div>
-                            <p><span className="bold-text">Finance</span>, pay <span className="bold-text">£18.33</span> in <span className="bold-text">3 monthly instalments.</span> No interest or fees. <br/><a href="#">Learn More</a></p>
-                            <button className="add_to_basket_btn">ADD TO BASKET</button>
+                            <p><span className="bold-text">Finance</span>, pay <span className="bold-text">£{financePrice}</span> in <span className="bold-text">3 monthly instalments.</span> No interest or fees. <br/><a href="#">Learn More</a></p>
+                            <button type="submit" className="add_to_basket_btn">ADD TO BASKET</button>
                             </form>
                         </div>
                         <div className="shoeDisplay__actual__info-collect">

@@ -1,0 +1,25 @@
+@import "Variables";
+
+
+.bodySearch {
+    
+    display: flex;
+    justify-content: left;
+    flex-basis: 0px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    label{
+        font-size: x-large;
+        display: flex;
+        
+    }
+
+}
+
+.bodySidebarTitle {
+    font-size: xx-large;
+    font-weight: bolder;
+    text-align: center;
+    color: $primary_color;
+
+}

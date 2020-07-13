@@ -33478,7 +33478,7 @@ var Sort = /*#__PURE__*/function (_Component) {
   _createClass(Sort, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "Recommended"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "Whats New"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "Price high to low"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "Price low to high")));
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", null));
     }
   }]);
 
@@ -33761,8 +33761,6 @@ var LoginForm = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _this = undefined;
-
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -33878,7 +33876,15 @@ var RegisterForm = function RegisterForm() {
     event.preventDefault();
     fetch('/api/register', {
       method: 'POST',
-      body: JSON.stringify(_this.state),
+      body: JSON.stringify({
+        'name': name,
+        'surname': surname,
+        'email': email,
+        'date_of_birth': date_of_birth,
+        'gender': gender,
+        'password': password,
+        'mailing_list': mailing_list
+      }),
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -33887,9 +33893,7 @@ var RegisterForm = function RegisterForm() {
       return response.json();
     }).then(function (data) {
       if (data.status === 'success') {
-        _this.setState({
-          success: data.success
-        });
+        setSuccess(data.status);
       }
     });
   };
@@ -34038,7 +34042,8 @@ var RegisterForm = function RegisterForm() {
     className: "input-group"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "checkbox",
-    id: "terms"
+    id: "terms",
+    onClick: handleTermsChange
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "terms"
   }, "I accept the terms and conditions for signing up to this service, and hereby confirm I have read the privacy policy."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -34051,9 +34056,9 @@ var RegisterForm = function RegisterForm() {
     onChange: handleMailingListChange
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "mailing"
-  }, "By Clicking on the checkbox you will be subscribed to our mailing list"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  }, "By Clicking on the checkbox you will be subscribed to our mailing list"))), terms ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "register-submit"
-  }, "Register your account"))));
+  }, "Register your account") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (RegisterForm);
@@ -34318,6 +34323,7 @@ var Basket = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -34341,6 +34347,7 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -34373,19 +34380,19 @@ var CartItem = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this$props = this.props,
           shoe = _this$props.shoe,
-          handleRemoveFromCart = _this$props.handleRemoveFromCart,
-          handleRemoveShoeId = _this$props.handleRemoveShoeId,
-          handleRemoveUserId = _this$props.handleRemoveUserId;
+          handleRemoveFromCart = _this$props.handleRemoveFromCart;
       var quantity = this.state.quantity;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "cartitem"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "cartitem__info"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/shoe/".concat(shoe.shoe_id)
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "shoeimage",
         src: shoe.image_url,
         alt: ""
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shoeinfo"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shoeinfo__brand"
@@ -34800,9 +34807,18 @@ var Information = /*#__PURE__*/function (_Component) {
   _createClass(Information, [{
     key: "render",
     value: function render() {
+      var _this$props = this.props,
+          count = _this$props.count,
+          brand = _this$props.brand;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "information"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "HOME"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Mens Shoes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "PRODUCTS FOUND"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "For sneakerheads and trendsetters alike, schuh has every style of footwear to kit out your wardrobe. Whether you\u2019re after a street-style men\u2019s trainer or practical yet stylish men\u2019s boot, you\u2019ll find your fit right here. Our range of smart shoes will bring style to weekend escapades or the big day. Shop from big brands like Nike, Vans, adidas to find your next kick fix. Take your pick and order online at schuh today.", " "));
+        className: "bodyInformation"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "HOME"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), brand.length > 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "bodyInformation__underline"
+      }, brand, "FIX ME") : "nothing", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "bodyInformation__global"
+      }, count.length, " Products Found"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "For sneakerheads and trendsetters alike, GlobalShoes has every style of footwear to kit out your wardrobe. Whether you\u2019re after a street-style men\u2019s trainer or practical yet stylish men\u2019s boot, you\u2019ll find your fit right here. Shop from big brands like Nike, Vans, adidas to find your next kick fix. Take your pick and order online at", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "bodyInformation__global"
+      }, "Global "), "today."));
     }
   }]);
 
@@ -34990,9 +35006,9 @@ var MainDisplay = /*#__PURE__*/function (_Component) {
       if (filterByColor.length > 0) {
         data.forEach(function (shoe) {
           filterByColor.forEach(function (color) {
-            var regex = new RegExp(color, 'i');
+            var regex = new RegExp(color, "i");
 
-            if (shoe.color.match(regex) != null) {
+            if (shoe.color.match(regex) != null && !filteredShoes.includes(shoe)) {
               filteredShoes.push(shoe);
             }
           });
@@ -35003,13 +35019,12 @@ var MainDisplay = /*#__PURE__*/function (_Component) {
         filteredShoes = this.props.data;
       }
 
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "information"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Information_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Information_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        count: filteredShoes,
+        brand: filterByBrand
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "buttons"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_partials_Button_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "topright"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Sort_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_partials_Button_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shoes"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SearchList__WEBPACK_IMPORTED_MODULE_4__["default"], {
         handleBrandCheck: this.handleBrandCheck,
@@ -35089,19 +35104,25 @@ var Search = /*#__PURE__*/function (_Component) {
     value: function render() {
       var _this$props = this.props,
           search = _this$props.search,
-          handleCheck = _this$props.handleCheck;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "search"
+          handleCheck = _this$props.handleCheck,
+          title = _this$props.title;
+      console.log(handleCheck);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "bodySidebarTitle"
+      }, title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "bodySearch"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         action: ""
-      }, search.map(function (newSearch) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+      }, search.map(function (newSearch, i) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: i
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
           key: newSearch.id
-        }, newSearch.name, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           type: "checkbox",
           value: newSearch.id,
           onClick: handleCheck
-        }));
+        }), newSearch.name));
       }))));
     }
   }]);
@@ -35162,22 +35183,38 @@ var SearchColor = /*#__PURE__*/function (_Component) {
 
   _createClass(SearchColor, [{
     key: "render",
+
+    /*  constructor(props){
+         super(props);
+         this.state ={
+             checked : false
+         }
+     }
+     handleUnclick = ()=>{
+         this.setState({
+             checked: true
+     });
+     } */
     value: function render() {
       var _this$props = this.props,
           color = _this$props.color,
           handleColorCheck = _this$props.handleColorCheck;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "search"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "bodySidebarTitle"
+      }, "Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "bodySearch"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         action: ""
       }, color.map(function (colors, i) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           key: i
-        }, colors, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+          key: i
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           type: "checkbox",
           value: colors,
           onClick: handleColorCheck
-        }));
+        }), colors));
       }))));
     }
   }]);
@@ -35203,6 +35240,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Search__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Search */ "./resources/js/Components/mainPage/Search.jsx");
 /* harmony import */ var _SearchColor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SearchColor */ "./resources/js/Components/mainPage/SearchColor.jsx");
+/* harmony import */ var _partials_Spinner__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../partials/Spinner */ "./resources/js/Components/partials/Spinner.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -35226,6 +35264,7 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -35291,7 +35330,8 @@ var SearchList = /*#__PURE__*/function (_Component) {
       categories: null,
       categoriesLoaded: false,
       colors: null,
-      colorsLoaded: false
+      colorsLoaded: false,
+      titleColor: "Color"
     };
     return _this;
   }
@@ -35302,21 +35342,21 @@ var SearchList = /*#__PURE__*/function (_Component) {
       var _this$props = this.props,
           handleBrandCheck = _this$props.handleBrandCheck,
           handleCategoryCheck = _this$props.handleCategoryCheck,
-          handleColorCheck = _this$props.handleColorCheck,
-          isColorChecked = _this$props.isColorChecked;
+          handleColorCheck = _this$props.handleColorCheck;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "sidebar"
+        className: "bodySidebar"
       }, this.state.categoriesLoaded && this.state.brandsLoaded && this.state.colorsLoaded ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SearchColor__WEBPACK_IMPORTED_MODULE_2__["default"], {
         color: this.state.colors,
-        handleColorCheck: handleColorCheck,
-        isColorChecked: isColorChecked
+        handleColorCheck: handleColorCheck
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Search__WEBPACK_IMPORTED_MODULE_1__["default"], {
         search: this.state.brands,
-        handleCheck: handleBrandCheck
+        handleCheck: handleBrandCheck,
+        title: "Brand"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Search__WEBPACK_IMPORTED_MODULE_1__["default"], {
         search: this.state.categories,
-        handleCheck: handleCategoryCheck
-      })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "loading"));
+        handleCheck: handleCategoryCheck,
+        title: "Category"
+      })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_partials_Spinner__WEBPACK_IMPORTED_MODULE_3__["default"], null));
     }
   }]);
 
@@ -35533,19 +35573,7 @@ var Button = /*#__PURE__*/function (_Component) {
   _createClass(Button, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "button"
-      }, "Mens Trainer"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "button"
-      }, "Mens Boot"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "button"
-      }, "Smart Shoes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "button"
-      }, "Nike"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "button"
-      }, "Vans"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "button"
-      }, "Adidas"));
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
     }
   }]);
 
@@ -35733,6 +35761,8 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -35745,20 +35775,39 @@ var SingleShoePage = /*#__PURE__*/function (_React$Component) {
 
   var _super = _createSuper(SingleShoePage);
 
-  function SingleShoePage() {
+  function SingleShoePage(props) {
+    var _this;
+
     _classCallCheck(this, SingleShoePage);
 
-    return _super.apply(this, arguments);
+    _this = _super.call(this, props);
+
+    _defineProperty(_assertThisInitialized(_this), "handleAddToBasket", function (e) {
+      e.preventDefault();
+      fetch("api/cart/".concat(1, "/", _this.props.shoe.shoe_id, "/add"), {
+        method: 'POST',
+        body: JSON.stringify({
+          'user_id': 1,
+          'shoe_id': _this.props.shoe.shoe_id
+        }),
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        }
+      });
+    });
+
+    return _this;
   }
 
   _createClass(SingleShoePage, [{
     key: "render",
     value: function render() {
       var shoe = this.props.shoe;
-      console.log(shoe);
+      var financePrice = (shoe.price / 3).toFixed(2);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shoeDisplay"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "home ", '>', " Women ", ">", " converse black ", '&', " white all start Trainers"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "home ", '>', " Women ", ">", " ", shoe.brand.name, " ", shoe.title, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shoeDisplay__actual"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shoeDisplay__actual__pic"
@@ -35794,13 +35843,13 @@ var SingleShoePage = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: _1900327270m7_zm_jpg__WEBPACK_IMPORTED_MODULE_5___default.a,
+        src: "/images/".concat(shoe.images[0].path),
         alt: "pic"
       })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shoeDisplay__actual__info"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shoeDisplay__actual__info-top"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Converse"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "black and white all stars trainers"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "\xA3"), "55.00"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, shoe.brand.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, shoe.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "\xA3"), shoe.price, ".00"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#"
       }, "with free delivery"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shoeDisplay__actual__info-top-star"
@@ -35822,7 +35871,8 @@ var SingleShoePage = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "leave a review"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shoeDisplay__actual__info-size"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        className: "shoeDisplay__actual__info-size-selection"
+        className: "shoeDisplay__actual__info-size-selection",
+        onSubmit: this.handleAddToBasket
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shoeDisplay__actual__info-size-selection-select"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
@@ -35836,11 +35886,12 @@ var SingleShoePage = /*#__PURE__*/function (_React$Component) {
         className: "bold-text"
       }, "Finance"), ", pay ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "bold-text"
-      }, "\xA318.33"), " in ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }, "\xA3", financePrice), " in ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "bold-text"
       }, "3 monthly instalments."), " No interest or fees. ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#"
       }, "Learn More")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit",
         className: "add_to_basket_btn"
       }, "ADD TO BASKET"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shoeDisplay__actual__info-collect"
@@ -36516,10 +36567,16 @@ var Navbar = /*#__PURE__*/function (_React$Component) {
     });
 
     _this.state = {
-      hiddensearch: true
+      hiddensearch: true,
+      gender: ""
     };
     return _this;
-  }
+  } // handleGenderState = () => {
+  //     this.setState({
+  //         gender
+  //     })
+  // }
+
 
   _createClass(Navbar, [{
     key: "render",
@@ -36557,13 +36614,6 @@ var Navbar = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "brands"
       }, "Brands"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_HiddenMenuBrands_jsx__WEBPACK_IMPORTED_MODULE_8__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "mainNav__list__item"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "sales",
-        style: {
-          color: "red"
-        }
-      }, "Sale"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_HiddenMenu_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "mainNav__list__icons"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/cart"

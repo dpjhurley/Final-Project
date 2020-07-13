@@ -1,8 +1,9 @@
 .shoeSection{
     padding-top: 10px;
-    width: 80%;
     display: flex;
     flex-wrap: wrap;
+    color: black;
+    justify-content: center;;
 
     &>a {
         text-decoration: none;

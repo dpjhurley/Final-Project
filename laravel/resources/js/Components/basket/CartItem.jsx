@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class CartItem extends React.Component {
     constructor(props) {
@@ -18,13 +19,15 @@ class CartItem extends React.Component {
 
     
     render() { 
-        const { shoe, handleRemoveFromCart, handleRemoveShoeId, handleRemoveUserId } = this.props;
+        const { shoe, handleRemoveFromCart } = this.props;
         const { quantity } = this.state;
 
         return (  
             <div className="cartitem">
                 <div className="cartitem__info">
-                    <img className="shoeimage" src={shoe.image_url} alt=""/>
+                    <Link to={`/shoe/${shoe.shoe_id}`}>
+                        <img className="shoeimage" src={shoe.image_url} alt=""/>
+                    </Link>
                     <div className="shoeinfo">
                         <div className="shoeinfo__brand">{shoe.brand}</div>
                         <div className="shoeinfo__name">{shoe.shoe.title}</div>

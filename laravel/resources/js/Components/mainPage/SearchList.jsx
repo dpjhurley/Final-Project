@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import Search from "./Search";
 import SearchColor from "./SearchColor";
+import Spinner from "../partials/Spinner";
 
 export default class SearchList extends Component {
   constructor(props) {
@@ -12,7 +13,8 @@ export default class SearchList extends Component {
       categories: null,
       categoriesLoaded: false,
       colors: null,
-      colorsLoaded: false
+      colorsLoaded: false,
+      titleColor: "Color"
     }
   }
 
@@ -66,29 +68,30 @@ export default class SearchList extends Component {
   };
 
   render() {
-    const {handleBrandCheck, handleCategoryCheck, handleColorCheck, isColorChecked} = this.props
+    const {handleBrandCheck, handleCategoryCheck, handleColorCheck} = this.props
     return (
-      <div className="sidebar">
+      <div className="bodySidebar">
         {this.state.categoriesLoaded && this.state.brandsLoaded &&this.state.colorsLoaded ? (
           <Fragment>
             <SearchColor
               color={this.state.colors}
               handleColorCheck={handleColorCheck}
-              isColorChecked={isColorChecked}
             />
             <Search 
               search={this.state.brands}
               handleCheck={handleBrandCheck}
+              title="Brand"
             />
               <Search 
               search={this.state.categories}
               handleCheck={handleCategoryCheck}
+              title="Category"
             />
           </Fragment>
           
           
         ) : (
-          <div>loading</div>
+            <Spinner/>
         )}
         
       </div>

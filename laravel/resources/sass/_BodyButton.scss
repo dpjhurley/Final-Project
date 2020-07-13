@@ -1,4 +1,4 @@
-.button {
+.bodyButton {
     width: 120px;
     height: 25px;
     font-family: 'Roboto', sans-serif;
@@ -14,11 +14,12 @@
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
+        &:hover {
+            background-color: #00DC55;;
+            box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+            color: #fff;
+            transform: translateY(-7px);
+        }
+    
     }
-.button:hover {
-    background-color: #00DC55;;
-    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
-    color: #fff;
-    transform: translateY(-7px);
-  }
 
