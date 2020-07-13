@@ -6,16 +6,18 @@
     }
 
     &__container {
-            width: 33%;
+            width: 100%;
             padding: 20px;
     }
 
     &__title {
         font-size: medium;
+        text-align: center;
     }
 
     &__price {
         font-size: small;
+        text-align: center;
     }
 }
 
