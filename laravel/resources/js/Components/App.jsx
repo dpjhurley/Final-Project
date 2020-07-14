@@ -79,9 +79,9 @@ export default class App extends React.Component {
                             
                 <Switch>
                     <Route 
-                        path="/basket"  
+                        path={`/cart`}  
                         render={
-                            () => <Basket
+                            () => <Basket 
                                 token={token}
                             />
                         }

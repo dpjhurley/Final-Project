@@ -37,7 +37,7 @@ class AccountArea extends React.Component {
     }
 
     render() { 
-        const {setUser} = this.props;
+        const {token} = this.props;
        
         return (
             <>
