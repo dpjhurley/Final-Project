@@ -1,6 +1,7 @@
 import React from 'react';
 import CartItem from './CartItem.jsx';
 import './_basket.scss';
+import BasketTotal from './BasketTotal.jsx';
 
 
 class Basket extends React.Component {
@@ -10,6 +11,7 @@ class Basket extends React.Component {
         this.state = {
             cart: [],
             loaded: false,
+            newQuantity: null
         }
     }
 
@@ -31,8 +33,7 @@ class Basket extends React.Component {
     }
 
     handleRemoveFromCart = (shoe) => {
-        if (window.confirm('Are you sure you want to remove this from your cart?')) {
-            
+        if (window.confirm('Are you sure you want to remove this from your cart?')) {            
             fetch(`api/cart/${shoe.user_id}/${shoe.shoe_id}/remove`, {
                 method: 'POST',
                 headers: {
@@ -40,20 +41,28 @@ class Basket extends React.Component {
                     "Content-Type": "application/json"
                 }
             })
-          
-        }
-        
+        } 
     }
 
-    handleRemoveUserId = (e) => {
-        this.setState({
-            removeUserId: e.target.value
-        })
+    handleChangeOfQuantity = (shoe) => {
+        fetch(`/api/cart/${shoe.user_id}/${shoe.shoe_id}/edit`, {
+            method: 'POST',
+            body: JSON.stringify({
+                'newQuantity': this.state.newQuantity
+            }),
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            }
+        }) 
+        window.location.reload(false);
     }
+    
+    
 
-    handleRemoveShoeId = (e) => {
+    changeNewQuantity = (e) => {
         this.setState({
-            removeShoeId: e.target.value
+            newQuantity: e.target.value
         })
     }
 
@@ -63,23 +72,39 @@ class Basket extends React.Component {
     
     render() { 
         const { cart, loaded } = this.state;
+
+        let total = 0;
+        cart.forEach(i => {
+            total += i.shoe.price * i.count
+        });
+
         return (  
             <>
                 <h2 className="basket__title">Basket</h2>
                 {loaded ? (
-                    <div className="basket_container">
-                        {cart.map((s, i) => (
-                            <CartItem 
-                                key={i}
-                                shoe={s}
-                                handleRemoveFromCart={(event)=>{
-                                    event.preventDefault();
-
-                                    this.handleRemoveFromCart(s);
-                                }}
-                            />
-                        ))}
-                    </div>
+                    <>
+                        <div className="basket__container">
+                            {cart.map((s, i) => (
+                                <CartItem 
+                                    key={i}
+                                    shoe={s}
+                                    handleRemoveFromCart={(e) => {
+                                        e.preventDefault();
+    
+                                        this.handleRemoveFromCart(s);
+                                    }}
+                                    changeNewQuantity={this.changeNewQuantity}
+                                    handleChangeOfQuantity={(e) => {
+                                        e.preventDefault();
+    
+                                        this.handleChangeOfQuantity(s)
+                                    }}
+                                    changeQuantityBtn={this.changeQuantityBtn}
+                                />
+                            ))}
+                        </div>
+                        <BasketTotal total={total}/>
+                    </>
                 ) : (
                     <div>nothing to show</div>
                 )}

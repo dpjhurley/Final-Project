@@ -26,18 +26,20 @@ Route::get('/categories', 'Api\CategoryController@index');
 
 
 
-// Route::group(['middleware' => ['auth:api']], function ($group) {
+Route::group(['middleware' => ['auth:api']], function ($group) {
 
-//     // Shopuld you have to be logged in to add to your cart OR not
-//     Route::get('/cart', 'Api\CartController@index');
-//     Route::post('/cart/add', 'Api\CartController@add');
-//     Route::post('/cart/remove', 'Api\CartController@remove');
+    // Shopuld you have to be logged in to add to your cart OR not
+    Route::get('/cart/{user_id}', 'Api\CartController@index');
+    Route::post('/cart/{user_id}/{shoe_id}/add', 'Api\CartController@add');
+    Route::post('/cart/{user_id}/{shoe_id}/remove', 'Api\CartController@remove');
+    Route::post('/cart/{user_id}/{shoe_id}/edit', 'Api\CartController@edit');
 
-// });
+});
 
-Route::get('/cart/{user_id}', 'Api\CartController@index');
-Route::post('/cart/{user_id}/{shoe_id}/add', 'Api\CartController@add');
-Route::post('/cart/{user_id}/{shoe_id}/remove', 'Api\CartController@remove');
+// Route::get('/cart/{user_id}', 'Api\CartController@index');
+// Route::post('/cart/{user_id}/{shoe_id}/add', 'Api\CartController@add');
+// Route::post('/cart/{user_id}/{shoe_id}/remove', 'Api\CartController@remove');
+// Route::post('/cart/{user_id}/{shoe_id}/edit', 'Api\CartController@edit');
 
 Route::post('/login', 'Api\LoginController@login');
 Route::post('/register', 'Api\RegisterController@register');

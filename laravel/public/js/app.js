@@ -192,7 +192,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".basket__title {\n  text-align: center;\n}\n\n.basket__container {\n  width: 65%;\n}\n\n.cartitem {\n  display: flex;\n  justify-content: space-between;\n  padding: 1em;\n}\n.cartitem__info {\n  display: flex;\n}\n.cartitem .shoeimage {\n  max-width: 150px;\n}\n.cartitem__delete {\n  display: flex;\n  justify-content: flex-end;\n}\n.cartitem__delete > input {\n  height: 30%;\n  width: 50px;\n}\n\n.shoeinfo {\n  padding: 1em;\n}\n.shoeinfo__brand {\n  margin-bottom: 0.5em;\n}\n.shoeinfo__name {\n  margin-bottom: 0.5em;\n}\n.shoeinfo__price {\n  margin-bottom: 0.5em;\n}\n.shoeinfo__buttons .quantity {\n  margin-bottom: 0.5em;\n}", ""]);
+exports.push([module.i, ".basket__title {\n  text-align: center;\n}\n\n.basket__container {\n  width: 65%;\n}\n\n.cartitem {\n  display: flex;\n  justify-content: space-between;\n  padding: 1em;\n}\n.cartitem__info {\n  display: flex;\n}\n.cartitem .shoeimage {\n  max-width: 150px;\n}\n.cartitem__delete {\n  display: flex;\n  justify-content: flex-end;\n}\n.cartitem__delete > input {\n  height: 30%;\n  width: 50px;\n}\n\n.shoeinfo {\n  padding: 1em;\n}\n.shoeinfo__brand {\n  margin-bottom: 0.5em;\n}\n.shoeinfo__name {\n  margin-bottom: 0.5em;\n}\n.shoeinfo__price {\n  margin-bottom: 0.5em;\n}\n.shoeinfo__buttons .quantity {\n  margin-bottom: 0.5em;\n}\n\n.basket__payment {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n}\n.basket__payment .totals {\n  width: 20rem;\n}\n.basket__payment .totals__sub {\n  display: flex;\n  justify-content: space-between;\n  margin-top: 1rem;\n}\n.basket__payment .totals__sub:nth-of-type(1) {\n  padding-top: 1rem;\n  border-top: 0.02rem solid black;\n}\n.basket__payment .totals__btn {\n  background-color: #00DC55;\n  height: 2.8rem;\n  width: 20rem;\n  border: none;\n  border-radius: 0.2rem;\n  font-weight: 700;\n  font-size: 1rem;\n  margin: 2rem 0;\n}", ""]);
 
 // exports
 
@@ -88612,6 +88612,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _CartItem_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CartItem.jsx */ "./resources/js/Components/basket/CartItem.jsx");
 /* harmony import */ var _basket_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_basket.scss */ "./resources/js/Components/basket/_basket.scss");
 /* harmony import */ var _basket_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_basket_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _BasketTotal_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./BasketTotal.jsx */ "./resources/js/Components/basket/BasketTotal.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -88635,6 +88636,7 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -88680,15 +88682,23 @@ var Basket = /*#__PURE__*/function (_React$Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_this), "handleRemoveUserId", function (e) {
-      _this.setState({
-        removeUserId: e.target.value
+    _defineProperty(_assertThisInitialized(_this), "handleChangeOfQuantity", function (shoe) {
+      fetch("/api/cart/".concat(shoe.user_id, "/").concat(shoe.shoe_id, "/edit"), {
+        method: 'POST',
+        body: JSON.stringify({
+          'newQuantity': _this.state.newQuantity
+        }),
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        }
       });
+      window.location.reload(false);
     });
 
-    _defineProperty(_assertThisInitialized(_this), "handleRemoveShoeId", function (e) {
+    _defineProperty(_assertThisInitialized(_this), "changeNewQuantity", function (e) {
       _this.setState({
-        removeShoeId: e.target.value
+        newQuantity: e.target.value
       });
     });
 
@@ -88698,7 +88708,8 @@ var Basket = /*#__PURE__*/function (_React$Component) {
 
     _this.state = {
       cart: [],
-      loaded: false
+      loaded: false,
+      newQuantity: null
     };
     return _this;
   }
@@ -88711,20 +88722,33 @@ var Basket = /*#__PURE__*/function (_React$Component) {
       var _this$state = this.state,
           cart = _this$state.cart,
           loaded = _this$state.loaded;
+      var total = 0;
+      cart.forEach(function (i) {
+        total += i.shoe.price * i.count;
+      });
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "basket__title"
-      }, "Basket"), loaded ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "basket_container"
+      }, "Basket"), loaded ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "basket__container"
       }, cart.map(function (s, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_CartItem_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: i,
           shoe: s,
-          handleRemoveFromCart: function handleRemoveFromCart(event) {
-            event.preventDefault();
+          handleRemoveFromCart: function handleRemoveFromCart(e) {
+            e.preventDefault();
 
             _this2.handleRemoveFromCart(s);
-          }
+          },
+          changeNewQuantity: _this2.changeNewQuantity,
+          handleChangeOfQuantity: function handleChangeOfQuantity(e) {
+            e.preventDefault();
+
+            _this2.handleChangeOfQuantity(s);
+          },
+          changeQuantityBtn: _this2.changeQuantityBtn
         });
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BasketTotal_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        total: total
       })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "nothing to show"));
     }
   }]);
@@ -88733,6 +88757,79 @@ var Basket = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (Basket);
+
+/***/ }),
+
+/***/ "./resources/js/Components/basket/BasketTotal.jsx":
+/*!********************************************************!*\
+  !*** ./resources/js/Components/basket/BasketTotal.jsx ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+var BasketTotal = /*#__PURE__*/function (_React$Component) {
+  _inherits(BasketTotal, _React$Component);
+
+  var _super = _createSuper(BasketTotal);
+
+  function BasketTotal() {
+    _classCallCheck(this, BasketTotal);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(BasketTotal, [{
+    key: "render",
+    value: function render() {
+      var total = this.props.total;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "basket__payment"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "totals"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "totals__sub"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Subtotal:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\u20AC", total)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "totals__sub"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "delivery:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "FREE")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "totals__sub"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Total:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\u20AC", total)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "totals__btn"
+      }, "Proceed to payment")));
+    }
+  }]);
+
+  return BasketTotal;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (BasketTotal);
 
 /***/ }),
 
@@ -88748,7 +88845,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _ChangeQuantity__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ChangeQuantity */ "./resources/js/Components/basket/ChangeQuantity.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -88775,6 +88885,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 var CartItem = /*#__PURE__*/function (_React$Component) {
   _inherits(CartItem, _React$Component);
 
@@ -88787,14 +88898,14 @@ var CartItem = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
 
-    _defineProperty(_assertThisInitialized(_this), "handleQuantityChange", function (e) {
+    _defineProperty(_assertThisInitialized(_this), "changeQuantityBtn", function () {
       _this.setState({
-        quantity: e.target.value
+        edit: !_this.state.edit
       });
     });
 
     _this.state = {
-      quantity: 1
+      edit: false
     };
     return _this;
   }
@@ -88804,8 +88915,17 @@ var CartItem = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this$props = this.props,
           shoe = _this$props.shoe,
-          handleRemoveFromCart = _this$props.handleRemoveFromCart;
-      var quantity = this.state.quantity;
+          handleRemoveFromCart = _this$props.handleRemoveFromCart,
+          handleChangeOfQuantity = _this$props.handleChangeOfQuantity,
+          changeNewQuantity = _this$props.changeNewQuantity,
+          changeQuantityBtn = _this$props.changeQuantityBtn;
+      var edit = this.state.edit;
+      var quantityArray = [];
+
+      if (shoe.stock.stock > 0) {
+        quantityArray = _toConsumableArray(Array(shoe.stock.stock + 1).keys());
+      }
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "cartitem"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -88824,19 +88944,22 @@ var CartItem = /*#__PURE__*/function (_React$Component) {
         className: "shoeinfo__name"
       }, shoe.shoe.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shoeinfo__price"
-      }, "\u20AC", shoe.shoe.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-        className: "shoeinfo__quantity",
-        value: quantity,
-        onChange: this.handleQuantityChange
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "0"
-      }, "Qty - 0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "1"
-      }, "Qty - 1"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "2"
-      }, "Qty - 2"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "3"
-      }, "Qty - 3")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, "\u20AC", shoe.shoe.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "shoeinfo__size"
+      }, "Size: ", shoe.size), edit ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        action: "",
+        onSubmit: handleChangeOfQuantity
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChangeQuantity__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        quantityArray: quantityArray,
+        changeNewQuantity: changeNewQuantity
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "submit",
+        value: "Submit new amount"
+      })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "shoeinfo__count"
+      }, "Quantity: ", shoe.count, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.changeQuantityBtn
+      }, "Change Quantity?")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "cartitem__delete",
         onSubmit: handleRemoveFromCart
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -88850,6 +88973,76 @@ var CartItem = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (CartItem);
+
+/***/ }),
+
+/***/ "./resources/js/Components/basket/ChangeQuantity.jsx":
+/*!***********************************************************!*\
+  !*** ./resources/js/Components/basket/ChangeQuantity.jsx ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+var ChangeQuantity = /*#__PURE__*/function (_React$Component) {
+  _inherits(ChangeQuantity, _React$Component);
+
+  var _super = _createSuper(ChangeQuantity);
+
+  function ChangeQuantity() {
+    _classCallCheck(this, ChangeQuantity);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(ChangeQuantity, [{
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          quantityArray = _this$props.quantityArray,
+          changeNewQuantity = _this$props.changeNewQuantity;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        className: "shoeinfo__quantity",
+        onChange: changeNewQuantity
+      }, quantityArray.map(function (n, i) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          key: i
+        }, n);
+      }));
+    }
+  }]);
+
+  return ChangeQuantity;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (ChangeQuantity);
 
 /***/ }),
 
@@ -90250,6 +90443,101 @@ module.exports = "/images/payment-methods.png?1e931cf7f7c192821b34d24b0c31f425";
 
 /***/ }),
 
+/***/ "./resources/js/Components/singleShoeComponents/QuantitySelector.jsx":
+/*!***************************************************************************!*\
+  !*** ./resources/js/Components/singleShoeComponents/QuantitySelector.jsx ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+var QuantitySelector = /*#__PURE__*/function (_React$Component) {
+  _inherits(QuantitySelector, _React$Component);
+
+  var _super = _createSuper(QuantitySelector);
+
+  function QuantitySelector() {
+    _classCallCheck(this, QuantitySelector);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(QuantitySelector, [{
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          selectedQuantity = _this$props.selectedQuantity,
+          handleQuantitySelect = _this$props.handleQuantitySelect;
+      var quantityArray = [];
+
+      if (selectedQuantity != null) {
+        quantityArray = _toConsumableArray(Array(selectedQuantity.stock).keys());
+      }
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "shoeDisplay__actual__info-size-selection-select"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        name: "select-size",
+        className: "select-css",
+        onChange: handleQuantitySelect
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: true,
+        disabled: true,
+        selected: true
+      }, "Quantity"), quantityArray.map(function (n, i) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          key: i
+        }, n);
+      })));
+    }
+  }]);
+
+  return QuantitySelector;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (QuantitySelector);
+
+/***/ }),
+
 /***/ "./resources/js/Components/singleShoeComponents/SingleShoePage.jsx":
 /*!*************************************************************************!*\
   !*** ./resources/js/Components/singleShoeComponents/SingleShoePage.jsx ***!
@@ -90273,6 +90561,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _1900327270m7_zm_jpg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../1900327270m7_zm.jpg */ "./resources/js/Components/1900327270m7_zm.jpg");
 /* harmony import */ var _1900327270m7_zm_jpg__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_1900327270m7_zm_jpg__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _partials_Spinner__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../partials/Spinner */ "./resources/js/Components/partials/Spinner.jsx");
+/* harmony import */ var _QuantitySelector_jsx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./QuantitySelector.jsx */ "./resources/js/Components/singleShoeComponents/QuantitySelector.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -90305,6 +90594,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 var SingleShoePage = /*#__PURE__*/function (_React$Component) {
   _inherits(SingleShoePage, _React$Component);
 
@@ -90326,11 +90616,8 @@ var SingleShoePage = /*#__PURE__*/function (_React$Component) {
       }).then(function (resp) {
         return resp.json();
       }).then(function (data) {
-        console.log(data);
-
         _this.setState({
           shoe: data,
-          size: '',
           loading: false
         });
       });
@@ -90345,7 +90632,8 @@ var SingleShoePage = /*#__PURE__*/function (_React$Component) {
           body: JSON.stringify({
             'user_id': 1,
             'shoe_id': _this.state.shoe.id,
-            'size': _this.state.size
+            'size': _this.state.size,
+            'quantity': _this.state.quantity
           }),
           headers: {
             "Accept": "application/json",
@@ -90361,8 +90649,16 @@ var SingleShoePage = /*#__PURE__*/function (_React$Component) {
       });
     });
 
+    _defineProperty(_assertThisInitialized(_this), "handleQuantitySelect", function (e) {
+      _this.setState({
+        quantity: e.target.value
+      });
+    });
+
     _this.state = {
       shoe: {},
+      size: null,
+      quantity: null,
       loading: true
     };
     return _this;
@@ -90371,11 +90667,23 @@ var SingleShoePage = /*#__PURE__*/function (_React$Component) {
   _createClass(SingleShoePage, [{
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var _this$state = this.state,
           shoe = _this$state.shoe,
-          loading = _this$state.loading;
-      console.log('the shoe id is', shoe);
+          loading = _this$state.loading,
+          size = _this$state.size;
       var financePrice = (shoe.price / 3).toFixed(2);
+      var selectedQuantity = null;
+
+      if (size) {
+        shoe.stocks.forEach(function (s) {
+          if (s.size == _this2.state.size) {
+            selectedQuantity = s;
+          }
+        });
+      }
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shoeDisplay"
       }, loading ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_partials_Spinner__WEBPACK_IMPORTED_MODULE_6__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "home ", '>', " Women ", ">", " ", shoe.brand.name, " ", shoe.title, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -90451,14 +90759,21 @@ var SingleShoePage = /*#__PURE__*/function (_React$Component) {
         className: "select-css",
         onChange: this.handleSizeSelect
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: true
-      }, "Please select a size"), shoe.stocks.map(function (s) {
+        value: true,
+        disabled: true,
+        selected: true
+      }, "Please select a size"), shoe.stocks.length > 0 ? shoe.stocks.map(function (s) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
           key: s.id
         }, s.size);
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: true
+      }, "Sorry - Out of stock")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#"
-      }, "Size Guide")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }, "Size Guide")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_QuantitySelector_jsx__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        selectedQuantity: selectedQuantity,
+        handleQuantitySelect: this.handleQuantitySelect
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "bold-text"
       }, "Finance"), ", pay ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "bold-text"
@@ -91292,6 +91607,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return TopNav; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -91313,6 +91629,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 
 
 
@@ -91348,8 +91665,8 @@ var TopNav = /*#__PURE__*/function (_React$Component) {
         href: "#"
       }, "Find store")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#"
-      }, "Track order")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#"
+      }, "Track order")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/account"
       }, "My Account")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#"
       }, " Email Sign up"))));
