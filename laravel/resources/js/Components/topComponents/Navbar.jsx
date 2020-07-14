@@ -29,10 +29,10 @@ export default class Navbar extends React.Component {
         const hiddenSearchField = document.querySelector('#hiddenSearch');
         console.log(hiddenSearchField.classList);
         if(this.state.hiddensearch === true){
-             hiddenSearchField.classList += ' hidden'
+             hiddenSearchField.classList = 'hiddenMenusearch'
         
         }else{
-            hiddenSearchField.classList = 'hiddenMenusearch'
+            hiddenSearchField.classList = 'hiddenMenusearch  hidden'
         }
        
     }

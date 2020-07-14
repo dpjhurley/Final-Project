@@ -42,7 +42,8 @@ class Basket extends React.Component {
             })
           
         }
-        
+        window.location.reload(false);
+
     }
 
     handleRemoveUserId = (e) => {

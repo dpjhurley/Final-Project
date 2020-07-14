@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Redirect } from "react-router-dom";
 
 class CartItem extends React.Component {
     constructor(props) {
@@ -7,6 +8,7 @@ class CartItem extends React.Component {
 
         this.state = { 
             quantity: 1
+           
         }
     }
     
@@ -42,6 +44,7 @@ class CartItem extends React.Component {
                 </div>
                 <form className="cartitem__delete" onSubmit={handleRemoveFromCart}>
                     <input type="submit" value="X"/>
+                   
                 </form>
             </div>
         );

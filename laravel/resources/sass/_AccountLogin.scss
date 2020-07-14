@@ -27,7 +27,8 @@
         padding: 1.5rem;
         height: 13rem;
         width: 22.5rem;
-        /* display: none; */
+       /*  display: none; */
+       transition: 1s ease;
         p{
             font-size: 0.9rem;
             margin-top: 0.3rem;
@@ -105,5 +106,7 @@
         }
     }
    }
-   .hidden{display: none;}
+   .hidden{
+       display: none;
+    }
 }

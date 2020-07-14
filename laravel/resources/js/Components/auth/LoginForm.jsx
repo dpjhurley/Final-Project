@@ -51,11 +51,11 @@ class LoginForm extends React.Component {
             forgottenPassHidden: !this.state.forgottenPassHidden
         })
         const hiddenPassField = document.querySelector('#forgotten-password-id');
-        console.log(hiddenPassField.classList);
+        /* console.log(hiddenPassField.classList); */
         if(this.state.forgottenPassHidden === true){
-            hiddenPassField.classList += ' hidden'
+            hiddenPassField.classList = 'forgotten-password '
         }else{
-            hiddenPassField.classList = 'forgotten-password'
+            hiddenPassField.classList = 'forgotten-password hidden'
         }
        
     }

@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Redirect } from "react-router-dom";
+
 
 
  const RegisterForm = () => {
@@ -14,6 +16,7 @@ import React, { useState } from 'react';
     const [ error, setError ] = useState([]);
     const [ terms, setTerms ] = useState(false);
     const [ checked, setChecked ] = useState(false);
+    const [ redirectionTime, setRedirectionTime] = useState(false);
 
     const handleTermsChange = (event)=>{
         setTerms(!terms);
@@ -76,6 +79,9 @@ import React, { useState } from 'react';
         .then(data => {
             if (data.status === 'success') {
                 setSuccess(data.status);
+                setTimeout(()=>{
+                    setRedirectionTime(true);
+                }, 4000)
             }
         })
     }
@@ -86,7 +92,12 @@ import React, { useState } from 'react';
             <h2>Register account</h2>
             
             {success === 'success' ? (
+                <>
                 <div>Thank you for registering</div>
+                {
+                    redirectionTime ? (<Redirect to="/"  component={app}/>) : null
+                }
+                </>
             ) : (
                 <div className="container">
                     <form action="" onSubmit={handleFormSubmit} >

@@ -13,7 +13,7 @@ export default class MainDisplay extends Component {
 
         this.state = {
             currentPage: 1,
-            shoesPerPage: 9,
+            shoesPerPage: 12,
             filterByColor: [],
             filterByBrand: [],
             filterByCategory: []

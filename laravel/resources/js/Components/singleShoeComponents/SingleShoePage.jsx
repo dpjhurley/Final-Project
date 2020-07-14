@@ -5,6 +5,7 @@ import pic3 from "../continental_80_white_and_red_trainers_3.jpg";
 import pic4 from "../logo-360-640.png";
 import pic5 from "../1900327270m7_zm.jpg";
 import Spinner from '../partials/Spinner';
+import CartItem from '../basket/CartItem.jsx';
 
 export default class SingleShoePage extends React.Component{
 
@@ -13,7 +14,10 @@ export default class SingleShoePage extends React.Component{
         
         this.state = {
             shoe: {},
-            loading: true
+            loading: true,
+            mainPic: 0,
+            hiddenBasketShow: true
+          
         }
     } 
     
@@ -35,6 +39,20 @@ export default class SingleShoePage extends React.Component{
         });
     }
     
+    handleOnClickAddToHiddenBasket = (event) => {
+        this.setState({
+            handleOnClickAddToHiddenBasket: !this.state.handleOnClickAddToHiddenBasket
+        })
+        const hiddenBasketField = document.querySelector('#hiddenBasketShow');
+       
+        if(this.state.hiddenBasketShow === true){
+            hiddenBasketField.classList = ' hiddenBasketAddDisplay animate__animated animate__slideInRight'
+        }else{
+            hiddenBasketField.classList = 'hiddenBasketAddDisplay hiddenBasket'
+        }
+       
+    }
+
     handleAddToBasket=(e)=>{
         e.preventDefault();
         
@@ -58,10 +76,15 @@ export default class SingleShoePage extends React.Component{
             size: e.target.value
         })
     }
-    
+
+    handleBigPicChange = (image)=>{
+        this.setState({
+            mainPic: image
+        })
+    }
     render() {
         const { shoe, loading } = this.state;
-        console.log('the shoe id is', shoe)
+        console.log('the shoe id is', shoe.images)
         const financePrice = (shoe.price/3).toFixed(2);
         return (
             
@@ -74,14 +97,14 @@ export default class SingleShoePage extends React.Component{
                         <div className="shoeDisplay__actual">
                             <div className="shoeDisplay__actual__pic">
                                 <div className="shoeDisplay__actual__pic-smallpic">
-                                    <a href="#"><img src={`/images/${shoe.images[1].path}`} alt="pic"></img></a>
-                                    <a href="#"><img src={`/images/${shoe.images[2].path}`} alt="pic"></img></a>
-                                    <a href="#"><img src={pic3} alt="pic"></img></a>
+                               <a href="#"><img src={`/images/${shoe.images[0].path}`} alt="pic" onClick={() => this.handleBigPicChange(0)}></img></a>
+                                    <a href="#"><img src={`/images/${shoe.images[1].path}`} alt="pic" onClick={() => this.handleBigPicChange(1)}></img></a>
+                                    <a href="#"><img src={`/images/${shoe.images[2].path}`} alt="pic" onClick={() => this.handleBigPicChange(2)}></img></a>
                                     <a href="#"><img src={pic5} alt="pic"></img></a>
                                     <a href="#"><img src={pic4} alt="pic"></img></a>
                                 </div>
                                 <div className="shoeDisplay__actual__pic-largepic">
-                                    <a href="#"><img src={`/images/${shoe.images[0].path}`} alt="pic"></img></a>
+                                    <a href="#"><img src={`/images/${shoe.images[this.state.mainPic].path}`} alt="pic"></img></a>
                                 </div>
                             </div>
                             <div className="shoeDisplay__actual__info">
@@ -114,7 +137,31 @@ export default class SingleShoePage extends React.Component{
                                         <p>
                                             <span className="bold-text">Finance</span>, pay <span className="bold-text">£{financePrice}</span> in <span className="bold-text">3 monthly instalments.</span> No interest or fees. <br/><a href="#">Learn More</a>
                                         </p>
-                                        <button type="submit" className="add_to_basket_btn">ADD TO BASKET</button>
+                                        <button type="submit" className="add_to_basket_btn" onClick={this.handleOnClickAddToHiddenBasket}>ADD TO BASKET</button>
+                                        <div className="hiddenBasketAddDisplay  hiddenBasket" id="hiddenBasketShow">
+                                                 <div className="hiddenBasketAddDisplay__close"><span><i className="fas fa-times fa-2x"></i></span><h3>Your Basket</h3></div>
+
+                                                  <div className="hiddenBasketAddDisplay__shoe">
+                                                     <div className="hiddenBasketAddDisplay__shoe__item">
+                                                        <img src={`/images/${shoe.images[0].path}`} alt="shoe image"/>
+                                                        <div className="hiddenBasketAddDisplay__shoe__item-describrion">
+                                                            <h5><strong>{shoe.brand.name}</strong></h5>
+                                                            <h5>{shoe.title}</h5>
+                                                            <h5>Size</h5>
+                                                            <h5><strong>£</strong>{shoe.price}.00</h5>
+                                                        </div>
+                                                        <div className="hiddenBasketAddDisplay__shoe__item-close"> X </div>
+                                                        </div>
+                                                </div>
+
+                                                <div className="hiddenBasketAddDisplay__buttons">
+                                                    <div className="hiddenBasketAddDisplay__buttons-total buttons-item "><div>Subtotal:</div><div><strong>£</strong>{shoe.price}.00</div></div>
+                                                    <div className="hiddenBasketAddDisplay__buttons-continue buttons-item">Continue Shopping</div>
+                                                    <div className="hiddenBasketAddDisplay__buttons-basket buttons-item">Go To Basket</div>
+                                                </div>
+
+                                        </div>
+                                       
                                     </form>
                                 </div>
                                 <div className="shoeDisplay__actual__info-collect">

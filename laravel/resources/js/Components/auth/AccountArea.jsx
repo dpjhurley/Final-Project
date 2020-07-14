@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import RegisterForm from './RegisterForm.jsx';
 import LoginForm from './LoginForm.jsx';
 import './accountArea.scss';
@@ -11,6 +12,7 @@ class AccountArea extends React.Component {
         this.state = {
             logged_in: null,
             token: window.localStorage.getItem('_token'),
+           
         }
     }
 
@@ -36,6 +38,7 @@ class AccountArea extends React.Component {
 
     render() { 
         const {setUser} = this.props;
+       
         return (
             <>
                 {/* will need to change this to when true once this is all set up */}
@@ -50,7 +53,7 @@ class AccountArea extends React.Component {
                         <RegisterRelay />
                     </div>
                 ):(
-                    <div>Welcome back </div>
+                    <div className="userWelcomeBackScreen"><h2>Welcome back</h2><span>Marian Nestorov</span><Link to="/"><i className="fas fa-globe "></i><br/> Global</Link></div>
                 )}
                 
             </>
