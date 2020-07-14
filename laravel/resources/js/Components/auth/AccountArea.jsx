@@ -5,52 +5,28 @@ import './accountArea.scss';
 import RegisterRelay from './RegisterRelay.jsx';
 
 class AccountArea extends React.Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            logged_in: null,
-            token: window.localStorage.getItem('_token'),
-        }
-    }
-
-    onLoginSuccess = (token) => {
- 
-        window.localStorage.setItem('_token', token)
-     
-        this.setState({
-            logged_in: true,
-            token: token
-        })
-    }
-
-    onFailedAuthentication = () => {
-
-        window.localStorage.removeItem('_token');
-
-        this.setState({
-            logged_in: false,
-            token: null
-        })
-    }
-
     render() { 
-        const {setUser} = this.props;
+        const { token, onLoginSuccess, logged_in, onFailedAuthentication, handleLogOut } = this.props;
         return (
             <>
                 {/* will need to change this to when true once this is all set up */}
-                {!this.state.logged_in ? (
+                {!token ? (
                     <div className="account">
                         <LoginForm 
-                            logged_in={this.state.logged_in}
-                            onLoginSuccess={this.onLoginSuccess}
-                                setUser = {setUser}
+                            logged_in={logged_in}
+                            onLoginSuccess={onLoginSuccess}
+                            onFailedAuthentication={onFailedAuthentication}
                         />
                         
                         <RegisterRelay />
                     </div>
                 ):(
-                    <div>Welcome back </div>
+                    <div>
+                        Welcome back 
+
+                        <button onClick={handleLogOut}>Log out</button>
+                    </div>
+
                 )}
                 
             </>

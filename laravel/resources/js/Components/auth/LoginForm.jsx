@@ -43,9 +43,12 @@ class LoginForm extends React.Component {
             if (data.status === 'success' ) {
                 this.props.onLoginSuccess(data.data.token)
                 this.props.setUser(data.user)
+            } else {
+                this.props.onFailedAuthentication();
             }
         })
     }
+
     handleOnClickHiddenPassword = (event) => {
         this.setState({
             forgottenPassHidden: !this.state.forgottenPassHidden
@@ -65,7 +68,7 @@ class LoginForm extends React.Component {
                 <h2>Existing Users</h2>
                 <form className="account__login__form" action="" onSubmit={this.handleFormSubmit}>
 
-                <label>Email</label>
+                    <label>Email</label>
                     <input 
 
                         type="email" 

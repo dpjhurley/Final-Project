@@ -14,7 +14,7 @@ class LoginController extends Controller
     
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('guest')->except(['logout', 'find']);
     }
     
     protected function sendFailedLoginResponse(Request $request)
@@ -54,5 +54,10 @@ class LoginController extends Controller
             'message' => 'Successfully logged out',
             'data' => []
         ];
+    }
+
+    public function find()
+    {
+        return $this->guard()->user();
     }
 }

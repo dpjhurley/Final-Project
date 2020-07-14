@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\CartItem;
 use App\Brand;
 use App\Image;
@@ -14,8 +15,9 @@ use Croppa;
 
 class CartController extends Controller
 {
-    public function index($user_id)
+    public function index()
     {
+        $user_id = Auth::user()->id;
         $cart = CartItem::query()
             ->where('user_id', $user_id)
             ->with('shoe')
@@ -39,8 +41,9 @@ class CartController extends Controller
         return $cart;
     }
 
-    public function add($user_id, $shoe_id, Request $request) 
+    public function add($shoe_id, Request $request) 
     {
+        $user_id = Auth::user()->id;
         $cartItem = CartItem::where('user_id', $user_id)->where('shoe_id', $shoe_id)->where('size', $request->input('size'))->first();
 
         if ($cartItem != null) {
@@ -60,14 +63,16 @@ class CartController extends Controller
         return $cartItem;
     }
 
-    public function remove($user_id, $shoe_id)
+    public function remove($shoe_id)
     {
+        $user_id = Auth::user()->id;
         $item = CartItem::where('user_id', $user_id)->where('shoe_id', $shoe_id)->first();
         $item->delete();
     }
 
-    public function edit($user_id, $shoe_id, Request $request)
+    public function edit($shoe_id, Request $request)
     {
+        $user_id = Auth::user()->id;
         $item = CartItem::where('user_id', $user_id)->where('shoe_id', $shoe_id)->first();
         if ($request->input('newQuantity') == 0) {
             $item->delete();

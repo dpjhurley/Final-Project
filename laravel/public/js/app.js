@@ -192,7 +192,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".basket__title {\n  text-align: center;\n}\n\n.basket__container {\n  width: 65%;\n}\n\n.cartitem {\n  display: flex;\n  justify-content: space-between;\n  padding: 1em;\n}\n.cartitem__info {\n  display: flex;\n}\n.cartitem .shoeimage {\n  max-width: 150px;\n}\n.cartitem__delete {\n  display: flex;\n  justify-content: flex-end;\n}\n.cartitem__delete > input {\n  height: 30%;\n  width: 50px;\n}\n\n.shoeinfo {\n  padding: 1em;\n}\n.shoeinfo__brand {\n  margin-bottom: 0.5em;\n}\n.shoeinfo__name {\n  margin-bottom: 0.5em;\n}\n.shoeinfo__price {\n  margin-bottom: 0.5em;\n}\n.shoeinfo__buttons .quantity {\n  margin-bottom: 0.5em;\n}\n\n.basket__payment {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n}\n.basket__payment .totals {\n  width: 20rem;\n}\n.basket__payment .totals__sub {\n  display: flex;\n  justify-content: space-between;\n  margin-top: 1rem;\n}\n.basket__payment .totals__sub:nth-of-type(1) {\n  padding-top: 1rem;\n  border-top: 0.02rem solid black;\n}\n.basket__payment .totals__btn {\n  background-color: #00DC55;\n  height: 2.8rem;\n  width: 20rem;\n  border: none;\n  border-radius: 0.2rem;\n  font-weight: 700;\n  font-size: 1rem;\n  margin: 2rem 0;\n}", ""]);
+exports.push([module.i, ".basket__title {\n  text-align: center;\n}\n\n.basket__container {\n  width: 65%;\n}\n\n.cartitem {\n  display: flex;\n  justify-content: space-between;\n  padding: 1em;\n}\n.cartitem__info {\n  display: flex;\n}\n.cartitem .shoeimage {\n  max-width: 150px;\n}\n.cartitem__delete {\n  display: flex;\n  justify-content: flex-end;\n}\n.cartitem__delete > input {\n  height: 30%;\n  width: 50px;\n}\n\n.shoeinfo {\n  padding: 1em;\n}\n.shoeinfo__brand {\n  margin-bottom: 0.5em;\n}\n.shoeinfo__name {\n  margin-bottom: 0.5em;\n}\n.shoeinfo__price {\n  margin-bottom: 0.5em;\n}\n.shoeinfo__buttons .quantity {\n  margin-bottom: 0.5em;\n}\n\n.basket__payment {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n}\n.basket__payment .totals {\n  width: 20rem;\n}\n.basket__payment .totals__sub {\n  display: flex;\n  justify-content: space-between;\n  margin-top: 1rem;\n}\n.basket__payment .totals__sub:nth-of-type(1) {\n  padding-top: 1rem;\n  border-top: 0.02rem solid black;\n}\n.basket__payment .totals__btn {\n  background-color: #00DC55;\n  height: 2.8rem;\n  width: 20rem;\n  border: none;\n  border-radius: 0.2rem;\n  font-weight: 700;\n  font-size: 1rem;\n  margin: 2rem 0;\n}\n\n.basket__btn {\n  background-color: #00DC55;\n  height: 2.8rem;\n  width: 20rem;\n  border: none;\n  border-radius: 0.2rem;\n  font-weight: 700;\n  font-size: 1rem;\n  margin: 2rem 0;\n}", ""]);
 
 // exports
 
@@ -87775,9 +87775,21 @@ var App = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
 
-    _defineProperty(_assertThisInitialized(_this), "setUser", function (user) {
+    _defineProperty(_assertThisInitialized(_this), "onLoginSuccess", function (token) {
+      window.localStorage.setItem('_token', token);
+
       _this.setState({
-        currentUser: user
+        logged_in: true,
+        token: token
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onFailedAuthentication", function () {
+      window.localStorage.removeItem('_token');
+
+      _this.setState({
+        logged_in: false,
+        token: null
       });
     });
 
@@ -87795,12 +87807,19 @@ var App = /*#__PURE__*/function (_React$Component) {
           loading: false
         });
       });
+      fetch('/api/user', {
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        }
+      });
     });
 
     _this.state = {
       data: [],
       loading: true,
-      currentUser: ''
+      logged_in: null,
+      token: window.localStorage.getItem('_token')
     };
     return _this;
   }
@@ -87812,17 +87831,24 @@ var App = /*#__PURE__*/function (_React$Component) {
 
       var _this$state = this.state,
           data = _this$state.data,
-          loading = _this$state.loading;
+          loading = _this$state.loading,
+          logged_in = _this$state.logged_in,
+          token = _this$state.token;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["BrowserRouter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_topComponents_Topnav__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_topComponents_Navbar__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_topComponents_HiddenMenu_jsx__WEBPACK_IMPORTED_MODULE_5__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_topComponents_HiddenMenuSearch_jsx__WEBPACK_IMPORTED_MODULE_6__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_topComponents_ThirdNav_jsx__WEBPACK_IMPORTED_MODULE_7__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         path: "/basket",
-        component: _basket_Basket_jsx__WEBPACK_IMPORTED_MODULE_12__["default"]
+        render: function render() {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_basket_Basket_jsx__WEBPACK_IMPORTED_MODULE_12__["default"], {
+            token: token
+          });
+        }
       }), data ? data.map(function (shoe) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
           key: shoe.id,
           path: "/shoe/".concat(shoe.id),
           render: function render() {
             return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_singleShoeComponents_SingleShoePage_jsx__WEBPACK_IMPORTED_MODULE_11__["default"], {
-              shoe_id: shoe.id
+              shoe_id: shoe.id,
+              token: token
             });
           }
         });
@@ -87830,7 +87856,11 @@ var App = /*#__PURE__*/function (_React$Component) {
         path: "/account",
         render: function render() {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_auth_AccountArea_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
-            setUser: _this2.setUser
+            onLoginSuccess: _this2.onLoginSuccess,
+            onFailedAuthentication: _this2.onFailedAuthentication,
+            logged_in: logged_in,
+            token: token,
+            handleLogOut: _this2.handleLogOut
           });
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
@@ -87957,8 +87987,6 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -87970,49 +87998,30 @@ var AccountArea = /*#__PURE__*/function (_React$Component) {
 
   var _super = _createSuper(AccountArea);
 
-  function AccountArea(props) {
-    var _this;
-
+  function AccountArea() {
     _classCallCheck(this, AccountArea);
 
-    _this = _super.call(this, props);
-
-    _defineProperty(_assertThisInitialized(_this), "onLoginSuccess", function (token) {
-      window.localStorage.setItem('_token', token);
-
-      _this.setState({
-        logged_in: true,
-        token: token
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "onFailedAuthentication", function () {
-      window.localStorage.removeItem('_token');
-
-      _this.setState({
-        logged_in: false,
-        token: null
-      });
-    });
-
-    _this.state = {
-      logged_in: null,
-      token: window.localStorage.getItem('_token')
-    };
-    return _this;
+    return _super.apply(this, arguments);
   }
 
   _createClass(AccountArea, [{
     key: "render",
     value: function render() {
-      var setUser = this.props.setUser;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, !this.state.logged_in ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      var _this$props = this.props,
+          token = _this$props.token,
+          onLoginSuccess = _this$props.onLoginSuccess,
+          logged_in = _this$props.logged_in,
+          onFailedAuthentication = _this$props.onFailedAuthentication,
+          handleLogOut = _this$props.handleLogOut;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, !token ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "account"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LoginForm_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        logged_in: this.state.logged_in,
-        onLoginSuccess: this.onLoginSuccess,
-        setUser: setUser
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RegisterRelay_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], null)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Welcome back "));
+        logged_in: logged_in,
+        onLoginSuccess: onLoginSuccess,
+        onFailedAuthentication: onFailedAuthentication
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RegisterRelay_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], null)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Welcome back", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: handleLogOut
+      }, "Log out")));
     }
   }]);
 
@@ -88101,6 +88110,8 @@ var LoginForm = /*#__PURE__*/function (_React$Component) {
           _this.props.onLoginSuccess(data.data.token);
 
           _this.props.setUser(data.user);
+        } else {
+          _this.props.onFailedAuthentication();
         }
       });
     });
@@ -88609,10 +88620,12 @@ if(false) {}
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _CartItem_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CartItem.jsx */ "./resources/js/Components/basket/CartItem.jsx");
-/* harmony import */ var _basket_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_basket.scss */ "./resources/js/Components/basket/_basket.scss");
-/* harmony import */ var _basket_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_basket_scss__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _BasketTotal_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./BasketTotal.jsx */ "./resources/js/Components/basket/BasketTotal.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _CartItem_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CartItem.jsx */ "./resources/js/Components/basket/CartItem.jsx");
+/* harmony import */ var _basket_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_basket.scss */ "./resources/js/Components/basket/_basket.scss");
+/* harmony import */ var _basket_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_basket_scss__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _BasketTotal_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./BasketTotal.jsx */ "./resources/js/Components/basket/BasketTotal.jsx");
+/* harmony import */ var _partials_Spinner_jsx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../partials/Spinner.jsx */ "./resources/js/Components/partials/Spinner.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -88642,6 +88655,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
+
 var Basket = /*#__PURE__*/function (_React$Component) {
   _inherits(Basket, _React$Component);
 
@@ -88655,10 +88670,11 @@ var Basket = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
 
     _defineProperty(_assertThisInitialized(_this), "componentDidMount", function () {
-      fetch("api/cart/".concat(1), {
+      fetch("/api/cart", {
         headers: {
           "Accept": "application/json",
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          'Authorization': 'Bearer ' + _this.props.token
         }
       }).then(function (resp) {
         return resp.json();
@@ -88672,25 +88688,27 @@ var Basket = /*#__PURE__*/function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_this), "handleRemoveFromCart", function (shoe) {
       if (window.confirm('Are you sure you want to remove this from your cart?')) {
-        fetch("api/cart/".concat(shoe.user_id, "/").concat(shoe.shoe_id, "/remove"), {
+        fetch("/api/cart/".concat(shoe.shoe_id, "/remove"), {
           method: 'POST',
           headers: {
             "Accept": "application/json",
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            'Authorization': 'Bearer ' + _this.props.token
           }
         });
       }
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleChangeOfQuantity", function (shoe) {
-      fetch("/api/cart/".concat(shoe.user_id, "/").concat(shoe.shoe_id, "/edit"), {
+      fetch("/api/cart/".concat(shoe.shoe_id, "/edit"), {
         method: 'POST',
         body: JSON.stringify({
           'newQuantity': _this.state.newQuantity
         }),
         headers: {
           "Accept": "application/json",
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          'Authorization': 'Bearer ' + _this.props.token
         }
       });
       window.location.reload(false);
@@ -88723,15 +88741,19 @@ var Basket = /*#__PURE__*/function (_React$Component) {
           cart = _this$state.cart,
           loaded = _this$state.loaded;
       var total = 0;
-      cart.forEach(function (i) {
-        total += i.shoe.price * i.count;
-      });
+
+      if (cart.length > 0) {
+        cart.forEach(function (i) {
+          total += i.shoe.price * i.count;
+        });
+      }
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "basket__title"
       }, "Basket"), loaded ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "basket__container"
-      }, cart.map(function (s, i) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_CartItem_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      }, cart.length > 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, cart.map(function (s, i) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_CartItem_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
           key: i,
           shoe: s,
           handleRemoveFromCart: function handleRemoveFromCart(e) {
@@ -88747,9 +88769,13 @@ var Basket = /*#__PURE__*/function (_React$Component) {
           },
           changeQuantityBtn: _this2.changeQuantityBtn
         });
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BasketTotal_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BasketTotal_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
         total: total
-      })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "nothing to show"));
+      })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "There is nothing in your basket "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/main"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "basket__btn"
+      }, "Check out our shoes"))))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_partials_Spinner_jsx__WEBPACK_IMPORTED_MODULE_5__["default"], null));
     }
   }]);
 
@@ -90627,17 +90653,17 @@ var SingleShoePage = /*#__PURE__*/function (_React$Component) {
       e.preventDefault();
 
       if (window.confirm('Do you want to add this to your cart?')) {
-        fetch("/api/cart/".concat(1, "/", _this.state.shoe.id, "/add"), {
+        fetch("/api/cart/".concat(_this.state.shoe.id, "/add"), {
           method: 'POST',
           body: JSON.stringify({
-            'user_id': 1,
             'shoe_id': _this.state.shoe.id,
             'size': _this.state.size,
             'quantity': _this.state.quantity
           }),
           headers: {
             "Accept": "application/json",
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            'Authorization': 'Bearer ' + _this.props.token
           }
         });
       }

@@ -29,10 +29,10 @@ Route::get('/categories', 'Api\CategoryController@index');
 Route::group(['middleware' => ['auth:api']], function ($group) {
 
     // Shopuld you have to be logged in to add to your cart OR not
-    Route::get('/cart/{user_id}', 'Api\CartController@index');
-    Route::post('/cart/{user_id}/{shoe_id}/add', 'Api\CartController@add');
-    Route::post('/cart/{user_id}/{shoe_id}/remove', 'Api\CartController@remove');
-    Route::post('/cart/{user_id}/{shoe_id}/edit', 'Api\CartController@edit');
+    Route::get('/cart', 'Api\CartController@index');
+    Route::post('/cart/{shoe_id}/add', 'Api\CartController@add');
+    Route::post('/cart/{shoe_id}/remove', 'Api\CartController@remove');
+    Route::post('/cart/{shoe_id}/edit', 'Api\CartController@edit');
 
 });
 
@@ -43,3 +43,4 @@ Route::group(['middleware' => ['auth:api']], function ($group) {
 
 Route::post('/login', 'Api\LoginController@login');
 Route::post('/register', 'Api\RegisterController@register');
+Route::get('/user', 'Api\LoginController@find');
