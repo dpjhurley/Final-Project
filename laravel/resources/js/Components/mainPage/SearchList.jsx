@@ -4,6 +4,7 @@ import SearchColor from "./SearchColor";
 import Spinner from "../partials/Spinner";
 import PriceSlider from './PriceSlider.jsx';
 
+
 export default class SearchList extends Component {
   constructor(props) {
     super(props)
@@ -90,6 +91,7 @@ export default class SearchList extends Component {
             />
             <div className="bodySidebarTitle mainDisplaycontainer">Max Price</div>
                 <PriceSlider/>
+               
           </Fragment>
           
           

@@ -19,8 +19,9 @@ export default class SimpleExample extends Component {
     return (
         <div className="priceSlider">
        <SingleSlider
-            min={0}
+              min={0}
              max={100}
+             step={1}
              prefix={'£'}
              tooltip={'onClick'}
              handleOnChange={this.handleOnChange}

@@ -89549,6 +89549,7 @@ var SimpleExample = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_slider_kit__WEBPACK_IMPORTED_MODULE_1__["SingleSlider"], {
         min: 0,
         max: 100,
+        step: 1,
         prefix: '£',
         tooltip: 'onClick',
         handleOnChange: this.handleOnChange
