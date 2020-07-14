@@ -59,12 +59,12 @@ export default class App extends React.Component {
                 loading: false
             });
         });
-        fetch('/api/user', {
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json"
-            }
-        })
+        // fetch('/api/user', {
+        //     headers: {
+        //         "Accept": "application/json",
+        //         "Content-Type": "application/json"
+        //     }
+        // })
     };
    
     render() {

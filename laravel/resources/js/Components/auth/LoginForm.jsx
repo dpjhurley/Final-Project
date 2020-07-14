@@ -42,7 +42,6 @@ class LoginForm extends React.Component {
         .then(data => {
             if (data.status === 'success' ) {
                 this.props.onLoginSuccess(data.data.token)
-                this.props.setUser(data.user)
             } else {
                 this.props.onFailedAuthentication();
             }
@@ -54,7 +53,6 @@ class LoginForm extends React.Component {
             forgottenPassHidden: !this.state.forgottenPassHidden
         })
         const hiddenPassField = document.querySelector('#forgotten-password-id');
-        /* console.log(hiddenPassField.classList); */
         if(this.state.forgottenPassHidden === true){
             hiddenPassField.classList = 'forgotten-password '
         }else{

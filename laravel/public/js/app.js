@@ -87806,13 +87806,12 @@ var App = /*#__PURE__*/function (_React$Component) {
           data: data,
           loading: false
         });
-      });
-      fetch('/api/user', {
-        headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json"
-        }
-      });
+      }); // fetch('/api/user', {
+      //     headers: {
+      //         "Accept": "application/json",
+      //         "Content-Type": "application/json"
+      //     }
+      // })
     });
 
     _this.state = {
@@ -87988,8 +87987,6 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -88002,46 +87999,22 @@ var AccountArea = /*#__PURE__*/function (_React$Component) {
 
   var _super = _createSuper(AccountArea);
 
-  function AccountArea(props) {
-    var _this;
-
+  function AccountArea() {
     _classCallCheck(this, AccountArea);
 
-    _this = _super.call(this, props);
-
-    _defineProperty(_assertThisInitialized(_this), "onLoginSuccess", function (token) {
-      window.localStorage.setItem('_token', token);
-
-      _this.setState({
-        logged_in: true,
-        token: token
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "onFailedAuthentication", function () {
-      window.localStorage.removeItem('_token');
-
-      _this.setState({
-        logged_in: false,
-        token: null
-      });
-    });
-
-    _this.state = {
-      logged_in: null,
-      token: window.localStorage.getItem('_token')
-    };
-    return _this;
+    return _super.apply(this, arguments);
   }
 
   _createClass(AccountArea, [{
     key: "render",
     value: function render() {
-      var token = this.props.token;
+      var _this$props = this.props,
+          token = _this$props.token,
+          onLoginSuccess = _this$props.onLoginSuccess,
+          onFailedAuthentication = _this$props.onFailedAuthentication;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, !token ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "account"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LoginForm_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        logged_in: logged_in,
         onLoginSuccess: onLoginSuccess,
         onFailedAuthentication: onFailedAuthentication
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RegisterRelay_jsx__WEBPACK_IMPORTED_MODULE_5__["default"], null)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -88137,8 +88110,6 @@ var LoginForm = /*#__PURE__*/function (_React$Component) {
       }).then(function (data) {
         if (data.status === 'success') {
           _this.props.onLoginSuccess(data.data.token);
-
-          _this.props.setUser(data.user);
         } else {
           _this.props.onFailedAuthentication();
         }
@@ -88151,7 +88122,6 @@ var LoginForm = /*#__PURE__*/function (_React$Component) {
       });
 
       var hiddenPassField = document.querySelector('#forgotten-password-id');
-      /* console.log(hiddenPassField.classList); */
 
       if (_this.state.forgottenPassHidden === true) {
         hiddenPassField.classList = 'forgotten-password ';
