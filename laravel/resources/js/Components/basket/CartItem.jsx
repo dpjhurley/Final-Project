@@ -1,28 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Redirect } from "react-router-dom";
+import ChangeQuantity from './ChangeQuantity';
 
 class CartItem extends React.Component {
     constructor(props) {
         super(props)
 
-        this.state = { 
-            quantity: 1
-           
+        this.state = {
+            edit: false,
         }
     }
-    
-    handleQuantityChange = (e) => {
+
+    changeQuantityBtn = () => {
         this.setState({
-            quantity: e.target.value
+            edit: !this.state.edit
         })
     }
-    
 
-    
     render() { 
-        const { shoe, handleRemoveFromCart } = this.props;
-        const { quantity } = this.state;
+        const { shoe, handleRemoveFromCart, handleChangeOfQuantity, changeNewQuantity, changeQuantityBtn } = this.props;
+        const { edit } = this.state;
+
+        let quantityArray = [];
+        if (shoe.stock.stock > 0) {
+            quantityArray = [...Array(shoe.stock.stock + 1).keys()];
+        }
 
         return (  
             <div className="cartitem">
@@ -34,12 +37,20 @@ class CartItem extends React.Component {
                         <div className="shoeinfo__brand">{shoe.brand}</div>
                         <div className="shoeinfo__name">{shoe.shoe.title}</div>
                         <div className="shoeinfo__price">€{shoe.shoe.price}</div>
-                        <select className="shoeinfo__quantity" value={quantity} onChange={this.handleQuantityChange}>
-                            <option value="0">Qty - 0</option>
-                            <option  value="1">Qty - 1</option>
-                            <option value="2">Qty - 2</option>
-                            <option  value="3">Qty - 3</option>
-                        </select>
+                        <div className="shoeinfo__size">Size: {shoe.size}</div>
+                        {edit ? (
+                            <form action="" onSubmit={handleChangeOfQuantity}>
+                                <ChangeQuantity
+                                    quantityArray={quantityArray} 
+                                    changeNewQuantity={changeNewQuantity} 
+                                />
+                                <input type="submit" value="Submit new amount"/>
+                            </form>
+                        ) : (
+                            <div className="shoeinfo__count">Quantity: {shoe.count}
+                                <button onClick={this.changeQuantityBtn}>Change Quantity?</button>
+                            </div>
+                        )}
                     </div>
                 </div>
                 <form className="cartitem__delete" onSubmit={handleRemoveFromCart}>

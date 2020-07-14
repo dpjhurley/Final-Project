@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
  
 export default class TopNav extends React.Component {
@@ -22,7 +23,7 @@ export default class TopNav extends React.Component {
             <a href="#">Track order</a>
         </li>
         <li>
-            <a href="#">My Account</a>
+            <Link to='/account'>My Account</Link>
         </li>
         <li>
             <a href="#"> Email Sign up</a>

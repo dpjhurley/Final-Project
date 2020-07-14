@@ -20,12 +20,28 @@ export default class App extends React.Component {
         this.state = {
             data: [],
             loading: true,
-            currentUser: ''
+            logged_in: null,
+            token: window.localStorage.getItem('_token'),
         };
     }
-    setUser=(user)=>{
+
+    onLoginSuccess = (token) => {
+ 
+        window.localStorage.setItem('_token', token)
+     
         this.setState({
-            currentUser: user
+            logged_in: true,
+            token: token
+        })
+    }
+
+    onFailedAuthentication = () => {
+
+        window.localStorage.removeItem('_token');
+
+        this.setState({
+            logged_in: false,
+            token: null
         })
     }
 
@@ -43,30 +59,58 @@ export default class App extends React.Component {
                 loading: false
             });
         });
+        fetch('/api/user', {
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            }
+        })
     };
    
     render() {
-        const { data, loading } = this.state;
+        const { data, loading, logged_in, token } = this.state;
         return (
             <Router>
                 <TopNav />
                 <Navbar />
-                {/* <AccountArea /> */}
                 <HiddenMenu />
                 <HiddenMenuSearch />
                 <ThirdNav />
                             
                 <Switch>
-                    <Route path="/basket"  component={Basket}/>
+                    <Route 
+                        path="/basket"  
+                        render={
+                            () => <Basket
+                                token={token}
+                            />
+                        }
+                    />
                     {data ? (
                         data.map((shoe) => (
-                            <Route key={shoe.id} path={`/shoe/${shoe.id}`}  render={() => <SingleShoePage shoe_id={shoe.id} />}/>
+                            <Route 
+                                key={shoe.id} 
+                                path={`/shoe/${shoe.id}`}  
+                                render={
+                                    () => <SingleShoePage 
+                                        shoe_id={shoe.id} 
+                                        token={token}
+                                    />
+                                }
+                            />
                         ))
                     ) : (
                         null
                     )}
                     <Route path="/account"  render={ ()=>
-                    <AccountArea setUser={this.setUser} />} />
+                        <AccountArea 
+                            onLoginSuccess={this.onLoginSuccess} 
+                            onFailedAuthentication={this.onFailedAuthentication}
+                            logged_in={logged_in}
+                            token={token}
+                            handleLogOut={this.handleLogOut}
+                        />
+                    }/>
                     <Route path="/cart" component={Basket} />
                     <Route path="/register-account"  component={RegisterForm}/>
                     <Route 
@@ -75,7 +119,6 @@ export default class App extends React.Component {
                             <MainDisplay 
                                 data={data}
                                 loading={loading}
-                               
                             />
                         }
                     />

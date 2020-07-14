@@ -42,12 +42,12 @@ class AccountArea extends React.Component {
         return (
             <>
                 {/* will need to change this to when true once this is all set up */}
-                {!this.state.logged_in ? (
+                {!token ? (
                     <div className="account">
                         <LoginForm 
-                            logged_in={this.state.logged_in}
-                            onLoginSuccess={this.onLoginSuccess}
-                                setUser = {setUser}
+                            logged_in={logged_in}
+                            onLoginSuccess={onLoginSuccess}
+                            onFailedAuthentication={onFailedAuthentication}
                         />
                         
                         <RegisterRelay />

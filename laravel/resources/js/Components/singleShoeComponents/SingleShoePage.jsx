@@ -1,11 +1,10 @@
 import React from 'react';
-import pic1 from "../continental_80_white_and_red_trainers_1-100x_-resize.jpg";
-import pic2 from "../continental_80_white_and_red_trainers_2.jpg";
-import pic3 from "../continental_80_white_and_red_trainers_3.jpg";
+
 import pic4 from "../logo-360-640.png";
 import pic5 from "../1900327270m7_zm.jpg";
 import Spinner from '../partials/Spinner';
 import CartItem from '../basket/CartItem.jsx';
+import QuantitySelector from './QuantitySelector.jsx';
 
 export default class SingleShoePage extends React.Component{
 
@@ -14,10 +13,11 @@ export default class SingleShoePage extends React.Component{
         
         this.state = {
             shoe: {},
+            size: null,
+            quantity: null,
             loading: true,
             mainPic: 0,
             hiddenBasketShow: true
-          
         }
     } 
     
@@ -30,10 +30,8 @@ export default class SingleShoePage extends React.Component{
         })
         .then(resp => resp.json())
         .then(data => {
-            console.log(data)
             this.setState({
                 shoe: data,
-                size: '',
                 loading: false
             });
         });
@@ -57,16 +55,18 @@ export default class SingleShoePage extends React.Component{
         e.preventDefault();
         
         if (window.confirm('Do you want to add this to your cart?')){
-        fetch(`/api/cart/${1}/${this.state.shoe.id}/add`, {
+        fetch(`/api/cart/${this.state.shoe.id}/add`, {
             method: 'POST',
             body: JSON.stringify({
-                'user_id': 1,
                 'shoe_id': this.state.shoe.id,
-                'size': this.state.size
+                'size': this.state.size,
+                'quantity': this.state.quantity
             }),
             headers: {
                 "Accept": "application/json",
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                'Authorization': 'Bearer ' + this.props.token
+
             }
         })}
     }
@@ -82,10 +82,26 @@ export default class SingleShoePage extends React.Component{
             mainPic: image
         })
     }
+
+    handleQuantitySelect = (e) => {
+        this.setState({
+            quantity: e.target.value
+        })
+    }
+    
     render() {
-        const { shoe, loading } = this.state;
-        console.log('the shoe id is', shoe.images)
+        const { shoe, loading, size } = this.state;
         const financePrice = (shoe.price/3).toFixed(2);
+
+        let selectedQuantity = null;
+        if (size) {
+            shoe.stocks.forEach(s => {
+                if (s.size == this.state.size) {
+                    selectedQuantity = s
+                }
+            });
+        }  
+
         return (
             
             <div className="shoeDisplay">
@@ -127,13 +143,21 @@ export default class SingleShoePage extends React.Component{
                                     <form className="shoeDisplay__actual__info-size-selection" onSubmit={this.handleAddToBasket}>
                                         <div className="shoeDisplay__actual__info-size-selection-select" >
                                             <select name="select-size" className="select-css" onChange={this.handleSizeSelect}>
-                                                <option value >Please select a size</option>
-                                                {shoe.stocks.map((s) => (
-                                                    <option key={s.id}>{s.size}</option>
-                                                ))}
+                                                <option value disabled selected>Please select a size</option>
+                                                {shoe.stocks.length > 0 ? (
+                                                    shoe.stocks.map((s) => (
+                                                        <option key={s.id}>{s.size}</option>
+                                                    ))
+                                                ) : (
+                                                    <option value >Sorry - Out of stock</option>
+                                                )}
                                             </select>
                                             <a href="#">Size Guide</a>
                                         </div>
+                                        <QuantitySelector 
+                                            selectedQuantity={selectedQuantity} 
+                                            handleQuantitySelect={this.handleQuantitySelect}
+                                        />
                                         <p>
                                             <span className="bold-text">Finance</span>, pay <span className="bold-text">£{financePrice}</span> in <span className="bold-text">3 monthly instalments.</span> No interest or fees. <br/><a href="#">Learn More</a>
                                         </p>
