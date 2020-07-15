@@ -93,9 +93,9 @@ class Basket extends React.Component {
                 <h2 className="basket__title">Basket</h2>
                 {loaded ? (
                     <>
-                        <div className="basket__container">
-                            {cart.length > 0 ? (
-                                <>
+                        {cart.length > 0 ? (
+                            <>
+                                <div className="basket__container">
                                     {cart.map((s, i) => (
                                         <CartItem 
                                             key={i}
@@ -113,19 +113,19 @@ class Basket extends React.Component {
                                             }}
                                             changeQuantityBtn={this.changeQuantityBtn}
                                         />
-                                        
                                     ))}
-                                    <BasketTotal total={total}/>
-                                </>
-                            ) : (
-                                <div>
-                                    <h3>There is nothing in your basket </h3>
-                                    <Link to="/main">
-                                        <button className="basket__btn" >Check out our shoes</button>
-                                    </Link>
                                 </div>
-                            )}
-                        </div>
+                                <BasketTotal total={total}/> 
+                            </>       
+                        ) : (
+                            <div className="basket__container">
+                                <h3>There is nothing in your basket </h3>
+                                <Link to="/main">
+                                    <button className="basket__btn" >Check out our shoes</button>
+                                </Link>
+                            </div>
+                        )}
+                        
                     </>
                 ) : (
                     <Spinner />

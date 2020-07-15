@@ -48,6 +48,8 @@ class LoginController extends Controller
     
     protected function loggedOut(Request $request)
     {
+        $this->guard()->user()->token()->revoke();
+        
         return [
             'user' => null,
             'status' => 'fail',

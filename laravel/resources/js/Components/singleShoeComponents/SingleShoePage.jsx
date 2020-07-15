@@ -1,10 +1,9 @@
 import React from 'react';
-
 import pic4 from "../logo-360-640.png";
 import pic5 from "../1900327270m7_zm.jpg";
 import Spinner from '../partials/Spinner';
-import CartItem from '../basket/CartItem.jsx';
 import QuantitySelector from './QuantitySelector.jsx';
+import DismissableAlert from '../partials/DismissableAlert';
 
 export default class SingleShoePage extends React.Component{
 
@@ -17,7 +16,8 @@ export default class SingleShoePage extends React.Component{
             quantity: null,
             loading: true,
             mainPic: 0,
-            hiddenBasketShow: true
+            hiddenBasketShow: true,
+            prompt: false
         }
     } 
     
@@ -38,39 +38,45 @@ export default class SingleShoePage extends React.Component{
     }
     
     handleOnClickAddToHiddenBasket = (event) => {
-        this.setState({
-            handleOnClickAddToHiddenBasket: !this.state.handleOnClickAddToHiddenBasket
-        })
-        const hiddenBasketField = document.querySelector('#hiddenBasketShow');
-       
-        if(this.state.hiddenBasketShow === true){
-            hiddenBasketField.classList = ' hiddenBasketAddDisplay animate__animated animate__slideInRight'
-            this.state.hiddenBasketShow = false
-        }else{
-            hiddenBasketField.classList = ' hiddenBasket'
-            this.state.hiddenBasketShow = true
+        if(this.state.prompt) {
+            this.setState({
+                handleOnClickAddToHiddenBasket: !this.state.handleOnClickAddToHiddenBasket
+            })
+            const hiddenBasketField = document.querySelector('#hiddenBasketShow');
+        
+            if(this.state.hiddenBasketShow === true){
+                hiddenBasketField.classList = ' hiddenBasketAddDisplay animate__animated animate__slideInRight'
+                this.state.hiddenBasketShow = false
+            }else{
+                hiddenBasketField.classList = ' hiddenBasket'
+                this.state.hiddenBasketShow = true
+            }
         }
-       
     }
 
     handleAddToBasket=(e)=>{
         e.preventDefault();
         
-        if (window.confirm('Do you want to add this to your cart?')){
-        fetch(`/api/cart/${this.state.shoe.id}/add`, {
-            method: 'POST',
-            body: JSON.stringify({
-                'shoe_id': this.state.shoe.id,
-                'size': this.state.size,
-                'quantity': this.state.quantity
-            }),
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json",
-                'Authorization': 'Bearer ' + this.props.token
+        if (this.props.token){
+            fetch(`/api/cart/${this.state.shoe.id}/add`, {
+                method: 'POST',
+                body: JSON.stringify({
+                    'shoe_id': this.state.shoe.id,
+                    'size': this.state.size,
+                    'quantity': this.state.quantity
+                }),
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json",
+                    'Authorization': 'Bearer ' + this.props.token
 
-            }
-        })}
+                }
+            })
+        } else {
+            this.setState({
+                prompt: true
+            })
+        }
     }
 
     handleSizeSelect = (e) => {
@@ -92,7 +98,7 @@ export default class SingleShoePage extends React.Component{
     }
     
     render() {
-        const { shoe, loading, size } = this.state;
+        const { shoe, loading, size, prompt } = this.state;
         const financePrice = (shoe.price/3).toFixed(2);
 
         let selectedQuantity = null;
@@ -191,6 +197,7 @@ export default class SingleShoePage extends React.Component{
 
                                         </div> 
                                     </form>
+                                    {!prompt ? null : <DismissableAlert message={`Please log in to add to your basket`}/> }
                                 </div>
 
 

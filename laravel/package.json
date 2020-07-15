@@ -41,6 +41,7 @@
         "react-dom": "^16.13.1",
         "react-input-range": "^1.3.0",
         "react-router-dom": "^5.2.0",
-        "react-slider-kit": "^1.0.0-beta-0"
+        "react-slider-kit": "^1.0.0-beta-0",
+        "reactstrap": "^8.5.1"
     }
 }

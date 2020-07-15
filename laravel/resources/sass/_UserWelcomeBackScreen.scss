@@ -1,7 +1,7 @@
 .userWelcomeBackScreen{
   
     width: 100%;
-    height: 70vh;
+    height: 38rem;
     font-size: 2.5rem;
     text-align: center;
     padding: 5rem;
@@ -18,5 +18,16 @@
     }
     i{
         margin-top: 10rem;
+    }
+
+    .logout__btn {
+        margin-top: 2rem;
+        font-size: 1.5rem;
+        background-color: #000;
+        color: #fff;
+        height: 2.5rem ;
+        width: 20rem;
+        margin: 2rem 0;
+        cursor: pointer;
     }
 }

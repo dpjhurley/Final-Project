@@ -1,18 +1,51 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import RegisterForm from './RegisterForm.jsx';
 import LoginForm from './LoginForm.jsx';
-import './accountArea.scss';
 import RegisterRelay from './RegisterRelay.jsx';
+import WelcomeArea from './WelcomeArea.jsx';
+import Spinner from '../partials/Spinner.jsx';
 
 class AccountArea extends React.Component {
+    constructor(props) {
+        super(props)
 
-    render() { 
-        const { token, onLoginSuccess, onFailedAuthentication} = this.props;
-       
+        this.state = {
+            user: null
+        }
+    }
+
+    setUser = (d) => {
+        this.setState({
+            user: d
+        })
+    }
+
+    componentDidMount = () => {
+        fetch('/api/user', {
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                'Authorization': 'Bearer ' + this.props.token
+            }
+        })
+        .then(resp => resp.json())
+        .then(data => {
+            this.setUser(data)
+        });
+    }
+
+    render() {
+        const { user } = this.state; 
+        const { token, onLoginSuccess, onFailedAuthentication, handleLogout, message} = this.props;
+        
+        let username = '';
+        if(user) {
+            username = `${user.name} ${user.surname}`
+        }
+        
+
         return (
             <>
-                {/* will need to change this to when true once this is all set up */}
                 {!token ? (
                     <div className="account">
                         <LoginForm 
@@ -23,7 +56,14 @@ class AccountArea extends React.Component {
                         <RegisterRelay />
                     </div>
                 ):(
-                    <div className="userWelcomeBackScreen"><h2>Welcome back</h2><span>Marian Nestorov</span><Link to="/"><i className="fas fa-globe "></i><br/> Global</Link></div>
+                    user != null ? (
+                        <WelcomeArea 
+                            username={username}
+                            handleLogout={handleLogout}
+                        />
+                    ) : (
+                        <Spinner/>
+                    )                    
                 )}
                 
             </>

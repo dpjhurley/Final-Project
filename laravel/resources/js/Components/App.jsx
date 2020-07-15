@@ -22,6 +22,7 @@ export default class App extends React.Component {
             loading: true,
             logged_in: null,
             token: window.localStorage.getItem('_token'),
+            message: []
         };
     }
 
@@ -42,6 +43,28 @@ export default class App extends React.Component {
         this.setState({
             logged_in: false,
             token: null
+        })
+    }
+
+    handleLogout = () => {
+        fetch('/user/logout', {
+            method: 'POST',
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                'Authorization': 'Bearer ' + this.props.token
+            }
+        })
+        .then(resp => resp.json())
+        .then(data => {
+            console.log('hello')
+            window.localStorage.removeItem('_token')
+
+            this.setState({
+                logged_in: false,
+                token: null,
+                errors: data.message
+            })
         })
     }
 
@@ -68,7 +91,7 @@ export default class App extends React.Component {
     };
    
     render() {
-        const { data, loading, logged_in, token } = this.state;
+        const { data, loading, logged_in, token, message } = this.state;
         return (
             <Router>
                 <TopNav />
@@ -109,6 +132,7 @@ export default class App extends React.Component {
                             logged_in={logged_in}
                             token={token}
                             handleLogOut={this.handleLogOut}
+                            message={message}
                         />
                     }/>
                     <Route path="/cart" component={Basket} />
