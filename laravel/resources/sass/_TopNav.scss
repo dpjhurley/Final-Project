@@ -6,6 +6,7 @@
     justify-content: flex-end;
     overflow: hidden;
     font-family: $primary_font;
+  
     &__help{
             list-style: none;
             background-color: black;
@@ -39,6 +40,15 @@
                 
             }
             &.firstTopnav{
+
+
+                &:first-child{
+                    @media all and (max-width: 980px){
+                    display: none;
+        
+                    }
+                }
+               
             &:hover{
                 text-decoration: none;
             }}
