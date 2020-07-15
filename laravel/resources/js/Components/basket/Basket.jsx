@@ -9,10 +9,11 @@ const Basket = ({token}) => {
     const [ cart, setCart ] = useState([]);
     const [ loaded, setLoaded ] = useState(false);
     const [ newQuantity, setNewQuantity ] = useState(null);
+    const [ removed, setRemoved ] = useState(false);
 
     useEffect(() => {
         fetchData();
-    }, [loaded])
+    }, [removed])
 
     const fetchData = async () => {
         const resp = await fetch(`/api/cart`, {
@@ -25,13 +26,13 @@ const Basket = ({token}) => {
         const results = await resp.json()
         if (results) {
             setCart(results)
-            setLoaded(!loaded)
+            setLoaded(true)
         }
     }
 
-    const handleRemoveFromCart = async (shoe) => {
+    const handleRemoveFromCart = async (s) => {
         if (window.confirm('Are you sure you want to remove this from your cart?')) {            
-            const resp = await fetch(`/api/cart/${shoe.shoe_id}/remove`, {
+            const resp = await fetch(`/api/cart/${s.shoe_id}/remove`, {
                 method: 'POST',
                 headers: {
                     "Accept": "application/json",
@@ -39,23 +40,20 @@ const Basket = ({token}) => {
                     'Authorization': 'Bearer ' + token
                 }
             })
-            setLoaded(!loaded);
+            setRemoved(!removed);
         }
     }
 
-    const handleChangeOfQuantity = async (shoe) => {
-        const resp = await fetch(`/api/cart/${shoe.shoe_id}/edit`, {
+    const handleChangeOfQuantity = async (s) => {
+        const resp = await fetch(`/api/cart/${s.shoe_id}/edit`, {
             method: 'POST',
-            body: JSON.stringify({
-                'newQuantity': newQuantity
-            }),
+            body: JSON.stringify({'newQuantity': newQuantity}),
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json",
                 'Authorization': 'Bearer ' + token
             }
         }) 
-        setLoaded(!loaded);
     }
     
     const changeNewQuantity = (e) => {
