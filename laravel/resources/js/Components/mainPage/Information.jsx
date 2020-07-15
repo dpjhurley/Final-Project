@@ -1,11 +1,12 @@
 import React, { Component, Fragment } from "react";
+import { Link } from 'react-router-dom';
 
 export default class Information extends Component {
     render() {
         const { count, brand } = this.props;
         return (
             <div className="bodyInformation">
-                <div>HOME</div>
+                <h4 className="topRoute__container" ><Link className="topRoutes" to="\">HOME</Link></h4>
                 <br />
                 {/* fix this to have it display mens or womens */}
                 {(brand.length > 0) ? 

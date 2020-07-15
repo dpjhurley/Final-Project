@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import AccountArea from './auth/AccountArea.jsx'
 import TopNav from './topComponents/Topnav';
@@ -13,145 +13,123 @@ import SingleShoePage from './singleShoeComponents/SingleShoePage.jsx';
 import Basket from './basket/Basket.jsx';
 import RegisterForm from './auth/RegisterForm.jsx';
 
-export default class App extends React.Component {
-    constructor(props) {
-        super(props);
+const App = () => {
+    const [ data, setData ] = useState([]);  
+    const [ loading, setLoading ] = useState(true);  
+    const [ logged_in, setLogged_in ] = useState(null);  
+    const [ token, setToken ] = useState(window.localStorage.getItem('_token')); 
+    const [ message, setMessage ] = useState([]); 
+    
+    useEffect(() => {
+        fetchData();
+    }, [])
 
-        this.state = {
-            data: [],
-            loading: true,
-            logged_in: null,
-            token: window.localStorage.getItem('_token'),
-            message: []
-        };
-    }
-
-    onLoginSuccess = (token) => {
- 
-        window.localStorage.setItem('_token', token)
-     
-        this.setState({
-            logged_in: true,
-            token: token
-        })
-    }
-
-    onFailedAuthentication = () => {
-
-        window.localStorage.removeItem('_token');
-
-        this.setState({
-            logged_in: false,
-            token: null
-        })
-    }
-
-    handleLogout = () => {
-        fetch('/user/logout', {
-            method: 'POST',
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json",
-                'Authorization': 'Bearer ' + this.props.token
-            }
-        })
-        .then(resp => resp.json())
-        .then(data => {
-            console.log('hello')
-            window.localStorage.removeItem('_token')
-
-            this.setState({
-                logged_in: false,
-                token: null,
-                errors: data.message
-            })
-        })
-    }
-
-    componentDidMount = () => {
-        fetch("api/shoes", {
+    const fetchData = async () => {
+        const resp = await fetch("api/shoes", {
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json"
             }
         })
-        .then(resp => resp.json())
-        .then(data => {
-            this.setState({
-                data: data,
-                loading: false
-            });
-        });
-        // fetch('/api/user', {
-        //     headers: {
-        //         "Accept": "application/json",
-        //         "Content-Type": "application/json"
-        //     }
-        // })
+        const results = await resp.json()
+        if (results) {
+            setData(results);
+            setLoading(false)
+        }
     };
-   
-    render() {
-        const { data, loading, logged_in, token, message } = this.state;
-        return (
-            <Router>
-                <TopNav />
-                <Navbar />
-                <HiddenMenu />
-                <HiddenMenuSearch />
-                <ThirdNav />
-                            
-                <Switch>
-                    <Route 
-                        path={`/cart`}  
-                        render={
-                            () => <Basket 
-                                token={token}
-                            />
-                        }
-                    />
-                    {data ? (
-                        data.map((shoe) => (
-                            <Route 
-                                key={shoe.id} 
-                                path={`/shoe/${shoe.id}`}  
-                                render={
-                                    () => <SingleShoePage 
-                                        shoe_id={shoe.id} 
-                                        token={token}
-                                    />
-                                }
-                            />
-                        ))
-                    ) : (
-                        null
-                    )}
-                    <Route path="/account"  render={ ()=>
-                        <AccountArea 
-                            onLoginSuccess={this.onLoginSuccess} 
-                            onFailedAuthentication={this.onFailedAuthentication}
-                            logged_in={logged_in}
-                            token={token}
-                            handleLogOut={this.handleLogOut}
-                            message={message}
-                        />
-                    }/>
-                    <Route path="/cart" component={Basket} />
-                    <Route path="/register-account"  component={RegisterForm}/>
-                    <Route 
-                        path="/" 
-                        render={() => 
-                            <MainDisplay 
-                                data={data}
-                                loading={loading}
-                            />
-                        }
-                    />
-                    
-                    
-                </Switch>
-                <Footer />
-                <CopyrightFooter />
-             </Router>   
-        )
+
+    const onLoginSuccess = (token) => {
+        window.localStorage.setItem('_token', token)
+        setLogged_in(true);
+        setToken(token);
     }
+
+    const onFailedAuthentication = () => {
+        window.localStorage.removeItem('_token');
+        setLogged_in(false);
+        setToken(null);
+    }
+
+    const handleLogout = async () => {
+        const resp = await fetch('/user/logout', {
+            method: 'POST',
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                'Authorization': 'Bearer ' + token
+            }
+        })
+        const results = await resp.json()
+        if (results) {
+            window.localStorage.removeItem('_token')
+            setLogged_in(false)
+            setToken(null)
+            setMessage(results.message)
+        }            
+    }
+
+
+    return ( 
+        <Router>
+            <TopNav />
+            <Navbar />
+            <HiddenMenu />
+            <HiddenMenuSearch />
+            <ThirdNav />
+                        
+            <Switch>
+                <Route 
+                    path={`/cart`}  
+                    render={
+                        () => <Basket 
+                            token={token}
+                        />
+                    }
+                />
+                {data ? (
+                    data.map((shoe) => (
+                        <Route 
+                            key={shoe.id} 
+                            path={`/shoe/${shoe.id}`}  
+                            render={
+                                () => <SingleShoePage 
+                                    shoe_id={shoe.id} 
+                                    token={token}
+                                />
+                            }
+                        />
+                    ))
+                ) : (
+                    null
+                )}
+                <Route path="/account"  render={ ()=>
+                    <AccountArea 
+                        onLoginSuccess={onLoginSuccess} 
+                        onFailedAuthentication={onFailedAuthentication}
+                        logged_in={logged_in}
+                        token={token}
+                        handleLogOut={handleLogOut}
+                        message={message}
+                    />
+                }/>
+                <Route path="/cart" component={Basket} />
+                <Route path="/register-account"  component={RegisterForm}/>
+                <Route 
+                    path="/" 
+                    render={() => 
+                        <MainDisplay 
+                            data={data}
+                            loading={loading}
+                        />
+                    }
+                />
+                
+                
+            </Switch>
+            <Footer />
+            <CopyrightFooter />
+        </Router>   
+    );
 }
+ 
+export default App;
