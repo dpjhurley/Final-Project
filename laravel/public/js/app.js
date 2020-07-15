@@ -90634,8 +90634,10 @@ var SingleShoePage = /*#__PURE__*/function (_React$Component) {
 
       if (_this.state.hiddenBasketShow === true) {
         hiddenBasketField.classList = ' hiddenBasketAddDisplay animate__animated animate__slideInRight';
+        _this.state.hiddenBasketShow = false;
       } else {
-        hiddenBasketField.classList = 'hiddenBasketAddDisplay hiddenBasket';
+        hiddenBasketField.classList = ' hiddenBasket';
+        _this.state.hiddenBasketShow = true;
       }
     });
 
@@ -90819,32 +90821,39 @@ var SingleShoePage = /*#__PURE__*/function (_React$Component) {
         className: "add_to_basket_btn",
         onClick: this.handleOnClickAddToHiddenBasket
       }, "ADD TO BASKET"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "hiddenBasketAddDisplay  hiddenBasket",
+        className: "hiddenBasket",
         id: "hiddenBasketShow"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "hiddenBasketAddDisplay__close"
+        className: "hiddenBasketOverlay"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "hiddenBasketAddDisplayright ",
+        id: "hiddenBasketShow"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "hiddenBasketAddDisplayright__close",
+        onClick: this.handleOnClickAddToHiddenBasket
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-times fa-2x"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Your Basket")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "hiddenBasketAddDisplay__shoe"
+        className: "hiddenBasketAddDisplayright__shoe"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "hiddenBasketAddDisplay__shoe__item"
+        className: "hiddenBasketAddDisplayright__shoe__item"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "/images/".concat(shoe.images[0].path),
         alt: "shoe image"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "hiddenBasketAddDisplay__shoe__item-describrion"
+        className: "hiddenBasketAddDisplayright__shoe__item-describrion"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, shoe.brand.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, shoe.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Size"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "\xA3"), shoe.price, ".00")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "hiddenBasketAddDisplay__shoe__item-close"
+        className: "hiddenBasketAddDisplayright__shoe__item-close"
       }, " X "))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "hiddenBasketAddDisplay__buttons"
+        className: "hiddenBasketAddDisplayright__buttons"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "hiddenBasketAddDisplay__buttons-total buttons-item "
+        className: "hiddenBasketAddDisplayright__buttons-total buttons-item "
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Subtotal:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "\xA3"), shoe.price, ".00")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "hiddenBasketAddDisplay__buttons-continue buttons-item"
+        className: "hiddenBasketAddDisplayright__buttons-continue buttons-item",
+        onClick: this.handleOnClickAddToHiddenBasket
       }, "Continue Shopping"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "hiddenBasketAddDisplay__buttons-basket buttons-item"
-      }, "Go To Basket"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "hiddenBasketAddDisplayright__buttons-basket buttons-item"
+      }, "Go To Basket")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shoeDisplay__actual__info-collect"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Click & Collect"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Check, Reserve or Buy store stock"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "shoeDisplay__actual__info-collect-text"
@@ -92057,8 +92066,8 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/brandon/web/codingbootcamp/projects/real-final-project/laravel/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/brandon/web/codingbootcamp/projects/real-final-project/laravel/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\web\_home\mza\Final-project\laravel\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\web\_home\mza\Final-project\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

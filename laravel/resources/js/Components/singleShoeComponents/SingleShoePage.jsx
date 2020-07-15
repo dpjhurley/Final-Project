@@ -45,8 +45,10 @@ export default class SingleShoePage extends React.Component{
        
         if(this.state.hiddenBasketShow === true){
             hiddenBasketField.classList = ' hiddenBasketAddDisplay animate__animated animate__slideInRight'
+            this.state.hiddenBasketShow = false
         }else{
-            hiddenBasketField.classList = 'hiddenBasketAddDisplay hiddenBasket'
+            hiddenBasketField.classList = ' hiddenBasket'
+            this.state.hiddenBasketShow = true
         }
        
     }
@@ -162,32 +164,36 @@ export default class SingleShoePage extends React.Component{
                                             <span className="bold-text">Finance</span>, pay <span className="bold-text">£{financePrice}</span> in <span className="bold-text">3 monthly instalments.</span> No interest or fees. <br/><a href="#">Learn More</a>
                                         </p>
                                         <button type="submit" className="add_to_basket_btn" onClick={this.handleOnClickAddToHiddenBasket}>ADD TO BASKET</button>
-                                        <div className="hiddenBasketAddDisplay  hiddenBasket" id="hiddenBasketShow">
-                                                 <div className="hiddenBasketAddDisplay__close"><span><i className="fas fa-times fa-2x"></i></span><h3>Your Basket</h3></div>
+                                         <div className="hiddenBasket" id="hiddenBasketShow">  
+                                            <div className="hiddenBasketOverlay"></div>
+                                            <div className="hiddenBasketAddDisplayright " id="hiddenBasketShow">
+                                                    <div className="hiddenBasketAddDisplayright__close" onClick={this.handleOnClickAddToHiddenBasket}><span><i className="fas fa-times fa-2x"></i></span><h3>Your Basket</h3></div>
+                                                    <div className="hiddenBasketAddDisplayright__shoe">
+                                                        <div className="hiddenBasketAddDisplayright__shoe__item">
+                                                            <img src={`/images/${shoe.images[0].path}`} alt="shoe image"/>
+                                                            <div className="hiddenBasketAddDisplayright__shoe__item-describrion">
+                                                                <h5><strong>{shoe.brand.name}</strong></h5>
+                                                                <h5>{shoe.title}</h5>
+                                                                <h5>Size</h5>
+                                                                <h5><strong>£</strong>{shoe.price}.00</h5>
+                                                            </div>
+                                                            <div className="hiddenBasketAddDisplayright__shoe__item-close"> X </div>
+                                                            </div>
+                                                    </div>
+                                                    <div className="hiddenBasketAddDisplayright__buttons">
+                                                        <div className="hiddenBasketAddDisplayright__buttons-total buttons-item "><div>Subtotal:</div><div><strong>£</strong>{shoe.price}.00</div></div>
+                                                        <div className="hiddenBasketAddDisplayright__buttons-continue buttons-item" onClick={this.handleOnClickAddToHiddenBasket}>Continue Shopping</div>
+                                                        <div className="hiddenBasketAddDisplayright__buttons-basket buttons-item">Go To Basket</div>
+                                                    </div>
 
-                                                  <div className="hiddenBasketAddDisplay__shoe">
-                                                     <div className="hiddenBasketAddDisplay__shoe__item">
-                                                        <img src={`/images/${shoe.images[0].path}`} alt="shoe image"/>
-                                                        <div className="hiddenBasketAddDisplay__shoe__item-describrion">
-                                                            <h5><strong>{shoe.brand.name}</strong></h5>
-                                                            <h5>{shoe.title}</h5>
-                                                            <h5>Size</h5>
-                                                            <h5><strong>£</strong>{shoe.price}.00</h5>
-                                                        </div>
-                                                        <div className="hiddenBasketAddDisplay__shoe__item-close"> X </div>
-                                                        </div>
-                                                </div>
-
-                                                <div className="hiddenBasketAddDisplay__buttons">
-                                                    <div className="hiddenBasketAddDisplay__buttons-total buttons-item "><div>Subtotal:</div><div><strong>£</strong>{shoe.price}.00</div></div>
-                                                    <div className="hiddenBasketAddDisplay__buttons-continue buttons-item">Continue Shopping</div>
-                                                    <div className="hiddenBasketAddDisplay__buttons-basket buttons-item">Go To Basket</div>
-                                                </div>
-
-                                        </div>
+                                            </div>
                                        
+
+                                        </div> 
                                     </form>
                                 </div>
+
+
                                 <div className="shoeDisplay__actual__info-collect">
                                     <h2>Click & Collect</h2>
                                     <p>Check, Reserve or Buy store stock</p>
