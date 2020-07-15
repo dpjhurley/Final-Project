@@ -60,6 +60,9 @@ class LoginController extends Controller
 
     public function find()
     {
-        return $this->guard()->user();
+        return [
+            'user' => $this->guard()->user(),
+            'message' => 'Success',
+        ];
     }
 }

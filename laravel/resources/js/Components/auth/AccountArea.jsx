@@ -10,14 +10,9 @@ class AccountArea extends React.Component {
         super(props)
 
         this.state = {
-            user: null
+            user: null,
+            message: null
         }
-    }
-
-    setUser = (d) => {
-        this.setState({
-            user: d
-        })
     }
 
     componentDidMount = () => {
@@ -30,19 +25,27 @@ class AccountArea extends React.Component {
         })
         .then(resp => resp.json())
         .then(data => {
-            this.setUser(data)
+            this.setState({
+                user: data.user,
+                message: data.message
+            })
         });
     }
 
+    componentDidUpdate = () => {
+        this.props.token
+    }
+
     render() {
-        const { user } = this.state; 
-        const { token, onLoginSuccess, onFailedAuthentication, handleLogout, message} = this.props;
+        const { user, message } = this.state; 
+        const { token, onLoginSuccess, onFailedAuthentication, handleLogout} = this.props;
         
         let username = '';
         if(user) {
             username = `${user.name} ${user.surname}`
         }
-        
+
+        console.log(user)
 
         return (
             <>
@@ -56,7 +59,7 @@ class AccountArea extends React.Component {
                         <RegisterRelay />
                     </div>
                 ):(
-                    user != null ? (
+                    (message === 'Success') ? (
                         <WelcomeArea 
                             username={username}
                             handleLogout={handleLogout}

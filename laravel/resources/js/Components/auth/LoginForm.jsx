@@ -42,6 +42,7 @@ class LoginForm extends React.Component {
         .then(data => {
             if (data.status === 'success' ) {
                 this.props.onLoginSuccess(data.data.token)
+                window.location.reload(false);
             } else {
                 this.props.onFailedAuthentication();
             }

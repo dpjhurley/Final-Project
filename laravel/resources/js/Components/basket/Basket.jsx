@@ -1,139 +1,209 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import CartItem from './CartItem.jsx';
 import './_basket.scss';
 import BasketTotal from './BasketTotal.jsx';
 import Spinner from '../partials/Spinner.jsx';
 
+const Basket = ({token}) => {
+    const [ cart, setCart ] = useState([]);
+    const [ loaded, setLoaded ] = useState(false);
+    const [ newQuantity, setNewQuantity ] = useState(null);
 
-class Basket extends React.Component {
-    constructor(props) {
-        super(props)
+    useEffect(() => {
+        fetchData();
+    }, [loaded])
 
-        this.state = {
-            cart: [],
-            loaded: false,
-            newQuantity: null
-        }
-    }
-
-    componentDidMount = () => {
-        fetch(`/api/cart`, {
+    const fetchData = async () => {
+        const resp = await fetch(`/api/cart`, {
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json",
-                'Authorization': 'Bearer ' + this.props.token
+                'Authorization': 'Bearer ' + token
             }
         })
-        .then((resp) => resp.json())
-        .then((data) => {
-            this.setState({
-                cart: data,
-                loaded: !this.state.loaded
-            })
-
-        })
+        const results = await resp.json()
+        if (results) {
+            setCart(results)
+            setLoaded(!loaded)
+        }
     }
 
-    handleRemoveFromCart = (shoe) => {
+    const handleRemoveFromCart = async (shoe) => {
         if (window.confirm('Are you sure you want to remove this from your cart?')) {            
-            fetch(`/api/cart/${shoe.shoe_id}/remove`, {
+            const resp = await fetch(`/api/cart/${shoe.shoe_id}/remove`, {
                 method: 'POST',
                 headers: {
                     "Accept": "application/json",
                     "Content-Type": "application/json",
-                    'Authorization': 'Bearer ' + this.props.token
+                    'Authorization': 'Bearer ' + token
                 }
             })
-          
+            setLoaded(!loaded);
         }
-        window.location.reload(false);
-
     }
 
-    handleChangeOfQuantity = (shoe) => {
-        fetch(`/api/cart/${shoe.shoe_id}/edit`, {
+    const handleChangeOfQuantity = async (shoe) => {
+        const resp = await fetch(`/api/cart/${shoe.shoe_id}/edit`, {
             method: 'POST',
             body: JSON.stringify({
-                'newQuantity': this.state.newQuantity
+                'newQuantity': newQuantity
             }),
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json",
-                'Authorization': 'Bearer ' + this.props.token
+                'Authorization': 'Bearer ' + token
             }
         }) 
-        window.location.reload(false);
+        setLoaded(!loaded);
     }
     
-    
-
-    changeNewQuantity = (e) => {
-        this.setState({
-            newQuantity: e.target.value
-        })
+    const changeNewQuantity = (e) => {
+        setNewQuantity(e.target.value)
     }
 
-    componentDidUpdate = () => {
-        this.state.loaded;
+    let total = 0;
+    if (cart.length > 0) {
+        cart.forEach(i => {
+            total += i.shoe.price * i.count
+        });
     }
-    
-    render() { 
-        const { cart, loaded } = this.state;
 
-        let total = 0;
-        if (cart.length > 0) {
-            cart.forEach(i => {
-                total += i.shoe.price * i.count
-            });
-        }
 
-        return (  
-            <>
-                <h2 className="basket__title">Basket</h2>
-                {loaded ? (
-                    <>
-                        {cart.length > 0 ? (
-                            <>
-                                <div className="basket__container">
-                                    {cart.map((s, i) => (
-                                        <CartItem 
-                                            key={i}
-                                            shoe={s}
-                                            handleRemoveFromCart={(e) => {
-                                                e.preventDefault();
-            
-                                                this.handleRemoveFromCart(s);
-                                            }}
-                                            changeNewQuantity={this.changeNewQuantity}
-                                            handleChangeOfQuantity={(e) => {
-                                                e.preventDefault();
-            
-                                                this.handleChangeOfQuantity(s)
-                                            }}
-                                            changeQuantityBtn={this.changeQuantityBtn}
-                                        />
-                                    ))}
-                                </div>
-                                <BasketTotal total={total}/> 
-                            </>       
-                        ) : (
+    return (  
+        <>
+            <Link className="topRoutes" to="/"><h4 className="topRoute__container" >HOME</h4></Link>
+            <br />
+            <h2 className="basket__title">Basket</h2>
+            {loaded ? (
+                <>
+                    {cart.length > 0 ? (
+                        <>
                             <div className="basket__container">
-                                <h3>There is nothing in your basket </h3>
-                                <Link to="/main">
-                                    <button className="basket__btn" >Check out our shoes</button>
-                                </Link>
+                                {cart.map((s, i) => (
+                                    <CartItem 
+                                        key={i}
+                                        shoe={s}
+                                        handleRemoveFromCart={(e) => {
+                                            e.preventDefault();
+        
+                                            handleRemoveFromCart(s);
+                                        }}
+                                        changeNewQuantity={changeNewQuantity}
+                                        handleChangeOfQuantity={(e) => {
+                                            e.preventDefault();
+        
+                                            handleChangeOfQuantity(s)
+                                        }}
+                                    />
+                                ))}
                             </div>
-                        )}
-                        
-                    </>
-                ) : (
-                    <Spinner />
-                )}
-                
-            </>
-        );
-    }
+                            <BasketTotal total={total}/> 
+                        </>       
+                    ) : (
+                        <div className="basket__container--notloggedin">
+                            <h3>Please login to use the basket</h3>
+                            <Link to="/account">
+                                <button className="basket__btn" >Login/register</button>
+                            </Link>
+                            <br/>
+                            <Link to="/main">
+                                <button className="basket__btn" >Check out our shoes</button>
+                            </Link>
+                        </div>
+                    )}
+                    
+                </>
+            ) : (
+                <Spinner />
+            )}
+            
+        </>
+    );
 }
  
 export default Basket;
+
+// class Basket extends React.Component {
+//     constructor(props) {
+//         super(props)
+
+//         this.state = {
+//             cart: [],
+//             loaded: false,
+//             newQuantity: null
+//         }
+//     }
+
+//     componentDidMount = () => {
+//         fetch(`/api/cart`, {
+//             headers: {
+//                 "Accept": "application/json",
+//                 "Content-Type": "application/json",
+//                 'Authorization': 'Bearer ' + this.props.token
+//             }
+//         })
+//         .then((resp) => resp.json())
+//         .then((data) => {
+//             this.setState({
+//                 cart: data,
+//                 loaded: !this.state.loaded
+//             })
+
+//         })
+//     }
+
+//     handleRemoveFromCart = (shoe) => {
+//         if (window.confirm('Are you sure you want to remove this from your cart?')) {            
+//             fetch(`/api/cart/${shoe.shoe_id}/remove`, {
+//                 method: 'POST',
+//                 headers: {
+//                     "Accept": "application/json",
+//                     "Content-Type": "application/json",
+//                     'Authorization': 'Bearer ' + this.props.token
+//                 }
+//             })
+          
+//         }
+//         window.location.reload(false);
+
+//     }
+
+//     handleChangeOfQuantity = (shoe) => {
+//         fetch(`/api/cart/${shoe.shoe_id}/edit`, {
+//             method: 'POST',
+//             body: JSON.stringify({
+//                 'newQuantity': this.state.newQuantity
+//             }),
+//             headers: {
+//                 "Accept": "application/json",
+//                 "Content-Type": "application/json",
+//                 'Authorization': 'Bearer ' + this.props.token
+//             }
+//         }) 
+//         window.location.reload(false);
+//     }
+    
+    
+
+//     changeNewQuantity = (e) => {
+//         this.setState({
+//             newQuantity: e.target.value
+//         })
+//     }
+
+//     componentDidUpdate = () => {
+//         this.state.loaded;
+//     }
+    
+//     render() { 
+//         const { cart, loaded } = this.state;
+
+        
+//         return (  
+            
+//         );
+//     }
+// }
+ 
+// export default Basket;

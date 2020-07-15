@@ -23,7 +23,7 @@ class CartItem extends React.Component {
         const { edit } = this.state;
 
         let quantityArray = [];
-        if (shoe && shoe.stock.stock > 0) {
+        if (shoe.stock.stock > 0) {
             quantityArray = [...Array(shoe.stock.stock + 1).keys()];
         }
 
