@@ -28,6 +28,13 @@ class ShoeController extends Controller
         return $shoes;
     }
 
+    public function id()
+    {
+        $shoes = Shoe::all();
+
+        return $shoes;
+    }
+
     public function show($shoe_id)
     {
         $shoe = Shoe::where('id', $shoe_id)

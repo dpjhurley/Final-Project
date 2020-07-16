@@ -18,6 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/shoes/id', 'Api\ShoeController@id');
 Route::get('/shoes', 'Api\ShoeController@index');
 Route::get('/shoes/{shoe_id}', 'Api\ShoeController@show');
 Route::get('/brands', 'Api\BrandController@index');

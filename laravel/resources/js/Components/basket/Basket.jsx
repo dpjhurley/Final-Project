@@ -10,10 +10,11 @@ const Basket = ({token}) => {
     const [ loaded, setLoaded ] = useState(false);
     const [ newQuantity, setNewQuantity ] = useState(null);
     const [ removed, setRemoved ] = useState(false);
+    const [ edit, setEdit ] = useState(false);
 
     useEffect(() => {
         fetchData();
-    }, [removed])
+    }, [removed, edit])
 
     const fetchData = async () => {
         const resp = await fetch(`/api/cart`, {
@@ -44,6 +45,10 @@ const Basket = ({token}) => {
         }
     }
 
+    const changeQuantityBtn = () => {
+        setEdit(!edit)
+    }
+
     const handleChangeOfQuantity = async (s) => {
         const resp = await fetch(`/api/cart/${s.shoe_id}/edit`, {
             method: 'POST',
@@ -54,6 +59,7 @@ const Basket = ({token}) => {
                 'Authorization': 'Bearer ' + token
             }
         }) 
+        setEdit(!edit);
     }
     
     const changeNewQuantity = (e) => {
@@ -87,6 +93,8 @@ const Basket = ({token}) => {
         
                                             handleRemoveFromCart(s);
                                         }}
+                                        edit={edit}
+                                        changeQuantityBtn={changeQuantityBtn}
                                         changeNewQuantity={changeNewQuantity}
                                         handleChangeOfQuantity={(e) => {
                                             e.preventDefault();
