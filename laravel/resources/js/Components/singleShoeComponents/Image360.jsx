@@ -29,7 +29,7 @@ export default class Image360 extends Component {
                 let picnumber = 1 +( Math.ceil(difference/20) ) % 50;
 
                 if(picnumber <= 0){
-                    picnumber = 50 - Math.abs(picnumber % 50)
+                    picnumber = 49 - Math.abs(picnumber % 50)
                 }
                 this.setState({
                     rotation : picnumber
@@ -39,14 +39,14 @@ export default class Image360 extends Component {
     }
 
     render() {
-        const rangeArray = [...Array(49).keys()];
+        const rangeArray = [...Array(50).keys()];
           
         return (
-            <>
+            <div>
                 {rangeArray.map((e) => (
                     <img key={e} id={e} src={`/images/product/image-${e}.png`} alt="image" style={{display:this.state.rotation === e ? 'block' : 'none'}}/>
                 ))}
-            </>  
+            </div>  
         )
     }
 }
