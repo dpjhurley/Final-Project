@@ -63,8 +63,11 @@
         }
             &-close{
                 color: red;
+                border: none;
+                
                 &:hover{
                 cursor: pointer;
+                
             }
         }
     }
@@ -83,9 +86,7 @@
             align-content: center;
            margin: 0.5rem 0;
             text-align: center;
-            &:hover{
-                cursor: pointer;
-            }
+            
         }
         &-total{
             color: #fff;
@@ -98,10 +99,28 @@
             background-color: #000;
             color: #fff;
             justify-content: center;
+            
+            &:hover{
+                cursor: pointer;
+            }
+
+            a {
+                text-decoration: none;
+                color: #fff;
+            }
         }
         &-basket{
             background-color: $primary-color;
             justify-content: center;
+
+            &:hover{
+                cursor: pointer;
+            }
+
+            a {
+                text-decoration: none;
+                color: #000;
+            }
         }
     }
 }

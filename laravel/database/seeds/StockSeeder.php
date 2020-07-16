@@ -13,6 +13,8 @@ class StockSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('stocks')->truncate();
+
         $source_file = storage_path('mock_stock_data.json'); // data.json
         if (!file_exists($source_file)) {
             die('Source file '.$source_file.' not found');
