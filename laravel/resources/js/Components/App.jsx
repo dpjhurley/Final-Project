@@ -13,6 +13,7 @@ import SingleShoePage from './singleShoeComponents/SingleShoePage.jsx';
 import Basket from './basket/Basket.jsx';
 import RegisterForm from './auth/RegisterForm.jsx';
 
+
 const App = () => {
     const [ data, setData ] = useState([]);  
     const [ loading, setLoading ] = useState(true);  
@@ -25,7 +26,7 @@ const App = () => {
     }, [])
 
     const fetchData = async () => {
-        const resp = await fetch("api/shoes/id", {
+        const resp = await fetch("/api/shoes/id", {
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json"
@@ -128,6 +129,7 @@ const App = () => {
             <Footer />
             <CopyrightFooter />
         </Router>   
+        
     );
 }
  

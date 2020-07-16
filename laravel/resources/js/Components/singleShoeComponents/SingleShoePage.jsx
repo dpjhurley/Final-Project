@@ -6,6 +6,7 @@ import Spinner from '../partials/Spinner';
 import QuantitySelector from './QuantitySelector.jsx';
 import Alert from '../partials/Alert';
 import HiddenBasket from './HiddenBasket';
+import Image360 from './Image360.jsx';
 
 const SingleShoePage = ({ 
     shoe_id,
