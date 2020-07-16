@@ -13,8 +13,8 @@ const SingleShoePage = ({
     token
 }) => {
     const [ shoe, setShoe ] = useState({});
-    const [ size, setSize ] = useState(null);
-    const [ quantity, setQuantity ] = useState(null);
+    const [ size, setSize ] = useState(0);
+    const [ quantity, setQuantity ] = useState(0);
     const [ loading, setLoading ] = useState(true);
     const [ mainPic, setMainPic ] = useState(0);
     const [ hiddenBasketShow, setHiddenBasketShow ] = useState(true);
@@ -49,7 +49,7 @@ const SingleShoePage = ({
         e.preventDefault();
         
         if (token){
-            if (quantity > 0 && Number.isFinite(size)) {
+            if (quantity > 0) {
                 const resp = await fetch(`/api/cart/${shoe.id}/add`, {
                     method: 'POST',
                     body: JSON.stringify({
@@ -81,7 +81,7 @@ const SingleShoePage = ({
     }
 
     const handleQuantitySelect = (e) => {
-        setQuantity(e)
+        setQuantity(e.target.value)
     }
 
     const financePrice = (shoe.price/3).toFixed(2);
@@ -135,7 +135,7 @@ const SingleShoePage = ({
                                     <form className="shoeDisplay__actual__info-size-selection" onSubmit={handleAddToBasket}>
                                         <div className="shoeDisplay__actual__info-size-selection-select" >
                                             <select name="select-size" className="select-css" onChange={handleSizeSelect}>
-                                                <option disabled>Please select a size</option>
+                                                <option selected disabled>Please select a size</option>
                                                 {shoe.stocks.length > 0 ? (
                                                     shoe.stocks.map((s) => (
                                                         <option key={s.id}>{s.size}</option>
