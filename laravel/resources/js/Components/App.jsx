@@ -108,7 +108,7 @@ const App = () => {
                         onFailedAuthentication={onFailedAuthentication}
                         logged_in={logged_in}
                         token={token}
-                        handleLogOut={handleLogOut}
+                        handleLogOut={() => handleLogOut}
                         message={message}
                     />
                 }/>
