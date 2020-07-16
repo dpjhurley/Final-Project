@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import AccountArea from './auth/AccountArea.jsx'
 import TopNav from './topComponents/Topnav';
@@ -25,7 +25,7 @@ const App = () => {
     }, [])
 
     const fetchData = async () => {
-        const resp = await fetch("api/shoes", {
+        const resp = await fetch("api/shoes/id", {
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json"
@@ -118,7 +118,6 @@ const App = () => {
                     path="/" 
                     render={() => 
                         <MainDisplay 
-                            data={data}
                             loading={loading}
                         />
                     }

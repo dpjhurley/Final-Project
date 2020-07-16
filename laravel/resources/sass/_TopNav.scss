@@ -6,8 +6,18 @@
     justify-content: flex-end;
     overflow: hidden;
     font-family: $primary_font;
-  
+    margin: auto;
+    @media all and (max-width: 799px ){
+        justify-content: center;
+   }
+
     &__help{
+        @media all and (max-width: 799px ){
+                 display: none;
+            }
+        @media all and (max-width: 980px){
+                 font-size: 0.8rem;
+            }
             list-style: none;
             background-color: black;
             padding: 0.5rem 1.5rem;
@@ -41,7 +51,7 @@
             }
             &.firstTopnav{
 
-
+                
                 &:first-child{
                     @media all and (max-width: 980px){
                     display: none;
@@ -56,6 +66,10 @@
                 text-decoration: none;
                 color: #333;
                 font-size: 0.8rem;
+                @media all and (max-width: 500px){
+                    font-size: 0.67rem;
+         
+                     }
             }
         }
     }

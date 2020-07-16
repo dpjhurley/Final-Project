@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 
 export default class Search extends Component {
     render() {
@@ -6,8 +6,8 @@ export default class Search extends Component {
         
 
         return (
-            <Fragment>
-            <div className="bodySidebarTitle mainDisplaycontainer">{title}</div>
+            <>
+                <div className="bodySidebarTitle mainDisplaycontainer">{title}</div>
                 <div className="bodySearch">
                     <form action="">
                         {search.map((newSearch, i) => {
@@ -22,7 +22,7 @@ export default class Search extends Component {
                         })}
                     </form>
                 </div>
-            </Fragment>
+            </>
         );
     }
 }
