@@ -14,6 +14,7 @@ import Basket from './basket/Basket.jsx';
 import RegisterForm from './auth/RegisterForm.jsx';
 import Spinner from './partials/Spinner.jsx';
 
+
 const App = () => {
     const [ data, setData ] = useState([]);  
     const [ loading, setLoading ] = useState(true);  
@@ -127,6 +128,7 @@ const App = () => {
             <Footer />
             <CopyrightFooter />
         </Router>   
+        
     );
 }
  
