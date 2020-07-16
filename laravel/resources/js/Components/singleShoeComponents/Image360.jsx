@@ -22,7 +22,7 @@ export default class Image360 extends Component {
             this.isMousedown = false;
         });
 
-        document.addEventListener("mousemove",  (event)=> {
+        window.addEventListener("mousemove",  (event)=> {
             if(this.isMousedown){
                 let x = event.offsetX;
                 let difference = x -this.step ;

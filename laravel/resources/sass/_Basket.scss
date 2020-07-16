@@ -43,7 +43,20 @@
             }
             height: 30%;
             width: 50px;
+            font-size: 1.1rem;
+            color: red;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            
+            &:focus {
+                border:none;
+                outline: none;
+            }
         }
+            
+
+            
     }
 }
 

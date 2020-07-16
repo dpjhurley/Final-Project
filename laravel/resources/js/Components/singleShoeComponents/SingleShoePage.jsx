@@ -7,14 +7,15 @@ import QuantitySelector from './QuantitySelector.jsx';
 import Alert from '../partials/Alert';
 import HiddenBasket from './HiddenBasket';
 import Image360 from './Image360.jsx';
+import VideoShoes from './VideoShoes';
 
 const SingleShoePage = ({ 
     shoe_id,
     token
 }) => {
     const [ shoe, setShoe ] = useState({});
-    const [ size, setSize ] = useState(null);
-    const [ quantity, setQuantity ] = useState(null);
+    const [ size, setSize ] = useState(0);
+    const [ quantity, setQuantity ] = useState(0);
     const [ loading, setLoading ] = useState(true);
     const [ mainPic, setMainPic ] = useState(0);
     const [ hiddenBasketShow, setHiddenBasketShow ] = useState(true);
@@ -49,7 +50,7 @@ const SingleShoePage = ({
         e.preventDefault();
         
         if (token){
-            if (quantity > 0 && Number.isFinite(size)) {
+            if (quantity > 0) {
                 const resp = await fetch(`/api/cart/${shoe.id}/add`, {
                     method: 'POST',
                     body: JSON.stringify({
@@ -81,7 +82,7 @@ const SingleShoePage = ({
     }
 
     const handleQuantitySelect = (e) => {
-        setQuantity(e)
+        setQuantity(e.target.value)
     }
 
     const financePrice = (shoe.price/3).toFixed(2);
@@ -108,9 +109,10 @@ const SingleShoePage = ({
                                     <a href="#"><img src={`/images/${shoe.images[0].path}`} alt="pic0" onClick={() => handleBigPicChange(<img src={`/images/${shoe.images[0].path}`} alt="pic0"/>)}/></a>
                                     <a href="#"><img src={`/images/${shoe.images[1].path}`} alt="pic1" onClick={() => handleBigPicChange(<img src={`/images/${shoe.images[1].path}`} alt="pic1"/>)}/></a>
                                     <a href="#"><img src={`/images/${shoe.images[2].path}`} alt="pic2" onClick={() => handleBigPicChange(<img src={`/images/${shoe.images[2].path}`} alt="pic2"/>)}/></a>
-                                    <a href="#"><img src={pic5} alt="pic"></img></a>
+                                    <a href="#"><img src={pic5} alt="pic" onClick={() => handleBigPicChange( <VideoShoes/>)}></img></a>
                                     <a href="#"><img src={pic4} alt="pic" onClick={() => handleBigPicChange(<Image360 />)}></img></a>
                                 </div>
+                               
                                 <div className="shoeDisplay__actual__pic-largepic">
                                     <a href="#">{mainPic}</a>
                                 </div>
@@ -135,7 +137,7 @@ const SingleShoePage = ({
                                     <form className="shoeDisplay__actual__info-size-selection" onSubmit={handleAddToBasket}>
                                         <div className="shoeDisplay__actual__info-size-selection-select" >
                                             <select name="select-size" className="select-css" onChange={handleSizeSelect}>
-                                                <option disabled>Please select a size</option>
+                                                <option selected disabled>Please select a size</option>
                                                 {shoe.stocks.length > 0 ? (
                                                     shoe.stocks.map((s) => (
                                                         <option key={s.id}>{s.size}</option>
