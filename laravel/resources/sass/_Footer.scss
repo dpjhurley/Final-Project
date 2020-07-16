@@ -8,6 +8,14 @@
     align-items: center;
     justify-content: space-around;
     padding: 1.2rem;
+    overflow: hidden;
+    @media all and (max-width: 800px) { 
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+       
+     }
     h2{
         margin-bottom: 1.5rem;
     }
@@ -18,6 +26,7 @@
         margin-left: 5rem;
         height: 100%;
         width: 24%;
+       
        .fa-8x{
            color: $primary-color;
        }
@@ -57,6 +66,9 @@
         p{
             font-size: 0.8rem;
             width: 12rem;
+            @media all and (max-width: 900px) { 
+                font-size: 0.5rem;
+              }
             a{
                 text-decoration: underline;
             }

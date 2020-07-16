@@ -1,6 +1,7 @@
 
 .thirdNav{
     display: flex;
+    @media all and (max-width: 480px) { flex-direction: column; }
     align-items: center;
     justify-content: center;
     width: 100%;
@@ -11,6 +12,7 @@
     &__center{
         border-right: 1px #777 solid;
         border-left: 1px #777 solid;
+        @media all and (max-width: 480px) { border: none; }
        }
     div{
         width: 32%;

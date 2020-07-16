@@ -57,7 +57,7 @@ export default class Navbar extends React.Component {
                     <Link to="/kids">Kids</Link>
                     <HiddenMenuKids />
                 </div>
-
+                                  
             </div>
 
             <div className="mainNav__list" >
