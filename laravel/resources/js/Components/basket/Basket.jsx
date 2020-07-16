@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import CartItem from './CartItem.jsx';
-import './_basket.scss';
 import BasketTotal from './BasketTotal.jsx';
 import Spinner from '../partials/Spinner.jsx';
 

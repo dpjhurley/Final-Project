@@ -26,7 +26,7 @@ export default class TopNav extends React.Component {
             <Link to='/account'>My Account</Link>
         </li>
         <li>
-            <a href="#"> Email Sign up</a>
+        <Link to='/register-account'>Email Sign up</Link>
         </li>
     </ul>
   </div>
@@ -34,3 +34,5 @@ export default class TopNav extends React.Component {
         )
     }
 }
+
+

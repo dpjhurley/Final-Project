@@ -7,6 +7,7 @@ import QuantitySelector from './QuantitySelector.jsx';
 import Alert from '../partials/Alert';
 import HiddenBasket from './HiddenBasket';
 import Image360 from './Image360.jsx';
+import VideoShoes from './VideoShoes';
 
 const SingleShoePage = ({ 
     shoe_id,
@@ -36,6 +37,7 @@ const SingleShoePage = ({
         if (results) {
             setShoe(results);
             setLoading(false);
+            setMainPic(<img src={`/images/${results.images[0].path}`} alt="pic0"/>);
 
         }
     }
@@ -80,7 +82,7 @@ const SingleShoePage = ({
     }
 
     const handleQuantitySelect = (e) => {
-        setQuantity(e.target.value)
+        setQuantity(e)
     }
 
     const financePrice = (shoe.price/3).toFixed(2);
@@ -104,14 +106,15 @@ const SingleShoePage = ({
                         <div className="shoeDisplay__actual">
                             <div className="shoeDisplay__actual__pic">
                                 <div className="shoeDisplay__actual__pic-smallpic">
-                               <a href="#"><img src={`/images/${shoe.images[0].path}`} alt="pic" onClick={() => handleBigPicChange(0)}></img></a>
-                                    <a href="#"><img src={`/images/${shoe.images[1].path}`} alt="pic" onClick={() => handleBigPicChange(1)}></img></a>
-                                    <a href="#"><img src={`/images/${shoe.images[2].path}`} alt="pic" onClick={() => handleBigPicChange(2)}></img></a>
-                                    <a href="#"><img src={pic5} alt="pic"></img></a>
-                                    <a href="#"><img src={pic4} alt="pic"></img></a>
+                                    <a href="#"><img src={`/images/${shoe.images[0].path}`} alt="pic0" onClick={() => handleBigPicChange(<img src={`/images/${shoe.images[0].path}`} alt="pic0"/>)}/></a>
+                                    <a href="#"><img src={`/images/${shoe.images[1].path}`} alt="pic1" onClick={() => handleBigPicChange(<img src={`/images/${shoe.images[1].path}`} alt="pic1"/>)}/></a>
+                                    <a href="#"><img src={`/images/${shoe.images[2].path}`} alt="pic2" onClick={() => handleBigPicChange(<img src={`/images/${shoe.images[2].path}`} alt="pic2"/>)}/></a>
+                                    <a href="#"><img src={pic5} alt="pic" onClick={() => handleBigPicChange( <VideoShoes/>)}></img></a>
+                                    <a href="#"><img src={pic4} alt="pic" onClick={() => handleBigPicChange(<Image360 />)}></img></a>
                                 </div>
+                               
                                 <div className="shoeDisplay__actual__pic-largepic">
-                                    <a href="#"><img src={`/images/${shoe.images[mainPic].path}`} alt="pic"></img></a>
+                                    <a href="#">{mainPic}</a>
                                 </div>
                             </div>
                             <div className="shoeDisplay__actual__info">

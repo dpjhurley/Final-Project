@@ -181,6 +181,23 @@
                         height: 21rem;
                     }
                 }
+                video{
+                    width: 35rem;
+                    height: 29rem;
+                    margin: 0.4rem 1rem 1rem 3rem;
+                    @media all and (max-width: 1200px){
+                        width: 25rem;
+                        height: 20rem;
+                    }
+                    @media all and (max-width: 1000px){
+                        width: 35rem;
+                        height: 29rem;
+                    }
+                    @media all and (max-width: 600px){
+                        width: 26rem;
+                        height: 21rem;
+                    }
+                }
             }
         }
        
