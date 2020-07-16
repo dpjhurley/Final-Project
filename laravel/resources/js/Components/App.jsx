@@ -17,17 +17,18 @@ import Spinner from './partials/Spinner.jsx';
 
 const App = () => {
     const [ data, setData ] = useState([]);  
-    const [ loading, setLoading ] = useState(true);  
+    const [ loading, setLoading ] = useState(true);
+    const [ extension, setExtension ] = useState('')
     const [ logged_in, setLogged_in ] = useState(null);  
     const [ token, setToken ] = useState(window.localStorage.getItem('_token')); 
     const [ message, setMessage ] = useState([]); 
     
     useEffect(() => {
         fetchData();
-    }, [])
+    }, [extension])
 
     const fetchData = async () => {
-        const resp = await fetch("/api/shoes/id", {
+        const resp = await fetch(`api/shoes${extension}`, {
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json"
@@ -70,11 +71,14 @@ const App = () => {
         }            
     }
 
+    const handleExtensionChange = (e) => {
+        setExtension(e.target.value)
+    }
 
     return ( 
         <Router>
             <TopNav />
-            <Navbar />
+            <Navbar handleExtensionChange={handleExtensionChange} />
             <HiddenMenu />
             <HiddenMenuSearch />
             <ThirdNav />
@@ -116,13 +120,48 @@ const App = () => {
                 }/>
                 <Route path="/cart" component={Basket} />
                 <Route path="/register-account"  component={RegisterForm}/>
+                
+                <Route 
+                    path={extension} 
+                    render={() => 
+                        <MainDisplay 
+                            data={data}
+                            loading={loading}
+                            extension={extension}
+                        />
+                    }
+                />
+                {/*<Route 
+                    path="/men" exact
+                    render={() => 
+                        <MainDisplay 
+                            extension={'/men'}
+                        />
+                    }
+                /> <Route 
+                    path="/women" 
+                    render={() => 
+                        <MainDisplay 
+                            extension={'/women'}
+                        />
+                    }
+                />
+                <Route 
+                    path="/kids" 
+                    render={() => 
+                        <MainDisplay 
+                            extension={'/kids'}
+                        />
+                    }
+                />
                 <Route 
                     path="/" exact
                     render={() => 
-                        <MainDisplay />
+                        <MainDisplay 
+                            extension={''}
+                        />
                     }
-                />
-                
+                /> */}
                 
             </Switch>
             <Footer />

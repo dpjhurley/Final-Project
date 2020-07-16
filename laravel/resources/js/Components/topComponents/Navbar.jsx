@@ -38,25 +38,32 @@ export default class Navbar extends React.Component {
     }
 
     render() {
+        const { handleExtensionChange } = this.props;
         return (
             <nav className="mainNav">
     
             <div className="mainNav__list ">
 
-                <div className="mainNav__list__item">
-                    <Link to="/womens">Women's</Link>
-                   <HiddenMenuWomen />
-                </div>
+                <button className="mainNav__link__item--btn" onClick={handleExtensionChange}  value='/women'>
+                    <div className="mainNav__list__item">
+                        <Link to="/women" className="link__inner" >Women's</Link>
+                        <HiddenMenuWomen />
+                   </div>
+                </button>
 
-                <div className="mainNav__list__item">
-                    <Link to="/mens">Men's</Link>
-                    <HiddenMenuMen />
-                </div>
+                <button className="mainNav__link__item--btn" onClick={handleExtensionChange}  value='/men'>
+                    <div className="mainNav__list__item">
+                        <Link to="/men" >Men's</Link>
+                        <HiddenMenuMen />
+                    </div>
+                </button>
 
-                <div className="mainNav__list__item">
-                    <Link to="/kids">Kids</Link>
-                    <HiddenMenuKids />
-                </div>
+                <button className="mainNav__link__item--btn" onClick={handleExtensionChange} value='/kids'>
+                    <div className="mainNav__list__item">
+                        <Link to="/kids" >Kids</Link>
+                        <HiddenMenuKids />
+                    </div>
+                </button>
                                   
             </div>
 
