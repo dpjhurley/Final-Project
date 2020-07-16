@@ -28,7 +28,7 @@ const App = () => {
     }, [extension])
 
     const fetchData = async () => {
-        const resp = await fetch(`api/shoes${extension}`, {
+        const resp = await fetch(`/api/shoes${extension}`, {
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json"
@@ -72,7 +72,7 @@ const App = () => {
     }
 
     const handleExtensionChange = (e) => {
-        setExtension(e.target.value)
+        setExtension(e)
     }
 
     return ( 
@@ -103,6 +103,8 @@ const App = () => {
                                 () => <SingleShoePage 
                                     shoe_id={shoe.id} 
                                     token={token}
+                                    extension={extension}
+                                    handleExtensionChange={handleExtensionChange}
                                 />
                             }
                         />
@@ -128,41 +130,10 @@ const App = () => {
                             data={data}
                             loading={loading}
                             extension={extension}
+                            handleExtensionChange={handleExtensionChange}
                         />
                     }
-                />
-                {/*<Route 
-                    path="/men" exact
-                    render={() => 
-                        <MainDisplay 
-                            extension={'/men'}
-                        />
-                    }
-                /> <Route 
-                    path="/women" 
-                    render={() => 
-                        <MainDisplay 
-                            extension={'/women'}
-                        />
-                    }
-                />
-                <Route 
-                    path="/kids" 
-                    render={() => 
-                        <MainDisplay 
-                            extension={'/kids'}
-                        />
-                    }
-                />
-                <Route 
-                    path="/" exact
-                    render={() => 
-                        <MainDisplay 
-                            extension={''}
-                        />
-                    }
-                /> */}
-                
+                />                
             </Switch>
             <Footer />
             <CopyrightFooter />

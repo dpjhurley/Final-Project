@@ -10,7 +10,9 @@ import Image360 from './Image360.jsx';
 
 const SingleShoePage = ({ 
     shoe_id,
-    token
+    token,
+    extension,
+    handleExtensionChange
 }) => {
     const [ shoe, setShoe ] = useState({});
     const [ size, setSize ] = useState(0);
@@ -95,13 +97,26 @@ const SingleShoePage = ({
         });
     }  
 
+    let formattedExtension = '';
+    if (!shoe.is_adult) {
+        formattedExtension = '/kids';
+    } else {
+        if (shoe.gender == 'male') {
+            formattedExtension = '/men';
+        } else {
+            formattedExtension = '/women';
+        }
+    }
+
     return (  
         <div className="shoeDisplay">
                 {loading ? (
                     <Spinner />
                 ) : (
                     <>
-                        <h4><Link className="topRoutes" to="/">Home</Link> {'>'} {/*<Link className="topRoutes" to="/women">Women</Link> {">"}*/} {shoe.brand.name} {shoe.title} </h4>
+                        <h4>
+                            <Link className="topRoutes" to="/" onClick={() => handleExtensionChange('/')}>Home</Link> {'>'} <Link className="topRoutes" to={formattedExtension} onClick={() => handleExtensionChange(formattedExtension)}>{formattedExtension.slice(1, formattedExtension.length)}</Link> {">"} {shoe.brand.name} {shoe.title} 
+                        </h4>
                         <div className="shoeDisplay__actual">
                             <div className="shoeDisplay__actual__pic">
                                 <div className="shoeDisplay__actual__pic-smallpic">

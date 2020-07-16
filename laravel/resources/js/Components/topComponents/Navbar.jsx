@@ -44,31 +44,27 @@ export default class Navbar extends React.Component {
     
             <div className="mainNav__list ">
 
-                <button className="mainNav__link__item--btn" onClick={handleExtensionChange}  value='/women'>
-                    <div className="mainNav__list__item">
-                        <Link to="/women" className="link__inner" >Women's</Link>
-                        <HiddenMenuWomen />
-                   </div>
-                </button>
+                <div className="mainNav__list__item">
+                    <Link to="/women" onClick={() => handleExtensionChange('/women')} >Women's</Link>
+                    <HiddenMenuWomen />
+                </div>
 
-                <button className="mainNav__link__item--btn" onClick={handleExtensionChange}  value='/men'>
-                    <div className="mainNav__list__item">
-                        <Link to="/men" >Men's</Link>
-                        <HiddenMenuMen />
-                    </div>
-                </button>
+                <div className="mainNav__list__item">
+                    <Link to="/men" onClick={() => handleExtensionChange('/men')} >Men's</Link>
+                    <HiddenMenuMen />
+                </div>
 
-                <button className="mainNav__link__item--btn" onClick={handleExtensionChange} value='/kids'>
-                    <div className="mainNav__list__item">
-                        <Link to="/kids" >Kids</Link>
-                        <HiddenMenuKids />
-                    </div>
-                </button>
+                <div className="mainNav__list__item">
+                    <Link to="/kids" onClick={() => handleExtensionChange('/kids')} >Kids</Link>
+                    <HiddenMenuKids />
+                </div>
                                   
             </div>
 
             <div className="mainNav__list" >
-                <Link to="/"> <h1><i className="fas fa-globe"></i> Global</h1></Link>
+                <Link to="/" onClick={() => handleExtensionChange('/')} >
+                    <h1><i className="fas fa-globe"></i> Global</h1>
+                </Link>
             </div>
 
             <div className="mainNav__list">
