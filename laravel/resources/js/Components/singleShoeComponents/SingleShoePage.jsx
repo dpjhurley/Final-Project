@@ -15,7 +15,7 @@ const SingleShoePage = ({
     const [ size, setSize ] = useState(null);
     const [ quantity, setQuantity ] = useState(null);
     const [ loading, setLoading ] = useState(true);
-    const [ mainPic, setMainPic ] = useState(0);
+    const [ mainPic, setMainPic ] = useState('/images/shoe.images[0].path');
     const [ hiddenBasketShow, setHiddenBasketShow ] = useState(true);
     const [ prompt, setprompt ] = useState(false);
 
@@ -103,7 +103,7 @@ const SingleShoePage = ({
                         <div className="shoeDisplay__actual">
                             <div className="shoeDisplay__actual__pic">
                                 <div className="shoeDisplay__actual__pic-smallpic">
-                               <a href="#"><img src={`/images/${shoe.images[0].path}`} alt="pic" onClick={() => handleBigPicChange(0)}></img></a>
+                                    <a href="#"><img src={`/images/${shoe.images[0].path}`} alt="pic" onClick={() => handleBigPicChange(0)}></img></a>
                                     <a href="#"><img src={`/images/${shoe.images[1].path}`} alt="pic" onClick={() => handleBigPicChange(1)}></img></a>
                                     <a href="#"><img src={`/images/${shoe.images[2].path}`} alt="pic" onClick={() => handleBigPicChange(2)}></img></a>
                                     <a href="#"><img src={pic5} alt="pic"></img></a>
