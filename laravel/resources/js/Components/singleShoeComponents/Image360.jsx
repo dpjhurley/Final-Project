@@ -30,7 +30,7 @@ export default class Image360 extends Component {
             
         
             let picnumber = 1 +( Math.ceil(difference/20) ) % 50;
-               if(picnumber <= 0){
+               if(picnumber < 0){
                    picnumber = 50 - Math.abs(picnumber % 50)
                }
             this.setState({
