@@ -30,6 +30,9 @@
                    margin-bottom: 1rem;
                }
                &-text{
+                @media all and (max-width: 600px){
+                    display: block;
+                    }
                   display: flex;
                   justify-content: space-between;
                   .collect-btn{
@@ -50,6 +53,10 @@
                     }
                       width: 15rem;
                       p{
+                        @media all and (max-width: 600px){
+                            display: block;
+                            font-size: .8rem;
+                            }
                           font-size: 1rem;
                           font-family: 'Times New Roman', Times, serif;
                           font-weight: 700;
@@ -177,8 +184,8 @@
                         height: 29rem;
                     }
                     @media all and (max-width: 600px){
-                        width: 26rem;
-                        height: 21rem;
+                        width: 21rem;
+                        height: 18rem;
                     }
                 }
                 video{

@@ -12,6 +12,7 @@
         width:100%;
         margin: 0 2rem 0 2rem;
     }
+    
 }
 
 .cartitem{
@@ -34,6 +35,12 @@
         justify-content: flex-end;
 
         &>input{
+            @media screen and (max-width:860px) {
+                margin-right: 190px;
+            }
+            @media screen and (max-width:800px) {
+                margin-right: auto;
+            }
             height: 30%;
             width: 50px;
             font-size: 1.1rem;
@@ -82,9 +89,10 @@
     flex-direction: column;
     align-items: flex-end;
 
-    @media screen and (max-width: 860px){
+    @media screen and (max-width: 1000px){
         align-items: center;
     }
+    
 
     .totals {
         width: 20rem;

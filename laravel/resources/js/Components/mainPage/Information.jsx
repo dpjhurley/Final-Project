@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 export default class Information extends Component {
     render() {
-        const { count, brand } = this.props;
+        const { count, brand, handleExtensionChange } = this.props;
         return (
             <div className="bodyInformation">
-                <h4 className="topRoute__container" ><Link className="topRoutes" to="\">HOME</Link></h4>
+                <h4 className="topRoute__container" ><Link className="topRoutes" to="/" onClick={() => handleExtensionChange('/')}>HOME</Link></h4>
                 <br />
                 {/* fix this to have it display mens or womens */}
                 {(brand.length > 0) ? 
@@ -15,8 +15,7 @@ export default class Information extends Component {
                   ""
                 )
                }  
-               
-
+            
                
                 <br />
                 <div className="bodyInformation__global">
