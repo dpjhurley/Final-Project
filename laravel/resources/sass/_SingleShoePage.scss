@@ -4,12 +4,23 @@
     margin: 2rem 0 0 1rem;
    }
     &__actual{
+        @media all and (max-width: 1000px){
+            flex-wrap: wrap;
+            justify-content: center;
+    
+        }
+
         display: flex;
         align-items: center;
         margin: 5rem 0;
         height: 100%;
         &__info{
+            @media all and (max-width: 1000px){
+                align-items: center;
+        
+            }
             height: 40rem;
+           
             &-collect{
                h2{
                    margin-bottom: 0.3rem;
@@ -33,6 +44,10 @@
                       cursor: pointer;
                   }
                   div{
+                    @media all and (max-width: 1000px){
+                        width: 13rem;
+        
+                    }
                       width: 15rem;
                       p{
                           font-size: 1rem;
@@ -41,8 +56,11 @@
                       }
                   }
                }
+               
             }
             width: 100%;
+
+            
             
             display: flex;
             flex-direction: column;
@@ -96,6 +114,20 @@
             }
         }
         &__pic{
+            @media all and (max-width: 1000px){
+                height: 30rem;
+        
+            }
+            @media all and (max-width: 750px){
+                flex-wrap: wrap;
+                height: 38rem;
+                justify-content: center;
+            }
+            @media all and (max-width: 600px){
+                height: 27rem;
+
+            }
+
             height: 40rem;
             display: flex;
             align-items: flex-start;
@@ -105,12 +137,28 @@
                 flex-direction: column;
                 align-items: flex-start;
                 justify-content: center;
+                @media all and (max-width: 750px){
+                    flex-direction: row;
+                }
                 a{
                     img{
+                     
                         width: 5rem;
                         height: 5rem;
                         margin: 0.3rem;
                         margin-left: 1rem;
+                        @media all and (max-width: 1200px){
+                            width: 3rem;
+                            height: 3rem;
+                        }
+                        @media all and (max-width: 1000px){
+                            width: 5rem;
+                            height: 5rem;
+                        }
+                        @media all and (max-width: 600px){
+                            width: 3.5rem;
+                            height: 3.5rem;
+                        }
                     }
                 }
         }
@@ -120,21 +168,39 @@
                     width: 35rem;
                     height: 29rem;
                     margin: 0.4rem 1rem 1rem 3rem;
-
+                    @media all and (max-width: 1200px){
+                        width: 25rem;
+                        height: 20rem;
+                    }
+                    @media all and (max-width: 1000px){
+                        width: 35rem;
+                        height: 29rem;
+                    }
+                    @media all and (max-width: 600px){
+                        width: 26rem;
+                        height: 21rem;
+                    }
                 }
             }
         }
        
      }
      &__info-size{
-      
+
          &-selection{
+         @media all and (max-width: 600px){
+            width: 300px;
+            display: inherit;
+            }
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             margin-bottom: 2rem;
             &-select{
                 .select-css {
+                    @media all and (max-width: 600px){
+                       width: 15rem;
+                    }
                     font-size: 16px;
                     font-family: sans-serif;
                     font-weight: 700;
@@ -180,6 +246,9 @@
                 }
                
                 a{
+                    @media all and (max-width: 600px){
+                        display: inherit;
+                        }
                     color: #555;
                     &:hover{
                         text-decoration: none;
@@ -198,6 +267,9 @@
                 }
             }
             .add_to_basket_btn{
+                @media all and (max-width: 600px){
+                    width: 15rem;
+                 }
                 background-color: $primary-color;
                 height: 2.8rem;
                 width: 20rem; 
@@ -211,4 +283,5 @@
      }
     
  }
+
 }

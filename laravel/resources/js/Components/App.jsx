@@ -12,6 +12,7 @@ import MainDisplay from './mainPage/MainDisplay.jsx';
 import SingleShoePage from './singleShoeComponents/SingleShoePage.jsx';
 import Basket from './basket/Basket.jsx';
 import RegisterForm from './auth/RegisterForm.jsx';
+import Spinner from './partials/Spinner.jsx';
 
 
 const App = () => {
@@ -87,7 +88,9 @@ const App = () => {
                         />
                     }
                 />
-                {data ? (
+                {loading ? (
+                    <Spinner />
+                ) : (
                     data.map((shoe) => (
                         <Route 
                             key={shoe.id} 
@@ -100,8 +103,6 @@ const App = () => {
                             }
                         />
                     ))
-                ) : (
-                    null
                 )}
                 <Route path="/account"  render={ ()=>
                     <AccountArea 
@@ -116,11 +117,9 @@ const App = () => {
                 <Route path="/cart" component={Basket} />
                 <Route path="/register-account"  component={RegisterForm}/>
                 <Route 
-                    path="/" 
+                    path="/" exact
                     render={() => 
-                        <MainDisplay 
-                            loading={loading}
-                        />
+                        <MainDisplay />
                     }
                 />
                 

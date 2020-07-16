@@ -7,8 +7,9 @@ import ShoeList from "./ShoeList";
 import Spinner from "../partials/Spinner.jsx";
 import Pagination from "../partials/Pagination.jsx";
 
-const MainDisplay = ({ loading }) => {
+const MainDisplay = () => {
     const [ data, setData ] = useState([]);
+    const [ loading, setLoading ] = useState(true);
     const [ currentPage, setCurrentPage ] = useState(1);
     const [ shoesPerPage, setShoesPerPage ] = useState(12);
     const [ filterByColor, setFilterByColor ] = useState([]);
