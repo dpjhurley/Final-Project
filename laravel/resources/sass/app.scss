@@ -29,8 +29,13 @@
 body{
     max-width: 90rem;
     margin: auto;
+    display: flex;
+    align-items: center;
     
     
+    #app{
+        margin: auto;
+    }
 }
 
 
