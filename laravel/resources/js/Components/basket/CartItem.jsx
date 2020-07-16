@@ -37,7 +37,7 @@ const CartItem = ({
                         </form>
                     ) : (
                         <div className="shoeinfo__count">Quantity: {shoe.count}
-                            <button onClick={changeQuantityBtn}>Change Quantity?</button>
+                            <button className="shoeinfo__count" onClick={changeQuantityBtn}>Change Quantity?</button>
                         </div>
                     )}
                 </div>
