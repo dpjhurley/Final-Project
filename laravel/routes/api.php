@@ -20,6 +20,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/shoes/id', 'Api\ShoeController@id');
 Route::get('/shoes', 'Api\ShoeController@index');
+Route::get('/shoes/men', 'Api\ShoeController@men');
+Route::get('/shoes/women', 'Api\ShoeController@women');
+Route::get('/shoes/kids', 'Api\ShoeController@kids');
 Route::get('/shoes/{shoe_id}', 'Api\ShoeController@show');
 Route::get('/brands', 'Api\BrandController@index');
 Route::get('/colors', 'Api\ColorController@index');

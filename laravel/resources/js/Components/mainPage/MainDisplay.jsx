@@ -7,32 +7,15 @@ import ShoeList from "./ShoeList";
 import Spinner from "../partials/Spinner.jsx";
 import Pagination from "../partials/Pagination.jsx";
 
-const MainDisplay = () => {
-    const [ data, setData ] = useState([]);
-    const [ loading, setLoading ] = useState(true);
+const MainDisplay = ({
+    data,
+    loading
+}) => {
     const [ currentPage, setCurrentPage ] = useState(1);
     const [ shoesPerPage, setShoesPerPage ] = useState(12);
     const [ filterByColor, setFilterByColor ] = useState([]);
     const [ filterByBrand, setFilterByBrand ] = useState([]);
     const [ filterByCategory, setFilterByCategory ] = useState([]);
-
-    useEffect(() => {
-        fetchData();
-    }, [])
-
-    const fetchData = async () => {
-        const resp = await fetch("api/shoes", {
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json"
-            }
-        })
-        const results = await resp.json()
-        if (results) {
-            setData(results);
-            setLoading(false)
-        }
-    };
 
     const handleBrandCheck = (e) => {
         if (filterByBrand.includes(e.target.value)) {
