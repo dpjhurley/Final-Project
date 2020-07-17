@@ -41,6 +41,27 @@ export default class Navbar extends React.Component {
         const { handleExtensionChange } = this.props;
         return (
             <nav className="mainNav">
+
+
+                                        <div class="menu-wrap">
+                                                <input type="checkbox" class="toddler"/>
+                                                <div class="hamburger">
+                                                    <div></div>
+                                                </div>
+                                                <div class="menu">
+                                                    <div>
+                                                        <div>
+                                                            <ul>
+                                                                <li><Link to="/women" onClick={() => handleExtensionChange('/women')} >Women's</Link></li>
+                                                                <li> <Link to="/men" onClick={() => handleExtensionChange('/men')} >Men's</Link></li>
+                                                                <li><Link to="/kids" onClick={() => handleExtensionChange('/kids')} >Kids</Link></li>
+                                                               
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        </div>
+
     
                 <div className="mainNav__list ">
 

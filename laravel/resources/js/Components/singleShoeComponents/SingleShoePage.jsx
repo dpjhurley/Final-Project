@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import pic4 from "../logo-360-640.png";
-import pic5 from "../1900327270m7_zm.jpg";
+
 import Spinner from '../partials/Spinner';
 import QuantitySelector from './QuantitySelector.jsx';
 import Alert from '../partials/Alert';
@@ -124,7 +124,7 @@ const SingleShoePage = ({
                                     <a href="#"><img src={`/images/${shoe.images[0].path}`} alt="pic0" onClick={() => handleBigPicChange(<img src={`/images/${shoe.images[0].path}`} alt="pic0"/>)}/></a>
                                     <a href="#"><img src={`/images/${shoe.images[1].path}`} alt="pic1" onClick={() => handleBigPicChange(<img src={`/images/${shoe.images[1].path}`} alt="pic1"/>)}/></a>
                                     <a href="#"><img src={`/images/${shoe.images[2].path}`} alt="pic2" onClick={() => handleBigPicChange(<img src={`/images/${shoe.images[2].path}`} alt="pic2"/>)}/></a>
-                                    <a href="#"><img src={pic5} alt="pic" onClick={() => handleBigPicChange( <VideoShoes/>)}></img></a>
+                                    <a href="#"><img src="/images/youtubevideobutton.jpg" alt="pic" onClick={() => handleBigPicChange( <VideoShoes/>)}></img></a>
                                     <a href="#"><img src={pic4} alt="pic" onClick={() => handleBigPicChange(<Image360 />)}></img></a>
                                 </div>
                                
