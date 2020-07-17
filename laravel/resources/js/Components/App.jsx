@@ -28,7 +28,7 @@ const App = () => {
     }, [extension])
 
     const fetchData = async () => {
-        const resp = await fetch(`api/shoes${extension}`, {
+        const resp = await fetch(`/api/shoes${extension}`, {
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json"
@@ -53,26 +53,9 @@ const App = () => {
         setToken(null);
     }
 
-    const handleLogout = async () => {
-        const resp = await fetch('/user/logout', {
-            method: 'POST',
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json",
-                'Authorization': 'Bearer ' + token
-            }
-        })
-        const results = await resp.json()
-        if (results) {
-            window.localStorage.removeItem('_token')
-            setLogged_in(false)
-            setToken(null)
-            setMessage(results.message)
-        }            
-    }
 
     const handleExtensionChange = (e) => {
-        setExtension(e.target.value)
+        setExtension(e)
     }
 
     return ( 
@@ -103,18 +86,19 @@ const App = () => {
                                 () => <SingleShoePage 
                                     shoe_id={shoe.id} 
                                     token={token}
+                                    extension={extension}
+                                    handleExtensionChange={handleExtensionChange}
                                 />
                             }
                         />
                     ))
                 )}
-                <Route path="/account"  render={ ()=>
+                <Route path="/account"  render={()=>
                     <AccountArea 
                         onLoginSuccess={onLoginSuccess} 
                         onFailedAuthentication={onFailedAuthentication}
                         logged_in={logged_in}
                         token={token}
-                        handleLogOut={() => handleLogOut}
                         message={message}
                     />
                 }/>
@@ -128,41 +112,10 @@ const App = () => {
                             data={data}
                             loading={loading}
                             extension={extension}
+                            handleExtensionChange={handleExtensionChange}
                         />
                     }
-                />
-                {/*<Route 
-                    path="/men" exact
-                    render={() => 
-                        <MainDisplay 
-                            extension={'/men'}
-                        />
-                    }
-                /> <Route 
-                    path="/women" 
-                    render={() => 
-                        <MainDisplay 
-                            extension={'/women'}
-                        />
-                    }
-                />
-                <Route 
-                    path="/kids" 
-                    render={() => 
-                        <MainDisplay 
-                            extension={'/kids'}
-                        />
-                    }
-                />
-                <Route 
-                    path="/" exact
-                    render={() => 
-                        <MainDisplay 
-                            extension={''}
-                        />
-                    }
-                /> */}
-                
+                />                
             </Switch>
             <Footer />
             <CopyrightFooter />

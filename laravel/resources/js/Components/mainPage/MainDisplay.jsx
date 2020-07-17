@@ -9,7 +9,8 @@ import Pagination from "../partials/Pagination.jsx";
 
 const MainDisplay = ({
     data,
-    loading
+    loading,
+    handleExtensionChange
 }) => {
     const [ currentPage, setCurrentPage ] = useState(1);
     const [ shoesPerPage, setShoesPerPage ] = useState(12);
@@ -108,8 +109,10 @@ const MainDisplay = ({
     return (  
         <>
             <Information 
-            count={filteredShoes} 
-            brand={filterByBrand}/>
+                count={filteredShoes} 
+                brand={filterByBrand}
+                handleExtensionChange={handleExtensionChange}
+            />
             <div className="buttons">
                 <Button />
                 {/* <div className="topright">
