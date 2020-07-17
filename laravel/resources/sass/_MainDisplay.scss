@@ -30,6 +30,10 @@
             font-size: 0.7rem;
           
          }
+        @media all and (max-width: 700px) { 
+            opacity: 0;
+          
+         }
        
         .bodySidebarTitle {
             font-size: xx-large;
