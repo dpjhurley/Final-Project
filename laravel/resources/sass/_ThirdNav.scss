@@ -8,6 +8,11 @@
     margin-top: 0.5rem;
     border: 1px #777 solid;
 
+    @media screen and (max-width: 720px) {
+        display: none;
+        visibility: hidden;
+    }
+
     
     &__center{
         border-right: 1px #777 solid;

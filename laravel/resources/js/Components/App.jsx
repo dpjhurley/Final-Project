@@ -53,23 +53,6 @@ const App = () => {
         setToken(null);
     }
 
-    const handleLogout = async () => {
-        const resp = await fetch('/user/logout', {
-            method: 'POST',
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json",
-                'Authorization': 'Bearer ' + token
-            }
-        })
-        const results = await resp.json()
-        if (results) {
-            window.localStorage.removeItem('_token')
-            setLogged_in(false)
-            setToken(null)
-            setMessage(results.message)
-        }            
-    }
 
     const handleExtensionChange = (e) => {
         setExtension(e)
@@ -110,13 +93,12 @@ const App = () => {
                         />
                     ))
                 )}
-                <Route path="/account"  render={ ()=>
+                <Route path="/account"  render={()=>
                     <AccountArea 
                         onLoginSuccess={onLoginSuccess} 
                         onFailedAuthentication={onFailedAuthentication}
                         logged_in={logged_in}
                         token={token}
-                        handleLogOut={() => handleLogOut}
                         message={message}
                     />
                 }/>
