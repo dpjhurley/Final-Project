@@ -112,23 +112,13 @@ class ShoeController extends Controller
 
     public function search(Request $request)
     {
-        $searchValue = strtolower($request->input('search'));
-        $regex = '%'.$searchValue.'%';
-
-        $brands = Brand::query()
-            ->where('name', 'like', $regex)
-            ->first();
-
-        // $shoes = Shoe::query()
-        //     ->where('title', 'like', $regex)
-        //     ->where(function($query, $brands) {
-        //         foreach ($brands as $brand) {
-        //             $query->where('brand_id', 'like', $brand->id);
-        //         }
-        //     })->get();
-        
             // $shoes = DB::table('shoes')
-            //     ->whereExists(function ($brands) {
+            //     ->whereExists(function ($query, Request $request) {
+            //         $searchValue = strtolower($request->input('search'));
+            //         $regex = '%'.$searchValue.'%';
+            //         $brands = Brand::query()
+            //             ->where('name', 'like', $regex)
+            //             ->get();
             //         $query->select(DB::raw(1))
             //             ->from('brands')
             //             ->whereRaw('brands.id = '.$brands->id);
