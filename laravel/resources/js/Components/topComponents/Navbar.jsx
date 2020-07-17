@@ -27,7 +27,6 @@ export default class Navbar extends React.Component {
             hiddensearch: !this.state.hiddensearch
         })
         const hiddenSearchField = document.querySelector('#hiddenSearch');
-        console.log(hiddenSearchField.classList);
         if(this.state.hiddensearch === true){
              hiddenSearchField.classList = 'hiddenMenusearch'
         
@@ -38,7 +37,7 @@ export default class Navbar extends React.Component {
     }
 
     render() {
-        const { handleExtensionChange } = this.props;
+        const { handleExtensionChange, handleSearchValueChange, handleSearchSubmit } = this.props;
         return (
             <nav className="mainNav">
     
@@ -95,7 +94,11 @@ export default class Navbar extends React.Component {
                             <i className="fas fa-search"></i>
                     
                     </div>
-                    <HiddenMenuSearch handleOnClickHiddenSearch={this.handleOnClickHiddenSearch} />
+                    <HiddenMenuSearch 
+                        handleOnClickHiddenSearch={this.handleOnClickHiddenSearch}
+                        handleSearchSubmit={handleSearchSubmit}
+                        handleSearchValueChange={handleSearchValueChange}
+                    />
                 </div>
             </nav>
         

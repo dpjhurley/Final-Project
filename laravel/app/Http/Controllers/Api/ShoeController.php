@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Shoe;
+use App\Brand;
+use App\Category;
+use DB;
 use Croppa;
 
 class ShoeController extends Controller
@@ -105,5 +108,59 @@ class ShoeController extends Controller
         }
 
         return $shoes;
+    }
+
+    public function search(Request $request)
+    {
+        $searchValue = strtolower($request->input('search'));
+        $regex = '%'.$searchValue.'%';
+
+        $brands = Brand::query()
+            ->where('name', 'like', $regex)
+            ->first();
+
+        // $shoes = Shoe::query()
+        //     ->where('title', 'like', $regex)
+        //     ->where(function($query, $brands) {
+        //         foreach ($brands as $brand) {
+        //             $query->where('brand_id', 'like', $brand->id);
+        //         }
+        //     })->get();
+        
+            // $shoes = DB::table('shoes')
+            //     ->whereExists(function ($brands) {
+            //         $query->select(DB::raw(1))
+            //             ->from('brands')
+            //             ->whereRaw('brands.id = '.$brands->id);
+            //     })
+            //     ->get();
+        
+        $shoes = Shoe::query()
+            ->where([
+                ['title', 'like', $regex],
+            ])->get();
+
+        // foreach ($brands as $brand) {
+        //     $shoes += Shoe::query()
+        //         ->where('brand_id', 'like', $brand->id)
+        //         ->get();
+        // }        
+        
+        // $matches = [];
+        // foreach ($shoes as $shoe) {
+        //     if (stripos($shoe->brand->name, $regex)) {
+        //         $matches[] = $shoe;
+        //     } else if (stripos($shoe->category->name, $regex)) {
+        //         $matches[] = $shoe;
+        //     } else if (stripos($shoe->title, $regex)) {
+        //         $matches[] = $shoe;
+        //     }
+
+        // }
+
+        return [
+            'data' => $shoes,
+            'extension' => '/search'
+        ];
     }
 }

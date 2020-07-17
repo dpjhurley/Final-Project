@@ -67,7 +67,7 @@ const SingleShoePage = ({
 
                     }
                 })
-                const results = resp.json();
+                const results = await resp.json();
                 setHiddenBasketShow(!hiddenBasketShow)
             } 
         } else {
