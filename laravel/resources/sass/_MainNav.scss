@@ -4,10 +4,19 @@
     align-items: center;
     justify-content: space-between;
     height: 7rem;
+<<<<<<< HEAD
     width: 100vw;
   /*   @media all and (max-width: 480px) { 
         flex-direction: column;
      } */
+=======
+    width: 100%;
+    @media all and (max-width: 700px) { 
+       position: fixed;
+       top: 2.8rem;
+       background-color: #444;
+     }
+>>>>>>> b482cf13ff8e965299fe07c7fb4629301ad77797
     
    a{ 
        display: flex;
@@ -33,11 +42,17 @@
        width: 35%;          
        &__icons{
         
+        @media all and (max-width: 700px) { 
+           color: #f3f3f3;
+          }
             a{
                  color: #000;
                  i{
                      margin-left: 0.5rem;
                      font-size: 1.5rem;
+                     @media all and (max-width: 700px) { 
+                        color: #f3f3f3;
+                       }
                  }
 
             } 
