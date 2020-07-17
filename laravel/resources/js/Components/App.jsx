@@ -22,6 +22,7 @@ const App = () => {
     const [ logged_in, setLogged_in ] = useState(null);  
     const [ token, setToken ] = useState(window.localStorage.getItem('_token')); 
     const [ message, setMessage ] = useState([]); 
+    const [ search, setSearch ] = useState('');
     
     useEffect(() => {
         fetchData();
@@ -58,12 +59,44 @@ const App = () => {
         setExtension(e)
     }
 
+    const handleSearchSubmit = async (e) => {
+        e.preventDefault();
+
+        const resp = await fetch(`/api/search`, {
+            method: 'POST',
+            body: JSON.stringify({
+                "search": search
+            }),
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+            }
+        })
+        const results = await resp.json()
+        // if (results) {
+        //     setData(results.data);
+        //     setLoading(false)
+        //     setExtension(results.extension)
+        // }
+    }
+
+    const handleSearchValueChange = (e) => {
+        setSearch(e.target.value)
+    }
+
     return ( 
         <Router>
             <TopNav />
-            <Navbar handleExtensionChange={handleExtensionChange} />
+            <Navbar 
+                handleExtensionChange={handleExtensionChange}
+                handleSearchSubmit={handleSearchSubmit}
+                handleSearchValueChange={handleSearchValueChange}
+            />
             <HiddenMenu />
-            <HiddenMenuSearch />
+            <HiddenMenuSearch 
+                handleSearchSubmit={handleSearchSubmit}
+                handleSearchValueChange={handleSearchValueChange}
+            />
             <ThirdNav />
                         
             <Switch>

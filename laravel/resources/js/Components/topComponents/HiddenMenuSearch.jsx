@@ -1,22 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-
-export default class HiddenMenuSearch  extends React.Component{
+const HiddenMenuSearch = ({
+    handleSearchSubmit,
+    handleSearchValueChange
+}) => {
     
- 
-
-    render(){
-        return( <form action="/">
+    return (  
+        <form onSubmit={handleSearchSubmit}>
             <div className="hiddenMenusearch hidden" id="hiddenSearch">
-            <i className="fas fa-search fa-2x hiddensearchicons"></i>
 
-                 <input type="text" name="search" placeholder="Search for the best shoes" />
+                <i className="fas fa-search fa-2x hiddensearchicons"></i>
+
+                <input type="text" name="search" placeholder="Search for the best shoes" onChange={handleSearchValueChange}/>
             
-            <i className="fas fa-times-circle fa-2x hiddensearchicons" />
-          
+                <i className="fas fa-times-circle fa-2x hiddensearchicons" />
+        
             </div>
-            </form>
-        )
-    }
+
+            
+
+        </form>
+    );
 }
+ 
+export default HiddenMenuSearch;
 

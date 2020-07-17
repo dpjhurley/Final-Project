@@ -80,31 +80,40 @@ const Basket = ({token}) => {
             <h2 className="basket__title">Basket</h2>
             {loaded ? (
                 <>
-                    {cart.length > 0 ? (
-                        <>
-                            <div className="basket__container">
-                                {cart.map((s, i) => (
-                                    <CartItem 
-                                        key={i}
-                                        shoe={s}
-                                        handleRemoveFromCart={(e) => {
-                                            e.preventDefault();
-        
-                                            handleRemoveFromCart(s);
-                                        }}
-                                        edit={edit}
-                                        changeQuantityBtn={changeQuantityBtn}
-                                        changeNewQuantity={changeNewQuantity}
-                                        handleChangeOfQuantity={(e) => {
-                                            e.preventDefault();
-        
-                                            handleChangeOfQuantity(s)
-                                        }}
-                                    />
-                                ))}
+                    {token ? (
+                        cart.length > 0 ? (
+                            <>
+                                <div className="basket__container">
+                                    {cart.map((s, i) => (
+                                        <CartItem 
+                                            key={i}
+                                            shoe={s}
+                                            handleRemoveFromCart={(e) => {
+                                                e.preventDefault();
+            
+                                                handleRemoveFromCart(s);
+                                            }}
+                                            edit={edit}
+                                            changeQuantityBtn={changeQuantityBtn}
+                                            changeNewQuantity={changeNewQuantity}
+                                            handleChangeOfQuantity={(e) => {
+                                                e.preventDefault();
+            
+                                                handleChangeOfQuantity(s)
+                                            }}
+                                        />
+                                    ))}
+                                </div>
+                                <BasketTotal total={total}/> 
+                            </>       
+                        ) : (
+                            <div className="basket__container--notloggedin">
+                                <h3>Theres nothing in your basket!</h3>
+                                <Link to="/main">
+                                    <button className="basket__btn" >Check out our shoes</button>
+                                </Link>
                             </div>
-                            <BasketTotal total={total}/> 
-                        </>       
+                        )
                     ) : (
                         <div className="basket__container--notloggedin">
                             <h3>Please login to use the basket</h3>
@@ -117,7 +126,6 @@ const Basket = ({token}) => {
                             </Link>
                         </div>
                     )}
-                    
                 </>
             ) : (
                 <Spinner />
