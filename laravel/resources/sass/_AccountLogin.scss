@@ -2,6 +2,9 @@
     @media all and (max-width: 850px){
         flex-wrap: wrap;
         }
+        @media all and (max-width: 500px){
+            width: 50%;
+            }
     display: flex;
     justify-content: center;
 }
@@ -113,7 +116,6 @@
         background-color: #000;
         color: #fff;
         height: 2.5rem ;
-        
        
         &:hover{
             background-color: rgb(27, 26, 26);

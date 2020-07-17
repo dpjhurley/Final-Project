@@ -7,6 +7,7 @@
     overflow: hidden;
     font-family: $primary_font;
     margin: auto;
+    
     @media all and (max-width: 799px ){
         justify-content: center;
    }

@@ -10,7 +10,6 @@ class LoginForm extends React.Component {
             password: '',
             errors: [] ,//for making the erroes when status isnt success
             forgottenPassHidden: true
-
         }
     }
 
