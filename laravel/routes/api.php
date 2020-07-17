@@ -28,7 +28,7 @@ Route::get('/brands', 'Api\BrandController@index');
 Route::get('/colors', 'Api\ColorController@index');
 Route::get('/categories', 'Api\CategoryController@index');
 
-
+Route::post('/search', 'Api\ShoeController@search');
 
 Route::group(['middleware' => ['auth:api']], function ($group) {
 
