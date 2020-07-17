@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: space-between;
     height: 7rem;
-    width: 100%;
+    width: 100vw;
   /*   @media all and (max-width: 480px) { 
         flex-direction: column;
      } */
@@ -48,7 +48,11 @@
         
        }
        &__item{
-           
+        @media all and (max-width: 1000px) { 
+            margin: 0;
+            font-size: 1rem;
+            padding: 0;
+         }
            margin-left: 1rem;
            font-size: 1.6rem;
            margin-left: -2rem;
@@ -69,9 +73,9 @@
             color: #666;
              }
            a{
-            @media all and (max-width: 980px) { 
-                font-size: 1rem;
-             }
+            // @media all and (max-width: 980px) { 
+            //     font-size: 1rem;
+            //  }
                text-decoration: none;
                color: #000;
                &:hover{

@@ -1,15 +1,16 @@
 .account {
-    @media all and (max-width: 850px){
+    @media all and (max-width: 900px){
         flex-wrap: wrap;
         }
         @media all and (max-width: 500px){
             width: 50%;
+            margin: auto;
             }
     display: flex;
     justify-content: center;
 }
 .account__login{
-    @media all and (max-width: 850px){
+    @media all and (max-width: 900px){
         height: 25rem;
         width: 25rem;
 
@@ -111,6 +112,9 @@
         width: 20rem;
     }
     .btn-dark-login{
+        @media all and (max-width: 900px){
+            font-size: 1rem;
+            }
         margin-top: 2rem;
         font-size: 1.5rem;
         background-color: #000;

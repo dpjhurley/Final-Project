@@ -6,14 +6,14 @@
     justify-content: flex-end;
     overflow: hidden;
     font-family: $primary_font;
-    margin: auto;
+    width: 100vw;
     
-    @media all and (max-width: 799px ){
+    @media all and (max-width: 900px ){
         justify-content: center;
    }
 
     &__help{
-        @media all and (max-width: 799px ){
+        @media all and (max-width: 900px ){
                  display: none;
             }
         @media all and (max-width: 980px){

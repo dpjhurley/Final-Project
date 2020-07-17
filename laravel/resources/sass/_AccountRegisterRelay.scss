@@ -1,7 +1,7 @@
 .acc-register-relay{
-    @media all and (max-width: 850px){
+    @media all and (max-width: 900px){
         height: 25rem;
-        width: 25rem;
+        width: 20rem;
         }
         @media all and (max-width: 500px){
             width: 18rem;
@@ -31,7 +31,7 @@
        }
    }
    .btn-dark-login{
-    @media all and (max-width: 500px){
+    @media all and (max-width: 900px){
         font-size: 1rem;
         }
     margin-top: 2rem;

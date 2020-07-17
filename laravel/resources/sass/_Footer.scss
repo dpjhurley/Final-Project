@@ -18,15 +18,19 @@
      }
     h2{
         margin-bottom: 1.5rem;
+        margin-top: 1.5rem;
     }
     &__links{
+        @media all and (max-width: 1000px){
+            margin-left: 1rem;
+            }
         display: flex;
         flex-direction: column;
         flex: 2;
         margin-left: 5rem;
         height: 100%;
-        width: 24%;
-       
+
+    
        .fa-8x{
            color: $primary-color;
        }
