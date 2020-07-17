@@ -43,12 +43,12 @@ export default class Navbar extends React.Component {
             <nav className="mainNav">
 
 
-                                        <div class="menu-wrap">
-                                                <input type="checkbox" class="toddler"/>
-                                                <div class="hamburger">
+                                        <div className="menu-wrap">
+                                                <input type="checkbox" className="toddler"/>
+                                                <div className="hamburger">
                                                     <div></div>
                                                 </div>
-                                                <div class="menu">
+                                                <div className="menu">
                                                     <div>
                                                         <div>
                                                             <ul>

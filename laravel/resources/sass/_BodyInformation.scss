@@ -17,9 +17,13 @@
             font-size: 0.8rem;
             width: 60%;
             margin: auto;
+            text-align: center;
          }
     }
     &__global {
+        @media all and (max-width: 480px) { 
+            text-align: center;
+         }
         color: $primary_color;
         font-size: x-large;
         font-weight: bold;
