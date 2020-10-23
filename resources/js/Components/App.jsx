@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import AccountArea from './auth/AccountArea.jsx'
-import TopNav from './topComponents/Topnav';
+import AccountArea from './auth/AccountArea.jsx';
 import Navbar from './topComponents/Navbar';
-import HiddenMenu from './topComponents/HiddenMenu.jsx';
 import HiddenMenuSearch from './topComponents/HiddenMenuSearch.jsx';
-import ThirdNav from './topComponents/ThirdNav.jsx';
 import Footer from './bottomComponents/Footer.jsx'
 import CopyrightFooter from './bottomComponents/CopyrightFooter.jsx';
 import MainDisplay from './mainPage/MainDisplay.jsx';
@@ -86,18 +83,15 @@ const App = () => {
 
     return ( 
         <Router>
-            <TopNav />
             <Navbar 
                 handleExtensionChange={handleExtensionChange}
                 handleSearchSubmit={handleSearchSubmit}
                 handleSearchValueChange={handleSearchValueChange}
             />
-            <HiddenMenu />
             <HiddenMenuSearch 
                 handleSearchSubmit={handleSearchSubmit}
                 handleSearchValueChange={handleSearchValueChange}
             />
-            <ThirdNav />
                         
             <Switch>
                 <Route 

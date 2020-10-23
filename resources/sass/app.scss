@@ -3,10 +3,7 @@
 @import "_MainNav.scss";
 @import "_BodyInformation.scss";
 @import "_BodyShoe.scss";
-@import "_Topnav.scss";
-@import "_HiddenMenu.scss";
 @import "_HiddenMenuSearch.scss";
-@import "_ThirdNav.scss";
 @import "_Footer.scss";
 @import "_CopyrightFooter.scss";
 @import "_SingleShoePage.scss";
@@ -30,8 +27,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-   
+    font-family: 'Open Sans', sans-serif;
 }
+
 body{
     max-width: 90rem;
     margin: auto;
