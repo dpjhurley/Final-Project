@@ -44,4 +44,16 @@ class RegisterController extends Controller
             'status' => 'success'
         ];
     }
+
+    protected function emailSignUp(Request $request)
+    {
+        $user = new User;
+        $user->email = $request->input('email');
+        $user->mailing_list = 1;
+        $user->save();
+
+        return [
+            'status' => 'success'
+        ];
+    }
 }

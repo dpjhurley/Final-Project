@@ -30,11 +30,16 @@ Route::view('/{path?}', 'app')
 // Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/test', 'TestController@index');
 
-// Route::get('/send-email', function() {
-//      // return 'hello I will send Email';
+Route::get('/send-email', function() {
+     // return 'hello I will send Email';
 
-//      Mail::to('test@cbp.cz')->send(new InvoiceEmail());
-// });
+     Mail::to('test@cbp.cz')->send(new InvoiceEmail());
+});
+
+Route::get('/send-welcome-email', function(Request $request) {
+     Mail::to('test@cbp.cz')->send(new WelcomeEmail());
+     // Mail::to($request->input('email'))->send(new WelcomeEmail());
+});
 
 // Route::get('/send-notification', function() {
 //      $user = User::first();

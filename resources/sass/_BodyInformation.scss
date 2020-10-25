@@ -1,4 +1,4 @@
-@import "Variables";
+// @import "Variables";
 
 .bodyInformation {
     font-size: 1rem;
@@ -7,38 +7,40 @@
         margin-left: 20px;
         margin-right: 20px;
         text-align: center;
+
         @media all and (max-width: 736px) { 
             font-size: 0.9rem;
             width: 75%;
             margin: auto;
             
-         }
+        }
+
         @media all and (max-width: 480px) { 
             font-size: 0.8rem;
             width: 60%;
             margin: auto;
             text-align: center;
-         }
+        }
     }
+
     &__global {
-        @media all and (max-width: 480px) { 
-            text-align: center;
-         }
         color: $primary_color;
         font-size: x-large;
         font-weight: bold;
-    
+        
+        @media all and (max-width: 480px) { 
+            text-align: center;
+        }
     }
+
     &__underline {
         text-decoration: underline $primary_color;
-    
     }
 }
 
 .topRoutes {
     text-decoration: none;
     color: black;
-    
 }
 
 .topRoute__container {

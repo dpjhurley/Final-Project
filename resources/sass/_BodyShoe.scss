@@ -1,77 +1,81 @@
 .shoe__container {
     width: 24%;
-    @media all and (max-width: 936px) { 
-        width: 32%;
-     }
-     @media all and (max-width: 736px) { 
-        width: 49%;
-        height: 40rem;
-     }
-     @media all and (max-width: 480px) { 
-        width: 65%;
-        height: 27rem;
-     }
     padding: 20px;
     display: flex;
     flex-direction: column;
     height: 32rem;
-    &__top{
+
+    @media all and (max-width: 936px) { 
+        width: 32%;
+    }
+
+    @media all and (max-width: 736px) { 
+        width: 49%;
+        height: 40rem;
+    }
+
+    @media all and (max-width: 480px) { 
+        width: 65%;
+        height: 27rem;
+    }
+
+    &__top {
         display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-grow: 1;
-    width: 100%;
-   flex: 2;
-         a{
+        flex-direction: column;
+        align-items: center;
+        flex-grow: 1;
         width: 100%;
-        margin-bottom: 0.5rem;
-        text-decoration: none;
-            .shoe_image{
+        flex: 2;
+         
+        a {
+            width: 100%;
+            margin-bottom: 0.5rem;
+            text-decoration: none;
+
+            .shoe_image {
                 width: 100%;
-                
                 border: 1px solid rgb(211, 208, 208);
                 border-bottom: none;
             }
-            .quickbuy{
+
+            .quickbuy {
                 background-color: #fff;
                 color: #000;
                 padding: 0.8rem 4rem;
                 text-align: center;
                 border: 1px solid rgb(211, 208, 208);
                 
-                &:hover{
+                &:hover {
                     background-color:#000 ;
                     color: #fff;
-                }
-                
+                } 
             }
-    }
+        }
     }
    
-    &__bottom{
-        font-family: 'Work Sans', sans-serif;
+    &__bottom {
         display: flex;
         flex-direction: column;
         padding: 0.5rem;
         justify-content: flex-start;
         flex: 1;
-        .shoe__brand{
+
+        .shoe__brand {
             height: 1rem;
             margin: 0 0 1rem  0;
             text-transform: capitalize;
         }
-        .shoe__title{
+
+        .shoe__title {
             font-weight: 500;
             margin-bottom: 0.2rem;
-            font-family: 'Inconsolata' monospace ;
         }
-        .shoe__price{
+
+        .shoe__price {
             font-weight: 500;
             font-size: 0.8rem; 
         }
     }
-
-   
 }
 
 

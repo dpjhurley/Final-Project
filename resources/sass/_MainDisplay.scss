@@ -1,79 +1,77 @@
-
-.shoes{
+.shoes {
     width: 100%;
     display: flex;
     
-    &__right{
+    &__right {
         width: 90%;
 
-        .shoeSection{
+        .shoeSection {
             padding-top: 10px;
             display: flex;
             flex-wrap: wrap;
             color: black;
             justify-content: center;
             width: 100%;
-        }
-        
+        }    
     }
+
     .bodySidebar {
         width: 10%;
+
         @media all and (max-width: 1050px) { 
-            font-size: 0.9rem;
-            
-         }
+            font-size: 0.9rem; 
+        }
+
         @media all and (max-width: 900px) { 
             font-size: 0.8rem;
-          
-         }
+        }
+
         @media all and (max-width: 800px) { 
             font-size: 0.7rem;
-          
-         }
+        }
+
         @media all and (max-width: 700px) { 
             opacity: 0;
-          
-         }
+        }
        
         .bodySidebarTitle {
             font-size: xx-large;
             font-weight: bolder;
             text-align: center;
-            color: $primary_color;
-            
+            color: $primary_color; 
         }
-        .bodySearch{
+
+        .bodySearch {
             display: flex;
             align-items: center;
             margin: 1rem;
             width: 100%;
 
-             form{
-                 .bodySearch__item{
-                    
-                        text-transform: capitalize;
-                        width: 100%;
-                    
-                 }
-                div{
-                     input{
-                       margin-top: 0.2rem;
-                       margin-right: 0.7rem;
+            form {
+
+                .bodySearch__item {
+                    text-transform: capitalize;
+                    width: 100%;
+                }
+
+                div {
+                     
+                    input {
+                        margin-top: 0.2rem;
+                        margin-right: 0.7rem;
                        
-                       @media all and (max-width: 936px) { 
-                        margin-top: 0.1rem;
-                        margin-right: 0.4rem;
-                        
-                        
-                     }
-                       
+                        @media all and (max-width: 936px) { 
+                            margin-top: 0.1rem;
+                            margin-right: 0.4rem;
+                        }
                     }
-                    label{
+
+                    label {
                         text-transform: capitalize;
                     }
                 }
             
-          }
+            }
         }
     }
 }

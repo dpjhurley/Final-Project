@@ -3,11 +3,8 @@
     align-items: center;
     justify-content: center;
     margin-top: 100px;
+
     &__link {
-        @media all and (max-width: 480px) { 
-            width: 3rem;
-            height: 3rem;
-          }
         border: 1px solid grey;
         border-radius: 3px;
         text-align: center;
@@ -22,20 +19,23 @@
         color: $primary-color;
         font-size: 1.5rem;
         text-align: center;
-        &:hover{
+
+        @media all and (max-width: 480px) { 
+            width: 3rem;
+            height: 3rem;
+        }
+
+        &:hover {
             color: #000;
         }
-        
     }
-    .number{
+
+    .number {
         font-size: 2rem;
     }
-  
 }
 
-.priceSlider > *{
+.priceSlider > * {
     background-color: $primary_color;
-    color: $primary_color ;
-   
-   
+    color: $primary_color ;  
 }

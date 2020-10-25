@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Search from "./Search";
 import SearchColor from "./SearchColor";
-import Spinner from "../partials/Spinner";
+import Spinner from '../partials/Spinner/Spinner.jsx';
 import PriceSlider from './PriceSlider.jsx';
 
 

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
 export default class Image360 extends Component {
-
     constructor(props) {
         super(props);
 
@@ -11,6 +10,7 @@ export default class Image360 extends Component {
         this.isMousedown = false;
         this.step = 0;
     }
+    
 
     componentDidMount=()=>{
         document.addEventListener("mousedown",  (event) => {

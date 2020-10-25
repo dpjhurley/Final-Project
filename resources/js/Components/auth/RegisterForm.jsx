@@ -66,10 +66,7 @@ import { Redirect } from "react-router-dom";
                 'gender': gender,
                 'password': password,
                 'mailing_list': mailing_list
-
-
-
-        }),
+            }),
             headers: {
                 'Accept':       'application/json',
                 'Content-Type': 'application/json',

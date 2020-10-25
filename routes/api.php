@@ -31,7 +31,6 @@ Route::get('/categories', 'Api\CategoryController@index');
 Route::post('/search', 'Api\ShoeController@search');
 
 Route::group(['middleware' => ['auth:api']], function ($group) {
-
     Route::get('/cart', 'Api\CartController@index');
     Route::post('/cart/{shoe_id}/add', 'Api\CartController@add');
     Route::post('/cart/{shoe_id}/remove', 'Api\CartController@remove');
@@ -47,3 +46,4 @@ Route::group(['middleware' => ['auth:api']], function ($group) {
 
 Route::post('/login', 'Api\LoginController@login');
 Route::post('/register', 'Api\RegisterController@register');
+Route::post('/emailSignUp', 'Api\RegisterController@emailSignUp');

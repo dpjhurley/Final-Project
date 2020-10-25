@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import payment from "../payment-methods.png";
 
 export default class CopyrightFooter extends Component {
     render() {
         return (
             <div className="copyrightFooter">
                 <div className="copyrightFooter__payment">
-                    <img src={payment} ></img>
+                    <img src='/images/payment-methods.png' ></img>
                 </div>
                 <div className="copyrightFooter__links">
                     <ul>

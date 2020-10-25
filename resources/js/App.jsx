@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import AccountArea from './auth/AccountArea.jsx';
-import Navbar from './topComponents/Navbar';
-import HiddenMenuSearch from './topComponents/HiddenMenuSearch.jsx';
-import Footer from './bottomComponents/Footer.jsx'
-import CopyrightFooter from './bottomComponents/CopyrightFooter.jsx';
-import MainDisplay from './mainPage/MainDisplay.jsx';
-import SingleShoePage from './singleShoeComponents/SingleShoePage.jsx';
-import Basket from './basket/Basket.jsx';
-import RegisterForm from './auth/RegisterForm.jsx';
-import Spinner from './partials/Spinner.jsx';
+import AccountArea from './components/auth/AccountArea.jsx'; 
+import Navbar from './components/topComponents/Navbar.jsx';
+import SearchBar from './components/topComponents/SearchBar.jsx';
+import Footer from './components/bottomComponents/Footer.jsx';
+import CopyrightFooter from './components/bottomComponents/CopyrightFooter.jsx';
+import MainDisplay from './components/mainPage/MainDisplay.jsx';
+import SingleShoePage from './components/singleShoeComponents/SingleShoePage.jsx';
+import Basket from './components/basket/Basket.jsx';
+import RegisterForm from './components/auth/RegisterForm.jsx';
+import Spinner from './components/partials/Spinner/Spinner.jsx';
 
 
 const App = () => {
@@ -20,6 +20,7 @@ const App = () => {
     const [ token, setToken ] = useState(window.localStorage.getItem('_token')); 
     const [ message, setMessage ] = useState([]); 
     const [ search, setSearch ] = useState('');
+    const [ hiddenSearch, setHiddenSearch ] = useState(true);
     
     useEffect(() => {
         fetchData();
@@ -81,16 +82,21 @@ const App = () => {
         setSearch(e.target.value)
     }
 
+    const handleOnClickHiddenSearch = (event) => {
+        setHiddenSearch(!hiddenSearch)       
+    }
+
     return ( 
         <Router>
             <Navbar 
                 handleExtensionChange={handleExtensionChange}
-                handleSearchSubmit={handleSearchSubmit}
-                handleSearchValueChange={handleSearchValueChange}
+                handleOnClickHiddenSearch={handleOnClickHiddenSearch}
             />
-            <HiddenMenuSearch 
+            <SearchBar 
                 handleSearchSubmit={handleSearchSubmit}
                 handleSearchValueChange={handleSearchValueChange}
+                handleOnClickHiddenSearch={handleOnClickHiddenSearch}
+                hidden={hiddenSearch}
             />
                         
             <Switch>

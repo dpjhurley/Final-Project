@@ -1,5 +1,4 @@
-.userWelcomeBackScreen{
-  
+.userWelcomeBackScreen {
     width: 100%;
     height: 38rem;
     font-size: 2.5rem;
@@ -9,14 +8,17 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    a{
+
+    a {
         text-decoration: none;
         color: $primary-color;
     }
-    h2{
+
+    h2 {
         font-size: 4rem;
     }
-    i{
+
+    i {
         margin-top: 10rem;
     }
 

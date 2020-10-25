@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Information from "./Information.jsx";
 import Button from "../partials/Button.jsx";
-import Sort from "../Sort.jsx";
 import SearchList from "./SearchList";
 import ShoeList from "./ShoeList";
-import Spinner from "../partials/Spinner.jsx";
+import Spinner from '../partials/Spinner/Spinner.jsx';
 import Pagination from "../partials/Pagination.jsx";
 
 const MainDisplay = ({

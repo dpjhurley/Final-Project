@@ -1,4 +1,5 @@
 import React from 'react';
+import EmailSignUP from './EmailSignUp/EmailSignUp';
 
 export default class Footer extends React.Component {
     render() {
@@ -23,22 +24,13 @@ export default class Footer extends React.Component {
                         <a href="#">Our Community Pillars</a>
                     </div>
                     <div className="footer__container__links ">
-                    <h2>Global Shoes</h2>
-                    <i className="fas fa-globe fa-8x"></i>
+                        <h2>Global Shoes</h2>
+                        <i className="fas fa-globe fa-8x"></i>
                     </div>
-                    <div className="footer__container__links ">
-                    <h2>Sign-up For the Latest News</h2>
-                    <form method="Post" action="/">
-                        <label>Email
-                            <input name="email" type="email" placeholder="Enter Your Email" />
-                        </label>
-                        <input type="submit" value="Submit"/>
-                    </form>
-                    <p>Please refer to our <a href="">privacy policy</a> to understand how we manage your personal data</p>
-                    </div>
+                    <EmailSignUP/>
                     <div className="footer__container__links">
                         <h2>Follow Us</h2>
-                        <a href="#"><i className="fab fa-facebook"> Facebook</i></a>
+                        <a href="#"><i className="fab fa-facebook"></i> Facebook</a>
                         <a href="#"><i className="fab fa-instagram"></i> Instagram</a>
                         <a href="#"><i className="fab fa-twitter"></i> Twitter</a>
                     </div>

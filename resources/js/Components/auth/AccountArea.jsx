@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import LoginForm from './LoginForm.jsx';
 import RegisterRelay from './RegisterRelay.jsx';
 import WelcomeArea from './WelcomeArea.jsx';
-import Spinner from '../partials/Spinner.jsx';
+import Spinner from '../partials/Spinner/Spinner.jsx';
 
 const AccountArea = ({ 
     token, 

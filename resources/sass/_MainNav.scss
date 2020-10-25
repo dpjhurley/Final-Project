@@ -1,4 +1,3 @@
-@import "Variables";
 .mainNav{
     display: flex;
     align-items: center;
@@ -7,94 +6,105 @@
     width: 100%;
     
     @media all and (max-width: 700px) { 
-       position: fixed;
-       top: 2.8rem;
-       background-color: #444;
-     }
+        position: fixed;
+        background-color: #444;
+    }
     
-   a{ 
+    a { 
        display: flex;
        align-items: center;
        text-decoration: none;
        
-    h1 {
-        
-        color: $primary_color;
-        font-size: 2.4rem;
-        margin: auto;
-        @media all and (max-width:475px) { 
-            font-size: 2rem;
-         }
+        h1 {
+            color: $primary_color;
+            font-size: 2.4rem;
+            margin: auto;
 
-    }}
-   
-    &__list{
-       display: flex; 
-       align-items: center;
-       list-style: none;
-       justify-content: space-evenly;
-       width: 35%;          
-       &__icons{
-        
-        @media all and (max-width: 700px) { 
-           color: #f3f3f3;
-          }
-            a{
-                 color: #000;
-                 i{
-                     margin-left: 0.5rem;
-                     font-size: 1.5rem;
-                     @media all and (max-width: 700px) { 
-                        color: #f3f3f3;
-                       }
-                 }
-
-            } 
-            .search-icon{
-                color: #000;
-                 i{
-                     margin-left: 0.5rem;
-                     font-size: 1.8rem;
-                 }
+            @media all and (max-width:475px) { 
+                font-size: 2rem;
             }
-         padding: 1rem;
+        }
+    }
+   
+    &__list {
+        display: flex; 
+        align-items: center;
+        list-style: none;
+        justify-content: space-evenly;
+        width: 35%;
+
+        &__icons {
+            cursor: pointer;
+            
+            @media all and (max-width: 700px) { 
+                color: #f3f3f3;
+            }
+            
+            a {
+                color: #000;
+                
+                i {
+                    margin-left: 0.5rem;
+                    font-size: 1.5rem;
+                    
+                    @media all and (max-width: 700px) { 
+                        color: #f3f3f3;
+                   }
+                }
+            } 
+
+            .search-icon {
+                color: #000;
+                padding: 1rem; 
+
+                i {
+                    margin-left: 0.5rem;
+                    font-size: 1.8rem;
+                }
+            }  
+        }
         
-       }
-       &__item{
-        @media all and (max-width: 800px) { 
-            display: none;
-         }
-           margin-left: 1rem;
-           font-size: 1.6rem;
-           margin-left: -2rem;
-           padding: 2.8rem 2rem;
+        &__item {
+            margin-left: 1rem;
+            font-size: 1.6rem;
+            margin-left: -2rem;
+            padding: 2.8rem 2rem;
+
+            @media all and (max-width: 800px) { 
+                display: none;
+            }
          
-           &:hover {
-               color: $primary_color;
-               border-bottom: 0.5rem solid $primary_color;
-           }
-           &:hover > a{
-             color: $primary_color;
-              transition: 0.5s ease-in-out;
-             }
-             &:hover .hiddenMenu{
-            visibility: visible;
-            transition: 0.7s ease-in-out;
-            opacity: 1;
-            color: #666;
-             }
-           a{
-            // @media all and (max-width: 980px) { 
-            //     font-size: 1rem;
-            //  }
+            &:hover {
+                color: $primary_color;
+                border-bottom: 0.5rem solid $primary_color;
+            }
+            &:hover > a {
+                color: $primary_color;
+                transition: 0.5s ease-in-out;
+            }
+
+            &:hover .hiddenMenu {
+                visibility: visible;
+                transition: 0.7s ease-in-out;
+                opacity: 1;
+                color: #666;
+            }
+
+            a {
+            
                text-decoration: none;
                color: #000;
-               &:hover{
-                   color: $primary_color;
-                   transition: 0.5s ease-in;
-               }
-           }
-       }
+
+                // @media all and (max-width: 980px) { 
+                //     font-size: 1rem;
+                // }
+
+                &:hover{
+                    color: $primary_color;
+                    transition: 0.5s ease-in;
+                }
+            }
+        }
     }
 }
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import CartItem from './CartItem.jsx';
 import BasketTotal from './BasketTotal.jsx';
-import Spinner from '../partials/Spinner.jsx';
+import Spinner from '../partials/Spinner/Spinner.jsx';
 
 const Basket = ({token}) => {
     const [ cart, setCart ] = useState([]);

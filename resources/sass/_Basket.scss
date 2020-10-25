@@ -22,7 +22,6 @@
 
     &__info {
         display: flex;
-        
     }
         
     .shoeimage {
@@ -35,12 +34,6 @@
         justify-content: flex-end;
 
         &>input{
-            @media screen and (max-width:860px) {
-                margin-right: 190px;
-            }
-            @media screen and (max-width:800px) {
-                margin-right: auto;
-            }
             height: 30%;
             width: 50px;
             font-size: 1.1rem;
@@ -48,6 +41,14 @@
             border: none;
             background-color: transparent;
             cursor: pointer;
+
+            @media screen and (max-width:860px) {
+                margin-right: 190px;
+            }
+
+            @media screen and (max-width:800px) {
+                margin-right: auto;
+            }
             
             &:focus {
                 border:none;
@@ -63,15 +64,15 @@
 .shoeinfo {
     padding: 1em;
 
-    &__brand{
+    &__brand {
         margin-bottom: 0.5em;
     }
 
-    &__name{
+    &__name {
         margin-bottom: 0.5em;
     }
 
-    &__price{
+    &__price {
         margin-bottom: 0.5em;
     }
 
@@ -109,7 +110,7 @@
         }
 
         &__btn {
-            background-color: #00DC55;
+            background-color: $primary_color;
             height: 2.8rem;
             width: 20rem;
             border: none;
@@ -122,7 +123,7 @@
 }
 
 .basket__btn {
-    background-color: #00DC55;
+    background-color: $primary_color;
     height: 2.8rem;
     width: 20rem;
     border: none;

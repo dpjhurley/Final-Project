@@ -1,23 +1,24 @@
-@import "_Variables.scss";
-@import "_BodyButton.scss";
-@import "_MainNav.scss";
-@import "_BodyInformation.scss";
-@import "_BodyShoe.scss";
-@import "_HiddenMenuSearch.scss";
-@import "_Footer.scss";
-@import "_CopyrightFooter.scss";
-@import "_SingleShoePage.scss";
-@import "_pagination.scss";
-@import "_AccountLogin.scss";
-@import "_AccountRegisterRelay.scss";
-@import "_AccountRegister.scss";
-@import "_MainDisplay.scss";
-@import "_UserWelcomeBackScreen.scss";
-@import "_HiddenBasketAddDisplay.scss";
-@import "_AccountNotLoggedIn.scss";
-@import "_Basket.scss";
-@import "_warning.scss";
-@import "_HamburgerMenu.scss";
+@import "Variables.scss";
+@import "BodyButton.scss";
+@import "MainNav.scss";
+@import "BodyInformation.scss";
+@import "BodyShoe.scss";
+@import "SearchBar.scss";
+@import "Footer.scss";
+@import "CopyrightFooter.scss";
+@import "SingleShoePage.scss";
+@import "pagination.scss";
+@import "AccountLogin.scss";
+@import "AccountRegisterRelay.scss";
+@import "AccountRegister.scss";
+@import "MainDisplay.scss";
+@import "UserWelcomeBackScreen.scss";
+@import "HiddenBasketAddDisplay.scss";
+@import "AccountNotLoggedIn.scss";
+@import "Basket.scss";
+@import "warning.scss";
+@import "HamburgerMenu.scss";
+@import "EmailSuccess.scss";
 
 
 
@@ -27,7 +28,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 body{

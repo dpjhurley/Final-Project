@@ -2,38 +2,48 @@
     background-color: #000;
     width: 100%;
     height: 12rem;
+
     &__payment{
         display: flex;
         align-items: center;
         justify-content: center;
+
         img{
+            background: url('./boot-250012_640.jpg') no-repeat center ;
+            height: 8rem;
+
             @media all and (max-width: 600px){
                 height: 6rem;
-                }
-        background: url('./boot-250012_640.jpg') no-repeat center ;
-        
-        height: 8rem;
-    }}
-    &__links{
-        ul{
-            @media all and (max-width: 600px){
-                font-size: small;
-                }
+            }
+        }
+    }
+
+    &__links {
+
+        ul {
             display: flex;
             margin: auto;
             align-items: center;
             justify-content: center;
-            li{
-                @media all and (max-width: 600px){
-                    margin-left: 0.2rem;
-                    }
+
+            @media all and (max-width: 600px){
+                font-size: small;
+            }
+
+            li {
                 margin-left: 0.5rem;
                 color: #f3f3f3;
                 list-style: none;
-                a{
+
+                @media all and (max-width: 600px){
+                    margin-left: 0.2rem;
+                }
+                
+                a {
                     color: #f3f3f3;
                     text-decoration: none;
-                    &:hover{
+
+                    &:hover {
                         text-decoration: underline;
                     }
                 }
