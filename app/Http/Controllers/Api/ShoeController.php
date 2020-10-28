@@ -112,25 +112,58 @@ class ShoeController extends Controller
 
     public function search(Request $request)
     {
-        $shoeTitle = Shoe::query()
-            ->where('title', 'like', '%' . strtolower($request->input('search')) . '%')
+        $regex = '%' . strtolower($request->input('search')) . '%';
+
+        $shoesByTitle = Shoe::query()
+            ->where('title', 'like', $regex)
+            ->with('images')
+            ->with('brand')
+            ->with('category')
             ->get();
 
-        $shoeDescription = Shoe::query()
-            ->where('description', 'like', '%' . strtolower($request->input('search')) . '%')
+        $shoesByDescription = Shoe::query()
+            ->where('description', 'like', $regex)
+            ->with('images')
+            ->with('brand')
+            ->with('category')
             ->get();
 
-        if (!$shoeTitle && !$shoeDescription) {
-            $shoes = array_unique(array_merge($shoeTitle, $shoeDescription));
+        foreach ($shoesByTitle as $st) {
+            $shoes[] = $st;
         }
+
+        foreach ($shoesByDescription as $sd) {
+            $shoes[] = $sd;
+        }
+
         
 
-        $brands = Brand::all();
+        $brands = Brand::query()->where('name', 'like', $regex)->get();
 
-        //now we will check the inputed string into the brands list and return the brand id of where there is a match. then search for shoes by all the matching brands. finally joining these all togetehr to be served to the front end
+        foreach ($brands as $brand) {
+            $shoesInBrand = Shoe::query()
+                ->where('brand_id', $brand->id)
+                ->with('images')
+                ->with('brand')
+                ->with('category')
+                ->get();
+            foreach ($shoesInBrand as $sb) {
+                $shoes[] = $sb;
+            }
+        }
+
+        $shoes = array_unique($shoes);
+
+        foreach ($shoes as $shoe) {
+            if ($shoe->images->count() > 0) {
+                $shoe->image_url = Croppa::url('images/'.$shoe->images->first()->path, 300, null, ['resize']);
+            }
+        }
+        
+        //not the most elagant solution but works for searching by brand, name and description
 
         return [
-            'data' => $brands,
+            'data' => $shoes,
             'extension' => '/search'
         ];
     }

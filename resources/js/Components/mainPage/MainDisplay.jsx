@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Information from "./Information.jsx";
-import Button from "../partials/Button.jsx";
-import SearchList from "./SearchList";
+import SearchList from "../sidebar/SearchList.jsx";
 import ShoeList from "./ShoeList";
 import Spinner from '../partials/Spinner/Spinner.jsx';
 import Pagination from "../partials/Pagination.jsx";
@@ -105,6 +104,7 @@ const MainDisplay = ({
     ) {
         filteredShoes = data;
     }
+
     return (  
         <>
             <Information 
@@ -112,12 +112,6 @@ const MainDisplay = ({
                 brand={filterByBrand}
                 handleExtensionChange={handleExtensionChange}
             />
-            <div className="buttons">
-                <Button />
-                {/* <div className="topright">
-                    <Sort />
-                </div> */}
-            </div>
             <div className="shoes">
                 <SearchList
                     handleBrandCheck={handleBrandCheck}

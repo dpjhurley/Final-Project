@@ -17,15 +17,16 @@ export default class SimpleExample extends Component {
 
   render() {
     return (
-        <div className="priceSlider">
-       <SingleSlider
-              min={0}
-             max={100}
-             step={1}
-             prefix={'£'}
-             tooltip={'onClick'}
-             handleOnChange={this.handleOnChange}
-        /></div>
+      <div className="priceSlider">
+        <SingleSlider
+          min={0}
+          max={100}
+          step={1}
+          prefix={'£'}
+          tooltip={'onClick'}
+          handleOnChange={this.handleOnChange}
+          />
+      </div>
     )
   }
 }

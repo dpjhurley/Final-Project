@@ -71,11 +71,11 @@ const App = () => {
             }
         })
         const results = await resp.json()
-        // if (results) {
-        //     setData(results.data);
-        //     setLoading(false)
-        //     setExtension(results.extension)
-        // }
+        if (results) {
+            setData(results.data);
+            // setLoading(true)
+            // setExtension(results.extension)
+        }
     }
 
     const handleSearchValueChange = (e) => {
@@ -146,7 +146,8 @@ const App = () => {
                             loading={loading}
                             extension={extension}
                             handleExtensionChange={handleExtensionChange}
-                        />
+                        >
+                        </MainDisplay>
                     }
                 />                
             </Switch>
