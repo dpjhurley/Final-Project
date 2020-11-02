@@ -1,0 +1,15 @@
+.hiddenOverlay {
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    right: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .sizeGuideModal {
+        height: 90vh;
+    }
+}

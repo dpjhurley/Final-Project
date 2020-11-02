@@ -50,7 +50,7 @@ const HiddenBasket = ({
     }
     return (  
         <div className="hiddenBasketAddDisplay animate__animated animate__slideInRight" >  
-            <div className="hiddenBasketOverlay"></div>
+            <div className="hiddenBasketOverlay" onClick={handleOnClickAddToHiddenBasket}></div>
             <div className="hiddenBasketAddDisplayright " id="hiddenBasketShow">
                 <div className="hiddenBasketAddDisplayright__close" onClick={handleOnClickAddToHiddenBasket}><span><i className="fas fa-times fa-2x"></i></span><h3>Your Basket</h3></div>
                 <div className="hiddenBasketAddDisplayright__shoe">

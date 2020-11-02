@@ -1,0 +1,22 @@
+// // css transition styles
+
+.default-transition-enter,
+.size-transition-appear {
+/*We give the list the initial dimension of the list button*/
+    opacity: 0;
+}
+.default-transition-enter-active,
+.default-transition-appear-active {
+/* This is where we can add the transition*/
+    opacity: 1;
+    transition: $speed ease; 
+}
+.default-transition-exit {
+/* This fires as soon as the {hidden} is false */
+    opacity: 1;
+}
+.default-transition-exit-active {
+/* fires as element leaves the DOM*/
+    opacity: 0;
+    transition: $speed ease; 
+}

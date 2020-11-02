@@ -7,6 +7,7 @@ import Alert from '../partials/Alert';
 import HiddenBasket from './HiddenBasket';
 import Image360 from './Image360.jsx';
 import VideoShoes from './VideoShoes';
+import SizeGuideModal from './SizeGuideModal/SizeGuideModal.jsx';
 
 const SingleShoePage = ({ 
     shoe_id,
@@ -20,11 +21,11 @@ const SingleShoePage = ({
     const [ loading, setLoading ] = useState(true);
     const [ mainPic, setMainPic ] = useState(0);
     const [ hiddenBasketShow, setHiddenBasketShow ] = useState(true);
+    const [ hiddenSizeGuide, setHiddenSizeGuide ] = useState(true);
     const [ prompt, setprompt ] = useState(false);
 
     useEffect(() => {
         fetchData();
-        
     }, [hiddenBasketShow])
 
     const fetchData = async () => {
@@ -86,7 +87,9 @@ const SingleShoePage = ({
         setQuantity(e.target.value)
     }
 
-    const financePrice = (shoe.price/3).toFixed(2);
+    const handleHiddenSizeGuide = () => {
+        setHiddenSizeGuide(!hiddenSizeGuide)
+    }
 
     let selectedQuantity = null;
     if (size) {
@@ -160,15 +163,17 @@ const SingleShoePage = ({
                                                     <option value >Sorry - Out of stock</option>
                                                 )}
                                             </select>
-                                            <a href="#">Size Guide</a>
+                                            <a onClick={handleHiddenSizeGuide}>Size Guide</a>
+                                            <SizeGuideModal 
+                                                adult={formattedExtension.slice(1)}
+                                                hiddenSizeGuide={hiddenSizeGuide}
+                                                handleHiddenSizeGuide={handleHiddenSizeGuide}
+                                            />
                                         </div>
                                         <QuantitySelector 
                                             selectedQuantity={selectedQuantity} 
                                             handleQuantitySelect={handleQuantitySelect}
                                         />
-                                        <p>
-                                            <span className="bold-text">Finance</span>, pay <span className="bold-text">£{financePrice}</span> in <span className="bold-text">3 monthly instalments.</span> No interest or fees. <br/><a href="#">Learn More</a>
-                                        </p>
                                         <button type="submit" className="add_to_basket_btn">ADD TO BASKET</button>   
                                     </form>
                                     {hiddenBasketShow ? ( 
@@ -180,16 +185,6 @@ const SingleShoePage = ({
                                         />
                                     )}
                                     {!prompt ? null : <Alert message={`Please log in to add to your basket`}/> }
-                                </div>
-
-
-                                <div className="shoeDisplay__actual__info-collect">
-                                    <h2>Click {`&`} Collect</h2>
-                                    <p>Check, Reserve or Buy store stock</p>
-                                    <div className="shoeDisplay__actual__info-collect-text">
-                                        <button className="collect-btn">Click {`&`} Collect</button>
-                                        <div><p><i className="fas fa-info-circle"></i> We have strict social distancing in place in our store. Please follow our safety measures when visiting our store.</p></div>
-                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -1,52 +1,45 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState } from 'react';
 
-export default class Image360 extends Component {
-    constructor(props) {
-        super(props);
+const Image360 = () => {
+    const [ rotation, setRotation ] = useState(1);
 
-        this.state= {
-            rotation: 1,    
-        }
-        this.isMousedown = false;
-        this.step = 0;
-    }
+    let isMousedown = false;
+    let step = 0;
+    const rangeArray = [...Array(50).keys()];
     
 
-    componentDidMount=()=>{
+    useEffect(() => {
         document.addEventListener("mousedown",  (event) => {
-            this.isMousedown = true;
-            this.step = event.offsetX;
+            isMousedown = true;
+            step = event.offsetX;
         });
         
-        document.addEventListener("mouseup", (event)=> {
-            this.isMousedown = false;
+        document.addEventListener("mouseup", ()=> {
+            isMousedown = false;
         });
 
         window.addEventListener("mousemove",  (event)=> {
-            if(this.isMousedown){
+            if(isMousedown){
                 let x = event.offsetX;
-                let difference = x -this.step ;
+                let difference = x - step ;
                 let picnumber = 1 +( Math.ceil(difference/20) ) % 50;
 
                 if(picnumber <= 0){
                     picnumber = 49 - Math.abs(picnumber % 50)
                 }
-                this.setState({
-                    rotation : picnumber
-                })
+                setRotation(picnumber)
             }
         });   
-    }
-
-    render() {
-        const rangeArray = [...Array(50).keys()];
-          
-        return (
-            <div>
-                {rangeArray.map((e) => (
-                    <img key={e} id={e} src={`/images/product/image-${e}.png`} alt="image" style={{display:this.state.rotation === e ? 'block' : 'none'}}/>
-                ))}
-            </div>  
-        )
-    }
+    }, [])
+        
+    return (
+        <div>
+            {rangeArray.map((e) => (
+                <img key={e} id={e} src={`/images/product/image-${e}.png`} alt="image" style={{display:rotation === e ? 'block' : 'none'}}/>
+            ))}
+        </div>  
+    )
 }
+
+export default Image360;
+

@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import AccountArea from './components/auth/AccountArea.jsx'; 
-import Navbar from './components/topComponents/Navbar.jsx';
-import SearchBar from './components/topComponents/SearchBar.jsx';
-import Footer from './components/bottomComponents/Footer.jsx';
-import CopyrightFooter from './components/bottomComponents/CopyrightFooter.jsx';
-import MainDisplay from './components/mainPage/MainDisplay.jsx';
+import Footer from './components/Footer/Footer.jsx';
+import MainDisplay from './components/MainDisplay/MainDisplay.jsx';
 import SingleShoePage from './components/singleShoeComponents/SingleShoePage.jsx';
-import Basket from './components/basket/Basket.jsx';
+import Basket from './components/Basket/Basket.jsx';
 import RegisterForm from './components/auth/RegisterForm.jsx';
 import Spinner from './components/partials/Spinner/Spinner.jsx';
+import Header from './components/Header/Header.jsx';
 
 
 const App = () => {
@@ -73,32 +71,27 @@ const App = () => {
         const results = await resp.json()
         if (results) {
             setData(results.data);
-            // setLoading(true)
-            // setExtension(results.extension)
         }
     }
 
-    const handleSearchValueChange = (e) => {
+    const handleSearchValueChange = () => {
         setSearch(e.target.value)
     }
 
-    const handleOnClickHiddenSearch = (event) => {
+    const handleOnClickHiddenSearch = () => {
         setHiddenSearch(!hiddenSearch)       
     }
 
     return ( 
         <Router>
-            <Navbar 
+            <Header 
                 handleExtensionChange={handleExtensionChange}
                 handleOnClickHiddenSearch={handleOnClickHiddenSearch}
-            />
-            <SearchBar 
                 handleSearchSubmit={handleSearchSubmit}
                 handleSearchValueChange={handleSearchValueChange}
-                handleOnClickHiddenSearch={handleOnClickHiddenSearch}
-                hidden={hiddenSearch}
+                hiddenSearch={hiddenSearch}
             />
-                        
+                    
             <Switch>
                 <Route 
                     path={`/cart`}  
@@ -151,8 +144,8 @@ const App = () => {
                     }
                 />                
             </Switch>
+
             <Footer />
-            <CopyrightFooter />
         </Router>   
         
     );
