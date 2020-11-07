@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 
 const SearchBar = ({
@@ -20,8 +21,10 @@ const SearchBar = ({
         >
             <form onSubmit={handleSearchSubmit}>
                 <div className="hiddenMenusearch" id="hiddenSearch">
-                    <i className="fas fa-search fa-2x hiddensearchicons"></i>
-                    <input type="text" name="search" placeholder="Search for the best shoes" onChange={handleSearchValueChange}/>
+                    <Link to="/search" onClick={handleSearchSubmit}><i className="fas fa-search fa-2x hiddensearchicons"></i></Link>
+                    <input type="text" name="search" placeholder="Search for the best shoes" onChange={handleSearchValueChange} 
+                    // onKeyUp={()=> e.key === 'Enter' ? handleSearchSubmit() : false} 
+                    />
                     <i className="fas fa-times-circle fa-2x hiddensearchicons"  onClick={handleOnClickHiddenSearch}/>
                 </div>
             </form>

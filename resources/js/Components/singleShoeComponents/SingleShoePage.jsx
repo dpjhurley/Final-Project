@@ -137,7 +137,8 @@ const SingleShoePage = ({
                             <div className="shoeDisplay__actual__info">
                                 <div className="shoeDisplay__actual__info-top">
                                     <h2>{shoe.brand.name}</h2>
-                                    <p>{shoe.title}</p>
+                                    <p>{shoe.title} </p>
+                                    <p>{shoe.description}</p>
                                     <h3> <strong>€</strong>{shoe.price}.00</h3>
                                     <a href="#">with free delivery</a>
                                     <div className="shoeDisplay__actual__info-top-star">

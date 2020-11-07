@@ -33,6 +33,10 @@
             @media all and (max-width: 1000px){
                 margin-left: 1rem;
             }
+
+            &:nth-of-type(3) {
+                text-align: center;
+            }
             
             .fa-8x{
                 color: $primary-color;

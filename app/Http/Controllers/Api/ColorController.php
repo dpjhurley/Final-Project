@@ -11,6 +11,8 @@ class ColorController extends Controller
 {
     public function index()
     {
+        //no longer required as this is done on the backend to reduce fetch requests.
+
         $colors = Shoe::pluck('color')->unique();
 
         $formattedColors = [];

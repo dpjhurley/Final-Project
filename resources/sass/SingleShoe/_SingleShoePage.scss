@@ -94,6 +94,10 @@
                     color: #000;
                     font-weight: 700;
                     margin-bottom: 0.5rem;
+
+                    &:nth-of-type(2) {
+                        font-weight: 500;
+                    }
                 }
 
                 a {

@@ -13,6 +13,10 @@
     border-radius: 0.5rem;
     opacity: 1;
 
+    a {
+        color: inherit;
+    }
+
     input {
         height: 2rem;
         display: flex;

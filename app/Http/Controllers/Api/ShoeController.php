@@ -12,14 +12,12 @@ use Croppa;
 
 class ShoeController extends Controller
 {
-    //
     public function index()
     {
         $shoes = Shoe::query()
             ->with('images')
             ->with('brand')
             ->with('category')
-            // ->limit(8)
             ->get();
 
         foreach ($shoes as $shoe) {
@@ -59,7 +57,6 @@ class ShoeController extends Controller
             ->with('images')
             ->with('brand')
             ->with('category')
-            // ->limit(8)
             ->get();
 
         foreach ($shoes as $shoe) {
@@ -79,7 +76,6 @@ class ShoeController extends Controller
             ->with('images')
             ->with('brand')
             ->with('category')
-            // ->limit(8)
             ->get();
 
         foreach ($shoes as $shoe) {
@@ -98,7 +94,6 @@ class ShoeController extends Controller
             ->with('images')
             ->with('brand')
             ->with('category')
-            // ->limit(8)
             ->get();
 
         foreach ($shoes as $shoe) {
@@ -128,14 +123,17 @@ class ShoeController extends Controller
             ->with('category')
             ->get();
 
-        foreach ($shoesByTitle as $st) {
-            $shoes[] = $st;
+        if (count($shoesByTitle) > 0) {
+            foreach ($shoesByTitle as $st) {
+                $shoes[] = $st;
+            }
         }
 
-        foreach ($shoesByDescription as $sd) {
-            $shoes[] = $sd;
+        if (count($shoesByDescription) > 0) {
+            foreach ($shoesByDescription as $sd) {
+                $shoes[] = $sd;
+            }
         }
-
         
 
         $brands = Brand::query()->where('name', 'like', $regex)->get();
@@ -147,24 +145,33 @@ class ShoeController extends Controller
                 ->with('brand')
                 ->with('category')
                 ->get();
-            foreach ($shoesInBrand as $sb) {
-                $shoes[] = $sb;
+            if (count($shoesInBrand) > 0) {
+                foreach ($shoesInBrand as $sb) {
+                    $shoes[] = $sb;
+                }
             }
         }
 
-        $shoes = array_unique($shoes);
+        if (isset($shoes)) {
+            $shoes = array_unique($shoes);
 
-        foreach ($shoes as $shoe) {
-            if ($shoe->images->count() > 0) {
-                $shoe->image_url = Croppa::url('images/'.$shoe->images->first()->path, 300, null, ['resize']);
+            foreach ($shoes as $shoe) {
+                if ($shoe->images->count() > 0) {
+                    $shoe->image_url = Croppa::url('images/'.$shoe->images->first()->path, 300, null, ['resize']);
+                }
             }
+
+            return $shoes;
+        } else {
+            return [
+                "status" => "error",
+                "message" => "No shoes found"
+            ];
         }
+        
         
         //not the most elagant solution but works for searching by brand, name and description
 
-        return [
-            'data' => $shoes,
-            'extension' => '/search'
-        ];
+        
     }
 }

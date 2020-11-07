@@ -15,26 +15,49 @@ const App = () => {
     const [ loading, setLoading ] = useState(true);
     const [ extension, setExtension ] = useState('')
     const [ logged_in, setLogged_in ] = useState(null);  
-    const [ token, setToken ] = useState(window.localStorage.getItem('_token')); 
-    const [ message, setMessage ] = useState([]); 
+    const [ token, setToken ] = useState(window.localStorage.getItem('_token'));
     const [ search, setSearch ] = useState('');
     const [ hiddenSearch, setHiddenSearch ] = useState(true);
     
     useEffect(() => {
+        setLoading(true);
         fetchData();
     }, [extension])
 
-    const fetchData = async () => {
-        const resp = await fetch(`/api/shoes${extension}`, {
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json"
+    const fetchData = async (e) => {
+        if (extension === '/search' || extension === '/Search' ) {
+            const resp = await fetch(`/api/search`, {
+                method: 'POST',
+                body: JSON.stringify({
+                    "search": search
+                }),
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json",
+                }
+            })
+            const results = await resp.json()
+            if (results.message === "No shoes found") {
+                setData([])
+                setLoading(false)
+            } else {
+                setData(results);
+                setLoading(false)
+                //need to get an error handfler for when nothing matches the search!!!!
+                console.log(results)
             }
-        })
-        const results = await resp.json()
-        if (results) {
-            setData(results);
-            setLoading(false)
+        } else {
+            const resp = await fetch(`/api/shoes${extension}`, {
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                }
+            })
+            const results = await resp.json()
+            if (results) {
+                setData(results);
+                setLoading(false)
+            }
         }
     };
 
@@ -50,36 +73,39 @@ const App = () => {
         setToken(null);
     }
 
-
-    const handleExtensionChange = (e) => {
-        setExtension(e)
-    }
-
-    const handleSearchSubmit = async (e) => {
+    
+    const handleSearchSubmit = (e) => {
         e.preventDefault();
+        extension === "/search" ? setExtension('/Search') : setExtension("/search");
+        setLoading(true);
+        setHiddenSearch(!hiddenSearch);
+    }
 
-        const resp = await fetch(`/api/search`, {
-            method: 'POST',
-            body: JSON.stringify({
-                "search": search
-            }),
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json",
+    const handleExtensionChange = (e) => setExtension(e);
+
+    const handleSearchValueChange = (e) => setSearch(e.target.value);
+
+    const handleOnClickHiddenSearch = () => setHiddenSearch(!hiddenSearch);
+
+    let colorList = [];
+    let brandList = [];
+    let categoryList = [];
+
+    if (data.length > 0) {
+        data.forEach(shoe => {
+            !brandList.includes(shoe.brand.name) ? brandList.push(shoe.brand.name) : null;
+            !categoryList.includes(shoe.category.name) ? categoryList.push(shoe.category.name) : null;
+            if (shoe.color.includes(' ')) {
+                let colorArr = shoe.color.split(' ');
+                colorArr.forEach(element => {
+                    if (element !== 'and' || '&') {
+                        !colorList.includes(element.toLowerCase()) ? colorList.push(element.toLowerCase()) : null;
+                    }
+                });
+            } else {
+                !colorList.includes(shoe.color.toLowerCase()) ? colorList.push(shoe.color.toLowerCase()) : null;
             }
-        })
-        const results = await resp.json()
-        if (results) {
-            setData(results.data);
-        }
-    }
-
-    const handleSearchValueChange = () => {
-        setSearch(e.target.value)
-    }
-
-    const handleOnClickHiddenSearch = () => {
-        setHiddenSearch(!hiddenSearch)       
+        });
     }
 
     return ( 
@@ -93,14 +119,6 @@ const App = () => {
             />
                     
             <Switch>
-                <Route 
-                    path={`/cart`}  
-                    render={
-                        () => <Basket 
-                            token={token}
-                        />
-                    }
-                />
                 {loading ? (
                     <Spinner />
                 ) : (
@@ -108,8 +126,8 @@ const App = () => {
                         <Route 
                             key={shoe.id} 
                             path={`/shoe/${shoe.id}`}  
-                            render={
-                                () => <SingleShoePage 
+                            render={() => 
+                                <SingleShoePage 
                                     shoe_id={shoe.id} 
                                     token={token}
                                     extension={extension}
@@ -125,12 +143,18 @@ const App = () => {
                         onFailedAuthentication={onFailedAuthentication}
                         logged_in={logged_in}
                         token={token}
-                        message={message}
-                    />
-                }/>
-                <Route path="/cart" component={Basket} />
+                    />}
+                />
+                <Route 
+                    path={`/cart`}  
+                    render={
+                        () => <Basket 
+                            token={token}
+                        />
+                    }
+                />
                 <Route path="/register-account"  component={RegisterForm}/>
-                
+
                 <Route 
                     path={extension} 
                     render={() => 
@@ -138,16 +162,17 @@ const App = () => {
                             data={data}
                             loading={loading}
                             extension={extension}
+                            search={search}
                             handleExtensionChange={handleExtensionChange}
-                        >
-                        </MainDisplay>
+                            colorList={colorList}
+                            brandList={brandList}
+                            categoryList={categoryList}
+                        />
                     }
-                />                
+                />    
             </Switch>
-
             <Footer />
         </Router>   
-        
     );
 }
  

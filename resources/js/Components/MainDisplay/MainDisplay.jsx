@@ -8,7 +8,12 @@ import Pagination from "../partials/Pagination.jsx";
 const MainDisplay = ({
     data,
     loading,
-    handleExtensionChange
+    extension,
+    search,
+    handleExtensionChange,
+    colorList,
+    brandList,
+    categoryList
 }) => {
     const [ currentPage, setCurrentPage ] = useState(1);
     const [ shoesPerPage, setShoesPerPage ] = useState(12);
@@ -46,9 +51,7 @@ const MainDisplay = ({
         }
     };
 
-    const paginate = pageNumber => {
-        setCurrentPage(pageNumber);
-    }
+    const paginate = pageNumber => setCurrentPage(pageNumber);
 
     const previousPage = () => {
         if (currentPage > 1) {
@@ -64,8 +67,8 @@ const MainDisplay = ({
 
     const indexOfLastShoe = currentPage * shoesPerPage;
     const indexOfFirstShoe = indexOfLastShoe - shoesPerPage;
-    let filteredShoes = [];
 
+    let filteredShoes = [];
     if (filterByBrand.length > 0 ) {
         data.forEach(shoe => {
             filterByBrand.forEach(brand => {
@@ -103,6 +106,7 @@ const MainDisplay = ({
         filterByColor.length == 0
     ) {
         filteredShoes = data;
+        console.log(data)
     }
 
     return (  
@@ -110,6 +114,8 @@ const MainDisplay = ({
             <InformationBanner 
                 count={filteredShoes} 
                 brand={filterByBrand}
+                extension={extension}
+                search={search}
                 handleExtensionChange={handleExtensionChange}
             />
             <div className="shoes">
@@ -117,28 +123,33 @@ const MainDisplay = ({
                     handleBrandCheck={handleBrandCheck}
                     handleCategoryCheck={handleCategoryCheck}
                     handleColorCheck={handleColorCheck}
+                    colorList={colorList}
+                    brandList={brandList}
+                    categoryList={categoryList}
                 />
                 {loading ? (
                     <Spinner />
                 ) : (
                     <div className="shoes__right">
-                        {filteredShoes ? (
-                            <ShoeList
-                                shoes={filteredShoes.slice(
-                                    indexOfFirstShoe,
-                                    indexOfLastShoe
-                                )}
-                            />
+                        {filteredShoes.length > 0 ? (
+                            <>
+                                <ShoeList
+                                    shoes={filteredShoes.slice(
+                                        indexOfFirstShoe,
+                                        indexOfLastShoe
+                                    )}
+                                />
+                                <Pagination
+                                    shoesPerPage={shoesPerPage}
+                                    totalShoes={filteredShoes.length}
+                                    paginate={paginate}
+                                    previousPage={previousPage}
+                                    nextPage={nextPage}
+                                />
+                            </>
                         ) : (
-                            <div>No Shoes!</div>
+                            <div className="shoes__right__noShoes">Sorry, we have not found any matches for your query.</div>
                         )}
-                        <Pagination
-                            shoesPerPage={shoesPerPage}
-                            totalShoes={filteredShoes.length}
-                            paginate={paginate}
-                            previousPage={previousPage}
-                            nextPage={nextPage}
-                        />
                     </div>
                 )}
             </div>

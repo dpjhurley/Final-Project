@@ -8,83 +8,32 @@ import Spinner from '../../partials/Spinner/Spinner.jsx';
 const SideBar = ({
   handleBrandCheck, 
   handleCategoryCheck, 
-  handleColorCheck
+  handleColorCheck,
+  colorList,
+  brandList,
+  categoryList
 }) => {
-  const [ brands, setBrands ] = useState(null)
-  const [ brandsLoaded, setBrandsLoaded ] = useState(false)
-  const [ categories, setCategories ] = useState(null)
-  const [ categoriesLoaded, setCategoriesLoaded ] = useState(false)
-  const [ colors, setColors ] = useState(null)
-  const [ colorsLoaded, setColorsLoaded ] = useState(false)
-    
-  useEffect(() => {
-    fetchBrandsData();
-    fetchCategoriesData();
-    fetchColorsData();
-  }, [])
-
-  const fetchBrandsData = async () => {
-    const resp = await fetch("api/brands", {
-        headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/json"
-        }
-    })
-    const results = await resp.json()
-    if (results) {
-      setBrands(results);
-      setBrandsLoaded(true);
-    }
-  }
-
-  const fetchCategoriesData = async () => {
-    const resp = await fetch("api/categories", {
-      headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json"
-      }
-    })
-    const results = await resp.json();
-    if (results) {
-      setCategories(results);
-      setCategoriesLoaded(true);
-    }
-  }
-
-  const fetchColorsData = async () => {
-    const resp = await fetch("api/colors", {
-      headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json"
-      }
-    })
-    const results = await resp.json()
-    if (results) {
-      setColors(results);
-      setColorsLoaded(true);
-    }
-  }
-    
+     
   return (
     <div className="bodySidebar mainDisplaycontainer">
-      {categoriesLoaded && brandsLoaded && colorsLoaded ? (
+      {categoryList && brandList && colorList ? (
         <>
           <SearchColor
-            color={colors}
+            color={colorList}
             handleColorCheck={handleColorCheck}
           />
           <Search 
-            search={brands}
+            search={brandList}
             handleCheck={handleBrandCheck}
             title="Brand"
           />
           <Search 
-            search={categories}
+            search={categoryList}
             handleCheck={handleCategoryCheck}
             title="Category"
           />
-          <div className="bodySidebarTitle mainDisplaycontainer">Max Price</div>
-              {/* <PriceSlider/> */}
+          {/* <div className="bodySidebarTitle mainDisplaycontainer">Max Price</div>
+            <PriceSlider/> */}
         </>
       ) : (
           <Spinner/>
