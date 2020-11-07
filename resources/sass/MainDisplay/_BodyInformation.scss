@@ -1,6 +1,10 @@
 .bodyInformation {
     font-size: 1rem;
     margin-left: 2rem;
+
+    @media all and (max-width: 800px) { 
+        margin-top: 120px;
+    }
    
     p {
         margin-right: 2rem;
